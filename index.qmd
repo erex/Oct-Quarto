@@ -22,4 +22,12 @@ Now for some results
 knitr::kable(hn$dht$individuals$D)
 ```
 
-The end.
+# Image layout experiments
+
+```{r}
+#| layout-nrow: 2
+#| column: page
+knitr::include_graphics("https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
+
+knitr::include_graphics("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
+```
