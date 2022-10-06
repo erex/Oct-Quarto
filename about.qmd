@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+Once upon a time, Eric wanted to begin creating a new distance sampling website, using Quarto.
+
+This is his first step in this adventure.

@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This is his first step in this adventure."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Oct-Quarto",
+    "section": "",
+    "text": "To learn more about Quarto websites visit https://quarto.org/docs/websites.\n\nlibrary(Distance)\ndata(LTExercise)\nconv <- convert_units(\"meter\", \"kilometre\", \"square kilometer\")\nhn <- ds(LTExercise, key=\"hn\", convert_units = conv)\n\nNow for some results\n\nknitr::kable(hn$dht$individuals$D)\n\n\n\n\nLabel\nEstimate\nse\ncv\nlcl\nucl\ndf\n\n\n\n\nTotal\n87.49392\n13.78541\n0.1575585\n62.70329\n122.0859\n15.32522\n\n\n\n\n\nThe end."
+  }
+]

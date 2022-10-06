@@ -1,0 +1,25 @@
+---
+title: "Oct-Quarto"
+---
+
+Eric is trying to build a new website.  This uses RStudio and asked that a Github repo be created as well.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+```{r}
+#| warning: false
+#| message: false
+library(Distance)
+data(LTExercise)
+conv <- convert_units("meter", "kilometre", "square kilometer")
+hn <- ds(LTExercise, key="hn", convert_units = conv)
+```
+
+
+Now for some results
+
+```{r}
+knitr::kable(hn$dht$individuals$D)
+```
+
+The end.
