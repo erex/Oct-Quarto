@@ -3,13 +3,18 @@ project:
   output-dir: docs
 
 website:
-  title: "Oct-Quarto"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - Pr1/*.qmd
-      - Pr2/*.qmd
+  sidebar:
+    contents:
+      - section: "Welcome"
+        contents:
+        - index.qmd
+      - section: "Practical 1"
+        contents: 
+        - Pr1/Pr1-instructions.qmd
+      - section: "Practical 2"
+        contents:
+        - Pr2/Pr2-instructions.qmd
+        - Pr2/truncation-decisions.qmd
       - about.qmd
 
 format:
