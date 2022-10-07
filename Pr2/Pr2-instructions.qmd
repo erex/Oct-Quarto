@@ -1,0 +1,236 @@
+---
+title: Exercise 2<br>Line transect estimation using R
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: Introduction to distance sampling<br> August/September 2022
+output:
+  rmdformats::readthedown:
+    highlight: tango
+bibliography: references.bib
+csl: apa.csl
+---
+
+```{r}
+#| include = FALSE,
+#| message = FALSE
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+# Specify whether answers are shown 
+answer <- FALSE
+```
+
+In this exercise, we use `R` [@rcoreteam2019] and the `Distance` package [@miller2019] to fit different detection function models to the duck nest data (introduced in Exercise 1) and estimate duck nest density and abundance.
+
+# Objectives
+
+The aims of this exercise are to:
+
+1.  Load the Distance library
+2.  Import a data file
+3.  Fit a basic detection function using the `ds` function
+4.  Plot and examine a detection function
+5.  Assess goodness of fit of the detection function
+6.  Fit different detection function forms.
+
+# Survey data
+
+As a reminder of the survey, 20 line transects, each of length 128.75 km, were searched out to a distance of 2.4 metres [@anderson1970]. Perpendicular distances to detected nests have been provided in a data set named `ducknest`. The columns in the file `ducknest` are:
+
+-   Study.Area - this is the name of the study, Monte Vista NWR
+-   Region.Label - identifier of regions: in this case there is only one region and it is set to 'Default'
+-   Area - size of the study region (km$^2$): here the area is set to zero. *The area of the refuge is 47.7 km*$^2$ - this is needed to obtain abundance: for the purposes of this exercise, we are interested in fitting detection functions and density rather than abundance.
+-   Sample.Label - line transect identifier (numbered 1-20)
+-   Effort - length of the line transects (km)
+-   object - unique identifier for each duck nest identified
+-   distance - perpendicular distance (metres) to each duck nest.
+
+The distances allow different key functions/adjustments to be fitted in the detection function model and, by including the transect lengths and area of the region, density and abundance can be estimated.
+
+# Using the `Distance` package
+
+The `Distance` package has been installed in RStudio/Cloud. *When you work on your own machine*, you will need to install it with this pair of commands:
+
+```{r}
+#| eval = FALSE
+install.packages(remotes)
+remotes::install_github("DistanceDevelopment/Distance")
+```
+
+# Accessing the data
+
+The duck nest data are part of the `Distance` package, so if you have the package installed, the data set can be accessed simply by using the `data()` function
+
+```{r}
+#| echo = TRUE
+library(Distance)
+data(ducknest)
+```
+
+To look at the first few rows of `ducknest` type the following command.
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE
+head(ducknest)
+```
+
+The object `ducknest` is a dataframe object made up of rows and columns. There is one row for each detected nest: use the function `nrow` to remind yourself how many detections there are:
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE
+nrow(ducknest)
+```
+
+# Summarising the perpendicular distances
+
+Create a numerical summary of the distances:
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE
+summary(ducknest$distance)
+```
+
+Similarly to plot a histogram of distances, the command is:
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE,
+#| fig.width = 3.5,
+#| fig.height = 3.5
+hist(ducknest$distance, xlab="Distance (m)")
+```
+
+# Fitting a simple detection function model with `ds`
+
+Detection functions are fitted using the `ds` function and this function requires a data frame to have a column called `distance`. We have this in our `ducknest` data, therefore, we can simply supply the name of the data frame to the function as follows.
+
+::: {.callout-important}
+## Take care
+
+A guaranteed way to produce incorrect results from your analysis is to misspecify the units distances are measured. The `ds` function has an argument `convert_units` where the user provides a value to report density in proper units. Providing an incorrect value will result in estimates that are out by orders of magnitude.
+:::
+
+Before fitting a model, the units of measure within the survey need to be reconciled. We can choose the units in which duck nest density is to be reported, we choose *square kilometres*. How to import this information to the `ds` function?
+
+The answer is another function `convert_units`. Arguments to this function are
+
+- distance_units
+    - units of measure for perpendicular/radial distances
+- effort_units
+    - units of measure for effort (NULL for point transects)
+- area_units
+    - units of measure for the study area.
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE
+conversion.factor <- convert_units("meter", "kilometer", "square kilometer")
+```
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| message = FALSE
+# Fit half-normal detection function, no adjustment terms
+nest.hn <- ds(data=ducknest, key="hn", adjustment=NULL,
+              convert_units=conversion.factor)
+```
+
+Details about the arguments for this function:
+
+- `key="hn"`
+    - fit a half-normal key detection function
+- `adjustment=NULL`
+    - do not include adjustment terms
+- `convert_units=conversion.factor`
+    - required because, for this example, the perpendicular distances are in metres and the line transect lengths are in km - this argument converts the perpendicular distance measurements from metres to km.
+
+As we have seen, on executing the `ds` command some information is provided to the screen reminding the user what model has been fitted and the associated AIC value. More information is supplied if we ask for a summary of the model as follows:
+
+```{r}
+#| echo = TRUE,
+#| eval = answer
+# Summarise model object
+summary(nest.hn)
+```
+
+Can you match the information with the values you used in Exercise 1 - was your density estimate similar to the one obtained here?
+
+To look at the fitted detection function, simply use the `plot` function:
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| message = F,
+#| fig.width = 4,
+#| fig.height = 4
+plot(nest.hn)
+```
+
+The number of bins in the histogram can be changed by specifying the `nc` argument, for example, to plot the histogram having 8 bins (as in Exercise 1) we can specify:
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| message = F,
+#| fig.width = 4,
+#| fig.height = 4
+plot(nest.hn, nc=8)
+```
+
+The histogram should look like the one you drew in Exercise 1.
+
+# Goodness of fit
+
+Prior to making inference based upon a detection function model, it is prudent to assess the fit of the model. The usual tools for checking goodness of fit are available: the function `gof_ds` performs goodness of fits tests and plots a QQ-plot. In this command, 8 bins will be used for the chi-square goodness of fit test.
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| fig.width = 4,
+#| fig.height = 4
+gof_ds(nest.hn, nc=8)
+```
+
+# Specifying different detection functions
+
+Different detection function forms and shapes, are specified by changing the `key` and `adjustment` arguments.
+
+The different options available for `key` detection functions are:
+
+-   half normal (`key="hn"`) - this is the default
+-   hazard rate (`key="hr"`)
+-   uniform (`key="unif"`)
+
+The different options available for adjustment terms are:
+
+-   no adjustment terms (`adjustment=NULL`)
+-   cosine (`adjustment="cos"`) - default
+-   Hermite polynomial (`adjustment="herm"`)
+-   Simple polynomial (`adjustment="poly"`)
+
+For each model specified below, note down the AIC, density and 95% confidence interval and compare it to the model already fitted (i.e. half-normal with no adjustments). Which detection function model would you choose?
+
+To fit a uniform key function with cosine adjustment terms, use the command:
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| message = FALSE
+nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos",
+                  convert_units=conversion.factor)
+```
+
+By default, AIC selection will be used to fit adjustment terms of up to order 5. Have any adjustment terms been selected?
+
+To fit a hazard rate key function with Hermite polynomial adjustment terms, then use the command:
+
+```{r}
+#| echo = TRUE,
+#| eval = answer,
+#| message = FALSE
+nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm", 
+                  convert_units=conversion.factor)
+```
+
+# References
