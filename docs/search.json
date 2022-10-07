@@ -165,7 +165,7 @@
     "href": "Pr5/animal_distribution.html#twenty-transects",
     "title": "Uniform distribution of animals with respect to transects",
     "section": "Twenty transects",
-    "text": "Twenty transects\n#| label = “twenty”, #| echo = FALSE, #| animation.hook = “gifski”, #| interval = 0.1 r <- vector(“numeric”, 20) for(j in 1:50) { r <- sample(1:40, 20, replace=TRUE) x <- data\\(distance[data\\)Sample.Label %in% r] hist(x, main=“20 transects”, breaks=seq(0,5,by=.25), col=“salmon”) }"
+    "text": "Twenty transects"
   },
   {
     "objectID": "Pr5/Pr5-instructions.html",

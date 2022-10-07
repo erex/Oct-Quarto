@@ -147,3 +147,4 @@ for(j in 1:50) {
   x <- data$distance[data$Sample.Label %in% r]
   hist(x, main="20 transects", breaks=seq(0,5,by=.25), col="salmon")
 }
+```

@@ -56,7 +56,6 @@ ul.task-list{list-style: none;}
   }
 }</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -169,8 +168,10 @@ ul.task-list{list-style: none;}
   </div>
 </li>
           <li class="sidebar-item">
-  Pr3/left-truncation.qmd
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../Pr4/left-truncation.html" class="sidebar-item-text sidebar-link">Supplement Analysis options for left truncation</a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -295,7 +296,11 @@ ul.task-list{list-style: none;}
 </section>
 <section id="twenty-transects" class="level2">
 <h2 class="anchored" data-anchor-id="twenty-transects">Twenty transects</h2>
-<p>#| label = “twenty”, #| echo = FALSE, #| animation.hook = “gifski”, #| interval = 0.1 r &lt;- vector(“numeric”, 20) for(j in 1:50) { r &lt;- sample(1:40, 20, replace=TRUE) x &lt;- data<span class="math inline">\(distance[data\)</span>Sample.Label %in% r] hist(x, main=“20 transects”, breaks=seq(0,5,by=.25), col=“salmon”) }</p>
+<div class="cell" data-animation.hook="gifski" data-hash="animal_distribution_cache/html/twenty_d86b094005fde863f8326064f110c80e">
+<div class="cell-output-display">
+<p><img src="animal_distribution_files/figure-html/twenty-.gif" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>

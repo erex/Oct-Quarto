@@ -22,7 +22,7 @@ website:
       - section: "Practical 4"
         contents: 
         - Pr4/Pr4-instructions.qmd
-        - Pr3/left-truncation.qmd
+        - Pr4/left-truncation.qmd
       - section: "Practical 5"
         contents: 
         - Pr5/Pr5-instructions.qmd
