@@ -1,10 +1,7 @@
 ---
-title: Exercise 2<br>Line transect estimation using R
+title: Line transect estimation using R
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: Introduction to distance sampling<br> August/September 2022
-output:
-  rmdformats::readthedown:
-    highlight: tango
+date: "`r Sys.Date()`"
 bibliography: references.bib
 csl: apa.csl
 ---

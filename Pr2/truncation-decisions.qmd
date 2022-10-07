@@ -1,14 +1,7 @@
 ---
 title: Effective of truncation upon density estimates
-description: |
-  Looking at duck nest data (Practical 2) and simulated line transect data (Practical 3).
-author:
-  - name: Rexstad 
-    url: 
-    affiliation: Introductory distance sampling workshop
-    affiliation_url: http://distancelive.xyz
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
-output: distill::distill_article
 ---
 
 ```{r}

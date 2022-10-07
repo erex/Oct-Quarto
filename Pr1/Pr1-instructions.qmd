@@ -1,10 +1,7 @@
 ---
-title: Exercise 1.<br>Line transect detection function fitting
+title: Line transect detection function fitting
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: Introduction to distance sampling<br> August/September 2022
-output: 
-  rmdformats::readthedown:
-    highlight: tango
+date: "`r Sys.Date()`"
 ---
 
 In this practical, we plot a histogram of line transect data and estimate a detection function. The data were collected during a line transect survey of duck nests in Monte Vista National Wildlife Refuge, Colorado, USA: twenty lines of 128.75 km were specified and a distance out to 2.4m was searched and the perpendicular distances of detected nests were recorded and summarised (Table 1). 
