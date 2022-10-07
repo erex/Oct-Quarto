@@ -15,6 +15,18 @@ website:
         contents:
         - Pr2/Pr2-instructions.qmd
         - Pr2/truncation-decisions.qmd
+      - section: "Practical 3"
+        contents: 
+        - Pr3/Pr3-instructions.qmd
+        - Pr3/modelsel-demo.qmd
+      - section: "Practical 4"
+        contents: 
+        - Pr4/Pr4-instructions.qmd
+        - Pr3/left-truncation.qmd
+      - section: "Practical 5"
+        contents: 
+        - Pr5/Pr5-instructions.qmd
+        - Pr5/animal_distribution.qmd
       - about.qmd
 
 format:

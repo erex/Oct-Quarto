@@ -1,0 +1,126 @@
+---
+title: Point transect sampling
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+bibliography: references.bib
+csl: apa.csl
+---
+
+```{r}
+#| label = "setup",
+#| include = FALSE,
+#| message = FALSE
+knitr::opts_chunk$set(echo=TRUE, message=F, warning=F)
+```
+
+The purpose of this exercise is to analyse point transect survey data: it can sometimes be more difficult than line transect data. In the first problem, the data are simulated and so the true density is known. In the second problem, two different data collection methods were used to survey song birds.
+
+# Objectives
+
+The aim of this practical are to:
+
+1.  Practice fitting detection functions to point transect survey data.
+2.  Use data from the `Distance` package.
+
+# Simulated survey data
+
+Simulated point transect data from 30 points are given in the data set `PTExercise`. These data were generated from a half-normal detection function and the true density was 79.8 animals/hectare *Note*: 1 hectare=0.01km$^2$. The radial distances were recorded in metres.
+
+Load the data, check it is OK and plot the distribution of radial distances.
+
+```{r}
+#| echo = T,
+#| eval = F
+library(Distance)
+# Read in data
+data("PTExercise")
+conversion.factor <- convert_units("meter", NULL, "hectare")
+# What does the data look like
+head(PTExercise)
+hist(PTExercise$distance)
+```
+
+# Fit and plot half normal detection function
+
+To fit a point transect detection function, the argument `transect="point"` needs to be specified:
+
+```{r}
+#| echo = T,
+#| eval = F
+ptdat.hn <- ds(data=PTExercise, transect="point", key="hn", 
+               convert_units=conversion.factor)
+```
+
+The `convert_units` argument gives the estimated density in animals per hectare.
+
+The detection function can be plotted as for line transects using the `plot()` function
+
+```{r}
+#| eval = F
+plot(ptdat.hn)
+```
+
+## Probability density function
+
+To plot the more informative probability density function (pdf), an additional argument is required in the `plot()` function:
+
+```{r}
+#| eval = F
+plot(ptdat.hn, pdf=TRUE)
+```
+
+# Fit other key functions and examine truncation
+
+Experiment with keys other than the half normal (i.e. hazard rate and uniform) to assess whether these data can be satisfactorily analysed using the wrong model:
+
+-   determine a suitable truncation distance, and
+-   for each key function decide whether any adjustments are needed.
+
+How do the bias and precision compare between models?
+
+# Wren data (Optional)
+
+A point transect survey of songbirds was conducted at Montrave, Fife, Scotland, in 2004 [@buckland2006] and for this exercise, the data on winter wrens is used. Several different methods of data collection were used and for this exercise, two point transect methods are used:
+
+1.  standard five-minute counts and
+2.  the 'snapshot' method.
+
+For each method the same 32 point transects were used in 33.2 ha of parkland (Figure 1) and each point transect was visited twice. Detection distances (recorded in metres) were measured with the aid of a rangefinder.
+
+```{r}
+#| label = "montrave",
+#| echo = FALSE,
+#| fig.cap = "The study site: the dotted line is a small stream, the short dashed lines are tracks and the thick dashed line is a main road. The 32 points, shown by crosses, are laid out on a systematic grid with 100m separation. The diagonal lines were used for a line transect survey.",
+#| out.width = "50%"
+knitr::include_graphics("https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_5_Figure_1.png")
+```
+
+Data for these methods are available in the `Distance` package. This is convenient because each data set can be accessed as follows:
+
+```{r}
+#| echo = T,
+#| eval = F
+# Extract wren data for 5minute point count
+data("wren_5min")
+conversion.factor <- convert_units("meter", NULL, "hectare")
+```
+
+You will see that there is an object called `wren_5min` in your `R` workspace. There is also a data object available in `Distance` for the snapshot method (i.e. `wren_snapshot`) which can be loaded in the same way. Have a look at the `wren_5min` data with
+
+```{r}
+#| echo = T,
+#| eval = F
+head(wren_5min, n=3)
+```
+
+Note the `Effort` field is `2` meaning each point transect was visited twice. The same applies for `wren_snapshot`.
+
+## Analyse both conventional and snapshot data sets
+
+What to do:
+
+1.  Select a simple model for exploratory data analysis. Experiment with different truncation distances, $w$, and select a suitable value for each method. Are there any potential problems with any of the data sets?
+2.  Try other models and model options. Use plots, AIC values and goodness-of-fit test statistics to determine an adequate model.
+3.  Record your estimates of density and corresponding confidence interval for each method.
+
+# References

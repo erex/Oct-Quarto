@@ -1,0 +1,149 @@
+---
+title: Uniform distribution of animals with respect to transects
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+---
+
+```{r}
+#| label = "setup",
+#| include = FALSE
+## Global options
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+Simulation of line transect survey, I won't show the simulation details, but here is the distribution of animals (3000) and placement of 40 transects in the study area.
+
+
+```{r}
+#| label = "simulate",
+#| echo = FALSE,
+#| warning = FALSE,
+#| message = FALSE
+library(dsims)
+myshapefilelocation <- "C:/users/erexs/documents/simulation-strata/shapefiles/StrataPrj.shp"#here("shapefiles/StrataPrj.shp")
+northsea <- make.region(region.name = "minkes",
+            shape = myshapefilelocation,
+            strata.name = c("South", "North"),
+            units = "km")
+areas <- northsea@area
+prop.south <- areas[1]/sum(areas)
+prop.north <- areas[2]/sum(areas)
+total.abundance <- 3000
+abund.south <- round(total.abundance * prop.south)
+abund.north <- round(total.abundance * prop.north)
+constant <- make.density(region = northsea, x.space = 10, constant = 1)
+minkepop <- make.population.description(region = northsea,
+                                        density = constant,
+                                        N = c(abund.south, abund.north))
+coverage.grid <- make.coverage(northsea, n.grid.points = 100)
+trunc <- 5
+equal.cover <- make.design(region = northsea,
+                            transect.type = "line",
+                            design = "systematic",
+                            samplers=40,
+                            design.angle = c(50, 40),
+                            truncation = trunc,
+                            coverage.grid = coverage.grid)
+# b <- generate.transects(equal.cover)
+# plot(northsea, b, covered.area=TRUE)
+num.sims <- 1
+pooled.hn <- make.ds.analysis(dfmodel = list(~1),
+                              key = "hn",
+                              criteria = "AIC",
+                              truncation = trunc)
+sigma.strata <- c(50,50)
+detect <- make.detectability(key.function = "hn",
+                             scale.param = sigma.strata,
+                             truncation = trunc)
+equalcover.sim <- make.simulation(reps = num.sims,
+                                  design = equal.cover,
+                                  population.description = minkepop,
+                                  detectability = detect,
+                                  ds.analysis = pooled.hn)
+itran <- run.survey(equalcover.sim)
+```
+
+
+```{r}
+#| label = "plotmap",
+#| fig.cap = "Distribution of animals and survey effort.",
+#| echo = FALSE
+plot(itran)
+```
+
+From this survey, sample pairs of transects to visually examine the uniformity of animal distances.
+
+## Two transects
+```{r}
+#| label = "pairs",
+#| echo = FALSE,
+#| animation.hook = "gifski",
+#| interval = 0.1
+library(gifski)
+data <- itran@dist.data
+r <- vector("numeric", 2)
+for(j in 1:50) {
+  r <- sample(1:40, 2, replace=TRUE)
+  x <- data$distance[data$Sample.Label %in% r]
+  hist(x, main="2 transects", breaks=seq(0,5, by=.25), col="red")
+}
+```
+
+## Five transects
+
+```{r}
+#| label = "five",
+#| echo = FALSE,
+#| animation.hook = "gifski",
+#| interval = 0.1
+r <- vector("numeric", 5)
+for(j in 1:50) {
+  r <- sample(1:40, 5, replace=TRUE)
+  x <- data$distance[data$Sample.Label %in% r]
+  hist(x, main="5 transects", breaks=seq(0,5,by=.25), col="orange")
+}
+```
+
+## Ten transects
+
+```{r}
+#| label = "ten",
+#| echo = FALSE,
+#| animation.hook = "gifski",
+#| interval = 0.1
+r <- vector("numeric", 10)
+for(j in 1:50) {
+  r <- sample(1:40, 10, replace=TRUE)
+  x <- data$distance[data$Sample.Label %in% r]
+  hist(x, main="10 transects", breaks=seq(0,5,by=.25), col="blue")
+}
+```
+
+## Fifteen transects
+
+```{r}
+#| label = "fifteen",
+#| echo = FALSE,
+#| animation.hook = "gifski",
+#| interval = 0.1
+r <- vector("numeric", 15)
+for(j in 1:50) {
+  r <- sample(1:40, 15, replace=TRUE)
+  x <- data$distance[data$Sample.Label %in% r]
+  hist(x, main="15 transects", breaks=seq(0,5,by=.25), col="dark green")
+}
+```
+
+## Twenty transects
+
+```{r}
+#| label = "twenty",
+#| echo = FALSE,
+#| animation.hook = "gifski",
+#| interval = 0.1
+r <- vector("numeric", 20)
+for(j in 1:50) {
+  r <- sample(1:40, 20, replace=TRUE)
+  x <- data$distance[data$Sample.Label %in% r]
+  hist(x, main="20 transects", breaks=seq(0,5,by=.25), col="salmon")
+}
