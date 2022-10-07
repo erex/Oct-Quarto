@@ -9,7 +9,7 @@
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
 <meta name="dcterms.date" content="2022-10-07">
 
-<title>Effective of truncation upon density estimates</title>
+<title>Point transect sampling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,6 +80,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -119,6 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -129,7 +149,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Effective of truncation upon density estimates</h1>
+      <h1 class="quarto-secondary-nav-title">Point transect sampling</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -192,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr2/truncation-decisions.html" class="sidebar-item-text sidebar-link active">Effective of truncation upon density estimates</a>
+  <a href="../Pr2/truncation-decisions.html" class="sidebar-item-text sidebar-link">Effective of truncation upon density estimates</a>
   </div>
 </li>
       </ul>
@@ -245,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr5/Pr5-instructions.html" class="sidebar-item-text sidebar-link">Point transect sampling</a>
+  <a href="../Pr5/Pr5-instructions.html" class="sidebar-item-text sidebar-link active">Point transect sampling</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -269,16 +289,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-much-truncation" id="toc-how-much-truncation" class="nav-link active" data-scroll-target="#how-much-truncation">How much truncation?</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#simulated-survey-data" id="toc-simulated-survey-data" class="nav-link" data-scroll-target="#simulated-survey-data">Simulated survey data</a></li>
+  <li><a href="#fit-and-plot-half-normal-detection-function" id="toc-fit-and-plot-half-normal-detection-function" class="nav-link" data-scroll-target="#fit-and-plot-half-normal-detection-function">Fit and plot half normal detection function</a>
   <ul class="collapse">
-  <li><a href="#the-function" id="toc-the-function" class="nav-link" data-scroll-target="#the-function">The function</a></li>
+  <li><a href="#probability-density-function" id="toc-probability-density-function" class="nav-link" data-scroll-target="#probability-density-function">Probability density function</a></li>
   </ul></li>
-  <li><a href="#apply-the-function" id="toc-apply-the-function" class="nav-link" data-scroll-target="#apply-the-function">Apply the function</a>
+  <li><a href="#fit-other-key-functions-and-examine-truncation" id="toc-fit-other-key-functions-and-examine-truncation" class="nav-link" data-scroll-target="#fit-other-key-functions-and-examine-truncation">Fit other key functions and examine truncation</a></li>
+  <li><a href="#wren-data-optional" id="toc-wren-data-optional" class="nav-link" data-scroll-target="#wren-data-optional">Wren data (Optional)</a>
   <ul class="collapse">
-  <li><a href="#duck-nest-result" id="toc-duck-nest-result" class="nav-link" data-scroll-target="#duck-nest-result">Duck nest result</a></li>
-  <li><a href="#simulated-line-transect-result" id="toc-simulated-line-transect-result" class="nav-link" data-scroll-target="#simulated-line-transect-result">Simulated line transect result</a></li>
+  <li><a href="#analyse-both-conventional-and-snapshot-data-sets" id="toc-analyse-both-conventional-and-snapshot-data-sets" class="nav-link" data-scroll-target="#analyse-both-conventional-and-snapshot-data-sets">Analyse both conventional and snapshot data sets</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -287,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Effective of truncation upon density estimates</h1>
+<h1 class="title d-none d-lg-block">Point transect sampling</h1>
 </div>
 
 
@@ -313,94 +335,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<section id="how-much-truncation" class="level1">
-<h1>How much truncation?</h1>
-<p>This question arose in our discussion of truncation. The truncation decision is one of the first decisions an analyst will make when performing a distance sampling analysis. Is the truncation decision a decision that has profound consequences and therefore deserve lots of thought (<em>answer:</em> probably not). Let’s see</p>
-<p>I have written a function that simply repeatedly calls <code>ds()</code> to fit a detection function to a data set. Within the function is a <code>for()</code> loop containing the call to <code>ds()</code>. After each call to <code>ds()</code> the results of the fitted model object are stored within a data frame for subsequent plotting. The function retains the point estimate of density and the confidence interval bounds of the estimate.</p>
-<section id="the-function" class="level2">
-<h2 class="anchored" data-anchor-id="the-function">The function</h2>
-<p>Is presented here</p>
+<p>The purpose of this exercise is to analyse point transect survey data: it can sometimes be more difficult than line transect data. In the first problem, the data are simulated and so the true density is known. In the second problem, two different data collection methods were used to survey song birds.</p>
+<section id="objectives" class="level1">
+<h1>Objectives</h1>
+<p>The aim of this practical are to:</p>
+<ol type="1">
+<li>Practice fitting detection functions to point transect survey data.</li>
+<li>Use data from the <code>Distance</code> package.</li>
+</ol>
+</section>
+<section id="simulated-survey-data" class="level1">
+<h1>Simulated survey data</h1>
+<p>Simulated point transect data from 30 points are given in the data set <code>PTExercise</code>. These data were generated from a half-normal detection function and the true density was 79.8 animals/hectare <em>Note</em>: 1 hectare=0.01km<span class="math inline">\(^2\)</span>. The radial distances were recorded in metres.</p>
+<p>Load the data, check it is OK and plot the distribution of radial distances.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>trunc.experiment <span class="ot">&lt;-</span> <span class="cf">function</span>(mydata, <span class="at">trunc.range=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, cu, <span class="at">type=</span><span class="st">"line"</span>) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">est=</span><span class="fu">numeric</span>(),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">lcl=</span><span class="fu">numeric</span>(),</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ucl=</span><span class="fu">numeric</span>())</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(trunc.range)) {</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    this <span class="ot">&lt;-</span> <span class="fu">paste0</span>(i<span class="dv">-1</span>,<span class="st">"%"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    m <span class="ot">&lt;-</span> <span class="fu">ds</span>(mydata, <span class="at">key =</span> <span class="st">"hn"</span>, <span class="at">adj =</span> <span class="cn">NULL</span>, <span class="at">convert_units =</span> cu, </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">transect =</span> type, <span class="at">truncation =</span> this)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    result[i, ] <span class="ot">&lt;-</span> m<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"PTExercise"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># What does the data look like</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PTExercise)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(PTExercise<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="fit-and-plot-half-normal-detection-function" class="level1">
+<h1>Fit and plot half normal detection function</h1>
+<p>To fit a point transect detection function, the argument <code>transect="point"</code> needs to be specified:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ptdat.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>PTExercise, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hn"</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>convert_units</code> argument gives the estimated density in animals per hectare.</p>
+<p>The detection function can be plotted as for line transects using the <code>plot()</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ptdat.hn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="probability-density-function" class="level2">
+<h2 class="anchored" data-anchor-id="probability-density-function">Probability density function</h2>
+<p>To plot the more informative probability density function (pdf), an additional argument is required in the <code>plot()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ptdat.hn, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="apply-the-function" class="level1">
-<h1>Apply the function</h1>
-<p>How does increasing amounts of truncation affect density estimates in the duck nest data set? I present a range of truncation (in percent) from 0 (no truncation) to 25% (a quarter of the data set). Given there are 534 detections in this data set, every percent of truncation removes ~5 detections. What are the results?</p>
+<section id="fit-other-key-functions-and-examine-truncation" class="level1">
+<h1>Fit other key functions and examine truncation</h1>
+<p>Experiment with keys other than the half normal (i.e.&nbsp;hazard rate and uniform) to assess whether these data can be satisfactorily analysed using the wrong model:</p>
+<ul>
+<li>determine a suitable truncation distance, and</li>
+<li>for each key function decide whether any adjustments are needed.</li>
+</ul>
+<p>How do the bias and precision compare between models?</p>
+</section>
+<section id="wren-data-optional" class="level1">
+<h1>Wren data (Optional)</h1>
+<p>A point transect survey of songbirds was conducted at Montrave, Fife, Scotland, in 2004 <span class="citation" data-cites="buckland2006">(<a href="#ref-buckland2006" role="doc-biblioref">Buckland, 2006</a>)</span> and for this exercise, the data on winter wrens is used. Several different methods of data collection were used and for this exercise, two point transect methods are used:</p>
+<ol type="1">
+<li>standard five-minute counts and</li>
+<li>the ‘snapshot’ method.</li>
+</ol>
+<p>For each method the same 32 point transects were used in 33.2 ha of parkland (Figure 1) and each point transect was visited twice. Detection distances (recorded in metres) were measured with the aid of a rangefinder.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"ducknest"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cu <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="st">"kilometer"</span>, <span class="st">"square kilometer"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>duck.trunc <span class="ot">&lt;-</span> <span class="fu">trunc.experiment</span>(<span class="at">mydata=</span>ducknest, <span class="at">trunc.range=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">cu=</span>cu, <span class="at">type=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="duck-nest-result" class="level2">
-<h2 class="anchored" data-anchor-id="duck-nest-result">Duck nest result</h2>
-<p>The figure below shows there is very little change in point estimates of duck nest density until ~20% (1/5th) of the data have been truncated. The magnitude of the point estimate changes are minute in comparison to the width of the confidence intervals.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>trange <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(trange<span class="dv">-1</span>, duck.trunc<span class="sc">$</span>est, <span class="at">type=</span><span class="st">"p"</span>, </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">c</span>(duck.trunc[,<span class="dv">2</span>], duck.trunc[,<span class="dv">3</span>])), <span class="at">pch=</span><span class="dv">20</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Duck nest data</span><span class="sc">\n</span><span class="st">truncation experiment"</span>, <span class="at">ylab=</span><span class="st">"Nest density"</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Percent data truncated"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(trange[trange]<span class="sc">-</span><span class="dv">1</span>, duck.trunc[trange,<span class="dv">2</span>],</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         trange[trange]<span class="sc">-</span><span class="dv">1</span>, duck.trunc[trange,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="truncation-decisions_files/figure-html/duckplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Effects of truncation upon density estimates for duck nest data.</figcaption><p></p>
+<p><img src="https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_5_Figure_1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">The study site: the dotted line is a small stream, the short dashed lines are tracks and the thick dashed line is a main road. The 32 points, shown by crosses, are laid out on a systematic grid with 100m separation. The diagonal lines were used for a line transect survey.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="simulated-line-transect-result" class="level2">
-<h2 class="anchored" data-anchor-id="simulated-line-transect-result">Simulated line transect result</h2>
-<p>The value of writing functions is they can be re-used if written with sufficient generality. I re-use the truncation function upon a different data set; the simulated data from Practical 3 where the true density is known to be 79.8 animals per hectare (depicted with horizontal dashed line).</p>
+<p>Data for these methods are available in the <code>Distance</code> package. This is convenient because each data set can be accessed as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"LTExercise"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sim.trunc <span class="ot">&lt;-</span> <span class="fu">trunc.experiment</span>(<span class="at">mydata=</span>LTExercise, <span class="at">trunc.range=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">cu=</span>cu, <span class="at">type=</span><span class="st">"line"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract wren data for 5minute point count</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"wren_5min"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>You will see that there is an object called <code>wren_5min</code> in your <code>R</code> workspace. There is also a data object available in <code>Distance</code> for the snapshot method (i.e.&nbsp;<code>wren_snapshot</code>) which can be loaded in the same way. Have a look at the <code>wren_5min</code> data with</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(trange<span class="dv">-1</span>, sim.trunc<span class="sc">$</span>est, <span class="at">type=</span><span class="st">"p"</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">c</span>(sim.trunc[,<span class="dv">2</span>], sim.trunc[,<span class="dv">3</span>])), <span class="at">pch=</span><span class="dv">20</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Simulated data</span><span class="sc">\n</span><span class="st">truncation experiment"</span>, <span class="at">ylab=</span><span class="st">"Density"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Percent data truncated"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(trange[trange]<span class="sc">-</span><span class="dv">1</span>, sim.trunc[trange,<span class="dv">2</span>],</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>         trange[trange]<span class="sc">-</span><span class="dv">1</span>, sim.trunc[trange,<span class="dv">3</span>])</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">79.8</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="truncation-decisions_files/figure-html/simplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Effects of truncation upon density estimates for simulated line transect data.</figcaption><p></p>
-</figure>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(wren_5min, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
+<p>Note the <code>Effort</code> field is <code>2</code> meaning each point transect was visited twice. The same applies for <code>wren_snapshot</code>.</p>
+<section id="analyse-both-conventional-and-snapshot-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="analyse-both-conventional-and-snapshot-data-sets">Analyse both conventional and snapshot data sets</h2>
+<p>What to do:</p>
+<ol type="1">
+<li>Select a simple model for exploratory data analysis. Experiment with different truncation distances, <span class="math inline">\(w\)</span>, and select a suitable value for each method. Are there any potential problems with any of the data sets?</li>
+<li>Try other models and model options. Use plots, AIC values and goodness-of-fit test statistics to determine an adequate model.</li>
+<li>Record your estimates of density and corresponding confidence interval for each method.</li>
+</ol>
 </section>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
-<p>Truncation distance has a small effect upon density estimates for “reasonable” data. If number of detections is small (&lt;50) the effects can be more profound. But under normal circumstances there is little need to worry greatly about the truncation distance decision. Recall truncation is done to reduce the likelihood of fitting overly-complex models with several adjustment terms to fit “noise” resulting from low probability detections made at great distances.</p>
-<p>The examples presented here are for surveys with exact distance measurements. For surveys where distances are binned in the field, truncation can only happen on the cutpoints.</p>
+<section id="references" class="level1">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-buckland2006" class="csl-entry" role="doc-biblioentry">
+Buckland, S. T. (2006). Point-transect surveys for songbirds: Robust methodologies. <em>The Auk</em>, <em>123</em>(2), 345–357. <a href="https://doi.org/10.1642/0004-8038(2006)123[345:PSFSRM]2.0.CO;2">https://doi.org/10.1642/0004-8038(2006)123[345:PSFSRM]2.0.CO;2</a>
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

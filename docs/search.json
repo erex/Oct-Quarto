@@ -47,5 +47,145 @@
     "title": "Effective of truncation upon density estimates",
     "section": "Simulated line transect result",
     "text": "Simulated line transect result\nThe value of writing functions is they can be re-used if written with sufficient generality. I re-use the truncation function upon a different data set; the simulated data from Practical 3 where the true density is known to be 79.8 animals per hectare (depicted with horizontal dashed line).\n\ndata(\"LTExercise\")\nsim.trunc <- trunc.experiment(mydata=LTExercise, trunc.range=0:25, cu=cu, type=\"line\")\n\n\nplot(trange-1, sim.trunc$est, type=\"p\", \n     ylim=range(c(sim.trunc[,2], sim.trunc[,3])), pch=20,\n     main=\"Simulated data\\ntruncation experiment\", ylab=\"Density\",\n     xlab=\"Percent data truncated\")\nsegments(trange[trange]-1, sim.trunc[trange,2],\n         trange[trange]-1, sim.trunc[trange,3])\nabline(h=79.8, lwd=2, lty=3)\n\n\n\n\nEffects of truncation upon density estimates for simulated line transect data."
+  },
+  {
+    "objectID": "Pr3/modelsel-demo.html",
+    "href": "Pr3/modelsel-demo.html",
+    "title": "Demonstration two stages of model selection",
+    "section": "",
+    "text": "Demonstration\n\n\n\nEastern tropical Pacific dolphin data\nAfter my improvised description of selection of adjustment terms, I thought I should provide a more thorough description via an example. The purpose of the demonstration is to fit models with adjustments to a data set and expose, in detail, all models fitted during the process.\nFor this demonstration, I require a data set with an interesting shape to the histogram. I will not describe the data set, other than to note it contains roughly 1000 detections. We will see this data set again next week. More complete details of the data set, as well as a detailed analysis are in Marques & Buckland (2003)."
+  },
+  {
+    "objectID": "Pr3/modelsel-demo.html#half-normal-cosine",
+    "href": "Pr3/modelsel-demo.html#half-normal-cosine",
+    "title": "Demonstration two stages of model selection",
+    "section": "Half-normal cosine",
+    "text": "Half-normal cosine\n\nhncos <- ds(bino, key=\"hn\", adj=\"cos\")\n\nStarting AIC adjustment term selection.\n\n\nFitting half-normal key function\n\n\nAIC= 2816.871\n\n\nFitting half-normal key function with cosine(2) adjustments\n\n\nAIC= 2805.973\n\n\nFitting half-normal key function with cosine(2,3) adjustments\n\n\nAIC= 2807.589\n\n\n\nHalf-normal key function with cosine(2) adjustments selected.\n\n\nThree models with the half-normal key are fitted, with the preferred model being the second fitted, namely the model with a single adjustment term.\n\n\n\n\n\n\n\nstateDiagram-v2\npartition \"ds(data, key=\"hn\", adj=\"cos\")\" \nfork\n  :hn(0)\n  AIC=2817;\nfork again\n  :hn(1)\n  AIC=2806;\nfork again\n  :hn(2)\n  AIC=2808;\nend fork\n:hn(1);"
+  },
+  {
+    "objectID": "Pr3/modelsel-demo.html#uniform-cosine",
+    "href": "Pr3/modelsel-demo.html#uniform-cosine",
+    "title": "Demonstration two stages of model selection",
+    "section": "Uniform cosine",
+    "text": "Uniform cosine\n\nunicos <- ds(bino, key=\"unif\", adj=\"cos\")\n\nStarting AIC adjustment term selection.\n\n\nFitting uniform key function\n\n\nAIC= 2971.022\n\n\nFitting uniform key function with cosine(1) adjustments\n\n\nAIC= 2811.177\n\n\nFitting uniform key function with cosine(1,2) adjustments\n\n\nAIC= 2808.378\n\n\nFitting uniform key function with cosine(1,2,3) adjustments\n\n\nAIC= 2806.685\n\n\nFitting uniform key function with cosine(1,2,3,4) adjustments\n\n\nAIC= 2808.105\n\n\n\nUniform key function with cosine(1,2,3) adjustments selected.\n\n\nThe same pattern as with the half-normal key, with a small exception. Four models with the uniform key are fitted, with the preferred model being the third fitted, namely the model with a three adjustment term.\n\n\n\n\n\n\n\n!theme cerulean\npartition \"ds(data, key=\"unif\", adj=\"cos\")\" \nfork\n  :unif(1)\n  AIC=2811;\nfork again\n  :unif(2)\n  AIC=2808;\nfork again\n  :unif(3)\n  AIC=2807;\nfork again\n  :unif(4)\n  AIC=2808;\nend fork\n:unif(3);"
+  },
+  {
+    "objectID": "Pr3/modelsel-demo.html#hazard-rate-cosine",
+    "href": "Pr3/modelsel-demo.html#hazard-rate-cosine",
+    "title": "Demonstration two stages of model selection",
+    "section": "Hazard rate cosine",
+    "text": "Hazard rate cosine\n\nhrcos <- ds(bino, key=\"hr\", adj=\"cos\")\n\nStarting AIC adjustment term selection.\n\n\nFitting hazard-rate key function\n\n\nAIC= 2805.467\n\n\nFitting hazard-rate key function with cosine(2) adjustments\n\n\nAIC= 2807.47\n\n\n\nHazard-rate key function selected.\n\n\nTwo models are fitted with the hazard rate key function. The addition of a single adjustment term does not improve the AIC score, so there is no point in fitting a more complex model with additional adjustment terms.\n\n\n\n\n\n\n\n!theme cerulean\npartition \"ds(data, key=\"hr\", adj=\"cos\")\" \nfork\n  :hr(0)\n  AIC=2805;\nfork again\n  :hr(1)\n  AIC=2807;\nend fork\n:hr(0);\n\n\n\n\n\n\n\n\nThe contestants that emerge from the first round of model competition are:\n\nhalf-normal with 1 adjustment term\nuniform with 3 adjustment terms\nhazard rate with no adjustment terms"
+  },
+  {
+    "objectID": "Pr3/Pr3-instructions.html",
+    "href": "Pr3/Pr3-instructions.html",
+    "title": "Assessing line transect detection functions",
+    "section": "",
+    "text": "In Exercise 2, we fitted different detection functions and compared them in terms of goodness of fit and AIC. Here, we continue to fit and assess different models and look at additional arguments in the ds package."
+  },
+  {
+    "objectID": "Pr3/Pr3-instructions.html#accessing-the-data",
+    "href": "Pr3/Pr3-instructions.html#accessing-the-data",
+    "title": "Assessing line transect detection functions",
+    "section": "Accessing the data",
+    "text": "Accessing the data\nLoad the Distance package to access both the data and analytical functions.\n\n# Load library (if not already loaded)\nlibrary(Distance)\n# Access data\ndata(\"LTExercise\")\n# Check that it has been imported correctly\nhead(LTExercise, n=3)\n\n\nData format: no detections on a transect\nBefore fitting models, it is worth investigating the data a bit further: let’s start by summarising the perpendicular distances:\n\n# Summary of perpendicular distances\nsummary(LTExercise$distance)\n\nThe summary indicates that the minimum distance is min(hndat$distance) and the maximum is max(hndat$distance) metres and there is one missing value (indicated by the NA). If we print a few rows of the data, we can see that this missing value occurred on transect ‘Line 11’.\n\n# Print out a few lines of data\nLTExercise[100:102, ]\n\nThe NA indicates that there were no detections on this transect, but the transect information needs to be included otherwise the number of transects and the total line length will be incorrect."
+  },
+  {
+    "objectID": "Pr3/Pr3-instructions.html#truncation",
+    "href": "Pr3/Pr3-instructions.html#truncation",
+    "title": "Assessing line transect detection functions",
+    "section": "Truncation",
+    "text": "Truncation\nLet’s start by fitting a basic model, i.e. no adjustment terms (by default a half normal model is fitted).\nFor this project, perpendicular distances are in metres and the transect lines are recorded in kilometres.\n\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n# Fit half normal, no adjustments\nlt.hn <- ds(data=LTExercise, key=\"hn\", adjustment=NULL,\n            convert_units=conversion.factor)\n\nLooking at a summary of the model object, how many objects are there in total? What is the maximum observed perpendicular distance?\n\n# Print a summary of the fitted detection function\nsummary(lt.hn)\n\nPlot the detection function and specify many histogram bins:\n\nplot(lt.hn, nc=30)\n\nThe histogram indicates that there is a large gap in detections therefore, to avoid a long right hand tail in the detection function, truncation is necessary. There are several ways to truncate: excluding distances beyond some specified distance or excluding a specified percentage of the largest distances. Note that here we only consider excluding large perpendicular distances, which is frequently referred to as right truncation.\n\nTruncation at a fixed distance\nThe following command truncates the perpendicular distances at 20 metres i.e. objects detected beyond 20m are excluded.\n\n# Truncate at 20metres\nlt.hn.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=20,\n                 convert_units=conversion.factor)\n\nGenerate a summary and plot of the detection function to see what effect this truncation has had on the number of objects.\n\n\n\n\n\nTruncating a percentage of distances\nAn alternative way to truncate distances is to specify a percentage of detected objects that should be excluded. In the command below, 10% of the largest distances are excluded.\n\n# Truncate largest 10% of distances\nlt.hn.t10per <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=\"10%\",\n                   convert_units=conversion.factor)\n\nGenerate a summary and plot to see what effect truncation has had.\n\nsummary(lt.hn.t10per)\nplot(lt.hn.t10per)"
+  },
+  {
+    "objectID": "Pr3/Pr3-instructions.html#exploring-different-models",
+    "href": "Pr3/Pr3-instructions.html#exploring-different-models",
+    "title": "Assessing line transect detection functions",
+    "section": "Exploring different models",
+    "text": "Exploring different models\nDecide on a suitable truncation distance (but don’t spend too long on this) and then fit different key detection functions and adjustment terms to assess whether these data can be satisfactorily analysed with the ‘wrong’ model. By default, the ds function fits a half normal function and cosine adjustment terms (adjustment=\"cos\") of up to order 5: AIC is used to determine how many, if any, adjustment terms are required. This model is specified in the command below:\n\n# Half normal detection, cosine adjustments, no truncation\nlt.hn.cos <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\",\n                convert_units=conversion.factor)\n\nChange the key and adjustment terms: possible options are listed in Exercise 2 or use the help(ds) for options. See how the bias and precision compare between the models: the true density was 79.8 animals per km\\(^2\\)."
+  },
+  {
+    "objectID": "Pr3/Pr3-instructions.html#converting-exact-distances-to-binned-distances",
+    "href": "Pr3/Pr3-instructions.html#converting-exact-distances-to-binned-distances",
+    "title": "Assessing line transect detection functions",
+    "section": "Converting exact distances to binned distances",
+    "text": "Converting exact distances to binned distances\nSometimes we wish to convert exact distances to binned distances, if for example, there is evidence of rounding to favoured values. To do this in ds we need to specify the cutpoints of the bins, including zero and the maximum distance. In the example below, cutpoints at 0, 10, 20, …, 80 are specified.\n\ndata(capercaillie)\n# Specify cutpoint for bins\nbins <- seq(from=0, to=80, by=10)\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\n# Fit model with binned distances\ncaper.bin <- ds(data=capercaillie, key=\"hn\", cutpoints=bins, \n                convert_units=conversion.factor)\nplot(caper.bin)"
+  },
+  {
+    "objectID": "Pr4/left-truncation.html",
+    "href": "Pr4/left-truncation.html",
+    "title": "Supplement Analysis options for left truncation",
+    "section": "",
+    "text": "References\n\nAlldredge, J. R., & Gates, C. E. (1985). Line transect estimators for left-truncated distributions. Biometrics, 41(1), 273–280. https://doi.org/10.2307/2530663\n\n\nBuckland, S. T., Anderson, D. R., Burnham, K. P., Laake, J. L., Borchers, D. L., & Thomas, L. (2001). Introduction to distance sampling: Estimating abundance of biological populations. Oxford, New York: Oxford University Press."
+  },
+  {
+    "objectID": "Pr4/Pr4-instructions.html",
+    "href": "Pr4/Pr4-instructions.html",
+    "title": "Variance estimation for systematic survey designs",
+    "section": "",
+    "text": "We will see how to implement a post-stratification scheme that enables us to get a better estimate of the variance. In Section 6, we examine another case to see that the unstratified variance estimates provided by ds are usually fine for a systematic design: things only go wrong when there are strong trends in animal density, especially when the strong trends are associated with changes in line length (e.g. the highest densities always occur on the shortest lines, or vice versa).\nWe begin with a population and survey shown below. The data used for this exercise were simulated on a computer: they are not real data. Note the characteristics for the data in Figure 1: extreme trends with very high density on short lines and very low density on long lines. Additionally, the systematic design has covered a fairly large proportion of the survey area (the covered region is shaded). These are danger signals that the usual ds variance estimators might not work well and a post-stratification scheme should be considered.\n\n\n\n\n\nAn example of survey data where there is a strongtrend in density. The systematically placed search strips areshaded. Axis units are in kilometres.\n\n\n\n\n\nObjectives\nThe aims of this exercise are to illustrate:\n\nDefault variance estimation,\nVariance estimation with bootstrapping,\nPost-stratification to improve variance estimation,\nWhen post-stratification is not needed (optional).\n\n\n\nGetting started\nDon’t forget to load the Distance package for your session.\n\nlibrary(Distance)\n\n\n\nBasic (default) variance estimation\nIn the code below, the necessary data file is imported and a simple model is fitted and a summary produced. Make a note of the CV of the density estimate - this is obtained using the default (analytical) estimator in the ds function and is based on the assumption that the lines were placed at random. This CV can then be compared with the CV estimates obtained from alternative methods.\n\n# Import data\ndata(\"Systematic_variance_2\")\nconversion.factor <- convert_units(\"metre\", \"kilometre\", \"square kilometre\")\n# Fit a simple model\nsysvar2.hn <- ds(data=Systematic_variance_2, key=\"hn\", adjustment=NULL,\n                 convert_units=conversion.factor)\n# Summary\nsysvar2.hn$dht$individuals$D\nsysvar2.hn$dht$individuals$N\n\nThe true density and abundance are known (because the data were simulated): the true abundance in the survey region was \\(N=1000\\) and \\(D=2000 \\textrm{ animals per km}^2\\) (i.e. 1000 animals in an area of size \\(A=0.5 \\textrm{km}^2\\)). How do the point estimates compare with truth? What do you think about the precision of the estimates?\n\n\nVariance estimation with bootstrapping\nThe function bootdht_Nhat_summarize pulls out the estimates of abundance \\((\\hat{N_i})\\) for all bootstrap replicates \\(i = 1, \\cdots, N_{boot}\\) where \\(N_{boot}\\) is the number of replicates requested.\nThe following command performs the bootstrap.\n\n# Bootstrap estimate of uncertainty\n# Run the bootstrap (this can take a while if nboot is large!) \nest.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,\n                    summary_fun=bootdht_Nhat_summarize,\n                    convert_units=conversion.factor, nboot=199)\n\nThe arguments for this command are:\n\nmodel - fitted detection function model object\nflatfile - data frame of the survey data\nsummary_fun - function used to obtain the summary statistics from each bootstrap\nconvert_units - conversion units for abundance estimation\nnboot - number of bootstrap samples to generate. Note, it can take a long time to produce a large number of bootstraps and so perhaps try a small number at first.\n\n\n# See the results\nsummary(est.boot)\n\nThe summary includes:\n\nEstimate - the median value of the bootstrap estimates\nse is the standard deviation of the bootstrap estimates\nlcl and ucl are the limits for a 95% confidence interval.\ncv is the coefficient of variation (\\(CV = SE/Estimate\\))\n\nAre the bootstrapped confidence intervals for abundance and density similar to the analytical confidence intervals produced previously?\nRecall that we have a particular situation in which we have systematically placed transects which are unequal in length. Furthermore, there exists an east-west gradient in animal density juxtaposed such that the shortest lines are those that pass through the portion of the study region with the highest density. In the next section, we examine a process by which we can use post-stratification to produce a better estimate of the variance in estimated abundance.\n\n\nPost-stratification to improve variance estimation\nThe estimation of encounter rate variance in the previous section used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample because it is effectively a sample of size 1- only the first line position was randomly chosen and the rest followed on deterministically from there. We can greatly improve on the random-based estimate by using a post-stratification scheme.\nThe post-stratification scheme works by grouping together pairs of adjacent lines from the systematic sample and each pair of adjacent lines is grouped into a stratum. The strata will improve variance estimation, because the systematic sample behaves more like a stratified sample than a random sample. This encounter rate estimator is called ‘O2’ (Fewster et al., 2009) and is implemented in the dht2 function.\n\n# Post-stratification - stratified variance estimation by grouping adjacent transects\n\n# Ensure that Sample.Labels are numeric, this is required for O2 ordering\nSystematic_variance_2$Sample.Label <- as.numeric(Systematic_variance_2$Sample.Label)\n\n# Use the Fewster et al 2009, \"O2\" estimator \nest.O2 <- dht2(sysvar2.hn, flatfile=Systematic_variance_2, strat_formula=~1, \n               convert_units=conversion.factor, er_est=\"O2\")\nprint(est.O2, report=\"density\")\n\nNote that this estimator assumes that the numbering of the transects (in this example Sample.Label takes values 1 to 20) has some geographical meaning (i.e. transect 1 is next to 2 and 2 is next to 3 etc.). If this is not the case, then the user can manually define some sensible grouping of transects and create a column called grouping in the data object.\n\n\nSystematic designs where post-stratification is not needed (optional)\nThe simulated population shown in Figure 2 does not exhibit strong trends across the survey region, otherwise, the strip dimensions and systematic design are the same as for the previous example. These data are stored in the data set Systematic_variance_1.\n\n\n\n\n\nAn example of survey data that does not exhibita trend in density. The systematically placed search strips areshaded. Axis units are in kilometres.\n\n\n\n\nIn the code below, these data are imported into R and a simple detection function model is fitted. The default estimate of variance is then compared to that obtained using the ‘O2’ estimator (Fewster et al., 2009).\n\n# When post-stratification is not needed\n# Import the data\ndata(\"Systematic_variance_1\")\n# Ensure that Sample.Labels are numeric, for O2 ordering\nSystematic_variance_1$Sample.Label <- as.numeric(Systematic_variance_1$Sample.Label)\n# First fit a simple model\nsysvar1.hn <- ds(Systematic_variance_1, key=\"hn\", adjustment=NULL, \n                 convert_units=conversion.factor)\n# Obtain default estimates for comparison\nsysvar1.hn$dht$individuals$D\nsysvar1.hn$dht$individuals$N\n# Now use Fewster et al 2009, \"O2\" estimator \nest1.O2 <- dht2(sysvar1.hn, flatfile=Systematic_variance_1, strat_formula=~1, \n                convert_units=conversion.factor, er_est=\"O2\")\nprint(est1.O2, report=\"both\")\n\nDid you see a difference in the CV and 95% confidence interval between the two estimators?\n\n\n\n\n\n\n\n\nReferences\n\nFewster, R. M., Buckland, S. T., Burnham, K. P., Borchers, D. L., Jupp, P. E., Laake, J. L., & Thomas, L. (2009). Estimating the encounter rate variance in distance sampling. Biometrics, 65(1), 225–236. https://doi.org/10.1111/j.1541-0420.2008.01018.x"
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html",
+    "href": "Pr5/animal_distribution.html",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "",
+    "text": "Simulation of line transect survey, I won’t show the simulation details, but here is the distribution of animals (3000) and placement of 40 transects in the study area.\nFrom this survey, sample pairs of transects to visually examine the uniformity of animal distances."
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html#two-transects",
+    "href": "Pr5/animal_distribution.html#two-transects",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "Two transects",
+    "text": "Two transects"
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html#five-transects",
+    "href": "Pr5/animal_distribution.html#five-transects",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "Five transects",
+    "text": "Five transects"
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html#ten-transects",
+    "href": "Pr5/animal_distribution.html#ten-transects",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "Ten transects",
+    "text": "Ten transects"
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html#fifteen-transects",
+    "href": "Pr5/animal_distribution.html#fifteen-transects",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "Fifteen transects",
+    "text": "Fifteen transects"
+  },
+  {
+    "objectID": "Pr5/animal_distribution.html#twenty-transects",
+    "href": "Pr5/animal_distribution.html#twenty-transects",
+    "title": "Uniform distribution of animals with respect to transects",
+    "section": "Twenty transects",
+    "text": "Twenty transects\n#| label = “twenty”, #| echo = FALSE, #| animation.hook = “gifski”, #| interval = 0.1 r <- vector(“numeric”, 20) for(j in 1:50) { r <- sample(1:40, 20, replace=TRUE) x <- data\\(distance[data\\)Sample.Label %in% r] hist(x, main=“20 transects”, breaks=seq(0,5,by=.25), col=“salmon”) }"
+  },
+  {
+    "objectID": "Pr5/Pr5-instructions.html",
+    "href": "Pr5/Pr5-instructions.html",
+    "title": "Point transect sampling",
+    "section": "",
+    "text": "The purpose of this exercise is to analyse point transect survey data: it can sometimes be more difficult than line transect data. In the first problem, the data are simulated and so the true density is known. In the second problem, two different data collection methods were used to survey song birds."
+  },
+  {
+    "objectID": "Pr5/Pr5-instructions.html#probability-density-function",
+    "href": "Pr5/Pr5-instructions.html#probability-density-function",
+    "title": "Point transect sampling",
+    "section": "Probability density function",
+    "text": "Probability density function\nTo plot the more informative probability density function (pdf), an additional argument is required in the plot() function:\n\nplot(ptdat.hn, pdf=TRUE)"
+  },
+  {
+    "objectID": "Pr5/Pr5-instructions.html#analyse-both-conventional-and-snapshot-data-sets",
+    "href": "Pr5/Pr5-instructions.html#analyse-both-conventional-and-snapshot-data-sets",
+    "title": "Point transect sampling",
+    "section": "Analyse both conventional and snapshot data sets",
+    "text": "Analyse both conventional and snapshot data sets\nWhat to do:\n\nSelect a simple model for exploratory data analysis. Experiment with different truncation distances, \\(w\\), and select a suitable value for each method. Are there any potential problems with any of the data sets?\nTry other models and model options. Use plots, AIC values and goodness-of-fit test statistics to determine an adequate model.\nRecord your estimates of density and corresponding confidence interval for each method."
   }
 ]
