@@ -1,0 +1,7 @@
+---
+title: Sampling practical 1
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+---
+
+Nothing special, perhaps a pretty picture.

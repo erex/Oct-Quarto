@@ -9,7 +9,7 @@
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
 <meta name="dcterms.date" content="2022-10-08">
 
-<title>Distance sampling lab book - Line transect detection function fitting</title>
+<title>Distance sampling lab book - Point transects practical 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,10 +56,6 @@ ul.task-list{list-style: none;}
   }
 }</script>
 
-<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -82,7 +78,7 @@ ul.task-list{list-style: none;}
     <a class="nav-link" href="../index.html">Home</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr1/sampling.html" aria-current="page">Sampling</a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../Pr2/detnfns.html">Detn fns</a>
@@ -94,7 +90,7 @@ ul.task-list{list-style: none;}
     <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">Points</a>
+    <a class="nav-link active" href="../Pr5/points.html" aria-current="page">Points</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -103,7 +99,7 @@ ul.task-list{list-style: none;}
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Line transect detection function fitting</h1>
+      <h1 class="quarto-secondary-nav-title">Point transects practical 5</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -118,12 +114,17 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr1/sampling.html" class="sidebar-item-text sidebar-link">Sampling practical 1</a>
+  <a href="../Pr5/points.html" class="sidebar-item-text sidebar-link active">Point transects practical 5</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr1/Pr1-instructions.html" class="sidebar-item-text sidebar-link active">Line transect detection function fitting</a>
+  <a href="../Pr5/Pr5-instructions.html" class="sidebar-item-text sidebar-link">Point transect sampling</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr5/animal_distribution.html" class="sidebar-item-text sidebar-link">Uniform distribution of animals with respect to transects</a>
   </div>
 </li>
     </ul>
@@ -131,21 +132,14 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#answer-these-questions-in-sequence" id="toc-answer-these-questions-in-sequence" class="nav-link" data-scroll-target="#answer-these-questions-in-sequence">Answer these questions in sequence</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Line transect detection function fitting</h1>
+<h1 class="title d-none d-lg-block">Point transects practical 5</h1>
 </div>
 
 
@@ -171,191 +165,9 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>In this practical, we plot a histogram of line transect data and estimate a detection function. The data were collected during a line transect survey of duck nests in Monte Vista National Wildlife Refuge, Colorado, USA: twenty lines of 128.75 km were specified and a distance out to 2.4m was searched and the perpendicular distances of detected nests were recorded and summarised (Table 1).</p>
-<div class="cell">
-<div class="cell-output-display">
+<p>Winter wren Montrave data.</p>
 
-<table class="table table-striped table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Frequency of duck nests detected in perpendicular distance bands (metres)</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Distance.band </th>
-   <th style="text-align:right;"> Frequency </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 0.0-0.3 </td>
-   <td style="text-align:right;"> 74 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.3-0.6 </td>
-   <td style="text-align:right;"> 73 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.6-0.9 </td>
-   <td style="text-align:right;"> 79 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.9-1.2 </td>
-   <td style="text-align:right;"> 66 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1.2-1.5 </td>
-   <td style="text-align:right;"> 78 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1.5-1.8 </td>
-   <td style="text-align:right;"> 58 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1.8-2.1 </td>
-   <td style="text-align:right;"> 52 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2.1-2.4 </td>
-   <td style="text-align:right;"> 54 </td>
-  </tr>
-</tbody>
-</table>
 
-</div>
-</div>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
-<p>The aim of this exercise is to plot a histogram of the perpendicular distances to the detected duck nests and estimate (by eye) a detection function and hence estimate density of duck nests, i.e.&nbsp;the number of nests per square metre or per square kilometre (be careful of units).</p>
-</section>
-<section id="answer-these-questions-in-sequence" class="level1">
-<h1>Answer these questions in sequence</h1>
-<p>These steps will produce an estimate of duck nest density.</p>
-<ol type="1">
-<li>With the graph paper PDF provided, print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.</li>
-<li>Estimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e.&nbsp;the region within 2.4m of the transect centre line.</li>
-</ol>
-<p><span class="math display">\[ Area_{rectangle} = \]</span></p>
-<p><span class="math display">\[ Area_{curve} = \]</span></p>
-<p><span class="math display">\[ \hat{P}_a = \frac{Area_{curve}}{Area_{rectangle}} = \]</span></p>
-<ol start="3" type="1">
-<li>Obtain an estimate of the number of nests in the covered region (Note <span class="math inline">\(n=534\)</span>):</li>
-</ol>
-<p><span class="math display">\[ \hat{N}_a = \frac{n}{\hat{P}_a} = \]</span></p>
-<ol start="4" type="1">
-<li>Estimate density (Note <span class="math inline">\(L = 20 \times 128.75 = 2575\)</span> km):</li>
-</ol>
-<p><span class="math display">\[\hat{D} = \frac{\hat{N}_a}{a} = \frac{\hat{N}_a}{2wL} = \]</span></p>
-<!--
-5. Now use your histogram to estimate the effective half-width of search distance, $\mu$. 
-
-
-
-$$ \hat \mu = $$
-
-
-
-6. Use your estimate of $\mu$ to estimate nest density, $D$.
-
-
-
-$$\hat{D} = \frac{n}{2\hat \mu L} = $$
-
-
-
-How does it compare to your estimate from part 4?
-
-7. Rescale the $y$-axis to make your curve into the probability density function $f(x)$. Read off $f(0)$, and again estimate nest density $D$.
-
-
-
-$$\hat{D} = \frac{n \hat f(0)}{2L} = $$
-
-
-
-
-How does it compare with your previous estimates?
-
-\newpage
-
-***
-**Solution 1. Line transect detection functions by hand**
-
-***
-
-1. Histogram of detected nests (black) overlaid with the estimated detection function (red) is shown below.
-
-
-::: {.cell}
-
-:::
-
-
-2. To estimate the area under the curve, I read off the heights of the mid points of my fitted curve (red) as follows: 75, 74, 72, 70, 66, 62, 58, 53. Therefore, my estimate of area under the curve is:
-
-
-
-$$ Area_{curve} = (75+74+72+70+66+62+58+53) \times 0.3 = 530 \times 0.3 = 159 $$
-
-
-There are lots of other ways to work out the area under a curve, e.g. counting the number of grid squares under the curve on your graph paper or using the trapezoidal rule.
-
-
-
-$$Area_{rectangle} = height \times width = 75 \times 2.4 = 180$$
-
-
-
-Hence, my estimate of the proportion of nests detected in the covered region is: 
-
-
-
-$$\hat P_a = \frac{159}{180} = 0.883$$
-
-
-
-3. How many actual nests were there in the covered area? I saw 534 nests, and I estimate the proportion seen is 0.883, so my estimate of nests in the covered region is: 
-
-
-
-$$ \hat N_a = \frac{n}{\hat P_a} =\frac{534}{0.883} = 604.7 \textrm{ nests in the covered area}$$
-
-
-This estimate is for a covered area of $a = 2wL = 2 \times (\frac{2.4}{1000}) \times 2575 = 12.36$ km$^2$. 
-
-4. I therefore estimate nest density as: 
-
-
-
-$$\hat D = \frac{\hat N_a}{2wL} = \frac{604.7}{12.36} = 48.9 \textrm{ nests per km}^2$$
-
-
-
-5. The green vertical dashed line shows my estimated effective strip half-width of 2.13 metres; I estimate that the area below my curve to the right of 2.13 is the same as the area above the curve to the left of 2.13. 
-
-6. Using this estimate of the effective strip half-width, the effective area covered is estimated as $2\mu L = 2 \times \frac{2.13}{1000} \times 2575 = 10.97$ km$^2$. Therefore,   
-
-
-
-$$\hat{D} = \frac{n}{2\hat \mu L} = \frac{534}{10.97} = 48.7 \textrm{ nests per km}^2$$ 
-
-
-
-7. For my curve to represent the pdf $f(x)$, I need to rescale such that the area under the curve is 1.0. Since I estimated the area under my curve to be 159, I can rescale by dividing all the numbers on the $y$-axis by 159. The intercept, $f(0)$ is therefore $75/159 = 0.472$.
-
-Substituting this into the formula gives a density estimate of: 
-
-
-
-$$\hat{D} = \frac{n \hat f(0)}{2L} = \frac{534 \times (0.472 \times 1000)}{2 \times 2575} = \frac{252048}{5750} = 48.9 \textrm{ nests per km}^2$$
-
-
-
-(Note, I had to multiply $f(0)$ by 1,000 to convert from m$^{-1}$ to km$^{-1}$.)
-
-Another way to estimate $f(0)$ is $f(0)=1/\mu$: using this method I'd get the same density estimate as in Part 5.
-
--->
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

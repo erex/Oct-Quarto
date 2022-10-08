@@ -21,6 +21,27 @@
     "text": "Frequency of duck nests detected in perpendicular distance bands (metres)\n \n  \n    Distance.band \n    Frequency \n  \n \n\n  \n    0.0-0.3 \n    74 \n  \n  \n    0.3-0.6 \n    73 \n  \n  \n    0.6-0.9 \n    79 \n  \n  \n    0.9-1.2 \n    66 \n  \n  \n    1.2-1.5 \n    78 \n  \n  \n    1.5-1.8 \n    58 \n  \n  \n    1.8-2.1 \n    52 \n  \n  \n    2.1-2.4 \n    54 \n  \n\n\n\n\n\n\nObjectives\nThe aim of this exercise is to plot a histogram of the perpendicular distances to the detected duck nests and estimate (by eye) a detection function and hence estimate density of duck nests, i.e. the number of nests per square metre or per square kilometre (be careful of units).\n\n\nAnswer these questions in sequence\nThese steps will produce an estimate of duck nest density.\n\nWith the graph paper PDF provided, print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.\nEstimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e. the region within 2.4m of the transect centre line.\n\n\\[ Area_{rectangle} = \\]\n\\[ Area_{curve} = \\]\n\\[ \\hat{P}_a = \\frac{Area_{curve}}{Area_{rectangle}} = \\]\n\nObtain an estimate of the number of nests in the covered region (Note \\(n=534\\)):\n\n\\[ \\hat{N}_a = \\frac{n}{\\hat{P}_a} = \\]\n\nEstimate density (Note \\(L = 20 \\times 128.75 = 2575\\) km):\n\n\\[\\hat{D} = \\frac{\\hat{N}_a}{a} = \\frac{\\hat{N}_a}{2wL} = \\]"
   },
   {
+    "objectID": "Pr1/sampling.html",
+    "href": "Pr1/sampling.html",
+    "title": "Sampling practical 1",
+    "section": "",
+    "text": "Nothing special, perhaps a pretty picture."
+  },
+  {
+    "objectID": "Pr2/detn-fn.html",
+    "href": "Pr2/detn-fn.html",
+    "title": "Detection functions practical 2",
+    "section": "",
+    "text": "This takes you to practical 2"
+  },
+  {
+    "objectID": "Pr2/detnfns.html",
+    "href": "Pr2/detnfns.html",
+    "title": "Detection functions practical 2",
+    "section": "",
+    "text": "This takes you to practical 2"
+  },
+  {
     "objectID": "Pr2/Pr2-instructions.html",
     "href": "Pr2/Pr2-instructions.html",
     "title": "Line transect estimation using R",
@@ -47,6 +68,13 @@
     "title": "Effective of truncation upon density estimates",
     "section": "Simulated line transect result",
     "text": "Simulated line transect result\nThe value of writing functions is they can be re-used if written with sufficient generality. I re-use the truncation function upon a different data set; the simulated data from Practical 3 where the true density is known to be 79.8 animals per hectare (depicted with horizontal dashed line).\n\ndata(\"LTExercise\")\nsim.trunc <- trunc.experiment(mydata=LTExercise, trunc.range=0:25, cu=cu, type=\"line\")\n\n\nplot(trange-1, sim.trunc$est, type=\"p\", \n     ylim=range(c(sim.trunc[,2], sim.trunc[,3])), pch=20,\n     main=\"Simulated data\\ntruncation experiment\", ylab=\"Density\",\n     xlab=\"Percent data truncated\")\nsegments(trange[trange]-1, sim.trunc[trange,2],\n         trange[trange]-1, sim.trunc[trange,3])\nabline(h=79.8, lwd=2, lty=3)\n\n\n\n\nEffects of truncation upon density estimates for simulated line transect data."
+  },
+  {
+    "objectID": "Pr3/criticism.html",
+    "href": "Pr3/criticism.html",
+    "title": "Model criticism practical 3",
+    "section": "",
+    "text": "Some criticism. How’s that?"
   },
   {
     "objectID": "Pr3/modelsel-demo.html",
@@ -126,6 +154,13 @@
     "text": "We will see how to implement a post-stratification scheme that enables us to get a better estimate of the variance. In Section 6, we examine another case to see that the unstratified variance estimates provided by ds are usually fine for a systematic design: things only go wrong when there are strong trends in animal density, especially when the strong trends are associated with changes in line length (e.g. the highest densities always occur on the shortest lines, or vice versa).\nWe begin with a population and survey shown below. The data used for this exercise were simulated on a computer: they are not real data. Note the characteristics for the data in Figure 1: extreme trends with very high density on short lines and very low density on long lines. Additionally, the systematic design has covered a fairly large proportion of the survey area (the covered region is shaded). These are danger signals that the usual ds variance estimators might not work well and a post-stratification scheme should be considered.\n\n\n\n\n\nAn example of survey data where there is a strongtrend in density. The systematically placed search strips areshaded. Axis units are in kilometres.\n\n\n\n\n\nObjectives\nThe aims of this exercise are to illustrate:\n\nDefault variance estimation,\nVariance estimation with bootstrapping,\nPost-stratification to improve variance estimation,\nWhen post-stratification is not needed (optional).\n\n\n\nGetting started\nDon’t forget to load the Distance package for your session.\n\nlibrary(Distance)\n\n\n\nBasic (default) variance estimation\nIn the code below, the necessary data file is imported and a simple model is fitted and a summary produced. Make a note of the CV of the density estimate - this is obtained using the default (analytical) estimator in the ds function and is based on the assumption that the lines were placed at random. This CV can then be compared with the CV estimates obtained from alternative methods.\n\n# Import data\ndata(\"Systematic_variance_2\")\nconversion.factor <- convert_units(\"metre\", \"kilometre\", \"square kilometre\")\n# Fit a simple model\nsysvar2.hn <- ds(data=Systematic_variance_2, key=\"hn\", adjustment=NULL,\n                 convert_units=conversion.factor)\n# Summary\nsysvar2.hn$dht$individuals$D\nsysvar2.hn$dht$individuals$N\n\nThe true density and abundance are known (because the data were simulated): the true abundance in the survey region was \\(N=1000\\) and \\(D=2000 \\textrm{ animals per km}^2\\) (i.e. 1000 animals in an area of size \\(A=0.5 \\textrm{km}^2\\)). How do the point estimates compare with truth? What do you think about the precision of the estimates?\n\n\nVariance estimation with bootstrapping\nThe function bootdht_Nhat_summarize pulls out the estimates of abundance \\((\\hat{N_i})\\) for all bootstrap replicates \\(i = 1, \\cdots, N_{boot}\\) where \\(N_{boot}\\) is the number of replicates requested.\nThe following command performs the bootstrap.\n\n# Bootstrap estimate of uncertainty\n# Run the bootstrap (this can take a while if nboot is large!) \nest.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,\n                    summary_fun=bootdht_Nhat_summarize,\n                    convert_units=conversion.factor, nboot=199)\n\nThe arguments for this command are:\n\nmodel - fitted detection function model object\nflatfile - data frame of the survey data\nsummary_fun - function used to obtain the summary statistics from each bootstrap\nconvert_units - conversion units for abundance estimation\nnboot - number of bootstrap samples to generate. Note, it can take a long time to produce a large number of bootstraps and so perhaps try a small number at first.\n\n\n# See the results\nsummary(est.boot)\n\nThe summary includes:\n\nEstimate - the median value of the bootstrap estimates\nse is the standard deviation of the bootstrap estimates\nlcl and ucl are the limits for a 95% confidence interval.\ncv is the coefficient of variation (\\(CV = SE/Estimate\\))\n\nAre the bootstrapped confidence intervals for abundance and density similar to the analytical confidence intervals produced previously?\nRecall that we have a particular situation in which we have systematically placed transects which are unequal in length. Furthermore, there exists an east-west gradient in animal density juxtaposed such that the shortest lines are those that pass through the portion of the study region with the highest density. In the next section, we examine a process by which we can use post-stratification to produce a better estimate of the variance in estimated abundance.\n\n\nPost-stratification to improve variance estimation\nThe estimation of encounter rate variance in the previous section used estimators that assumed the transect lines were randomly placed throughout the triangular region. In our case, the transects were not random, but systematic and, in some circumstances, taking this in account can substantially reduce the encounter rate variance. The data we are working with is an example of this, where there are very high densities on the very shortest lines. In samples of lines, collected using a completely random design, the sample, by chance, might not contain any very short lines, or it might contain several. The variance is therefore very high, because the density estimates will be greatly affected by how many lines fall into the short-line / high-density region: we will get very low density estimates if there are no short lines, but very high density estimates if there are several short lines. By contrast, in a systematic sample, we cover the region methodically and we will always get nearly the same number of lines falling in the high density region. The systematic density variance is therefore much lower than the random placement density variance. Although there is no way of getting a variance estimate that is exactly unbiased for a systematic sample because it is effectively a sample of size 1- only the first line position was randomly chosen and the rest followed on deterministically from there. We can greatly improve on the random-based estimate by using a post-stratification scheme.\nThe post-stratification scheme works by grouping together pairs of adjacent lines from the systematic sample and each pair of adjacent lines is grouped into a stratum. The strata will improve variance estimation, because the systematic sample behaves more like a stratified sample than a random sample. This encounter rate estimator is called ‘O2’ (Fewster et al., 2009) and is implemented in the dht2 function.\n\n# Post-stratification - stratified variance estimation by grouping adjacent transects\n\n# Ensure that Sample.Labels are numeric, this is required for O2 ordering\nSystematic_variance_2$Sample.Label <- as.numeric(Systematic_variance_2$Sample.Label)\n\n# Use the Fewster et al 2009, \"O2\" estimator \nest.O2 <- dht2(sysvar2.hn, flatfile=Systematic_variance_2, strat_formula=~1, \n               convert_units=conversion.factor, er_est=\"O2\")\nprint(est.O2, report=\"density\")\n\nNote that this estimator assumes that the numbering of the transects (in this example Sample.Label takes values 1 to 20) has some geographical meaning (i.e. transect 1 is next to 2 and 2 is next to 3 etc.). If this is not the case, then the user can manually define some sensible grouping of transects and create a column called grouping in the data object.\n\n\nSystematic designs where post-stratification is not needed (optional)\nThe simulated population shown in Figure 2 does not exhibit strong trends across the survey region, otherwise, the strip dimensions and systematic design are the same as for the previous example. These data are stored in the data set Systematic_variance_1.\n\n\n\n\n\nAn example of survey data that does not exhibita trend in density. The systematically placed search strips areshaded. Axis units are in kilometres.\n\n\n\n\nIn the code below, these data are imported into R and a simple detection function model is fitted. The default estimate of variance is then compared to that obtained using the ‘O2’ estimator (Fewster et al., 2009).\n\n# When post-stratification is not needed\n# Import the data\ndata(\"Systematic_variance_1\")\n# Ensure that Sample.Labels are numeric, for O2 ordering\nSystematic_variance_1$Sample.Label <- as.numeric(Systematic_variance_1$Sample.Label)\n# First fit a simple model\nsysvar1.hn <- ds(Systematic_variance_1, key=\"hn\", adjustment=NULL, \n                 convert_units=conversion.factor)\n# Obtain default estimates for comparison\nsysvar1.hn$dht$individuals$D\nsysvar1.hn$dht$individuals$N\n# Now use Fewster et al 2009, \"O2\" estimator \nest1.O2 <- dht2(sysvar1.hn, flatfile=Systematic_variance_1, strat_formula=~1, \n                convert_units=conversion.factor, er_est=\"O2\")\nprint(est1.O2, report=\"both\")\n\nDid you see a difference in the CV and 95% confidence interval between the two estimators?\n\n\n\n\n\n\n\n\nReferences\n\nFewster, R. M., Buckland, S. T., Burnham, K. P., Borchers, D. L., Jupp, P. E., Laake, J. L., & Thomas, L. (2009). Estimating the encounter rate variance in distance sampling. Biometrics, 65(1), 225–236. https://doi.org/10.1111/j.1541-0420.2008.01018.x"
   },
   {
+    "objectID": "Pr4/precision.html",
+    "href": "Pr4/precision.html",
+    "title": "Precision practical 4",
+    "section": "",
+    "text": "Precision using Rachel’s data sets and left truncation for some reason."
+  },
+  {
     "objectID": "Pr5/animal_distribution.html",
     "href": "Pr5/animal_distribution.html",
     "title": "Uniform distribution of animals with respect to transects",
@@ -166,6 +201,13 @@
     "title": "Uniform distribution of animals with respect to transects",
     "section": "Twenty transects",
     "text": "Twenty transects"
+  },
+  {
+    "objectID": "Pr5/points.html",
+    "href": "Pr5/points.html",
+    "title": "Point transects practical 5",
+    "section": "",
+    "text": "Winter wren Montrave data."
   },
   {
     "objectID": "Pr5/Pr5-instructions.html",
