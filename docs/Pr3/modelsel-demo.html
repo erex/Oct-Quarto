@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-08">
+<meta name="dcterms.date" content="2022-10-09">
 
 <title>Distance sampling lab book - Demonstration two stages of model selection</title>
 <style>
@@ -263,7 +263,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 8, 2022</p>
+      <p class="date">October 9, 2022</p>
     </div>
   </div>
     
@@ -343,25 +343,23 @@ Half-normal key function with cosine(2) adjustments selected.</code></pre>
 </div>
 <p>Three models with the half-normal key are fitted, with the preferred model being the second fitted, namely the model with a single adjustment term.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">stateDiagram-v2
-partition "ds(data, key="hn", adj="cos")" 
-fork
-  :hn(0)
-  AIC=2817;
-fork again
-  :hn(1)
-  AIC=2806;
-fork again
-  :hn(2)
-  AIC=2808;
-end fork
-:hn(1);
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='hn', adj='cos')
+   D --&gt; ID0
+   D --&gt; ID1
+   D --&gt; ID2
+   ID0(hn0<br>AIC=2817)
+   ID1(hn1<br>AIC=2806)
+   ID2(hn2<br>AIC=2808)
+   FIN(hn1)
+   ID0 --&gt; FIN
+   ID1 --&gt; FIN
+   ID2 --&gt; FIN
+ 
 </pre>
 <div id="mermaid-tooltip-1" class="mermaidTooltip">
 
@@ -415,28 +413,26 @@ Uniform key function with cosine(1,2,3) adjustments selected.</code></pre>
 </div>
 <p>The same pattern as with the half-normal key, with a small exception. Four models with the uniform key are fitted, with the preferred model being the third fitted, namely the model with a three adjustment term.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-2">!theme cerulean
-partition "ds(data, key="unif", adj="cos")" 
-fork
-  :unif(1)
-  AIC=2811;
-fork again
-  :unif(2)
-  AIC=2808;
-fork again
-  :unif(3)
-  AIC=2807;
-fork again
-  :unif(4)
-  AIC=2808;
-end fork
-:unif(3);
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-2">%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='unif', adj='cos')
+   D --&gt; ID1
+   D --&gt; ID2
+   D --&gt; ID3
+   D --&gt; ID4
+   ID1(unif1<br>AIC=2811)
+   ID2(unif2<br>AIC=2808)
+   ID3(unif3<br>AIC=2807)
+   ID4(unif4<br>AIC=2808)
+   FIN(unif3)
+   ID1 --&gt; FIN
+   ID2 --&gt; FIN
+   ID3 --&gt; FIN
+   ID4 --&gt; FIN
+
 </pre>
 <div id="mermaid-tooltip-2" class="mermaidTooltip">
 
@@ -472,22 +468,19 @@ Hazard-rate key function selected.</code></pre>
 </div>
 <p>Two models are fitted with the hazard rate key function. The addition of a single adjustment term does not improve the AIC score, so there is no point in fitting a more complex model with additional adjustment terms.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-3">!theme cerulean
-partition "ds(data, key="hr", adj="cos")" 
-fork
-  :hr(0)
-  AIC=2805;
-fork again
-  :hr(1)
-  AIC=2807;
-end fork
-:hr(0);
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-3">%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='hr', adj='cos')
+   D --&gt; ID0
+   D --&gt; ID1
+   ID0(hr0<br>AIC=2805)
+   ID1(hr1<br>AIC=2807)
+   FIN(hr0)
+   ID0 --&gt; FIN
+   ID1 --&gt; FIN
 </pre>
 <div id="mermaid-tooltip-3" class="mermaidTooltip">
 
@@ -540,25 +533,19 @@ end fork
 </div>
 </div>
 <div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-4">!theme cerulean
-partition "summarise_ds_models(hn1, unif3, hr0)" 
-fork
-  :hn(1)
-  AIC=2806;
-fork again
-  :unif(3)
-  AIC=2806;
-fork again
-  :hr(0)
-  AIC=2805;
-end fork
-:hr(0);
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-4">%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(summarise_ds_models.hn1, unif3, hr0)
+   D --&gt; hn1(hn1<br>AIC=2806)
+   D --&gt; unif3(unif3<br>AIC=2806)
+   D --&gt; hr0(hr0<br>AIC=2805)
+   FIN(hr0)
+   hn1 --&gt; FIN
+   unif3 --&gt; FIN
+   hr0 --&gt; FIN
 </pre>
 <div id="mermaid-tooltip-4" class="mermaidTooltip">
 
@@ -617,21 +604,25 @@ end fork
 <section id="question-for-you" class="level1">
 <h1>Question for you</h1>
 <p>What would you expect the Q-Q plot to look like for any of these models with this data?</p>
-<p>
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-<p>Press to see if you are correct</p>
-</button>
-</p>
-<div id="collapseExample" class="collapse">
-<h5 class="card-title anchored" data-anchor-id="question-for-you">
-<p>Goodness of fit, half normal cosine</p>
-</h5>
-<div class="card card-block card text-white bg-warning mb-3" style="max-width: 75rem;">
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Expand to see if you are correct
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<section id="goodness-of-fit-half-normal-cosine" class="level4 callout-body-container callout-body">
+<h4 class="anchored" data-anchor-id="goodness-of-fit-half-normal-cosine">Goodness of fit, half normal cosine</h4>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="modelsel-demo_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelsel-demo_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 </div>
 </div>
 </section>

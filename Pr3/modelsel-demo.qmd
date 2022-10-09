@@ -64,28 +64,21 @@ hncos <- ds(bino, key="hn", adj="cos")
 
 Three models with the half-normal key are fitted, with the preferred model being the second fitted, namely the model with a single adjustment term.
 
-```{r}
-#| fig.cap = "Selection for best half normal model.",
-#| echo = FALSE,
-#| out.width = "200%",
-#| eval=FALSE
-knitr::include_graphics("hncontest.png")
-```
-
 ```{mermaid}
-stateDiagram-v2
-partition "ds(data, key="hn", adj="cos")" 
-fork
-  :hn(0)
-  AIC=2817;
-fork again
-  :hn(1)
-  AIC=2806;
-fork again
-  :hn(2)
-  AIC=2808;
-end fork
-:hn(1);
+%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='hn', adj='cos')
+   D --> ID0
+   D --> ID1
+   D --> ID2
+   ID0(hn0<br>AIC=2817)
+   ID1(hn1<br>AIC=2806)
+   ID2(hn2<br>AIC=2808)
+   FIN(hn1)
+   ID0 --> FIN
+   ID1 --> FIN
+   ID2 --> FIN
+ 
 ```
 
 ## Uniform cosine
@@ -97,31 +90,24 @@ unicos <- ds(bino, key="unif", adj="cos")
 
 The same pattern as with the half-normal key, with a small exception. Four models with the uniform key are fitted, with the preferred model being the third fitted, namely the model with a three adjustment term.
 
-```{r}
-#| fig.cap = "Selection for best uniform model.",
-#| echo = FALSE,
-#| out.width = "200%",
-#| eval = FALSE
-knitr::include_graphics("unifcontest.png")
-```
-
 ```{mermaid}
-!theme cerulean
-partition "ds(data, key="unif", adj="cos")" 
-fork
-  :unif(1)
-  AIC=2811;
-fork again
-  :unif(2)
-  AIC=2808;
-fork again
-  :unif(3)
-  AIC=2807;
-fork again
-  :unif(4)
-  AIC=2808;
-end fork
-:unif(3);
+%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='unif', adj='cos')
+   D --> ID1
+   D --> ID2
+   D --> ID3
+   D --> ID4
+   ID1(unif1<br>AIC=2811)
+   ID2(unif2<br>AIC=2808)
+   ID3(unif3<br>AIC=2807)
+   ID4(unif4<br>AIC=2808)
+   FIN(unif3)
+   ID1 --> FIN
+   ID2 --> FIN
+   ID3 --> FIN
+   ID4 --> FIN
+
 ```
 
 ## Hazard rate cosine
@@ -133,25 +119,17 @@ hrcos <- ds(bino, key="hr", adj="cos")
 
 Two models are fitted with the hazard rate key function. The addition of a single adjustment term does not improve the AIC score, so there is no point in fitting a more complex model with additional adjustment terms.
 
-```{r}
-#| fig.cap = "Selection for best hazard rate model.",
-#| echo = FALSE,
-#| out.width = "200%",
-#| eval=FALSE
-knitr::include_graphics("hrcontest.png")
-```
-
 ```{mermaid}
-!theme cerulean
-partition "ds(data, key="hr", adj="cos")" 
-fork
-  :hr(0)
-  AIC=2805;
-fork again
-  :hr(1)
-  AIC=2807;
-end fork
-:hr(0);
+%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(ds_data, key='hr', adj='cos')
+   D --> ID0
+   D --> ID1
+   ID0(hr0<br>AIC=2805)
+   ID1(hr1<br>AIC=2807)
+   FIN(hr0)
+   ID0 --> FIN
+   ID1 --> FIN
 ```
 
 The contestants that emerge from the first round of model competition are:
@@ -172,28 +150,17 @@ knitr::kable(across.models[, c(2,4,7)], row.names = FALSE, digits = 3) %>%
   kable_styling(bootstrap_options = "condensed", full_width = F)
 ```
 
-```{r}
-#| fig.cap = "Stage two of model selection.",
-#| echo = FALSE,
-#| out.width = "200%",
-#| eval = FALSE
-knitr::include_graphics("round2.png")
-```
-
 ```{mermaid}
-!theme cerulean
-partition "summarise_ds_models(hn1, unif3, hr0)" 
-fork
-  :hn(1)
-  AIC=2806;
-fork again
-  :unif(3)
-  AIC=2806;
-fork again
-  :hr(0)
-  AIC=2805;
-end fork
-:hr(0);
+%%{init: {'theme': 'forest' } }%%
+graph TD
+   D(summarise_ds_models.hn1, unif3, hr0)
+   D --> hn1(hn1<br>AIC=2806)
+   D --> unif3(unif3<br>AIC=2806)
+   D --> hr0(hr0<br>AIC=2805)
+   FIN(hr0)
+   hn1 --> FIN
+   unif3 --> FIN
+   hr0 --> FIN
 ```
 
 All models adequately fit the data as shown by the Cramer von Mises P-values. It is a close contest between models for smallest AIC score, with the smallest (by a fraction) going to the hazard rate model.
@@ -227,30 +194,18 @@ plot(hrcos, showpoints=FALSE, lwd=3, main="HR 0 adj")
 
 What would you expect the Q-Q plot to look like for any of these models with this data?
 
-<p>
 
-<button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+:::{.callout-tip collapse="true"}
+## Expand to see if you are correct
 
-Press to see if you are correct
+#### Goodness of fit, half normal cosine
 
-</button>
-
-</p>
-
-::: {#collapseExample .collapse}
-<h5 class="card-title">
-
-Goodness of fit, half normal cosine
-
-</h5>
-
-::: {.card .card-block .card .text-white .bg-warning .mb-3 style="max-width: 75rem;"}
 ```{r}
 #| eval = TRUE,
 #| echo = FALSE
 nowhere <- gof_ds(hncos, cex=0.6, pch=20)
 ```
-:::
+
 :::
 
 # References
