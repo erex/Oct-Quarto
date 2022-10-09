@@ -1,7 +1,21 @@
 ---
 title: Sampling practical 1
+image: dolph-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+fontsize: "16px"
 ---
 
-Nothing special, perhaps a pretty picture.
+This exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.
+
+Rather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram.  This forms the basis for estimating $\widehat{P_a}$; computed as the ratio of the area under the fitted detection function to the area of the rectangle.
+
+Subsequent calculations produce an estimate of the density of nests in the sampled region.
+
+---
+
+Photo by <a href="https://unsplash.com/es/@scohron?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shelby Cohron</a> on <a href="https://unsplash.com/images/animals/dolphin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>

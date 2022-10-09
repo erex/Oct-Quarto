@@ -29,7 +29,7 @@ website:
         - Pr1/sampling.qmd
         - Pr1/Pr1-instructions.qmd
 
-    - title: "Detn fns"
+    - title: "Detection models"
       contents:
         - Pr2/detnfns.qmd
         - Pr2/Pr2-instructions.qmd
@@ -56,8 +56,8 @@ website:
 format:
   html:
     theme: cosmo
-    mainfont: Roboto
-    fontsize: "12px"
+    mainfont: Verdana
+    fontsize: "15px"
     css: styles.css
     toc: true        
         

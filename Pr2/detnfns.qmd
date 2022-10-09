@@ -1,7 +1,21 @@
 ---
 title: Detection functions practical 2
+image: nest-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+fontsize: "16px"
 ---
 
-This takes you to practical 2
+The data are the famous "ducknest" data similar to those data described by Anderson and Pospahala (1970).  Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.
+
+You will do some exploratory analysis of the detection distances, then use the function `ds()` to fit detection functions to the data.  You'll also use the function `convert_units()` for properly dealing with different units of measure in the data.
+
+The estimated detection functions will be plotted and assessed for goodness of fit.
+
+
+Photo by <a href="https://unsplash.com/@freys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Freysteinn G. Jonsson</a> on <a href="https://unsplash.com/s/photos/duck-nests?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

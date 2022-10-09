@@ -1,7 +1,23 @@
 ---
 title: Model criticism practical 3
+image: criticism-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+fontsize: "16px"
 ---
 
-Some criticism.  How's that?
+This practical continues the theme of fitting detection functions to line transect distance sampling data.  Follow along with the Rmarkdown (.rmd) file found in the project.
+
+You will proceed to fit a number of key function/adjustment term combinations to the data.  You will also experiment with setting truncation distances.
+
+The data you are analysing are simulated, where the true density and the true detection function is known.  You will see how well your analyses perform in producing confidence intervals that include the true density.  Also examine how much variability there is between different detection functions in their density estimates.
+
+After completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.
+
+---
+Photo by <a href="https://unsplash.com/@blakecheekk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Blake Cheek</a> on <a href="https://unsplash.com/s/photos/outdoor?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  

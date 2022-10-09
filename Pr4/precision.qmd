@@ -1,7 +1,23 @@
 ---
 title: Precision practical 4
+image: precision-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+fontsize: "16px"
 ---
 
-Precision using Rachel's data sets and left truncation for some reason.
+This exercise examines the ability to precisely estimate density from line transect data.
+
+The data are again simulated and there are two data sets.  The first data set you will analyse has transects of varying lengths; increasing from west to east in the study area.  In addition to this change in transect lengths, there is an accompanying gradient in animal density, decreasing from west to east.  In combination, this leads to transects with very high encounter rates in the west and transects with very low encounter rates in the east.
+
+You are to analyse these data in several ways, focusing your attention on the precision associated with each estimation method.
+
+There is a second data set that shares the same survey design (short transects in the west, long transects in the east).  But in this second data set, there in no accompanying animal density gradient.  Perform similar analyses with this data set.
+
+---
+Photo by <a href="https://unsplash.com/@andreasonda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Andrea Sonda</a> on <a href="https://unsplash.com/s/photos/precision?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
