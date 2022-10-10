@@ -1,33 +1,19 @@
 ---
-title: "Oct-Quarto"
+title: Introductory distance sampling lab book
+image: D60generic.jpg
+about: 
+  template: trestles
+  image-width: 300px
+  image-shape: rounded
+fontsize: "16px"
 ---
 
-Eric is trying to build a new website.  This uses RStudio and asked that a Github repo be created as well.
+Material contained herein will acquaint you with design, collection and analysis of distance sampling data.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+The materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a **detection function** and ways to model it.
 
-```{r}
-#| warning: false
-#| message: false
-library(Distance)
-data(LTExercise)
-conv <- convert_units("meter", "kilometre", "square kilometer")
-hn <- ds(LTExercise, key="hn", convert_units = conv)
-```
+Further topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.
 
+The second half of the material exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.
 
-Now for some results
-
-```{r}
-knitr::kable(hn$dht$individuals$D)
-```
-
-# Image layout experiments
-
-```{r}
-#| layout-nrow: 2
-#| column: page
-knitr::include_graphics("https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
-
-knitr::include_graphics("https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60")
-```
+As well as the exercises and their solutions, there are numerous supplements, touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.
