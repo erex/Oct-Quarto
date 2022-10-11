@@ -2,11 +2,13 @@
 title: Survey design practical 6
 image: survey-unsplash.jpg
 about: 
-  template: marquee
-  image-width: 700px
+  template: solana
+  image-width: 500px
   image-shape: rounded
 fontsize: "15px"
 ---
+
+## Designing surveys and determining effort to achieve objectives
 
 Fundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.
 

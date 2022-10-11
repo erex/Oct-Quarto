@@ -2,8 +2,8 @@
 title: Detection functions practical 2
 image: nest-unsplash.jpg
 about: 
-  template: marquee
-  image-width: 700px
+  template: solana
+  image-width: 500px
   image-shape: rounded
 fontsize: "15px"
 ---

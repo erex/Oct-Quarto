@@ -2,8 +2,8 @@
 title: Stratification practical 7
 image: strata-unsplash.jpg
 about: 
-  template: marquee
-  image-width: 700px
+  template: solana
+  image-width: 500px
   image-shape: rounded
 fontsize: "15px"
 ---

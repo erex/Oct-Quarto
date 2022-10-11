@@ -2,8 +2,8 @@
 title: Point transects practical 5
 image: points-unsplash.jpg
 about: 
-  template: marquee
-  image-width: 700px
+  template: solana
+  image-width: 500px
   image-shape: rounded
 fontsize: "15px"
 ---
