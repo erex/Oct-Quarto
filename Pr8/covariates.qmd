@@ -1,0 +1,17 @@
+---
+title: Covariates practical 8
+image: covariates-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+fontsize: "15px"
+---
+
+## Covariates in detection function
+
+Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Mager</a> on <a href="https://unsplash.com/s/photos/equations?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+  

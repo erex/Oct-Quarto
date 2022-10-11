@@ -1,0 +1,17 @@
+---
+title: Stratification practical 7
+image: strata-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+fontsize: "15px"
+---
+
+## Analysis of stratified surveys
+
+Photo by <a href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nick Fewings</a> on <a href="https://unsplash.com/s/photos/strata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+  

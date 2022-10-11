@@ -12,7 +12,7 @@ website:
         file: index.qmd
       - text: "Sampling"
         file: Pr1/sampling.qmd
-      - text: "Detn fns"
+      - text: "Detection functions"
         file: Pr2/detnfns.qmd
       - text: "Criticism"
         file: Pr3/criticism.qmd
@@ -53,11 +53,28 @@ website:
         - Pr5/Pr5-instructions.qmd
         - Pr5/animal_distribution.qmd
         
+    - title: "Design"
+      contents: 
+        - Pr6/design.qmd
+        
+    - title: "Strata"
+      contents: 
+        - Pr7/strata.qmd
+        
+    - title: "Covariates"
+      contents: 
+        - Pr8/covariates.qmd
+        
+    - title: "Multipliers"
+      contents: 
+        - Pr9/multipliers.qmd
+        
 format:
   html:
     theme: cosmo
     mainfont: Verdana
     fontsize: "15px"
     css: styles.css
-    toc: true        
+    toc: true   
+    code-copy: true
         

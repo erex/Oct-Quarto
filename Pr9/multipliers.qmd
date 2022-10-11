@@ -1,0 +1,16 @@
+---
+title: Multipliers practical 9
+image: multipliers-unsplash.jpg
+about: 
+  template: marquee
+  image-width: 700px
+  image-shape: rounded
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+fontsize: "15px"
+---
+
+## Multipliers and indirect surveys
+
+Photo by <a href="https://unsplash.com/@jamshaidpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jamshaid Mughal</a> on <a href="https://unsplash.com/s/photos/nests?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
