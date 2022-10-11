@@ -5,12 +5,12 @@ about:
   template: marquee
   image-width: 700px
   image-shape: rounded
-author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: "`r Sys.Date()`"
-fontsize: "16px"
+fontsize: "15px"
 ---
 
-Having mastered analysis of line transect data, we move on to analysis of point transect data.  These data are more diffcult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.
+## Analysis of point transect data
+
+Having mastered analysis of line transect data, we move on to analysis of point transect data.  These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.
 
 Assessing fit to point transect data also represents a challenge.  Consequently, we use plots of the probability density function to gain perspective regarding the influence of regions of the probability density function upon lack of fit.
 

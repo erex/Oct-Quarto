@@ -5,12 +5,16 @@ about:
   template: marquee
   image-width: 700px
   image-shape: rounded
-author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: "`r Sys.Date()`"
 fontsize: "15px"
 ---
 
 ## Covariates in detection function
+
+It is not just distance from the transect that influences the detectability of animals.  In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.
+
+There are some situations in which covariates in addition to distance can be added to models of the detection function.  One example of this is animal group size.  It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population.  By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size.  The use of group size as a covariate is the recommended way to remove that bias.
+
+This exercise presents three sets of data:  Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning.  Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes.  Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata--we examine whether the geographic stratum effect can be modelled as a covariate.
 
 Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Mager</a> on <a href="https://unsplash.com/s/photos/equations?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
   

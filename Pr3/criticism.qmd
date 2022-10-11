@@ -5,10 +5,10 @@ about:
   template: marquee
   image-width: 700px
   image-shape: rounded
-author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: "`r Sys.Date()`"
-fontsize: "16px"
+fontsize: "15px"
 ---
+
+## Goodness of fit and model selection
 
 This practical continues the theme of fitting detection functions to line transect distance sampling data.  Follow along with the Rmarkdown (.rmd) file found in the project.
 

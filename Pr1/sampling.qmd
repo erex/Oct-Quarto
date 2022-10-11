@@ -5,10 +5,10 @@ about:
   template: marquee
   image-width: 700px
   image-shape: rounded
-author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
-date: "`r Sys.Date()`"
-fontsize: "16px"
+fontsize: "15px"
 ---
+
+## Estimating $\widehat{P_a}$ with a pencil
 
 This exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.
 
