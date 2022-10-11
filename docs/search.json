@@ -222,5 +222,33 @@
     "title": "Point transect sampling",
     "section": "Analyse both conventional and snapshot data sets",
     "text": "Analyse both conventional and snapshot data sets\nWhat to do:\n\nSelect a simple model for exploratory data analysis. Experiment with different truncation distances, \\(w\\), and select a suitable value for each method. Are there any potential problems with any of the data sets?\nTry other models and model options. Use plots, AIC values and goodness-of-fit test statistics to determine an adequate model.\nRecord your estimates of density and corresponding confidence interval for each method."
+  },
+  {
+    "objectID": "Pr6/design.html",
+    "href": "Pr6/design.html",
+    "title": "Survey design practical 6",
+    "section": "",
+    "text": "Photo by ray rui on Unsplash"
+  },
+  {
+    "objectID": "Pr7/strata.html",
+    "href": "Pr7/strata.html",
+    "title": "Stratification practical 7",
+    "section": "",
+    "text": "Photo by Nick Fewings on Unsplash"
+  },
+  {
+    "objectID": "Pr8/covariates.html",
+    "href": "Pr8/covariates.html",
+    "title": "Covariates practical 8",
+    "section": "",
+    "text": "Photo by Roman Mager on Unsplash"
+  },
+  {
+    "objectID": "Pr9/multipliers.html",
+    "href": "Pr9/multipliers.html",
+    "title": "Multipliers practical 9",
+    "section": "",
+    "text": "Photo by Jamshaid Mughal on Unsplash"
   }
 ]

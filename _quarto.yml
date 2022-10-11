@@ -20,6 +20,14 @@ website:
         file: Pr4/precision.qmd
       - text: "Points"
         file: Pr5/points.qmd
+      - text: "Design"
+        file: Pr6/design.qmd
+      - text: "Strata"
+        file: Pr7/strata.qmd
+      - text: "Covariates"
+        file: Pr8/covariates.qmd
+      - text: "Multipliers"
+        file: Pr9/multipliers.qmd
 
   sidebar:
     - title: "Sampling"
@@ -71,7 +79,7 @@ website:
         
 format:
   html:
-    theme: cosmo
+    theme: sandstone
     mainfont: Verdana
     fontsize: "15px"
     css: styles.css
