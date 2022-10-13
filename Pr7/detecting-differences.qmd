@@ -5,9 +5,11 @@ date: "`r Sys.Date()`"
 ---
 
 :::{.callout-tip}
+
 ##Demonstration
 
 Comparing two density estimates
+
 :::
 
 # Estimating difference in density
