@@ -328,7 +328,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 1999.46.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 1989.17.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
@@ -341,6 +341,20 @@ Supplement
 </div>
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/lognor-with-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Summary of warnings and errors:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following model failed to converge: ~ The following model failed to converge: cds(key = "hn", formula = ~scale(size))  (occurred  1  times)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>simpleWarning in ddf.ds(model = dsmodel, data, meta.data = meta.data, control = control, : Model fitting did not converge. Try different initial values or different model
+
+ (Model call: cds(key = "hn", formula = ~scale(size)))  (occurred  1  times)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-----</code></pre>
 </div>
 </div>
 <p>How about “missingness” of small groups at large distances?</p>
@@ -356,7 +370,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4503.91.</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4437.56.</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -365,7 +379,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5323.59, 21.3 percent larger than the true number of individuals in the population, 4388.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5371.52, 22.4 percent larger than the true number of individuals in the population, 4388.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>

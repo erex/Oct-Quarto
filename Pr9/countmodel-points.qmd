@@ -123,8 +123,8 @@ Specification of run-specific parameters to analyse the Sage thrasher data set. 
 pointtransect <- TRUE        # survey conducted using lines or points
 dettrunc <- 170  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 500      # number of bootstrap replicates
-set.seed(19205)   # random number seed
+nboot <- 250      # number of bootstrap replicates
+set.seed(1920589)   # random number seed
 ```
 
 :::
