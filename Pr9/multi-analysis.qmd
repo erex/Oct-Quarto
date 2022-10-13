@@ -84,6 +84,7 @@ Note also the number of detections per kilometer; roughly 9 on the first visit a
 ## Describing the survey design to `ds`
 
 Additional arguments can be passed to `ds()` to resolve this problem.  Consulting the `ds()` documentation
+
 - region_table	data.frame with two columns:
   - Region.Label label for the region
   - Area area of the region

@@ -1,33 +1,15 @@
 ---
-title: Effect of habitat covariate upon estimated density
+title: Effect of habitat covariate upon estimated density---lines
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: referencesglm.bib    
 csl: apa.csl
 ---
 
-```{css}
-/*| echo = FALSE*/
-.infobox {
-  font-size: 80%;
-  padding: 1em 1em 1em 4em;
-  margin-bottom: 2px;
-  border: 2px solid orange;
-  border-radius: 10px;
-  background: #9fd6f7  5px center/3em no-repeat;
-}
-
-.caution {
-  background-image: url("tip.png");
-}
-
-```
-
 ```{r}
 #| label = "setup",
 #| include = FALSE
 library(knitr)
-library(distill)
 library(tidyverse)
 library(patchwork)
 
@@ -137,14 +119,14 @@ Although not formally written as a set of functions, we bring to the front of th
 :::{.callout-warning}
 ```{r}
 #| label = "mandatory",
-#| class.output = "user-beware"
 pointtransect <- FALSE        # survey conducted using lines or points
 dettrunc <- 100  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 1000       # number of bootstrap replicates
+nboot <- 50       # number of bootstrap replicates
 set.seed(19191)   # random number seed
 ```
-</div>
+
+:::
 
 ## Fit detection function 
 
@@ -340,7 +322,7 @@ Code below creates a comprehensive figure of the findings.  Steps include
 
 ```{r}
 #| label = "grandplot",
-#| layout = "l-body-outset",
+#| column = "body-outset",
 #| fig.cap = "Relationship between univariate predictor and Brewer's sparrow density as modelled by GLM.  Offset is  estimated covered area. Confidence intervals incorporate  uncertainty from imperfect detectability. Inset is sampling  distribution of the parameter of interest for Brewer's sparrow.",
 #| fig.height = 5.5
 predData <- data.frame(predictor=seq(min(sparrowSiteData[ , univarpredictor]),

@@ -120,11 +120,10 @@ Specification of run-specific parameters to analyse the Sage thrasher data set. 
 
 ```{r}
 #| label = "mandatorypt",
-#| class.output = "user-beware"
 pointtransect <- TRUE        # survey conducted using lines or points
 dettrunc <- 170  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 1000      # number of bootstrap replicates
+nboot <- 50      # number of bootstrap replicates
 set.seed(19205)   # random number seed
 ```
 
@@ -293,7 +292,7 @@ sitesadj$density <- sitesadj$myCount / sitesadj$effArea
 
 ```{r}
 #| label = "glmplotbpt",
-#| layout = "l-body-outset",
+#| column = "body-outset",
 #| message = FALSE,
 #| echo = FALSE,
 #| eval = FALSE
@@ -354,7 +353,7 @@ Code below creates a comprehensive figure of the findings.  Steps include
 
 ```{r}
 #| label = "grandplot",
-#| layout = "l-body-outset",
+#| column = "body-outset",
 #| fig.cap = "Relationship between univariate predictor and Sage Thrasher density as modelled by GLM.  Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Sage Thrasher.",
 #| fig.height = 5.5
 predData <- data.frame(predictor=seq(min(thrasherSiteData[ , univarpredictor]),
@@ -403,7 +402,7 @@ complete
 
 ```{r}
 #| label = "plotresultpt",
-#| layout = "l-body-outset",
+#| column = "body-outset",
 #| fig.cap = "Relationship between univariate predictor and Sage Thrasher density as modelled by GLM.  Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability.",
 #| echo = FALSE,
 #| eval = FALSE
