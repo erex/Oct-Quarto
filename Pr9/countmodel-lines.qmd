@@ -122,7 +122,7 @@ Although not formally written as a set of functions, we bring to the front of th
 pointtransect <- FALSE        # survey conducted using lines or points
 dettrunc <- 100  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 50       # number of bootstrap replicates
+nboot <- 500       # number of bootstrap replicates
 set.seed(19191)   # random number seed
 ```
 

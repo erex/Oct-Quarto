@@ -82,6 +82,10 @@ website:
     - title: "Multipliers"
       contents: 
         - Pr9/multipliers.qmd
+        - Pr9/Pr9-instructions.qmd
+        - Pr9/multi-analysis.qmd
+        - Pr9/countmodel-lines.qmd
+        - Pr9/countmodel-points.qmd
         
 format:
   html:
