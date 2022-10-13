@@ -62,14 +62,22 @@ website:
     - title: "Design"
       contents: 
         - Pr6/design.qmd
+        - Pr6/Pr6-instructions.qmd
+        - Pr6/leaflet-demo.qmd
+        - Pr6/effort-and-power.qmd
         
     - title: "Strata"
       contents: 
         - Pr7/strata.qmd
+        - Pr7/Pr7-instructions.qmd
+        - Pr7/detecting-differences.qmd
         
     - title: "Covariates"
       contents: 
         - Pr8/covariates.qmd
+        - Pr8/Pr8-instructions.qmd
+        - Pr8/Group-size-covariate.qmd
+        - Pr8/alternative-selection-metrics.qmd
         
     - title: "Multipliers"
       contents: 

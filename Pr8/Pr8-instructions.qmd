@@ -1,0 +1,259 @@
+---
+title: Covariates in detection function model
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+bibliography: references.bib
+csl: apa.csl
+---
+
+```{r}
+#| include = FALSE,
+#| message = FALSE
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This exercise consists of three data sets of increasing difficulty. The first problem, MCDS with point transects, is complicated and (using the functionality available in `R`) also includes some basic exploratory analysis of the covariates. Section [2](#more-mcds-with-line-transects-etp-dolphins) and [3](#more-mcds-with-point-transects-savannah-sparrow) are optional but will take you deeper into the heart of understanding multiple covariates.
+
+# Objectives
+
+The objectives of this exercise are to
+
+1.  practice including covariates in the detection function for line and point transects
+2.  select between candidate models
+3.  undertake an exploratory analysis of covariates
+4.  critically appraise the fitted model
+5.  investigate conversion units.
+
+# Covariates in point transect detection functions: Amakihi
+
+In this problem, we illustrate fitting multiple covariate distance sampling (MCDS) models to point transect data using a bird survey from Hawaii: data on an abundant species, the Hawaii amakihi *(Hemignathus virens)* is used. This practical is based on the case study in @buckland2015 which duplicates the analysis in @Marques2007.
+
+```{r}
+#| echo = T,
+#| eval = F
+library(Distance)
+data(amakihi)
+# See what columns it contains
+head(amakihi, n=3)
+```
+
+These data include:
+
+-   `Study.Area` - name of the study area
+-   `Region.Label` - survey dates which are used as 'strata'
+-   `Sample.Label` - point transect identifier
+-   `Effort` - survey effort (1 for all points because each point was visited once)
+-   `distance` - radial distance of detection from observer (meters)
+-   `OBs` - initials of the observer
+-   `MAS` - minutes after sunrise
+-   `HAS` - hour after sunrise
+
+Note that the `Area` column is always zero, hence, detection functions can be fitted to the data, but bird abundance cannot be estimated. The covariates to be considered for possible inclusion into the detection function are `OBs`, `MAS` and `HAS`.
+
+## Exploratory data analysis
+
+It is important to gain an understanding of the data prior to fitting detection functions [@buckland2015]. With this in mind, preliminary analysis of distance sampling data involves:
+
+-   assessing the shape of the collected data,
+-   considering the level of truncation of distances, and
+-   exploring patterns in potential covariates.
+
+We begin by assessing the distribution of distances to decide on a truncation distance.
+
+```{r}
+#| echo = TRUE,
+#| eval = FALSE
+hist(amakihi$distance)
+```
+
+To see if there are differences in the distribution of distances recorded by the different observers and in each hour after sunrise, boxplots can be used. Note how the `~` symbol is used to define the discrete groupings (i.e. observer and hour).
+
+```{r}
+#| echo = TRUE,
+#| eval = F
+# Boxplots by obs
+boxplot(amakihi$distance~amakihi$OBs, xlab="Observer", ylab="Distance (m)")
+# Boxplots by hour after sunrise
+boxplot(amakihi$distance~amakihi$HAS, xlab="Hour", ylab="Distance (m)")
+```
+
+The components of the boxplot are:
+
+-   the thick black line indicates the median
+-   the lower limit of the box is the first quartile (25th percentile) and the upper limit is the third quartile (75th percentile)
+-   the height of the box is the interquartile range (75th - 25th quartiles)
+-   the whiskers extend to the most extreme points which are no more than 1.5 times the interquartile range.
+-   dots indicate 'outliers' if there are any, i.e. points beyond the range of the whiskers.
+
+For minutes after sunrise (a continuous variable), we create a scatterplot of MAS (on the $x$-axis) against distances (on the $y$-axis). The plotting symbol (or character) is selected with the argument `pch`:
+
+```{r}
+#| echo = TRUE,
+#| eval = F
+# Plot of MAS vs distance (using dots)
+plot(x=amakihi$MAS, y=amakihi$distance, xlab="Minutes after sunrise",
+     ylab="Distance (m)", pch=20)
+```
+
+You may also want to think about potential collinerity (linear relationship) between the covariates - if collinear variables are included in the detection function, they will be explaining some of the same variation in the distances and this will reduce their importance as a potential covariate. How might you investigate the relationship between `HAS` and `MAS`?
+
+From these plots can you tell if any of the covariates will be useful in explaining the distribution of distances?
+
+## Adjusting the raw covariates
+
+We would like to treat `OBs` and `HAS` as factor variables as in the original analysis; `OBs` is, by default, treated as a factor variable because it consists of characters rather than numbers. `HAS`, on the other hand, consists of numbers and so by default would be treated as a continuous variable (i.e. non-factor). That is fine if we want the effect of `HAS` to be monotonic (i.e. detectability either increases or decreases as a function of `HAS`). If we want `HAS` to have a non-linear effect on detectability, then we need to indicate to `R` to treat it as a factor as shown below.
+
+```{r}
+#| eval = F
+# Convert HAS to a factor
+amakihi$HAS <- factor(amakihi$HAS)
+```
+
+The next adjustment is to change the *reference* level of the *observer* and *hour* factor covariates - the only reason to do this is to get the estimated parameters in the detection function to match the parameters estimated in @Marques2007. You would not carry out this step on your own data. By default R uses the first factor level but by using the `relevel` function, this can be changed:
+
+```{r}
+#| eval = F
+# Set the reference level 
+amakihi$OBs <- relevel(amakihi$OBs, ref="TKP")
+amakihi$HAS <- relevel(amakihi$HAS, ref="5")
+```
+
+## Candidate models
+
+With three potential covariates, there are 8 possible models for the detection function:
+
+-   No covariates
+-   OBs
+-   HAS
+-   MAS
+-   OBs + HAS
+-   OBs + MAS
+-   HAS + MAS
+-   OBs + HAS + MAS
+
+Even without considering covariates there are also several possible key function/adjustment term combinations available: if all key function/covariate combinations are considered the number of potential models is large. Note that covariates are not allowed if a uniform key function is chosen and if covariate terms are included, adjustment terms are not allowed. Even with these restrictions, it is not best practice to take a scatter gun approach to detection function model fitting. Buckland et al. [-@buckland2015] considered 13 combinations of key function/covariates. Here, we look at a subset of these.
+
+Fit a hazard rate model with no covariates or adjustment terms and make a note of the AIC. Note, that 10% of the largest distances are truncated - you may have decided on a different truncation distance.
+
+```{r}
+#| echo = TRUE,
+#| eval = F,
+#| message = F,
+#| warning = F
+conversion.factor <- convert_units("meter", NULL, "hectare")
+amak.hr <- ds(amakihi, transect="point", key="hr", truncation="10%",
+              adjustment=NULL, convert_units = conversion.factor)
+```
+
+Make a note of the AIC for this model.
+
+Now fit a hazard rate model with `OBs` as a covariate in the detection function and make a note of the AIC. Has the AIC reduced by including a covariate?
+
+```{r}
+#| echo = TRUE,
+#| eval = F
+conversion.factor <- convert_units("meter", NULL, "hectare")
+amak.hr.obs <- ds(amakihi, transect="point", key="hr", formula=~OBs,
+                  truncation="10%", convert_units = conversion.factor)
+```
+
+Fit a hazard rate model with `OBs` and `HAS` in the detection function:
+
+```{r}
+#| echo = TRUE,
+#| eval = F
+amak.hr.obs.has <- ds(amakihi, transect="point", key="hr", formula=~OBs+HAS,
+                      truncation="10%", convert_units = conversion.factor)
+```
+
+Try fitting other possible formula and decide which model is best in terms of AIC. To quickly compare AIC values from different models, use the `AIC` command as follows (note only models with the same truncation distance can be compared):
+
+```{r}
+#| echo = T,
+#| eval = F
+# AIC values
+AIC(amak.hr, amak.hr.obs, amak.hr.obs.has)
+```
+
+Another useful function is `summarize_ds_models` - this has the advantage of ordering the models by AIC (smallest to largest).
+
+```{r}
+#| echo = T,
+#| eval = F
+# Compare models
+summarize_ds_models(amak.hr, amak.hr.obs, amak.hr.obs.has)
+```
+
+Once you have decided on a model, plot your selected detection function.
+
+# More MCDS with line transects: ETP dolphins {#more-mcds-with-line-transects-etp-dolphins}
+
+In this problem we have a sample of Eastern Tropical Pacific (ETP) spotted dolphin sightings data, collected by observers placed on board tuna vessels (the data were kindly made available by the Inter-American Tropical Tuna Commission - IATTC). Further description of the survey can be found in Marques and Buckland [-@FMARBUC03]. In the ETP, schools of yellow fin tuna commonly occur with schools (or groups) of dolphins, and so vessels fishing for tuna often search for dolphins in the hopes of also locating tuna. For each dolphin school detected by the tuna vessels, the observer recorded the species, sighting angle and distance (later converted to perpendicular distance and truncated at 5 nautical miles), school size and a number of covariates associated with each detected school. Many of these covariates potentially affect the detection function, as they reflect how the search was being carried out.
+
+A variety of search methods were used to find the dolphins, and for these data were (the numbers in brackets are the codes used to record the data):
+
+-   20x binoculars from the crow's nest (0)
+-   20x binoculars from another location on the vessel (2),
+-   a helicopter, (3)
+-   'bird radar', high power radars which are able to detect seabirds flying above the dolphin schools (5).
+
+Some of these methods may have a wider range of search than the others, and so it is possible that the effective strip width varies according to the method being used.
+
+For each detection the initial cue type was recorded. This included:
+
+-   birds flying above the school (1),
+-   splashes on the water (2),
+-   floating objects such as logs (4),
+-   some other unspecified cue (3).
+
+Another covariate that potentially affected the detection function was sea state, as measured by Beaufort. In rougher conditions (i.e. higher Beaufort levels), visibility and/or detectability may be reduced. For this example, Beaufort levels were grouped into two categories, the first including Beaufort values ranging from 0 to 2 (coded as 1) and the second containing values from 3 to 5 (coded as 2).
+
+The sample data encompasses sightings made over a three month period: June, July and August (months 6, 7 and 8, respectively).
+
+## Analysis
+
+The data are available in the `Distance` package:
+
+```{r}
+#| eval = F
+data(ETP_Dolphin)
+head(ETP_Dolphin, n=3)
+```
+
+Start by running a set of conventional distance analyses. Are there any problems in the data and if so how might you mitigate them? (Hint - try dividing the histogram of distances into a large number of intervals.)
+
+As there are a number of potential covariates to be used in this example (i.e. search method, cue, Beaufort class and month), try fitting models with different covariates and combinations of the covariates. All of the covariates in this example are factor covariates except group size and because they have numeric codes, use the `factor` function to let `R` know to treat them as factors.
+
+Note that both distances and transect lengths were recorded in nautical miles and area in nautical miles squared and so the argument `convert_units` does not need to be specified.
+
+Keep in mind that this is a large dataset (\> 1000 observations), and hence estimation may take a while. You will likely end up with quite a few models as there are several potential covariates and no 'right' answers. Discuss your choice of final model (or models) with your colleagues - did you make the same choices?
+
+# More MCDS with point transects: Savannah sparrow {#more-mcds-with-point-transects-savannah-sparrow}
+
+Point transect surveys were conducted in Arapaho National Wildlife Refuge, Colorado, USA, in 1980 and 1981 [@knopf1988] and this exercise concerns the data collected on Savannah sparrows. The study area was divided into smaller regions (called 'pastures'). The data are available in the `Distance` package.
+
+```{r}
+#| eval = F
+data(Savannah_sparrow_1980)
+data(Savannah_sparrow_1981)
+```
+
+Distances were recorded in metres and area in hectares.
+
+```{r}
+#| eval = FALSE,
+#| echo = TRUE
+conversion.factor <- convert_units("meter", NULL, "hectare")
+```
+
+For each data set,
+
+1.  consider an appropriate truncation distance,
+2.  fit a detection function with out any covariates
+3.  include 'pasture' (`Region.Label`) as a covariate in the detection function
+4.  use AIC to select a model, and
+5.  estimate density (in birds per hectare) for your selected model.
+
+What would be an alternative to including pasture as a covariate in the detection function to analyse these data?
+
+# References
