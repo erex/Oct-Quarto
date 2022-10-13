@@ -1,0 +1,84 @@
+---
+title: Exercise 6<br>How much survey effort is needed?
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: Introduction to distance sampling<br> August/September 2022
+output: 
+  rmdformats::readthedown:
+    highlight: tango
+runtime: shiny
+bibliography: references.bib
+csl: apa.csl
+css: readthedown.css
+---
+  
+<div class="alert  alert-success">
+  <strong>Demonstration</strong> Effort needed to achieve objective
+</div>
+
+# Why is study being undertaken?
+- Emphasise the need for a pilot study
+- recognise study is trying to achieve an objective
+- success in achieving objective influenced by precision of density estimates
+
+Distance sampling surveys do not take place in a vacuum.  They are conducted to try to answer some question.  Questions often take the form of:
+
+> Has the population changed noticeably over time (since last survey)?
+> Is density in management unit A different than density in management unit B?
+
+Such questions are trite because we know that animals populations vary in both time and spaces; the interesting questions are the amount of such differences.  The statistical essence of such questions is differentiating **signal** (actual change) from **noise** random fluctuations.  The difficulty is compounded by the fact that our estimates possess uncertainty.  If there is too much uncertainty in our estimates of density, the uncertainty will impair our ability to detect the **signal** of population change.
+
+Such questions require producing (usually) multiple density estimates and making comparisons between the estimates.
+
+# Pilot study information
+
+A pilot study is essential to test field protocols.  However it is also essential to gauge the volume of detections we can expect in our study area.  Insight into *encounter rate* will assist in designing the actual study.  @Buckland2015b outlines a formula for computing necessary transect effort given the *encounter rate* from a pilot study:
+
+$$
+L = \frac{b}{cv_t\left(\hat{D}\right)^2} \times \frac{1}{\mbox{enc rate}_{pilot}}
+$$
+with $b$=3 and $cv_t\left(\hat{D}\right)^2$ being desired coefficient of variation.  The Shiny application below has this formula embedded; users simply specify an encounter rate with the bottom-most slider, then consult the tab labelled `Eqn. 2.4` to discover the necessary transect length to achieve desired precision.  
+
+Moving the `encounter rate` slider shows that as encounter rate increases, the necessary amount of effort decreases; but the fundamental shape of the relationship between effort and precision remains unchanged.
+
+# Precision to answer a question
+
+Awards are not given for conducting a survey resulting in a density estimate with a give level of precision, say a CV=0.18.  A more telling measure of a survey's potential value is the probability that it can detect change (given the change has occurred).  In statistical parlance, this is called power (probability of rejecting an hypothesis given it is false).  We will focus upon detection of temporal change for the remainder of this document.
+
+Tim @gerrodette1987 first investigated this question in the context of animal populations.  I won't describe the details of his investigations other than to say I have code a portion of his work into the Shiny application below.  The scenario I have included has
+- a linear (rather than exponential) change in population size over time and
+- relationship between abundance and precision remaining the same as abundance changes (distance sampling is consistent with this assumption).
+
+This brings the other portion of the Shiny app into play.  The cumulative change in the animal population and the duration of the (presumed) annual surveys influence the ability to detect change.  So too does the power of the investigation.  The greater the desired power, the better the precision of the density estimates.
+
+Similarly, the longer the study, the less precision is required of the annual surveys to detect the change.  Likewise, if the cumulative change in the animal population is large, this change can be detected from density estimates with lower precision.  Of course, cumulative change in excess of 0.5 implies that more than half of the animal population under scrutiny has been lost.
+
+## CV graph
+
+The result tab showing the relationship between cumulative population change and necessary CV is shown in the `CV graph` tab.  There is a positive relationship between these: greater population loss requires less precision to detect; or small population change requires more precise density estimates.  The red dot and horizontal dotted line indicate the precision of annual estimates to detect the specified cumulative change over the specified number of annual surveys with the desired power.  For these calculations, the encounter rate from the pilot survey plays no role.
+
+## Effort graph
+
+The result tab labelled `Effort graph` brings information from the pilot survey into the calculations.  The `CV graph` indicates the necessary precision to achieve the desired results, this CV is fed into the formula from @Buckland2015b to estimate the amount of survey effort to be expended annually to achieve the precision derived from the power calculations.
+
+The red ball and horizontal dotted line now indicates the amount of effort needed to achieve the specified objectives.  Small changes in abundance require exponentially larger amounts of annual survey effort to detect.  The steepness of that exponential curve is less extreme when encounter rates are large.
+
+## Numerical result of power calculation
+
+The final result tab simply provides a single numerical solution to the required CV and effort necessary to achieve that CV for the specified combination of cumulative change, number of annual surveys,  power and pilot study encounter rate.
+
+# Other approaches
+
+The methods presented in @gerrodette1987 are reasonably simple.  More sophisticated evaluation of distance sampling for population modelling is presented in @andersen2020.  A suggestion by @white2019 is that without *a priori* assessment of power to detect change, most wildlife assessment studies exaggerate their ability to detect change.
+
+This Shiny app is intended to give investigators an approximate idea of the feasibility of conducting investigations to detect change in animal populations.  A further set of computations could ensue that converts computed effort into a cost figure for annual surveys.
+
+The message is that conducting such investigations consistently with sufficient effort is a difficult challenge.  The challenges are particularly acute when the objective is rapid assessment of small amounts of population change for a study animal with low encounter rates.
+
+```{r}
+#| message = FALSE,
+#| echo = FALSE
+shiny::shinyAppFile("app.R",
+             options = list(height=800, width=800))
+```
+
+# References

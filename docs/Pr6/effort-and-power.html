@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2022-09-01">
+
+<title>Distance sampling lab book - Exercise 6How much survey effort is needed?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="readthedown.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling lab book</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-is-study-being-undertaken" id="toc-why-is-study-being-undertaken" class="nav-link active" data-scroll-target="#why-is-study-being-undertaken">Why is study being undertaken?</a></li>
+  <li><a href="#pilot-study-information" id="toc-pilot-study-information" class="nav-link" data-scroll-target="#pilot-study-information">Pilot study information</a></li>
+  <li><a href="#precision-to-answer-a-question" id="toc-precision-to-answer-a-question" class="nav-link" data-scroll-target="#precision-to-answer-a-question">Precision to answer a question</a>
+  <ul class="collapse">
+  <li><a href="#cv-graph" id="toc-cv-graph" class="nav-link" data-scroll-target="#cv-graph">CV graph</a></li>
+  <li><a href="#effort-graph" id="toc-effort-graph" class="nav-link" data-scroll-target="#effort-graph">Effort graph</a></li>
+  <li><a href="#numerical-result-of-power-calculation" id="toc-numerical-result-of-power-calculation" class="nav-link" data-scroll-target="#numerical-result-of-power-calculation">Numerical result of power calculation</a></li>
+  </ul></li>
+  <li><a href="#other-approaches" id="toc-other-approaches" class="nav-link" data-scroll-target="#other-approaches">Other approaches</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exercise 6<br>How much survey effort is needed?</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 1, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="alert alert-success">
+<p><strong>Demonstration</strong> Effort needed to achieve objective</p>
+</div>
+<section id="why-is-study-being-undertaken" class="level1">
+<h1>Why is study being undertaken?</h1>
+<ul>
+<li>Emphasise the need for a pilot study</li>
+<li>recognise study is trying to achieve an objective</li>
+<li>success in achieving objective influenced by precision of density estimates</li>
+</ul>
+<p>Distance sampling surveys do not take place in a vacuum. They are conducted to try to answer some question. Questions often take the form of:</p>
+<blockquote class="blockquote">
+<p>Has the population changed noticeably over time (since last survey)? Is density in management unit A different than density in management unit B?</p>
+</blockquote>
+<p>Such questions are trite because we know that animals populations vary in both time and spaces; the interesting questions are the amount of such differences. The statistical essence of such questions is differentiating <strong>signal</strong> (actual change) from <strong>noise</strong> random fluctuations. The difficulty is compounded by the fact that our estimates possess uncertainty. If there is too much uncertainty in our estimates of density, the uncertainty will impair our ability to detect the <strong>signal</strong> of population change.</p>
+<p>Such questions require producing (usually) multiple density estimates and making comparisons between the estimates.</p>
+</section>
+<section id="pilot-study-information" class="level1">
+<h1>Pilot study information</h1>
+<p>A pilot study is essential to test field protocols. However it is also essential to gauge the volume of detections we can expect in our study area. Insight into <em>encounter rate</em> will assist in designing the actual study. <span class="citation" data-cites="Buckland2015b">Buckland et al. (<a href="#ref-Buckland2015b" role="doc-biblioref">2015</a>)</span> outlines a formula for computing necessary transect effort given the <em>encounter rate</em> from a pilot study:</p>
+<p><span class="math display">\[
+L = \frac{b}{cv_t\left(\hat{D}\right)^2} \times \frac{1}{\mbox{enc rate}_{pilot}}
+\]</span></p>
+<p>with <span class="math inline">\(b\)</span>=3 and <span class="math inline">\(cv_t\left(\hat{D}\right)^2\)</span> being desired coefficient of variation. The Shiny application below has this formula embedded; users simply specify an encounter rate with the bottom-most slider, then consult the tab labelled <code>Eqn. 2.4</code> to discover the necessary transect length to achieve desired precision.</p>
+<p>Moving the <code>encounter rate</code> slider shows that as encounter rate increases, the necessary amount of effort decreases; but the fundamental shape of the relationship between effort and precision remains unchanged.</p>
+</section>
+<section id="precision-to-answer-a-question" class="level1">
+<h1>Precision to answer a question</h1>
+<p>Awards are not given for conducting a survey resulting in a density estimate with a give level of precision, say a CV=0.18. A more telling measure of a survey’s potential value is the probability that it can detect change (given the change has occurred). In statistical parlance, this is called power (probability of rejecting an hypothesis given it is false). We will focus upon detection of temporal change for the remainder of this document.</p>
+<p>Tim <span class="citation" data-cites="gerrodette1987">Gerrodette (<a href="#ref-gerrodette1987" role="doc-biblioref">1987</a>)</span> first investigated this question in the context of animal populations. I won’t describe the details of his investigations other than to say I have code a portion of his work into the Shiny application below. The scenario I have included has - a linear (rather than exponential) change in population size over time and - relationship between abundance and precision remaining the same as abundance changes (distance sampling is consistent with this assumption).</p>
+<p>This brings the other portion of the Shiny app into play. The cumulative change in the animal population and the duration of the (presumed) annual surveys influence the ability to detect change. So too does the power of the investigation. The greater the desired power, the better the precision of the density estimates.</p>
+<p>Similarly, the longer the study, the less precision is required of the annual surveys to detect the change. Likewise, if the cumulative change in the animal population is large, this change can be detected from density estimates with lower precision. Of course, cumulative change in excess of 0.5 implies that more than half of the animal population under scrutiny has been lost.</p>
+<section id="cv-graph" class="level2">
+<h2 class="anchored" data-anchor-id="cv-graph">CV graph</h2>
+<p>The result tab showing the relationship between cumulative population change and necessary CV is shown in the <code>CV graph</code> tab. There is a positive relationship between these: greater population loss requires less precision to detect; or small population change requires more precise density estimates. The red dot and horizontal dotted line indicate the precision of annual estimates to detect the specified cumulative change over the specified number of annual surveys with the desired power. For these calculations, the encounter rate from the pilot survey plays no role.</p>
+</section>
+<section id="effort-graph" class="level2">
+<h2 class="anchored" data-anchor-id="effort-graph">Effort graph</h2>
+<p>The result tab labelled <code>Effort graph</code> brings information from the pilot survey into the calculations. The <code>CV graph</code> indicates the necessary precision to achieve the desired results, this CV is fed into the formula from <span class="citation" data-cites="Buckland2015b">Buckland et al. (<a href="#ref-Buckland2015b" role="doc-biblioref">2015</a>)</span> to estimate the amount of survey effort to be expended annually to achieve the precision derived from the power calculations.</p>
+<p>The red ball and horizontal dotted line now indicates the amount of effort needed to achieve the specified objectives. Small changes in abundance require exponentially larger amounts of annual survey effort to detect. The steepness of that exponential curve is less extreme when encounter rates are large.</p>
+</section>
+<section id="numerical-result-of-power-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="numerical-result-of-power-calculation">Numerical result of power calculation</h2>
+<p>The final result tab simply provides a single numerical solution to the required CV and effort necessary to achieve that CV for the specified combination of cumulative change, number of annual surveys, power and pilot study encounter rate.</p>
+</section>
+</section>
+<section id="other-approaches" class="level1">
+<h1>Other approaches</h1>
+<p>The methods presented in <span class="citation" data-cites="gerrodette1987">Gerrodette (<a href="#ref-gerrodette1987" role="doc-biblioref">1987</a>)</span> are reasonably simple. More sophisticated evaluation of distance sampling for population modelling is presented in <span class="citation" data-cites="andersen2020">Andersen &amp; Steidl (<a href="#ref-andersen2020" role="doc-biblioref">2020</a>)</span>. A suggestion by <span class="citation" data-cites="white2019">White (<a href="#ref-white2019" role="doc-biblioref">2019</a>)</span> is that without <em>a priori</em> assessment of power to detect change, most wildlife assessment studies exaggerate their ability to detect change.</p>
+<p>This Shiny app is intended to give investigators an approximate idea of the feasibility of conducting investigations to detect change in animal populations. A further set of computations could ensue that converts computed effort into a cost figure for annual surveys.</p>
+<p>The message is that conducting such investigations consistently with sufficient effort is a difficult challenge. The challenges are particularly acute when the objective is rapid assessment of small amounts of population change for a study animal with low encounter rates.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><iframe data-deferred-src="app6a3831843b0e63457e990099bfd3cc1b/?w=&amp;__subapp__=1" width="800" height="800" class="shiny-frame shiny-frame-deferred"></iframe></p>
+</div>
+</div>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-andersen2020" class="csl-entry" role="doc-biblioentry">
+Andersen, E. M., &amp; Steidl, R. J. (2020). Power to detect trends in abundance within a distance sampling framework. <em>Journal of Applied Ecology</em>, <em>57</em>(2), 344–353. <a href="https://doi.org/10.1111/1365-2664.13529">https://doi.org/10.1111/1365-2664.13529</a>
+</div>
+<div id="ref-Buckland2015b" class="csl-entry" role="doc-biblioentry">
+Buckland, S. T., Rexstad, E. A., Marques, T. A., &amp; Oedekoven, C. S. (2015). <em>Distance sampling: Methods and applications</em>. <span>Springer</span>.
+</div>
+<div id="ref-gerrodette1987" class="csl-entry" role="doc-biblioentry">
+Gerrodette, T. (1987). A power analysis for detecting trends. <em>Ecology</em>, <em>68</em>(5), 1364–1372. <a href="https://doi.org/10.2307/1939220">https://doi.org/10.2307/1939220</a>
+</div>
+<div id="ref-white2019" class="csl-entry" role="doc-biblioentry">
+White, E. R. (2019). Minimum time required to detect population trends: The need for long-term monitoring programs. <em>BioScience</em>, <em>69</em>(1), 40–46. <a href="https://doi.org/10.1093/biosci/biy144">https://doi.org/10.1093/biosci/biy144</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

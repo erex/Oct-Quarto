@@ -1,0 +1,144 @@
+---
+title: Distance sampling survey design supplement
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+---
+  
+:::{.callout-tip}
+## Supplement to survey design
+
+Combining output of `dssd` with `leaflet`
+:::
+
+```{r}
+#| label = "setup",
+#| echo = FALSE,
+#| message = FALSE
+library(dssd)
+library(sf)
+library(leaflet)
+```
+
+# Survey design with `dssd`
+
+This exercise demonstrated how to examine the properties of various distance sampling survey designs.  The exercise showed how to write survey locations to a GPX file, then import into Google Earth, but there's a way to make visualisations all within R.  I present here visualisations of the Tentsmuir point transect survey and a line transect survey of the coast of Ireland.  The `leaflet` R package is used to show the placement of the survey effort.
+
+```{r}
+#| label = "tenleaf1",
+#| echo = FALSE
+m <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap)
+m <- m %>% 
+  setView(-2.83, 56.43, zoom=12) %>%
+  addMeasure(
+    position = "topright",
+    primaryLengthUnit = "meters",
+    primaryAreaUnit = "hectares",
+    activeColor = "#3D535D",
+    completedColor = "#7D4479")
+```
+
+
+# Tentsmuir survey
+
+Design of the survey begins with reading the unprojected shape file (coordinates likely degrees) and converting to a shape with distances measured in meters.  A design is examined with allocation of point transects disproportionately between the two strata, with the smallest stratum receiving the highest allocation of effort.  The final line of code in this chunk generates the coordinates of sampling stations for a realisation of this design.
+
+```{r}
+#| label = "tendesign",
+#| message = FALSE
+shapefile.name <- system.file("extdata", "TentsmuirUnproj.shp", package = "dssd")
+sf.shape <- read_sf(shapefile.name)
+st_crs(sf.shape)
+proj4string <- "+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 
+                +y_0=0 +ellps=intl +units=m"
+projected.shape <- st_transform(sf.shape, crs = proj4string)
+region.tm <- make.region(region.name = "Tentsmuir",
+                         strata.name = c("Main Area", "Morton Lochs"),
+                         shape = projected.shape)
+cover.tm <- make.coverage(region.tm, n.grid.points = 100)
+design.tm <- make.design(region = region.tm,
+                         transect.type = "point",
+                         design = "systematic",
+                         samplers = c(25,15),
+                         design.angle = 0,
+                         edge.protocol = "minus",
+                         truncation = 100,
+                         coverage.grid = cover.tm)
+survey.tm <- generate.transects(design.tm)
+```
+
+Use either the +/- tools or mouse wheel to zoom and move around the map.  The resulting map depicts the sampling stations as markers denoted with a binoculars icon.  Hovering over the marker shows the latitude/longitude of each station.  The red circles centred on each station is a circle of 100m radius, indicating the truncation distance specified in the `make.design` argument above.  Use the measurement tool (upper right) to confirm the radius of the circles is 100m.
+
+```{r}
+#| label = "tenfinish",
+#| fig.cap = "Tentsmuir study design, measuring tool top right.",
+#| echo = FALSE
+tmp <- st_transform(survey.tm@samplers, "+init=epsg:4326")
+rawlat.long <- st_coordinates(tmp)
+new <- cbind(tmp, rawlat.long)
+new$label <-paste(round(new$X,3), round(new$Y,3), sep=", ")
+icons <- awesomeIcons(
+  icon = 'binoculars',
+  iconColor = 'white',
+  markerColor = "blue",
+  library = 'fa'
+)
+m <- addAwesomeMarkers(m, data=new, icon=icons, 
+                       label = ~as.character(new$label))
+m <- addCircles(m, data=tmp, radius=100,color = 'red', weight = 2)
+m
+```
+
+# Line transect survey design with strata
+
+A different base map is used with `leaflet` to depict this marine survey.  The basemap here shows some features of ocean bathymetry.
+
+```{r}
+#| label = "irelandsetup",
+#| echo = FALSE
+m <- leaflet() %>% addProviderTiles(providers$Esri.OceanBasemap)
+m <- m %>% 
+  setView(-5, 54, zoom=6) %>%
+  addMeasure(
+    position = "bottomleft",
+    primaryLengthUnit = "kilometers",
+    primaryAreaUnit = "hectares",
+    activeColor = "#3D535D",
+    completedColor = "#7D4479")
+```
+
+In contrast with the Tentsmuir survey, this begins with a projected study area map, with units of measure already in metres.  Each of the six strata are given a different `design.angle` so as to approximate transects roughly perpendicular to the shore.  Design specification is to have 15km spacing between lines within a stratum.  Final line of code in this chunk produces coordinates of transects for a single realisation of this design.
+
+```{r}
+#| label = "irelanddesign",
+#| message = FALSE,
+#| warning = FALSE
+ireland.name <- system.file("extdata", "AreaRProjStrata.shp", package = "dssd")
+ireland <- read_sf(ireland.name)
+st_crs(ireland)
+region <- make.region(region.name = "Area R Ireland coast",
+                      units = "m",
+                      shape = ireland.name)
+cover <- make.coverage(region, n.grid.points = 100)
+design.space15k <- make.design(region = region,
+                               transect.type = "line",
+                               design = "systematic",
+                               spacing = 15000,
+                               design.angle = c(0, 160, 85, 90, 85, 160),
+                               edge.protocol = "minus",
+                               truncation = 2000,
+                               coverage.grid = cover)
+ireland.trans <- generate.transects(object = design.space15k)
+```
+
+Use the measurement tool (lower left corner) to check that line spacing is indeed 15km.
+
+```{r}
+#| label = "irelandout",
+#| fig.cap = "Multiple strata for Irish survey.",
+#| echo = FALSE
+ireland.leaflet <- st_transform(ireland.trans@samplers$geometry, "+init=epsg:4326")
+study.area.trans <- st_transform(ireland, '+proj=longlat +datum=WGS84')
+m <- addPolygons(m, data=study.area.trans$geometry, weight=2)
+m <- addPolylines(m, data=ireland.leaflet, weight=2, color="green")
+m
+```
