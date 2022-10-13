@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 
 :::{.callout-tip}
 
-##Demonstration
+## Demonstration
 
 Comparing two density estimates
 

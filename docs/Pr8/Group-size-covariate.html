@@ -9,7 +9,7 @@
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
 <meta name="dcterms.date" content="2022-10-13">
 
-<title>Distance sampling lab book - Analysis of stratified survey data</title>
+<title>Distance sampling lab book - Size bias—how large is the problem?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,6 +119,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -156,10 +157,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr7/strata.html" aria-current="page">Strata</a>
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">Covariates</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
@@ -171,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Analysis of stratified survey data</h1>
+      <h1 class="quarto-secondary-nav-title">Size bias—how large is the problem?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -186,17 +187,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr7/strata.html" class="sidebar-item-text sidebar-link">Stratification practical 7</a>
+  <a href="../Pr8/covariates.html" class="sidebar-item-text sidebar-link">Covariates practical 8</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr7/Pr7-instructions.html" class="sidebar-item-text sidebar-link active">Analysis of stratified survey data</a>
+  <a href="../Pr8/Pr8-instructions.html" class="sidebar-item-text sidebar-link">Covariates in detection function model</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr7/detecting-differences.html" class="sidebar-item-text sidebar-link">Detecting differences in density estimates</a>
+  <a href="../Pr8/Group-size-covariate.html" class="sidebar-item-text sidebar-link active">Size bias—how large is the problem?</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">Other model selection metrics</a>
   </div>
 </li>
     </ul>
@@ -208,11 +214,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#full-geographical-stratification" id="toc-full-geographical-stratification" class="nav-link" data-scroll-target="#full-geographical-stratification">Full geographical stratification</a></li>
-  <li><a href="#fitting-a-pooled-detection-function" id="toc-fitting-a-pooled-detection-function" class="nav-link" data-scroll-target="#fitting-a-pooled-detection-function">Fitting a pooled detection function</a></li>
-  <li><a href="#stratification-options-using-dht2" id="toc-stratification-options-using-dht2" class="nav-link" data-scroll-target="#stratification-options-using-dht2">Stratification options using <code>dht2</code></a></li>
+  <li><a href="#size-bias-in-distance-sampling-surveys" id="toc-size-bias-in-distance-sampling-surveys" class="nav-link active" data-scroll-target="#size-bias-in-distance-sampling-surveys">Size bias in distance sampling surveys</a></li>
+  <li><a href="#example-1-perhaps-a-terrestrial-ungulate" id="toc-example-1-perhaps-a-terrestrial-ungulate" class="nav-link" data-scroll-target="#example-1-perhaps-a-terrestrial-ungulate">Example 1: Perhaps a terrestrial ungulate</a>
+  <ul class="collapse">
+  <li><a href="#analysis-including-group-size-covariate" id="toc-analysis-including-group-size-covariate" class="nav-link" data-scroll-target="#analysis-including-group-size-covariate">Analysis including group size covariate</a></li>
+  <li><a href="#analysis-without-group-size-covariate" id="toc-analysis-without-group-size-covariate" class="nav-link" data-scroll-target="#analysis-without-group-size-covariate">Analysis without group size covariate</a></li>
+  </ul></li>
+  <li><a href="#example-2-possible-dolphin-pods-or-seabird-rafts" id="toc-example-2-possible-dolphin-pods-or-seabird-rafts" class="nav-link" data-scroll-target="#example-2-possible-dolphin-pods-or-seabird-rafts">Example 2: Possible dolphin pods or seabird rafts</a>
+  <ul class="collapse">
+  <li><a href="#analysis-with-covariate" id="toc-analysis-with-covariate" class="nav-link" data-scroll-target="#analysis-with-covariate">Analysis with covariate</a></li>
+  <li><a href="#analysis-without-the-covariate" id="toc-analysis-without-the-covariate" class="nav-link" data-scroll-target="#analysis-without-the-covariate">Analysis without the covariate</a></li>
+  </ul></li>
+  <li><a href="#take-home-message" id="toc-take-home-message" class="nav-link" data-scroll-target="#take-home-message">Take home message</a></li>
   </ul>
 </nav>
     </div>
@@ -221,7 +234,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Analysis of stratified survey data</h1>
+<h1 class="title d-none d-lg-block">Size bias—how large is the problem?</h1>
 </div>
 
 
@@ -247,103 +260,122 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>For this exercise, we use data from a survey of Antarctic minke whales. The study region was divided into two strata (North and South) the two strata were surveyed by different vessels at the same time. The minkes tend to be found in high densities against the ice edge, where they feed, and so the density in the southern stratum is typically higher than in the northern stratum (Figure 1). This is the primary reason for using a stratified survey design. It is also the reason for covering the southern stratum more intensely: in the southern stratum the transect length per unit area is more than 2.5 times that of the northern stratum.</p>
-<p><img src="https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_7_Figure_1.png" class="img-fluid" style="width:48.0%"><img src="https://workshops.distancesampling.org/standrews-2019/intro/practicals/figures/Prac_7_Figure_2.png" class="img-fluid" style="width:42.0%" alt="An example of the sort of survey design used (left) and a typical minke density gradient (right). The irregular bottom border is the ice-edge. The ‘stepped’ black line defines the boundary between the strata; dotted lines are transects and dots are detections."></p>
-<p>Figure 1. An example of the sort of survey design used and a typical minke density gradient. The irregular bottom border is the ice-edge. The ‘stepped’ black line defines the boundary between the strata; dotted lines are transects and dots are detections.</p>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
-<p>The objectives of this exercise are to:</p>
-<ol type="1">
-<li>Create subsets of the data</li>
-<li>Decide whether to fit separate detection functions or a pooled detection function</li>
-<li>Specify different stratification options using the <code>dht2</code> function.</li>
-</ol>
-</section>
-<section id="getting-started" class="level1">
-<h1>Getting started</h1>
-<p>Begin by reading in the data. Distances are in kilometers and a truncation distance of 1.5km is specified and used in the following detection function fitting. Perpendicular distances, transect lengths and study area size are all measured in kilometers; hence <code>convert_units</code> argument to <code>ds</code> is 1 and has been omitted. To keep things simple, a hazard rate detection function with no adjustments is used for all detection functions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(minke)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(minke)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify truncation distance</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>minke.trunc <span class="ot">&lt;-</span> <span class="fl">1.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You will see that these data contain a column called ‘Region.Label’: this contains values ‘North’ or ‘South’.</p>
-</section>
-<section id="full-geographical-stratification" class="level1">
-<h1>Full geographical stratification</h1>
-<p>First, we want to fit encounter rate and detection function separately in each strata. This is easily performed by splitting the data by region and using <code>ds</code> on each subset. The commands below do this for the southern region (note, there are alternative ways to select a subset of data).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset for South </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>minke.S <span class="ot">&lt;-</span> minke[minke<span class="sc">$</span>Region.Label<span class="sc">==</span><span class="st">"South"</span>, ]</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit df to south</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>minke.df.S.strat <span class="ot">&lt;-</span> <span class="fu">ds</span>(minke.S, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">truncation=</span>minke.trunc)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(minke.df.S.strat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Make a note of the AIC. Perform a similar commands to obtain estimates for the northern region. What is the total AIC?</p>
-<p>Also make a note of the abundance in each region. What is the total abundance in the study region?</p>
-</section>
-<section id="fitting-a-pooled-detection-function" class="level1">
-<h1>Fitting a pooled detection function</h1>
-<p>We want to compare the total AIC found previously with the AIC from fitting a detection function to all data combined. This is easy to obtain:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>minke.df.all <span class="ot">&lt;-</span> <span class="fu">ds</span>(minke, <span class="at">truncation=</span>minke.trunc, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(minke.df.all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Given the AIC value for the detection function from the pooled data, would you fit a separate detection function in each strata or not?</p>
-</section>
-<section id="stratification-options-using-dht2" class="level1">
-<h1>Stratification options using <code>dht2</code></h1>
-<p>The command <code>summary(minke.df.all)</code> will provide the abundance estimates for each region and the total and for this simple example, this is sufficient. However, if we want to consider different stratification options, then the <code>dht2</code> function is useful.</p>
-<p>After fitting a detection function, the <code>dht2</code> function, allows abundance estimates to be computed over some specified regions. In the command below, the pooled detection function is used to obtain estimates in each strata and over all (like the <code>summary</code> function previously used).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dht2</span>(<span class="at">ddf=</span>minke.df.all, <span class="at">flatfile=</span>minke, <span class="at">strat_formula=</span><span class="sc">~</span>Region.Label, <span class="at">stratification=</span><span class="st">"geographical"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The arguments are:</p>
-<ul>
-<li><code>ddf</code>
-<ul>
-<li>the detection function (fitted by <code>ds</code>)</li>
-</ul></li>
-<li><code>flatfile</code>
-<ul>
-<li>the data object containing all the necessary information
-<ul>
-<li>Data is referred to as being in a <code>flatfile</code> format if it contains information on region, transects and observations. An alternative is to use a hierarchical structure and have region, transect and observation information in separate data files with links between them to ensure that transects are mapped to the relevant region and observations to the relevant transect. We’ve not used the hierarchical structure during this workshop.</li>
-</ul></li>
-</ul></li>
-<li><code>strat_formula=~Region.Label</code>
-<ul>
-<li>formula (hence the <code>~</code>) giving the stratification structure</li>
-</ul></li>
-<li><code>stratification="geographical"</code>
-<ul>
-<li>in this example, we specify that each strata (specified in <code>strat_formula</code>) represents a geographical region.</li>
-</ul></li>
-<li><code>convert_units</code>
-<ul>
-<li>getting units conversion correct, same purpose as the <code>convert_units</code> argument in <code>ds</code>. For the minke data all measurements are in the same units, so the argument is not needed in this case.</li>
-</ul></li>
-</ul>
-<p>Make a note the total abundance in the study region.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Failure to respect design during analysis
+Supplement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>What happens if we were to ignore the regions and treat the data as though it came from one large study region? This can (<strong>dangerously</strong>) be done by changing the stratification formula, as shown below.</p>
+<p>Correcting size bias via <code>size</code> as a covariate. When does it matter?</p>
+</div>
+</div>
+<section id="size-bias-in-distance-sampling-surveys" class="level1">
+<h1>Size bias in distance sampling surveys</h1>
+<p>As shown in the lecture, if detectability is a function not only of distance, but also size (big groups are easier to see than small groups), then groups in the sample are likely to be larger than groups in the entire population. Consequently, when the density of groups is scaled up to the density of individuals</p>
+<p><span class="math display">\[\hat{D}_{indiv} = \hat{D}_{groups} \times \overline{size}_{group}\]</span></p>
+<p><span class="math inline">\(\hat{D}_{indiv}\)</span> is overestimated.</p>
+<p>A resolution to this problem is to explicitly model the probability of detection as a function of group size using <code>size</code> as a covariate in the detection function. I will demonstrate two applications: one where group size variability is small and one where group size variability is large. I will use simulation (where the answer is known) to demonstrate.</p>
+<p>The necessary syntax to include covariates, group size in this instance, in the detection function is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dht2</span>(<span class="at">ddf=</span>minke.df.all, <span class="at">flatfile=</span>minke, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">stratification=</span><span class="st">"geographical"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a.covariate <span class="ot">&lt;-</span> <span class="fu">ds</span>(my.data, <span class="at">transect=</span><span class="st">"line"</span>, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">formula=</span><span class="sc">~</span>size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Has this changed the abundance estimate? Of course it has; the question is <em>why</em> has this changed the abundance estimate; which estimate is proper?</p>
+</section>
+<section id="example-1-perhaps-a-terrestrial-ungulate" class="level1">
+<h1>Example 1: Perhaps a terrestrial ungulate</h1>
+<p>Here animals occur in small herds. The distribution of herd size is Poisson with a mean herd size of 10.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-nocap-margin-first" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Group-size-covariate_files/figure-html/fig-nocap-margin-first-1.png" class="img-fluid figure-img" width="768"></p>
+<p></p><figcaption class="figure-caption">Figure 1: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
 </div>
 </div>
+</div>
+<p>You can see it is very rare for herds to exceed a size of twice the mean.</p>
+<p>I’ll create a population with this distribution of herd size, with a true number of <strong>herds</strong> of 200; hence true number of individuals in the population is 2000.</p>
+<div class="cell" data-hash="Group-size-covariate_cache/html/sim10_f8c3cc203d91906a6d7a2b7d7302ca21">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/sim10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Do we have the tell-tale sign of size bias–missing small groups at large distances?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Perhaps small groups at large distances are missed; include group size in the detection function.</p>
+<section id="analysis-including-group-size-covariate" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-including-group-size-covariate">Analysis including group size covariate</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2008.39.</p>
+</section>
+<section id="analysis-without-group-size-covariate" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
+<p>As a comparison, what happens if we don’t include size as a covariate in our detection function?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 1999.46.</p>
+</section>
+</section>
+<section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
+<h1>Example 2: Possible dolphin pods or seabird rafts</h1>
+<p>I use a different distribution to mimic the group size distribution. A log normal distribution (you heard about it during the <strong>precision</strong> lecture) is like a normal distribution that has had its right tail pulled out.</p>
+<p>The <em>median</em> of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the <em>mean</em> is 21.9. This changes the true number of individuals in the population to 200*21.9=4388</p>
+<div class="cell" data-fig.margin="true">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/lognor-with-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/lognor-with-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>How about “missingness” of small groups at large distances?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="analysis-with-covariate" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-with-covariate">Analysis with covariate</h2>
+<div class="cell" data-fig.margin="true">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4503.91.</p>
+</section>
+<section id="analysis-without-the-covariate" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
+<div class="cell" data-fig.margin="true">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5323.59, 21.3 percent larger than the true number of individuals in the population, 4388.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="take-home-message" class="level1">
+<h1>Take home message</h1>
+<p>When variability in group size is small for your study animal, size bias is unlikely to cause a problem, because even missing small groups at large distances does not cause the average size in the detected sample to be too different from the average size in the population. However, when group size variation is large, the average size in the sample can be considerably larger than the average group size in the population, inducing positive bias in the estimated number of individuals in the population. Under those situations, include group size as a covariate in the detection function modelling.</p>
 
 
 </section>

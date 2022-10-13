@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2022-10-13">
+
+<title>Distance sampling lab book - Covariates in detection function model</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling lab book</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">Covariates</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Covariates in detection function model</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/covariates.html" class="sidebar-item-text sidebar-link">Covariates practical 8</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/Pr8-instructions.html" class="sidebar-item-text sidebar-link active">Covariates in detection function model</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/Group-size-covariate.html" class="sidebar-item-text sidebar-link">Size bias—how large is the problem?</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">Other model selection metrics</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
+  <li><a href="#covariates-in-point-transect-detection-functions-amakihi" id="toc-covariates-in-point-transect-detection-functions-amakihi" class="nav-link" data-scroll-target="#covariates-in-point-transect-detection-functions-amakihi">Covariates in point transect detection functions: Amakihi</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a></li>
+  <li><a href="#adjusting-the-raw-covariates" id="toc-adjusting-the-raw-covariates" class="nav-link" data-scroll-target="#adjusting-the-raw-covariates">Adjusting the raw covariates</a></li>
+  <li><a href="#candidate-models" id="toc-candidate-models" class="nav-link" data-scroll-target="#candidate-models">Candidate models</a></li>
+  </ul></li>
+  <li><a href="#more-mcds-with-line-transects-etp-dolphins" id="toc-more-mcds-with-line-transects-etp-dolphins" class="nav-link" data-scroll-target="#more-mcds-with-line-transects-etp-dolphins">More MCDS with line transects: ETP dolphins</a>
+  <ul class="collapse">
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  </ul></li>
+  <li><a href="#more-mcds-with-point-transects-savannah-sparrow" id="toc-more-mcds-with-point-transects-savannah-sparrow" class="nav-link" data-scroll-target="#more-mcds-with-point-transects-savannah-sparrow">More MCDS with point transects: Savannah sparrow</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Covariates in detection function model</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 13, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p>This exercise consists of three data sets of increasing difficulty. The first problem, MCDS with point transects, is complicated and (using the functionality available in <code>R</code>) also includes some basic exploratory analysis of the covariates. Section <a href="#more-mcds-with-line-transects-etp-dolphins">2</a> and <a href="#more-mcds-with-point-transects-savannah-sparrow">3</a> are optional but will take you deeper into the heart of understanding multiple covariates.</p>
+<section id="objectives" class="level1">
+<h1>Objectives</h1>
+<p>The objectives of this exercise are to</p>
+<ol type="1">
+<li>practice including covariates in the detection function for line and point transects</li>
+<li>select between candidate models</li>
+<li>undertake an exploratory analysis of covariates</li>
+<li>critically appraise the fitted model</li>
+<li>investigate conversion units.</li>
+</ol>
+</section>
+<section id="covariates-in-point-transect-detection-functions-amakihi" class="level1">
+<h1>Covariates in point transect detection functions: Amakihi</h1>
+<p>In this problem, we illustrate fitting multiple covariate distance sampling (MCDS) models to point transect data using a bird survey from Hawaii: data on an abundant species, the Hawaii amakihi <em>(Hemignathus virens)</em> is used. This practical is based on the case study in <span class="citation" data-cites="buckland2015">Buckland et al. (<a href="#ref-buckland2015" role="doc-biblioref">2015</a>)</span> which duplicates the analysis in <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(amakihi)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># See what columns it contains</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(amakihi, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These data include:</p>
+<ul>
+<li><code>Study.Area</code> - name of the study area</li>
+<li><code>Region.Label</code> - survey dates which are used as ‘strata’</li>
+<li><code>Sample.Label</code> - point transect identifier</li>
+<li><code>Effort</code> - survey effort (1 for all points because each point was visited once)</li>
+<li><code>distance</code> - radial distance of detection from observer (meters)</li>
+<li><code>OBs</code> - initials of the observer</li>
+<li><code>MAS</code> - minutes after sunrise</li>
+<li><code>HAS</code> - hour after sunrise</li>
+</ul>
+<p>Note that the <code>Area</code> column is always zero, hence, detection functions can be fitted to the data, but bird abundance cannot be estimated. The covariates to be considered for possible inclusion into the detection function are <code>OBs</code>, <code>MAS</code> and <code>HAS</code>.</p>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
+<p>It is important to gain an understanding of the data prior to fitting detection functions <span class="citation" data-cites="buckland2015">(<a href="#ref-buckland2015" role="doc-biblioref">Buckland et al., 2015</a>)</span>. With this in mind, preliminary analysis of distance sampling data involves:</p>
+<ul>
+<li>assessing the shape of the collected data,</li>
+<li>considering the level of truncation of distances, and</li>
+<li>exploring patterns in potential covariates.</li>
+</ul>
+<p>We begin by assessing the distribution of distances to decide on a truncation distance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(amakihi<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To see if there are differences in the distribution of distances recorded by the different observers and in each hour after sunrise, boxplots can be used. Note how the <code>~</code> symbol is used to define the discrete groupings (i.e.&nbsp;observer and hour).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots by obs</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>OBs, <span class="at">xlab=</span><span class="st">"Observer"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots by hour after sunrise</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>HAS, <span class="at">xlab=</span><span class="st">"Hour"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The components of the boxplot are:</p>
+<ul>
+<li>the thick black line indicates the median</li>
+<li>the lower limit of the box is the first quartile (25th percentile) and the upper limit is the third quartile (75th percentile)</li>
+<li>the height of the box is the interquartile range (75th - 25th quartiles)</li>
+<li>the whiskers extend to the most extreme points which are no more than 1.5 times the interquartile range.</li>
+<li>dots indicate ‘outliers’ if there are any, i.e.&nbsp;points beyond the range of the whiskers.</li>
+</ul>
+<p>For minutes after sunrise (a continuous variable), we create a scatterplot of MAS (on the <span class="math inline">\(x\)</span>-axis) against distances (on the <span class="math inline">\(y\)</span>-axis). The plotting symbol (or character) is selected with the argument <code>pch</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot of MAS vs distance (using dots)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>amakihi<span class="sc">$</span>MAS, <span class="at">y=</span>amakihi<span class="sc">$</span>distance, <span class="at">xlab=</span><span class="st">"Minutes after sunrise"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Distance (m)"</span>, <span class="at">pch=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You may also want to think about potential collinerity (linear relationship) between the covariates - if collinear variables are included in the detection function, they will be explaining some of the same variation in the distances and this will reduce their importance as a potential covariate. How might you investigate the relationship between <code>HAS</code> and <code>MAS</code>?</p>
+<p>From these plots can you tell if any of the covariates will be useful in explaining the distribution of distances?</p>
+</section>
+<section id="adjusting-the-raw-covariates" class="level2">
+<h2 class="anchored" data-anchor-id="adjusting-the-raw-covariates">Adjusting the raw covariates</h2>
+<p>We would like to treat <code>OBs</code> and <code>HAS</code> as factor variables as in the original analysis; <code>OBs</code> is, by default, treated as a factor variable because it consists of characters rather than numbers. <code>HAS</code>, on the other hand, consists of numbers and so by default would be treated as a continuous variable (i.e.&nbsp;non-factor). That is fine if we want the effect of <code>HAS</code> to be monotonic (i.e.&nbsp;detectability either increases or decreases as a function of <code>HAS</code>). If we want <code>HAS</code> to have a non-linear effect on detectability, then we need to indicate to <code>R</code> to treat it as a factor as shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert HAS to a factor</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>HAS <span class="ot">&lt;-</span> <span class="fu">factor</span>(amakihi<span class="sc">$</span>HAS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The next adjustment is to change the <em>reference</em> level of the <em>observer</em> and <em>hour</em> factor covariates - the only reason to do this is to get the estimated parameters in the detection function to match the parameters estimated in <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>. You would not carry out this step on your own data. By default R uses the first factor level but by using the <code>relevel</code> function, this can be changed:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the reference level </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>OBs <span class="ot">&lt;-</span> <span class="fu">relevel</span>(amakihi<span class="sc">$</span>OBs, <span class="at">ref=</span><span class="st">"TKP"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>HAS <span class="ot">&lt;-</span> <span class="fu">relevel</span>(amakihi<span class="sc">$</span>HAS, <span class="at">ref=</span><span class="st">"5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="candidate-models" class="level2">
+<h2 class="anchored" data-anchor-id="candidate-models">Candidate models</h2>
+<p>With three potential covariates, there are 8 possible models for the detection function:</p>
+<ul>
+<li>No covariates</li>
+<li>OBs</li>
+<li>HAS</li>
+<li>MAS</li>
+<li>OBs + HAS</li>
+<li>OBs + MAS</li>
+<li>HAS + MAS</li>
+<li>OBs + HAS + MAS</li>
+</ul>
+<p>Even without considering covariates there are also several possible key function/adjustment term combinations available: if all key function/covariate combinations are considered the number of potential models is large. Note that covariates are not allowed if a uniform key function is chosen and if covariate terms are included, adjustment terms are not allowed. Even with these restrictions, it is not best practice to take a scatter gun approach to detection function model fitting. Buckland et al. <span class="citation" data-cites="buckland2015">(<a href="#ref-buckland2015" role="doc-biblioref">2015</a>)</span> considered 13 combinations of key function/covariates. Here, we look at a subset of these.</p>
+<p>Fit a hazard rate model with no covariates or adjustment terms and make a note of the AIC. Note, that 10% of the largest distances are truncated - you may have decided on a different truncation distance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>amak.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(amakihi, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation=</span><span class="st">"10%"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">convert_units =</span> conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Make a note of the AIC for this model.</p>
+<p>Now fit a hazard rate model with <code>OBs</code> as a covariate in the detection function and make a note of the AIC. Has the AIC reduced by including a covariate?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>amak.hr.obs <span class="ot">&lt;-</span> <span class="fu">ds</span>(amakihi, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span>OBs,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">truncation=</span><span class="st">"10%"</span>, <span class="at">convert_units =</span> conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Fit a hazard rate model with <code>OBs</code> and <code>HAS</code> in the detection function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>amak.hr.obs.has <span class="ot">&lt;-</span> <span class="fu">ds</span>(amakihi, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span>OBs<span class="sc">+</span>HAS,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation=</span><span class="st">"10%"</span>, <span class="at">convert_units =</span> conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try fitting other possible formula and decide which model is best in terms of AIC. To quickly compare AIC values from different models, use the <code>AIC</code> command as follows (note only models with the same truncation distance can be compared):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AIC values</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(amak.hr, amak.hr.obs, amak.hr.obs.has)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Another useful function is <code>summarize_ds_models</code> - this has the advantage of ordering the models by AIC (smallest to largest).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare models</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize_ds_models</span>(amak.hr, amak.hr.obs, amak.hr.obs.has)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once you have decided on a model, plot your selected detection function.</p>
+</section>
+</section>
+<section id="more-mcds-with-line-transects-etp-dolphins" class="level1">
+<h1>More MCDS with line transects: ETP dolphins</h1>
+<p>In this problem we have a sample of Eastern Tropical Pacific (ETP) spotted dolphin sightings data, collected by observers placed on board tuna vessels (the data were kindly made available by the Inter-American Tropical Tuna Commission - IATTC). Further description of the survey can be found in Marques and Buckland <span class="citation" data-cites="FMARBUC03">(<a href="#ref-FMARBUC03" role="doc-biblioref">2003</a>)</span>. In the ETP, schools of yellow fin tuna commonly occur with schools (or groups) of dolphins, and so vessels fishing for tuna often search for dolphins in the hopes of also locating tuna. For each dolphin school detected by the tuna vessels, the observer recorded the species, sighting angle and distance (later converted to perpendicular distance and truncated at 5 nautical miles), school size and a number of covariates associated with each detected school. Many of these covariates potentially affect the detection function, as they reflect how the search was being carried out.</p>
+<p>A variety of search methods were used to find the dolphins, and for these data were (the numbers in brackets are the codes used to record the data):</p>
+<ul>
+<li>20x binoculars from the crow’s nest (0)</li>
+<li>20x binoculars from another location on the vessel (2),</li>
+<li>a helicopter, (3)</li>
+<li>‘bird radar’, high power radars which are able to detect seabirds flying above the dolphin schools (5).</li>
+</ul>
+<p>Some of these methods may have a wider range of search than the others, and so it is possible that the effective strip width varies according to the method being used.</p>
+<p>For each detection the initial cue type was recorded. This included:</p>
+<ul>
+<li>birds flying above the school (1),</li>
+<li>splashes on the water (2),</li>
+<li>floating objects such as logs (4),</li>
+<li>some other unspecified cue (3).</li>
+</ul>
+<p>Another covariate that potentially affected the detection function was sea state, as measured by Beaufort. In rougher conditions (i.e.&nbsp;higher Beaufort levels), visibility and/or detectability may be reduced. For this example, Beaufort levels were grouped into two categories, the first including Beaufort values ranging from 0 to 2 (coded as 1) and the second containing values from 3 to 5 (coded as 2).</p>
+<p>The sample data encompasses sightings made over a three month period: June, July and August (months 6, 7 and 8, respectively).</p>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<p>The data are available in the <code>Distance</code> package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ETP_Dolphin)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ETP_Dolphin, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Start by running a set of conventional distance analyses. Are there any problems in the data and if so how might you mitigate them? (Hint - try dividing the histogram of distances into a large number of intervals.)</p>
+<p>As there are a number of potential covariates to be used in this example (i.e.&nbsp;search method, cue, Beaufort class and month), try fitting models with different covariates and combinations of the covariates. All of the covariates in this example are factor covariates except group size and because they have numeric codes, use the <code>factor</code> function to let <code>R</code> know to treat them as factors.</p>
+<p>Note that both distances and transect lengths were recorded in nautical miles and area in nautical miles squared and so the argument <code>convert_units</code> does not need to be specified.</p>
+<p>Keep in mind that this is a large dataset (&gt; 1000 observations), and hence estimation may take a while. You will likely end up with quite a few models as there are several potential covariates and no ‘right’ answers. Discuss your choice of final model (or models) with your colleagues - did you make the same choices?</p>
+</section>
+</section>
+<section id="more-mcds-with-point-transects-savannah-sparrow" class="level1">
+<h1>More MCDS with point transects: Savannah sparrow</h1>
+<p>Point transect surveys were conducted in Arapaho National Wildlife Refuge, Colorado, USA, in 1980 and 1981 <span class="citation" data-cites="knopf1988">(<a href="#ref-knopf1988" role="doc-biblioref">Knopf et al., 1988</a>)</span> and this exercise concerns the data collected on Savannah sparrows. The study area was divided into smaller regions (called ‘pastures’). The data are available in the <code>Distance</code> package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Savannah_sparrow_1980)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Savannah_sparrow_1981)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Distances were recorded in metres and area in hectares.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For each data set,</p>
+<ol type="1">
+<li>consider an appropriate truncation distance,</li>
+<li>fit a detection function with out any covariates</li>
+<li>include ‘pasture’ (<code>Region.Label</code>) as a covariate in the detection function</li>
+<li>use AIC to select a model, and</li>
+<li>estimate density (in birds per hectare) for your selected model.</li>
+</ol>
+<p>What would be an alternative to including pasture as a covariate in the detection function to analyse these data?</p>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-buckland2015" class="csl-entry" role="doc-biblioentry">
+Buckland, S. T., Rexstad, E. A., Marques, T. A., &amp; Oedekoven, C. S. (2015). <em>Distance Sampling: Methods and Applications</em>. <a href="https://doi.org/10.1007/978-3-319-19219-2_1">https://doi.org/10.1007/978-3-319-19219-2_1</a>
+</div>
+<div id="ref-knopf1988" class="csl-entry" role="doc-biblioentry">
+Knopf, F. L., Sedgwick, J. A., &amp; Cannon, R. W. (1988). Guild structure of a riparian avifauna relative to seasonal cattle grazing. <em>The Journal of Wildlife Management</em>, <em>52</em>(2), 280–290. <a href="https://doi.org/10.2307/3801235">https://doi.org/10.2307/3801235</a>
+</div>
+<div id="ref-FMARBUC03" class="csl-entry" role="doc-biblioentry">
+Marques, F. F. C., &amp; Buckland, S. T. (2003). Incorporating covariates into standard line transect analyses. <em>Biometrics</em>, <em>59</em>, 924–935. <a href="https://doi.org/10.1111/j.0006-341x.2003.00107.x">https://doi.org/10.1111/j.0006-341x.2003.00107.x</a>
+</div>
+<div id="ref-Marques2007" class="csl-entry" role="doc-biblioentry">
+Marques, T. A., Thomas, L., Fancy, S. G., &amp; Buckland, S. T. (2007). Improving estimates of bird density using multiple covariate distance sampling. <em>The Auk</em>, <em>127</em>, 1229–1243. <a href="https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2">https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

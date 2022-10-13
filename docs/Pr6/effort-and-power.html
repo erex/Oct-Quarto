@@ -81,7 +81,7 @@ div.csl-indent {
 <link rel="stylesheet" href="readthedown.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,9 +95,6 @@ div.csl-indent {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html">Home</a>
-  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
@@ -113,15 +110,61 @@ div.csl-indent {
   <li class="nav-item">
     <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">Design</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
+  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Exercise 6<br>How much survey effort is needed?</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/design.html" class="sidebar-item-text sidebar-link">Survey design practical 6</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/Pr6-instructions.html" class="sidebar-item-text sidebar-link">Distance sampling survey design</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/leaflet-demo.html" class="sidebar-item-text sidebar-link">Distance sampling survey design supplement</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link active">Exercise 6<br>How much survey effort is needed?</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc">
@@ -146,7 +189,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise 6<br>How much survey effort is needed?</h1>
+<h1 class="title d-none d-lg-block">Exercise 6<br>How much survey effort is needed?</h1>
 </div>
 
 
@@ -225,7 +268,7 @@ L = \frac{b}{cv_t\left(\hat{D}\right)^2} \times \frac{1}{\mbox{enc rate}_{pilot}
 <p>The message is that conducting such investigations consistently with sufficient effort is a difficult challenge. The challenges are particularly acute when the objective is rapid assessment of small amounts of population change for a study animal with low encounter rates.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><iframe data-deferred-src="app6a3831843b0e63457e990099bfd3cc1b/?w=&amp;__subapp__=1" width="800" height="800" class="shiny-frame shiny-frame-deferred"></iframe></p>
+<p><iframe data-deferred-src="appef6e8c9f8018550d9ac04b549edcd933/?w=&amp;__subapp__=1" width="800" height="800" class="shiny-frame shiny-frame-deferred"></iframe></p>
 </div>
 </div>
 </section>
