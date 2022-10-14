@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-13">
+<meta name="dcterms.date" content="2022-10-14">
 
 <title>Distance sampling lab book - Detecting differences in density estimates</title>
 <style>
@@ -213,7 +213,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#output-interpretation" id="toc-output-interpretation" class="nav-link" data-scroll-target="#output-interpretation">Output interpretation</a></li>
   </ul></li>
-  <li><a href="#appendix-equations-describing-computation-of-estimated-density-differences" id="toc-appendix-equations-describing-computation-of-estimated-density-differences" class="nav-link" data-scroll-target="#appendix-equations-describing-computation-of-estimated-density-differences">Appendix: equations describing computation of estimated density differences</a></li>
+  <li><a href="#appendix-equations-describing-computation-of-estimated-density-differences" id="toc-appendix-equations-describing-computation-of-estimated-density-differences" class="nav-link" data-scroll-target="#appendix-equations-describing-computation-of-estimated-density-differences">Appendix: equations describing computation of estimated density differences</a>
+  <ul class="collapse">
+  <li><a href="#this-is-section-3.6.5-of-buckland-et-al.-2001" id="toc-this-is-section-3.6.5-of-buckland-et-al.-2001" class="nav-link" data-scroll-target="#this-is-section-3.6.5-of-buckland-et-al.-2001">This is Section 3.6.5 of Buckland et al.&nbsp;(2001)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -239,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2022</p>
+      <p class="date">October 14, 2022</p>
     </div>
   </div>
     
@@ -316,30 +319,75 @@ Aside
 <section id="output-interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="output-interpretation">Output interpretation</h2>
 <p>The first two lines of output echo much of the input information: number of detections, encounter rate CV, line length, number of transects, average group size, CV of average groups size, number of parameters in the detection function. Also echoed are the stratum-specific density estimates and their CV along with the estimate of the <span class="math inline">\(f(0)\)</span> parameter of the detection function and its CV.</p>
-<p>The last line of output shows the difference of estimated densities and its standard error. Following this is the test statistic which is distributed as a t-statistic (Eqn @ref(eq:tstat)) and its associated degrees of freedom (Eqn @ref(eq:testdf)) and an associated significance level for a two-tailed test. The final pair of values are the bounds of the confidence interval on the estimated difference computed from Eqn (@ref(eq:tconfint)).</p>
+<p>The last line of output shows the difference of estimated densities and its standard error. Following this is the test statistic which is distributed as a t-statistic (<a href="#eq-tstat">Equation&nbsp;2</a>) and its associated degrees of freedom (<a href="#eq-testdf">Equation&nbsp;3</a>) and an associated significance level for a two-tailed test. The final pair of values are the bounds of the confidence interval on the estimated difference computed from <a href="#eq-tconfint">Equation&nbsp;5</a>.</p>
 <p><em>Note:</em> When a pooled detection function is used, the difference is relatively small (~0.05) and non-significant. When separate detection functions are used, the magnitude of the estimated difference increases (~0.08), with a standard error of roughly the same magnitude. Quite a few degrees of freedom are lost by having to estimate two additional parameters from separate detection functions. The total width of the confidence interval changes little (0.1662 for separate detection functions versus 0.1614 for pooled detection function). However because of the shift in the estimated difference from 0.0484 to 0.0802, the significance level shifts from 0.234 to 0.058.</p>
 <p><em>Lesson for survey design:</em> The uncertainty in all of the density estimates come from encounter rate variability. If the purpose of the study was to demonstrate a difference in density between these strata, a better survey design, with more than 13 and 12 transects would have been required to produce better estimates of stratum-specific encounter rate uncertainty.</p>
 </section>
 </section>
 <section id="appendix-equations-describing-computation-of-estimated-density-differences" class="level1">
 <h1>Appendix: equations describing computation of estimated density differences</h1>
-<p><em>This is Section 3.6.5 of Buckland et al.&nbsp;(2001)</em></p>
+<section id="this-is-section-3.6.5-of-buckland-et-al.-2001" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-section-3.6.5-of-buckland-et-al.-2001">This is Section 3.6.5 of Buckland et al.&nbsp;(2001)</h2>
 <p>Frequently, we wish to draw inference on change in density over time, or difference in density between habitats. We consider here simple comparisons between two density estimates.</p>
-<p>Consider two density estimates, <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2} .\)</span> Suppose first that they are independently estimated. We then estimate the difference in density by <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> with variance <span class="math display">\[\begin{equation}
+<p>Consider two density estimates, <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}.\)</span> Suppose first that they are <strong>independently estimated</strong>. We then estimate the difference in density by <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> with variance</p>
+<p><span id="eq-vardiff"><span class="math display">\[
 \widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)=\widehat{\operatorname{var}}\left(\hat{D}_{1}\right)+\widehat{\operatorname{var}}\left(\hat{D}_{2}\right)
-(\#eq:vardiff)
-\end{equation}\]</span> Distance provides approximate degrees of freedom <span class="math inline">\(\mathrm{df}_{1}\)</span> for <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\mathrm{df}_{2}\)</span> for <span class="math inline">\(\hat{D}_{2},\)</span> based on Satterthwaite’s approximation. We can use these to obtain an approximate <span class="math inline">\(t\)</span>-statistic:<br>
-[ T= t_{} (#eq:tstat) ] where [ (#eq:testdf) ]</p>
-<p>Provided df are around 30 or more, the simpler <span class="math inline">\(z\)</span>-statistic provides a good approximation: [ Z= N(0,1) (#eq:zstat) ] For either statistic, we can test the null hypothesis <span class="math inline">\(H_{0}: D_{1}=D_{2}\)</span> by substituting <span class="math inline">\(D_{1}-D_{2}=0\)</span> in eqn @ref(eq:tstat) or @ref(eq:zstat), and looking at the resulting value in <span class="math inline">\(t\)</span>-tables or <span class="math inline">\(z\)</span>-tables. Approximate <span class="math inline">\(100(1-2 \alpha) \%\)</span> confidence limits for <span class="math inline">\(\left(D_{1}-D_{2}\right)\)</span> are given by [ (<em>{1}-</em>{2}) t_{}() (#eq:tconfint) ]</p>
-for df <span class="math inline">\(&lt;30,\)</span> or [ (<em>{1}-</em>{2}) z() <br>
-(#eq:zconfint) ] otherwise. Often, a single detection function is fitted to pooled data, so that [ <em>{1}= </em>{2}= (#eq:dcommon) ] (where the terms <span class="math inline">\(\hat{E}_{i}(s)\)</span> are omitted if the objects are not in clusters). Because <span class="math inline">\(\hat{f}(0)\)</span> appears in both equations, we can no longer assume that <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}\)</span> are independent. Instead, we can write [ <em>{i}=</em>{i} (0), i=1,2 (#eq:dwithm) ] where [ <em>{i}= (#eq:mdefn) ] As the <span class="math inline">\(M_{i}\)</span> are independently estimated, and are assumed to be independent of <span class="math inline">\(\hat{f}(0),\)</span> we can now find the variance of <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> using the delta method: [ </em>{1}-<em>{2}=(</em>{1}-_{2}) (0) (#eq:diffusingm) ] so that [
-<span class="math display">\[\begin{aligned}
+\tag{1}\]</span></span></p>
+<p>Distance provides approximate degrees of freedom <span class="math inline">\(\mathrm{df}_{1}\)</span> for <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\mathrm{df}_{2}\)</span> for <span class="math inline">\(\hat{D}_{2},\)</span> based on Satterthwaite’s approximation. We can use these to obtain an approximate <span class="math inline">\(t\)</span>-statistic:</p>
+<p><span id="eq-tstat"><span class="math display">\[
+T=\frac{\left(\hat{D}_{1}-\hat{D}_{2}\right)-\left(D_{1}-D_{2}\right)}{\sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}} \sim t_{\mathrm{df}}
+\tag{2}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-testdf"><span class="math display">\[
+\mathrm{d} \mathrm{f} \simeq \frac{\left\{\widehat{v a r}\left(\hat{D}_{1}\right)+\widehat{v a r}\left(\hat{D}_{2}\right)\right\}^{2}}{\left\{\widehat{v a r}\left(\hat{D}_{1}\right)\right\}^{2} / \mathrm{df}_{1}+\left\{\widehat{v a r}\left(\hat{D}_{2}\right)\right\}^{2} / \mathrm{df}_{2}}
+\tag{3}\]</span></span></p>
+<p>Provided df are around 30 or more, the simpler <span class="math inline">\(z\)</span>-statistic provides a good approximation:</p>
+<p><span id="eq-zstat"><span class="math display">\[
+Z=\frac{\left(\hat{D}_{1}-\hat{D}_{2}\right)-\left(D_{1}-D_{2}\right)}{\sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}} \sim N(0,1)
+\tag{4}\]</span></span></p>
+<p>For either statistic, we can test the null hypothesis <span class="math inline">\(H_{0}: D_{1}=D_{2}\)</span> by substituting <span class="math inline">\(D_{1}-D_{2}=0\)</span> in <a href="#eq-tstat">Equation&nbsp;2</a> or <a href="#eq-zstat">Equation&nbsp;4</a>, and looking at the resulting value in <span class="math inline">\(t\)</span>-tables or <span class="math inline">\(z\)</span>-tables. Approximate <span class="math inline">\(100(1-2 \alpha) \%\)</span> confidence limits for <span class="math inline">\(\left(D_{1}-D_{2}\right)\)</span> are given by</p>
+<p><span id="eq-tconfint"><span class="math display">\[
+\left(\hat{D}_{1}-\hat{D}_{2}\right) \pm t_{\mathrm{df}}(\alpha) \sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}
+\tag{5}\]</span></span></p>
+<p>for df <span class="math inline">\(&lt;30,\)</span> or</p>
+<p><span id="eq-zconfint"><span class="math display">\[
+\left(\hat{D}_{1}-\hat{D}_{2}\right) \pm z(\alpha) \sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}  
+\tag{6}\]</span></span></p>
+<p>otherwise. Often, a single detection function is fitted to pooled data, so that</p>
+<p><span id="eq-dcommon"><span class="math display">\[
+\hat{D}_{1}=\frac{n_{1} \hat{f}(0) \hat{E}_{1}(s)}{2 L_{1}} \quad \text { and } \quad \hat{D}_{2}=\frac{n_{2} \hat{f}(0) \hat{E}_{2}(s)}{2 L_{2}}
+\tag{7}\]</span></span></p>
+<p>(where the terms <span class="math inline">\(\hat{E}_{i}(s)\)</span> are omitted if the objects are not in clusters). Because <span class="math inline">\(\hat{f}(0)\)</span> appears in both equations, we can no <strong>longer assume that <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}\)</span> are independent</strong>. Instead, we can write</p>
+<p><span id="eq-dwithm"><span class="math display">\[
+\hat{D}_{i}=\hat{M}_{i} \hat{f}(0), \quad i=1,2
+\tag{8}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-mdefn"><span class="math display">\[
+\hat{M}_{i}=\frac{n_{i} \hat{E}_{i}(s)}{2 L_{i}}
+\tag{9}\]</span></span></p>
+<p>As the <span class="math inline">\(M_{i}\)</span> are independently estimated, and are assumed to be independent of <span class="math inline">\(\hat{f}(0),\)</span> we can now find the variance of <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> using the delta method:</p>
+<p><span id="eq-diffusingm"><span class="math display">\[
+\hat{D}_{1}-\hat{D}_{2}=\left(\hat{M}_{1}-\hat{M}_{2}\right) \hat{f}(0)
+\tag{10}\]</span></span></p>
+<p>so that</p>
+<p><span id="eq-varwithm"><span class="math display">\[
+\begin{aligned}
 \widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right) &amp;=\left(\hat{D}_{1}-\hat{D}_{2}\right)^{2}\left[\frac{\widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)}{\left(\hat{M}_{1}-\hat{M}_{2}\right)^{2}}+\frac{\widehat{\operatorname{var}}\{\hat{f}(0)\}}{\{\hat{f}(0)\}^{2}}\right] \\
 &amp;=\{\hat{f}(0)\}^{2} \widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)+\left(\hat{M}_{1}-\hat{M}_{2}\right)^{2} \widehat{var}\{\hat{f}(0)\}
-\end{aligned}\]</span>
-<p>(#eq:varwithm) ] where [ (<em>{1}-</em>{2})=(<em>{1})+(</em>{2}) (#eq:varmdiff) ] and [ (<em>{i})=</em>{i}^{2}, i=1,2 (#eq:varm) ] Note that the second form of eqn @ref(eq:varwithm) still applies when <span class="math inline">\(\left(\hat{M}_{1}-\hat{M}_{2}\right)=0,\)</span> whereas the first form leads to a ratio of zero over zero. Inference can now proceed as before, either with additional applications of Satterthwaite’s approximation in conjunction with eqn @ref(eq:tstat) if an approximate <span class="math inline">\(t\)</span>-statistic is required, or more usually, by straightforward application of eqn @ref(eq:zstat).</p>
+\end{aligned}
+\tag{11}\]</span></span></p>
+<p>where</p>
+<p><span id="eq-varmdiff"><span class="math display">\[
+\widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)=\widehat{\operatorname{var}}\left(\hat{M}_{1}\right)+\widehat{\operatorname{var}}\left(\hat{M}_{2}\right)
+\tag{12}\]</span></span></p>
+<p>and</p>
+<p><span id="eq-varm"><span class="math display">\[
+\widehat{\operatorname{var}}\left(\hat{M}_{i}\right)=\hat{M}_{i}^{2}\left[\frac{\widehat{\operatorname{var}}\left(n_{i}\right)}{n_{i}^{2}}+\frac{\widehat{\operatorname{var}}\left\{\hat{E}_{i}(s)\right\}}{\left\{\hat{E}_{i}(s)\right\}^{2}}\right], \quad i=1,2
+\tag{13}\]</span></span></p>
+<p>Note that the second form of <a href="#eq-varwithm">Equation&nbsp;11</a> still applies when <span class="math inline">\(\left(\hat{M}_{1}-\hat{M}_{2}\right)=0,\)</span> whereas the first form leads to a ratio of zero over zero. Inference can now proceed as before, either with additional applications of Satterthwaite’s approximation in conjunction with <a href="#eq-tstat">Equation&nbsp;2</a> if an approximate <span class="math inline">\(t\)</span>-statistic is required, or more usually, by straightforward application of <a href="#eq-zstat">Equation&nbsp;4</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

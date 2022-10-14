@@ -247,7 +247,8 @@ To generalise the code, and recognising the same call to `glm()` will need to be
 
 
 ```{r}
-#| label = "basicglmline"
+#| label = "tbl-basicglmline",
+#| tbl-cap = "GLM model output"
 univarpredictor <- all.vars(myglmmodel)[2]
 glmmodel <- glm(formula=myglmmodel, family="poisson", data=sitesadj)
 modelsum <- summary(glmmodel)
@@ -288,7 +289,7 @@ intercept.est <- vector("numeric", length=nboot)
 slope.est <- vector("numeric", length=nboot)
 ```
 
-Specify the original site data frame `sparrowSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Brewer's sparrow density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in Table \@ref(tab:basicglmline) because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in Table  \@ref(tab:basicglmline).
+Specify the original site data frame `sparrowSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Brewer's sparrow density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in @tbl-basicglmline because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in @tbl-basicglmline.
 
 ```{r}
 #| label = "bootstrapline"

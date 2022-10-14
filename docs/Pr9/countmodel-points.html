@@ -9,7 +9,7 @@
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
 <meta name="dcterms.date" content="2022-10-14">
 
-<title>Distance sampling lab book - Effect of habitat covariate upon estimated density—lines</title>
+<title>Distance sampling lab book - Effect of habitat covariate upon estimated density–points</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -191,7 +191,7 @@ div.csl-indent {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Effect of habitat covariate upon estimated density—lines</h1>
+      <h1 class="quarto-secondary-nav-title">Effect of habitat covariate upon estimated density–points</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -221,12 +221,12 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr9/countmodel-lines.html" class="sidebar-item-text sidebar-link active">Effect of habitat covariate upon estimated density—lines</a>
+  <a href="../Pr9/countmodel-lines.html" class="sidebar-item-text sidebar-link">Effect of habitat covariate upon estimated density—lines</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr9/countmodel-points.html" class="sidebar-item-text sidebar-link">Effect of habitat covariate upon estimated density–points</a>
+  <a href="../Pr9/countmodel-points.html" class="sidebar-item-text sidebar-link active">Effect of habitat covariate upon estimated density–points</a>
   </div>
 </li>
     </ul>
@@ -240,7 +240,7 @@ div.csl-indent {
   <ul>
   <li><a href="#ecological-question-and-data" id="toc-ecological-question-and-data" class="nav-link active" data-scroll-target="#ecological-question-and-data">Ecological question and data</a></li>
   <li><a href="#programming-matters" id="toc-programming-matters" class="nav-link" data-scroll-target="#programming-matters">Programming matters</a></li>
-  <li><a href="#analysis-of-line-transect-survey" id="toc-analysis-of-line-transect-survey" class="nav-link" data-scroll-target="#analysis-of-line-transect-survey">Analysis of line transect survey</a>
+  <li><a href="#analysis-of-point-count-survey" id="toc-analysis-of-point-count-survey" class="nav-link" data-scroll-target="#analysis-of-point-count-survey">Analysis of point count survey</a>
   <ul class="collapse">
   <li><a href="#data-organisation" id="toc-data-organisation" class="nav-link" data-scroll-target="#data-organisation">Data organisation</a></li>
   <li><a href="#analysis-parameters-specification" id="toc-analysis-parameters-specification" class="nav-link" data-scroll-target="#analysis-parameters-specification">Analysis parameters specification</a></li>
@@ -264,7 +264,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Effect of habitat covariate upon estimated density—lines</h1>
+<h1 class="title d-none d-lg-block">Effect of habitat covariate upon estimated density–points</h1>
 </div>
 
 
@@ -313,7 +313,7 @@ n &amp;= \text{Eff Area} \cdot e^{\text{linear predictor}} \\
 <p>making <span class="math inline">\(log(\text{Eff Area})\)</span> the offset. If other link functions are used, the offset will be different.</p>
 <section id="ecological-question-and-data" class="level1">
 <h1>Ecological question and data</h1>
-<p>We present an example of such an analysis, using data from the package <code>RDistance</code> <span class="citation" data-cites="McDonald2019">(<a href="#ref-McDonald2019" role="doc-biblioref">McDonald et al., 2019</a>)</span>. We fit detection detection functions to data using the <code>Distance</code> package <span class="citation" data-cites="Miller2019">Miller et al. (<a href="#ref-Miller2019" role="doc-biblioref">2019</a>)</span>. We analyse a line transect survey consisting of 72 transects with interest in effect of habitat features upon density of Brewer’s sparrows <em>(Spizella breweri)</em> <span class="citation" data-cites="carlisle_abundance_2020">(<a href="#ref-carlisle_abundance_2020" role="doc-biblioref">Carlisle &amp; Chalfoun, 2020</a>)</span>. The data organisation is one data frame containing information on detections and another data frame containing information for each transect.</p>
+<p>We present two examples of such analyses, using data from the package <code>RDistance</code> <span class="citation" data-cites="McDonald2019">(<a href="#ref-McDonald2019" role="doc-biblioref">McDonald et al., 2019</a>)</span>. In both cases, we fit detection detection functions to data using the <code>Distance</code> package <span class="citation" data-cites="Miller2019">Miller et al. (<a href="#ref-Miller2019" role="doc-biblioref">2019</a>)</span>. This example describes an analysis of 120 point transects examining habitat influences upon density of sage thrashers <em>(Oreoscoptes montanus)</em> <span class="citation" data-cites="carlisle_nontarget_2018">(<a href="#ref-carlisle_nontarget_2018" role="doc-biblioref">Carlisle et al., 2018</a>)</span>. The data organisation consists of a data frame containing information on detections and another data frame containing information for each transect.</p>
 </section>
 <section id="programming-matters" class="level1">
 <h1>Programming matters</h1>
@@ -356,30 +356,30 @@ Important
 </div>
 </div>
 </section>
-<section id="analysis-of-line-transect-survey" class="level1 page-columns page-full">
-<h1>Analysis of line transect survey</h1>
+<section id="analysis-of-point-count-survey" class="level1 page-columns page-full">
+<h1>Analysis of point count survey</h1>
+<p>This second analysis closely mimics the previous analysis of the line transect data. Therefore we present the code blocks with a much reduced amount of narrative.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rdistance)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"sparrowDetectionData"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"sparrowSiteData"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sparrowSiteData<span class="sc">$</span>myCount <span class="ot">&lt;-</span> <span class="fu">tapply</span>(sparrowDetectionData<span class="sc">$</span>groupsize,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                  sparrowDetectionData<span class="sc">$</span>siteID, sum)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>sparrowSiteData<span class="sc">$</span>myCount[<span class="fu">is.na</span>(sparrowSiteData<span class="sc">$</span>myCount)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"thrasherDetectionData"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"thrasherSiteData"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>thrasherSiteData<span class="sc">$</span>myCount <span class="ot">&lt;-</span> <span class="fu">tapply</span>(thrasherDetectionData<span class="sc">$</span>groupsize,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                                  thrasherDetectionData<span class="sc">$</span>siteID, sum)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>thrasherSiteData<span class="sc">$</span>myCount[<span class="fu">is.na</span>(thrasherSiteData<span class="sc">$</span>myCount)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data-organisation" class="level2">
 <h2 class="anchored" data-anchor-id="data-organisation">Data organisation</h2>
-<p>In Carlisle’s data set, sightings information is kept separate from information about each site. For our purposes, we will merge those together. In addition, some field names are changed for consistency with functions in the <code>Distance</code> package.</p>
+<p>Note there is no <code>Effort</code> field for these point count data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>newsparrow <span class="ot">&lt;-</span> <span class="fu">merge</span>(sparrowDetectionData, sparrowSiteData, <span class="at">by=</span><span class="st">"siteID"</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newsparrow) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"observer"</span>, <span class="st">"obs"</span>, <span class="fu">names</span>(newsparrow))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newsparrow) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"dist"</span>, <span class="st">"distance"</span>, <span class="fu">names</span>(newsparrow))</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newsparrow) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"length"</span>, <span class="st">"Effort"</span>, <span class="fu">names</span>(newsparrow))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>newthrasher <span class="ot">&lt;-</span> <span class="fu">merge</span>(thrasherDetectionData, thrasherSiteData, <span class="at">by=</span><span class="st">"siteID"</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newthrasher) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"observer"</span>, <span class="st">"obs"</span>, <span class="fu">names</span>(newthrasher))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newthrasher) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"dist"</span>, <span class="st">"distance"</span>, <span class="fu">names</span>(newthrasher))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="analysis-parameters-specification" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-parameters-specification">Analysis parameters specification</h2>
-<p>Although not formally written as a set of functions, we bring to the front of the code arguments the user will need to change to alter to suite their needs. Candidate transect-level predictors for the detection function are <strong>observer, bare, herb, shrub, height, shrubclass</strong>. The same predictors, with the exception of <strong>observer</strong> could be used to model the sparrow counts.</p>
+<p>Specification of run-specific parameters to analyse the Sage thrasher data set. Particularly note the logical value assigned to <code>pointtransect</code>. Candidate transect-level predictors for the detection function are <strong>observer, bare, herb, shrub, height</strong>. The same predictors, with the exception of <strong>observer</strong> could be used to model the thrasher counts.</p>
 <div class="callout-warning callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -391,50 +391,45 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pointtransect <span class="ot">&lt;-</span> <span class="cn">FALSE</span>        <span class="co"># survey conducted using lines or points</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dettrunc <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># truncation for detection function</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pointtransect <span class="ot">&lt;-</span> <span class="cn">TRUE</span>        <span class="co"># survey conducted using lines or points</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dettrunc <span class="ot">&lt;-</span> <span class="dv">170</span>  <span class="co"># truncation for detection function</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>myglmmodel <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(myCount <span class="sc">~</span> shrub <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(effArea)))  <span class="co"># habitat model to fit to animal density</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nboot <span class="ot">&lt;-</span> <span class="dv">500</span>       <span class="co"># number of bootstrap replicates</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">19191</span>)   <span class="co"># random number seed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nboot <span class="ot">&lt;-</span> <span class="dv">100</span>      <span class="co"># number of bootstrap replicates</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7079</span>)   <span class="co"># random number seed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="fit-detection-function" class="level2">
 <h2 class="anchored" data-anchor-id="fit-detection-function">Fit detection function</h2>
-<p>We fit a series of detection function models using the transect-level covariates available in the Brewer’s sparrow data set.</p>
+<p>We fit a series of detection function models using the transect-level covariates available in the Sage thrasher data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>surveytype <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pointtransect, <span class="st">"point"</span>, <span class="st">"line"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>woo.o <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>woo.o <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs, </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>woo.obare <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs<span class="sc">+</span><span class="fu">scale</span>(bare),</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>woo.oht <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs<span class="sc">+</span><span class="fu">scale</span>(height), </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>woo.oshrc <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs<span class="sc">+</span>shrubclass, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>woo.ht <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(height), </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>woo.shrc <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>shrubclass, </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>woo.shrub <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(shrub), </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>woo <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newsparrow, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="dv">1</span>, </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(woo.o,  woo.obare, woo.oht, woo.oshrc,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                 woo.ht, woo.shrc, woo.shrub, woo), <span class="at">digits=</span><span class="dv">3</span>, </span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption=</span><span class="st">"Halfnormal detection function model selection of covariates."</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>woo.shrub <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(shrub), </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>woo.herb <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(herb), </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>woo.height <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(height), </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>woo <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(woo, woo.o, woo.shrub, woo.herb, woo.height),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">digits=</span><span class="dv">3</span>, </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption=</span><span class="st">"Halfnormal detection function model selection of covariates."</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Halfnormal detection function model selection of covariates.</caption>
 <colgroup>
-<col style="width: 17%">
-<col style="width: 12%">
-<col style="width: 19%">
-<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 36%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 8%">
 <col style="width: 11%">
-<col style="width: 15%">
-<col style="width: 11%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -451,95 +446,72 @@ Warning
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~shrubclass</td>
-<td style="text-align: right;">0.511</td>
-<td style="text-align: right;">0.559</td>
-<td style="text-align: right;">0.025</td>
+<td style="text-align: left;">~obs</td>
+<td style="text-align: right;">0.009</td>
+<td style="text-align: right;">0.292</td>
+<td style="text-align: right;">0.039</td>
 <td style="text-align: right;">0.000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~scale(height)</td>
-<td style="text-align: right;">0.492</td>
-<td style="text-align: right;">0.558</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">0.325</td>
+<td style="text-align: left;">Half-normal with cosine adjustment term of order 2</td>
+<td style="text-align: left;">~1</td>
+<td style="text-align: right;">0.097</td>
+<td style="text-align: right;">0.395</td>
+<td style="text-align: right;">0.124</td>
+<td style="text-align: right;">12.889</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Half-normal</td>
+<td style="text-align: left;">~scale(herb)</td>
+<td style="text-align: right;">0.032</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">17.893</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Half-normal</td>
 <td style="text-align: left;">~scale(shrub)</td>
-<td style="text-align: right;">0.476</td>
-<td style="text-align: right;">0.559</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">1.002</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~1</td>
-<td style="text-align: right;">0.469</td>
-<td style="text-align: right;">0.563</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">3.154</td>
+<td style="text-align: right;">0.035</td>
+<td style="text-align: right;">0.331</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">17.901</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~obs + scale(bare)</td>
-<td style="text-align: right;">0.659</td>
-<td style="text-align: right;">0.555</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">5.109</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~obs + shrubclass</td>
-<td style="text-align: right;">0.652</td>
-<td style="text-align: right;">0.556</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">5.533</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~obs + scale(height)</td>
-<td style="text-align: right;">0.658</td>
-<td style="text-align: right;">0.556</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">5.672</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
-<td style="text-align: left;">~obs</td>
-<td style="text-align: right;">0.587</td>
-<td style="text-align: right;">0.559</td>
-<td style="text-align: right;">0.025</td>
-<td style="text-align: right;">7.148</td>
+<td style="text-align: left;">~scale(height)</td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">19.168</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>All of the candidate models fit the Brewer’s sparrow line transect data. Also note that the estimate detection probability of all six models is the same to the third decimal. There is a small difference in AIC between the factor covariate <code>shrubclass</code> and the continuous covariate <code>height</code>. Simply for the purposes of demonstration, we will base our inference on the detection function that includes <code>observer</code> as a covariate. There is likely little effect of this model selection choice upon the ecological question of interest.</p>
+<p>None of the covariates contribute to fit of the detection function models for thrashers. Inference should be based upon the no covariate model (that passes the goodness of fit test), but for testing purposes, we will use the model with the observer covariate. Use of the observer covariate model will retain between-point variability in effective area; useful for testing purposes.</p>
 <section id="plot-of-detection-function" class="level3">
 <h3 class="anchored" data-anchor-id="plot-of-detection-function">Plot of detection function</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(woo.o, <span class="at">showpoints=</span><span class="cn">FALSE</span>, <span class="at">main=</span><span class="st">"Brewer's sparrow</span><span class="sc">\n</span><span class="st">Detection with observer covariate"</span>,</span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(woo.o, <span class="at">showpoints=</span><span class="cn">FALSE</span>, <span class="at">main=</span><span class="st">"Sage thrasher</span><span class="sc">\n</span><span class="st">Detection with observer covariate"</span>,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pdf=</span>pointtransect) </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs1"</span>), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs2"</span>), <span class="at">col=</span><span class="st">"green"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs3"</span>), <span class="at">col=</span><span class="st">"dark green"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs4"</span>), <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs5"</span>), <span class="at">col=</span><span class="st">"purple"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">title=</span><span class="st">"Observer"</span>, <span class="at">legend=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"dark green"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs6"</span>), <span class="at">col=</span><span class="st">"coral"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">title=</span><span class="st">"Observer"</span>, <span class="at">legend=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"dark green"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"coral"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="countmodel-lines_files/figure-html/detfnploto-1.png" class="img-fluid" width="672"></p>
+<p><img src="countmodel-points_files/figure-html/detfnplotopt-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<div class="cell">
+
 </div>
 </section>
 </section>
@@ -550,7 +522,7 @@ Warning
 <li>For line transects the computation uses the effective strip half-width <span class="math inline">\((ESW)\)</span> multiplied by 2 (for each side of the transect), multiplied by the transect length. <span class="math inline">\(ESW\)</span> is derived for each detection by acquiring the detection probability for the detection from the fitted detection function object <code>detfnobj$ddf$fitted</code>. However a detection probability is only computed for detections at distances less than the truncation distance; so some coding is required to deal with detections beyond the truncation distance. <span class="math inline">\(ESW\)</span> is derived from <span class="math inline">\(P_a\)</span> as <span class="math inline">\(P_a \cdot w\)</span> where <span class="math inline">\(w\)</span> is the truncation distance.</li>
 <li>For point transects, effective area is computed as <span class="math inline">\(\pi \cdot P_a \cdot w^2\)</span>. This value is returned directly when the <code>predict()</code> function is used, but is derived by calculation from the fitted detection function object <code>detfnobj$ddf$fitted</code> for each detection.</li>
 </ul>
-<p>There is also a distinction between line and point transect computations regarding units in which data are recorded. For line transect example of Brewers Sparrows, <code>Effort</code> was measured in meters, but we wish to produce our estimates of density in numbers per hectare. With Thresher Sparrows, radial detection distance was measured in meters, but we wish to measure bird density in numbers per hectare. In both cases, division by 10000 to convert square meters to hectares.</p>
+<p>There is also a distinction between line and point transect computations regarding units in which data are recorded. With Thresher Sparrows, radial detection distance was measured in meters, but we wish to measure bird density in numbers per hectare. Division by 10000 to convert square meters to hectares.</p>
 <p>Because only need transect level information, the observation-level information can be removed, to make computation easier. However, transects on which animals were not detected (counts=0) must also be carried forward to the GLM analysis; because 0’s constitute legitimate observations. If the offset values remained missing values (NA), the relationship between animal density and the predictor covariate(s) would not be properly estimated.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>effAreafn <span class="ot">&lt;-</span> <span class="cf">function</span>(detfnobj, newdata, areaconv, truncation, pointflag) {</span>
@@ -599,28 +571,29 @@ Warning
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>sitesadj <span class="ot">&lt;-</span> <span class="fu">effAreafn</span>(woo.o, newsparrow, <span class="dv">10000</span>, dettrunc, <span class="at">pointflag =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The function has an argument <code>pointflag</code> used to indicate whether point transect sampling was used. If so, the correct effective area calculations are performed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sitesadj <span class="ot">&lt;-</span> <span class="fu">effAreafn</span>(woo.o, newthrasher, <span class="dv">10000</span>, dettrunc, <span class="at">pointflag =</span> pointtransect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="estimate-relationship-of-density-and-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="estimate-relationship-of-density-and-covariate">Estimate relationship of density and covariate</h2>
-<p>Fit a GLM to the observed counts, using as an offset the estimated effective area. By default, specifying family as <code>poisson</code> assumes a <code>log</code> link function. Consequently, the offset must also use the <code>log</code> transform.</p>
-<p>To generalise the code, and recognising the same call to <code>glm()</code> will need to be made elsewhere in this analysis, we specify the GLM model we wish to fit as an object of type <code>formula</code>. This was specified in the <a href="#analysis-parameters-specification">Analysis parameters specification</a> section above.</p>
+<p>As for the line transect example, fit a GLM to the observed counts, using as an offset the estimated effective area. By default, specifying family as <code>poisson</code> assumes a <code>log</code> link function.</p>
 <div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>univarpredictor <span class="ot">&lt;-</span> <span class="fu">all.vars</span>(myglmmodel)[<span class="dv">2</span>]</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glmmodel <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula=</span>myglmmodel, <span class="at">family=</span><span class="st">"poisson"</span>, <span class="at">data=</span>sitesadj)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>modelsum <span class="ot">&lt;-</span> <span class="fu">summary</span>(glmmodel)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tablecaption <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"GLM coefficients from counts as function of"</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      univarpredictor, <span class="st">"with log(effective area) offset."</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(modelsum<span class="sc">$</span>coef, <span class="at">digits=</span><span class="dv">4</span>, <span class="at">caption=</span>tablecaption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-basicglmline" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>univarpredictor <span class="ot">&lt;-</span> <span class="fu">all.vars</span>(myglmmodel)[<span class="dv">2</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>glmmodel <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula=</span>myglmmodel, <span class="at">family=</span><span class="st">"poisson"</span>, <span class="at">data=</span>sitesadj)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>modelsum <span class="ot">&lt;-</span> <span class="fu">summary</span>(glmmodel)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tablecaption <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"GLM coefficients from counts as function of"</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      univarpredictor, <span class="st">"with log(effective area) offset."</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(modelsum<span class="sc">$</span>coef, <span class="at">digits=</span><span class="dv">4</span>, <span class="at">caption=</span>tablecaption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-basicglmpt" class="cell tbl-parent quarto-layout-panel anchored">
 <div class="panel-caption table-caption">
 <p>Table 1: <strong>?(caption)</strong></p>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-basicglmline-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-basicglmline" style="flex-basis: 100.0%;justify-content: center;">
+<div id="tbl-basicglmpt-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-basicglmpt" style="flex-basis: 100.0%;justify-content: center;">
 <table class="table table-sm table-striped">
 <caption>(a) GLM coefficients from counts as function of shrub with log(effective area) offset.</caption>
 <thead>
@@ -635,17 +608,17 @@ Warning
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">-1.0565</td>
-<td style="text-align: right;">0.1397</td>
-<td style="text-align: right;">-7.5649</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">-2.3977</td>
+<td style="text-align: right;">0.8794</td>
+<td style="text-align: right;">-2.7266</td>
+<td style="text-align: right;">0.0064</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">shrub</td>
-<td style="text-align: right;">0.0789</td>
-<td style="text-align: right;">0.0096</td>
-<td style="text-align: right;">8.1836</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0818</td>
+<td style="text-align: right;">0.0419</td>
+<td style="text-align: right;">1.9538</td>
+<td style="text-align: right;">0.0507</td>
 </tr>
 </tbody>
 </table>
@@ -654,18 +627,19 @@ Warning
 </div>
 </div>
 </section>
-<section id="visualise" class="level2">
+<section id="visualise" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="visualise">Visualise</h2>
 <p>Even though we have computed the effective area for each transect based upon the fitted detection function, we have not used that effective area to adjust the observed counts. The simple formula</p>
 <p><span class="math display">\[\hat{D}_i = \frac{n_i}{EA_i}, i = 1, \ldots , n_{transects}\]</span></p>
 <p>where <span class="math inline">\(EA_i\)</span> is the effective area for the <span class="math inline">\(i^{th}\)</span> transect, describes this adjustment.</p>
-<p>We plot the estimated density against the continuous univariate predictor.</p>
+<!-- We plot the estimated density against the continuous univariate predictor. -->
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sitesadj<span class="sc">$</span>density <span class="ot">&lt;-</span> sitesadj<span class="sc">$</span>myCount <span class="sc">/</span> sitesadj<span class="sc">$</span>effArea </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot(sitesadj[, univarpredictor], sitesadj$density, pch=20,</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># firstplot &lt;- recordPlot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<!-- Next we superimpose the shape of the relationship derived from the estimated coefficients of the GLM.  We are effectively creating our own version of `predict` on the scale of the response by exponentiating the predicted value of density over the observed range of the continuous univariate predictor. -->
+<!-- The basic background plot onto which our bootstrap replicates will be superimposed. -->
+<div class="cell column-body-outset">
+
+</div>
 </section>
 <section id="incorporate-uncertainty" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="incorporate-uncertainty">Incorporate uncertainty</h2>
@@ -674,22 +648,22 @@ Warning
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>intercept.est <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="at">length=</span>nboot)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>slope.est <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="at">length=</span>nboot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Specify the original site data frame <code>sparrowSiteData</code> in the following code. The code will harvest the estimated slope and intercept coefficients from each replicate. It is uncertainty in the slope coefficient (<span class="math inline">\(\widehat{\beta_1}\)</span>) that determines our inference about the effect of shrub cover upon Brewer’s sparrow density. The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in <a href="#tbl-basicglmline">Table&nbsp;1</a> because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in <a href="#tbl-basicglmline">Table&nbsp;1</a>.</p>
+<p>Specify the original site data frame <code>thrasherSiteData</code> in the following code. The code will harvest the estimated slope and intercept coefficients from each replicate. It is uncertainty in the slope coefficient (<span class="math inline">\(\widehat{\beta_1}\)</span>) that determines our inference about the effect of shrub cover upon Sage thrasher density. The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in <a href="#tbl-basicglmpt">Table&nbsp;1</a> because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in <a href="#tbl-basicglmpt">Table&nbsp;1</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (theboot <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nboot) {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  newdetects <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  bob <span class="ot">&lt;-</span> <span class="fu">sample</span>(sparrowSiteData<span class="sc">$</span>siteID, <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">size=</span><span class="fu">length</span>(<span class="fu">unique</span>(sparrowSiteData<span class="sc">$</span>siteID)))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  bob <span class="ot">&lt;-</span> <span class="fu">sample</span>(thrasherSiteData<span class="sc">$</span>siteID, <span class="at">replace=</span><span class="cn">TRUE</span>, <span class="at">size=</span><span class="fu">length</span>(<span class="fu">unique</span>(thrasherSiteData<span class="sc">$</span>siteID)))</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (bootsite <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(bob)) { </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    thissite <span class="ot">&lt;-</span> bob[bootsite] </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    glob <span class="ot">&lt;-</span> newsparrow[newsparrow<span class="sc">$</span>siteID<span class="sc">==</span>thissite, ]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    glob <span class="ot">&lt;-</span> newthrasher[newthrasher<span class="sc">$</span>siteID<span class="sc">==</span>thissite, ]</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    glob<span class="sc">$</span>siteID <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">"rep%02d"</span>, bootsite)</span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    newdetects <span class="ot">&lt;-</span> <span class="fu">rbind</span>(newdetects, glob)  </span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  newdetects <span class="ot">&lt;-</span> newdetects[<span class="fu">order</span>(newdetects<span class="sc">$</span>siteID), ]</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Refit the detection function model, using observer as a covariate, to the bootstrap replicate</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  detfnmod <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newdetects, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  detfnmod <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newdetects, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs, <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  Compute effective area offset for each transect</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  bootsitesadj <span class="ot">&lt;-</span> <span class="fu">effAreafn</span>(detfnmod, newdetects, <span class="dv">10000</span>, dettrunc, <span class="at">pointflag =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  bootsitesadj <span class="ot">&lt;-</span> <span class="fu">effAreafn</span>(detfnmod, newdetects, <span class="dv">10000</span>, dettrunc, <span class="at">pointflag =</span> pointtransect)</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#   refit the GLM for this bootstrap replicate</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  glmresult <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula=</span> myglmmodel, <span class="at">family=</span><span class="st">"poisson"</span>, <span class="at">data=</span>bootsitesadj)</span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  intercept.est[theboot] <span class="ot">&lt;-</span> <span class="fu">coef</span>(glmresult)[<span class="dv">1</span>]</span>
@@ -698,14 +672,14 @@ Warning
 </div>
 <p>Code below creates a comprehensive figure of the findings. Steps include</p>
 <ul>
-<li>generates the predicted relationship of the habitat and Brewer’s sparrow density for each bootstrap replicate,</li>
+<li>generates the predicted relationship of the habitat and bird density for each bootstrap replicate,</li>
 <li>computes point-wise confidence intervals,</li>
 <li>plot the estimated relationship, all bootstrap replicate relationships and the confidence intervals,</li>
 <li>insets sampling distribution of (<span class="math inline">\(\widehat{\beta_1}\)</span>) and places a confidence interval on the point estimate of (<span class="math inline">\(\widehat{\beta_1}\)</span>).</li>
 </ul>
 <div class="cell page-columns page-full">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>predData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">predictor=</span><span class="fu">seq</span>(<span class="fu">min</span>(sparrowSiteData[ , univarpredictor]),</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">max</span>(sparrowSiteData[, univarpredictor]), <span class="at">length.out=</span><span class="dv">50</span>)) </span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>predData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">predictor=</span><span class="fu">seq</span>(<span class="fu">min</span>(thrasherSiteData[ , univarpredictor]),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">max</span>(thrasherSiteData[, univarpredictor]), <span class="at">length.out=</span><span class="dv">50</span>)) </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>orig.fit <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x=</span>predData<span class="sc">$</span>predictor, </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span><span class="fu">exp</span>(<span class="fu">coef</span>(glmmodel)[<span class="dv">1</span>] <span class="sc">+</span> (<span class="fu">coef</span>(glmmodel)[<span class="dv">2</span>]<span class="sc">*</span>predData<span class="sc">$</span>predictor)))</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># long form data frame of all replicate predicted values</span></span>
@@ -732,48 +706,38 @@ Warning
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>predict, <span class="at">group=</span>group), big.df, <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>y, <span class="at">x=</span>x), orig.fit, <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>value, <span class="at">group=</span>stat), quants, <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">y=</span><span class="fl">0.6</span>, <span class="at">label=</span> b0label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">y=</span><span class="fl">0.3</span>, <span class="at">label=</span> b1label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">24</span>, <span class="at">y=</span><span class="fl">1.5</span>, <span class="at">label=</span> b0label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">24</span>, <span class="at">y=</span><span class="fl">1.4</span>, <span class="at">label=</span> b1label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Percent shrub cover"</span>, <span class="at">y=</span><span class="st">"Estimate bird density (per ha)"</span>,</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Brewer's sparrow density as function of shrub cover"</span>) <span class="sc">+</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Sage thrasher density as function of shrub cover"</span>) <span class="sc">+</span></span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># inset histogram for sampling distribution</span></span>
 <span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>bounds <span class="ot">&lt;-</span> <span class="fu">quantile</span>(slope.est, <span class="at">probs =</span> <span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>))</span>
 <span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>fig2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>slope.est) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span>bounds, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Estimate of slope"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>) <span class="sc">+</span></span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span>.<span class="dv">025</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">1</span>],<span class="dv">3</span>)) <span class="sc">+</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span>.<span class="dv">13</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">2</span>],<span class="dv">3</span>)) </span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="sc">-</span>.<span class="dv">01</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">1</span>],<span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span>.<span class="dv">18</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">2</span>],<span class="dv">3</span>)) </span>
 <span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>complete <span class="ot">&lt;-</span> fig1 <span class="sc">+</span> <span class="fu">inset_element</span>(fig2, <span class="at">right=</span>.<span class="dv">5</span>, <span class="at">bottom=</span>.<span class="dv">4</span>, <span class="at">left=</span>.<span class="dv">01</span>, <span class="at">top=</span>.<span class="dv">99</span>)</span>
 <span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>complete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display column-body-outset">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="countmodel-lines_files/figure-html/grandplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Relationship between univariate predictor and Brewer’s sparrow density as modelled by GLM. Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Brewer’s sparrow.</figcaption><p></p>
+<p><img src="countmodel-points_files/figure-html/grandplot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Relationship between univariate predictor and Sage Thrasher density as modelled by GLM. Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Sage Thrasher.</figcaption><p></p>
 </figure>
 </div>
 </div>
+</div>
+<div class="cell column-body-outset">
+
 </div>
 </section>
 <section id="inference-regarding-the-habitat-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="inference-regarding-the-habitat-covariate">Inference regarding the habitat covariate</h2>
-<p>To assess the effect of the transect-level environmental covariate upon bird density, we focus our attention on <span class="math inline">\(\hat{\beta_1}\)</span>. The greater in magnitude the slope of the covariate, the greater the effect of the covariate upon animal density. If the estimated slope (<span class="math inline">\(\hat{\beta_1}\)</span>) is indistinguishable from zero, we infer the habitat covariate has no influence upon animal density. For the habitat characteristic <code>shrub</code>, there is a positive response of Brewer’s sparrow to increasing shrub cover.</p>
+<p>To assess the effect of the transect-level environmental covariate upon bird density, we focus our attention on <span class="math inline">\(\hat{\beta_1}\)</span>. The greater in magnitude the slope of the covariate, the greater the effect of the covariate upon animal density. If the estimated slope (<span class="math inline">\(\hat{\beta_1}\)</span>) is indistinguishable from zero, we infer the habitat covariate has no influence upon animal density. In the case of the Sage Thrasher, the species appears to exhibit little response to the presence of shrub cover during this study. Note that the range of shrub cover is not extensive (~16% to ~26%). We can make no inference regarding the density:habitat relationship outside this range in shrub cover.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>xlabel <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Estimated slope of"</span>, univarpredictor, <span class="st">"and count relationship."</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>hist.slope <span class="ot">&lt;-</span> <span class="fu">hist</span>(slope.est, <span class="at">main=</span><span class="st">"Sampling distribution of slope parameter"</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xlab=</span>xlabel) </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>cibounds <span class="ot">&lt;-</span> <span class="fu">quantile</span>(slope.est, <span class="at">probs =</span> <span class="fu">c</span>(.<span class="dv">025</span>,.<span class="dv">975</span>), <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>cibounds, <span class="at">lty=</span><span class="dv">3</span>) </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(cibounds, <span class="fu">max</span>(hist.slope<span class="sc">$</span>counts), <span class="fu">round</span>(cibounds,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="countmodel-lines_files/figure-html/slope-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Sampling distribution of the parameter of interest for Brewer’s sparrow.</figcaption><p></p>
-</figure>
-</div>
-</div>
+
 </div>
 </section>
 </section>
@@ -795,8 +759,8 @@ Warning
 <div id="ref-Buckland2009a" class="csl-entry" role="doc-biblioentry">
 Buckland, S. T., Russell, R. E., Dickson, B. G., Saab, V. A., Gorman, D. N., &amp; Block, W. M. (2009). Analysing designed experiments in distance sampling. <em>Journal of Agricultural, Biological, and Environmental Statistics</em>, <em>14</em>, 432–442. <a href="https://doi.org/10.1198/jabes.2009.08030">https://doi.org/10.1198/jabes.2009.08030</a>
 </div>
-<div id="ref-carlisle_abundance_2020" class="csl-entry" role="doc-biblioentry">
-Carlisle, J., &amp; Chalfoun, A. (2020). The abundance of <span>Greater Sage</span>-<span>Grouse</span> as a proxy for the abundance of sagebrush-associated songbirds in <span>Wyoming</span>, <span>USA</span>. <em>Avian Conservation and Ecology</em>, <em>15</em>(2). <a href="https://doi.org/10.5751/ACE-01702-150216">https://doi.org/10.5751/ACE-01702-150216</a>
+<div id="ref-carlisle_nontarget_2018" class="csl-entry" role="doc-biblioentry">
+Carlisle, J. D., Chalfoun, A. D., Smith, K. T., &amp; Beck, J. L. (2018). Nontarget effects on songbirds from habitat manipulation for <span>Greater Sage</span>-<span>Grouse</span>: <span>Implications</span> for the umbrella species concept. <em>The Condor</em>, <em>120</em>(2), 439–455. <a href="https://doi.org/10.1650/CONDOR-17-200.1">https://doi.org/10.1650/CONDOR-17-200.1</a>
 </div>
 <div id="ref-McDonald2019" class="csl-entry" role="doc-biblioentry">
 McDonald, T., Carlisle, J., &amp; McDonald, A. (2019). <em>Rdistance: Distance sampling analysis for density and abundance estimation</em>.

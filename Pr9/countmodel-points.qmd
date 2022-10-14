@@ -123,8 +123,8 @@ Specification of run-specific parameters to analyse the Sage thrasher data set. 
 pointtransect <- TRUE        # survey conducted using lines or points
 dettrunc <- 170  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 250      # number of bootstrap replicates
-set.seed(1920589)   # random number seed
+nboot <- 100      # number of bootstrap replicates
+set.seed(7079)   # random number seed
 ```
 
 :::
@@ -259,7 +259,8 @@ sitesadj <- effAreafn(woo.o, newthrasher, 10000, dettrunc, pointflag = pointtran
 As for the line transect example, fit a GLM to the observed counts, using as an offset the estimated effective area.  By default, specifying family as `poisson` assumes a `log` link function.  
 
 ```{r}
-#| label = "basicglmpt"
+#| label = "tbl-basicglmpt",
+#| tbl-cap: "GLM model output"
 univarpredictor <- all.vars(myglmmodel)[2]
 glmmodel <- glm(formula=myglmmodel, family="poisson", data=sitesadj)
 modelsum <- summary(glmmodel)
@@ -319,7 +320,7 @@ intercept.est <- vector("numeric", length=nboot)
 slope.est <- vector("numeric", length=nboot)
 ```
 
-Specify the original site data frame `thrasherSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Sage thrasher density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in Table \@ref(tab:basicglmpt) because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in Table  \@ref(tab:basicglmpt).
+Specify the original site data frame `thrasherSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Sage thrasher density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in @tbl-basicglmpt because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in @tbl-basicglmpt.
 
 ```{r}
 #| label = "bootstrappt"
