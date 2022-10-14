@@ -166,5 +166,40 @@
     "title": "Analyses using multipliers",
     "section": "Multipliers",
     "text": "Multipliers\nThe next step is to create an object which contains the multipliers we wish to use. We already have estimates of dung production rates but need similar information on dung decay (or persistence) rate.\nData to calculate this has been collected in the file IntroDS_9.1.csv in your directory. Following code comes from Meredith (2017).\n\nMIKE.persistence <- function(DATA) {\n  \n#  Purpose: calculate mean persistence time (mean time to decay) for dung/nest data \n#  Input: data frame with at least two columns:\n#         DAYS - calendar day on which dung status was observed\n#         STATE - dung status: 1-intact, 0-decayed\n#  Output: point estimate, standard error and CV of mean persistence time\n#\n#  Attribution: code from Mike Meredith website: \n#      http://www.mikemeredith.net/blog/2017/Sign_persistence.htm\n#   Citing: CITES elephant protocol\n#      https://cites.org/sites/default/files/common/prog/mike/survey/dung_standards.pdf\n  \n  ##   Fit logistic regression model to STATE on DAYS, extract coefficients\n  dung.glm <- glm(STATE ~ DAYS, data=DATA, family=binomial(link = \"logit\"))\n  betas <- coefficients(dung.glm)\n  ##   Calculate mean persistence time\n  mean.decay <- -(1+exp(-betas[1])) * log(1+exp(betas[1])) / betas[2]\n  ## Calculate the variance of the estimate\n  vcovar <- vcov(dung.glm)\n  var0 <- vcovar[1,1]  # variance of beta0\n  var1 <- vcovar[2,2]  # variance of beta1\n  covar <- vcovar[2,1] # covariance\n  deriv0 <- -(1-exp(-betas[1]) * log(1+exp(betas[1])))/betas[2]\n  deriv1 <- -mean.decay/betas[2]\n  var.mean <- var0*deriv0^2 + 2*covar*deriv0*deriv1 + var1*deriv1^2\n  ## Calculate the SE and CV and return\n  se.mean <- sqrt(var.mean)\n  cv.mean <- se.mean/mean.decay\n  out <- c(mean.decay, se.mean, 100*cv.mean)\n  names(out) <- c(\"Mean persistence time\", \"SE\", \"%CV\")\n  plot(decay$DAYS, jitter(decay$STATE, amount=0.10), xlab=\"Days since initiation\",\n       ylab=\"Dung persists (yes=1)\",\n       main=\"Eight dung piles revisited over time\")\n  curve(predict(dung.glm, data.frame(DAYS=x), type=\"resp\"), add=TRUE)\n  abline(v=mean.decay, lwd=2, lty=3)\n  return(out)\n}\ndecay <- read.csv(\"IntroDS_9.1.csv\")\npersistence.time <- MIKE.persistence(decay)\nprint(persistence.time)\n\nRunning the above command should have produced a plot of dung persistence versus days since produced and fitted a logistic regression (this is like a simple linear regression but restricts the response to taking values between 0 and 1). Note the points can in reality only take values between 0 and 1 but for the purposes of plotting have been ‘jittered’ to avoid over-plotting.\nAn estimate of mean persistence time and measure of variability are also provided - make a note of these as they will be required below.\nAs stated above, we want an object which contains information on the dung production rate (and standard error) and dung decay rate (and standard error). The following command creates a list containing two data frames:\n\ncreation contains estimates of the dung production rate and associated standard error\ndecay contains the dung decay rate and associated standard error where XX and YY are the estimates you obtained from the dung decay rate analysis.\n\n\n# Create list of multipliers\nmult <- list(creation = data.frame(rate=25, SE=0),\n#             decay    = data.frame(rate=XX, SE=YY))\nprint(mult)\n\nThe final step is to use these multipliers to convert \\(\\hat D_{\\textrm{pellet groups}}\\) to \\(\\hat D_{\\textrm{deer}}\\) (as in the equations above) - for this we need to employ the dht2 function. In the command below the multipliers= argument allows us to specify the rates and standard errors. There are a couple of other function arguments that need some explanation:\n\nstrat_formula=~Region.Label is specified to take into account the design (i.e. different woodlands or blocks).\nstratification=\"effort_sum\" is specified because we want to produce an overall estimate density that is the mean of the woodland specific densities weighted by effort allocated within each block.\ndeer.df is the detection function you have fitted.\n\n\n# Weight by effort because we have repeats\ndeer.ests <- dht2(deer.df, flatfile=sikadeer, strat_formula=~Region.Label,\n                 convert_units=conversion.factor, multipliers=mult, \n                 stratification=\"effort_sum\", total_area=13.9)\nprint(deer.ests)\n\nThe function dht2 also provides information on the components of variance. Make a note of the these (contribution of detection function, encounter rate, decay rate and what happened to production rate component?) in each strata."
+  },
+  {
+    "objectID": "Pr8/Group-size-covariate.html",
+    "href": "Pr8/Group-size-covariate.html",
+    "title": "Size bias—how large is the problem?",
+    "section": "",
+    "text": "Supplement\n\n\n\nCorrecting size bias via size as a covariate. When does it matter?"
+  },
+  {
+    "objectID": "Pr8/Group-size-covariate.html#analysis-including-group-size-covariate",
+    "href": "Pr8/Group-size-covariate.html#analysis-including-group-size-covariate",
+    "title": "Size bias—how large is the problem?",
+    "section": "Analysis including group size covariate",
+    "text": "Analysis including group size covariate\n\nrunsim.cov <- run.simulation(size.cov, run.parallel = TRUE)\n\n\n\n\n\n\nThe distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2272.47."
+  },
+  {
+    "objectID": "Pr8/Group-size-covariate.html#analysis-without-group-size-covariate",
+    "href": "Pr8/Group-size-covariate.html#analysis-without-group-size-covariate",
+    "title": "Size bias—how large is the problem?",
+    "section": "Analysis without group size covariate",
+    "text": "Analysis without group size covariate\nAs a comparison, what happens if we don’t include size as a covariate in our detection function?\n\n\n\n\n\nThe distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average \\(\\hat{N}_{indiv}\\) across all simulations is 2304.95."
+  },
+  {
+    "objectID": "Pr8/Group-size-covariate.html#analysis-with-covariate",
+    "href": "Pr8/Group-size-covariate.html#analysis-with-covariate",
+    "title": "Size bias—how large is the problem?",
+    "section": "Analysis with covariate",
+    "text": "Analysis with covariate\n\n\n\n\n\nWhen including size as a covariate, estimates of average group size are not affected (figure above). Likewise, mean \\(\\hat{N}_{indiv}\\) is effectively unbiased: 5453.55."
+  },
+  {
+    "objectID": "Pr8/Group-size-covariate.html#analysis-without-the-covariate",
+    "href": "Pr8/Group-size-covariate.html#analysis-without-the-covariate",
+    "title": "Size bias—how large is the problem?",
+    "section": "Analysis without the covariate",
+    "text": "Analysis without the covariate\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5829.77, 32.9 percent larger than the true number of individuals in the population, 4388."
   }
 ]

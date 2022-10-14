@@ -15,13 +15,9 @@ Correcting size bias via `size` as a covariate.  When does it matter?
 ```{r}
 #| label = "setup",
 #| include = FALSE
-# library(tint)
-library(extraDistr)
-library(DSsim)
+library(dsims)
 library(Distance)
-# invalidate cache when the package version changes
-knitr::opts_chunk$set(tidy = FALSE)
-options(htmltools.dir.version = FALSE)
+library(extraDistr)
 ```
 
 # Size bias in distance sampling surveys
@@ -59,15 +55,18 @@ I'll create a population with this distribution of herd size, with a true number
 
 ```{r}
 #| label = "sim10",
-#| cache = TRUE,
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE
 set.seed(2462)
 eg.region <- make.region()
 covariate.list <- list()
-covariate.list$size <- list(list("ztruncpois", list(mean = 10)))
-pop.desc <- make.population.description(covariates = covariate.list, N=200)
+covariate.list$size <- list(list(distribution="ztruncpois", 
+                                 mean = 10))
+pop.desc <- make.population.description(region = eg.region,
+                                        density = make.density(region=eg.region),
+                                        covariates = covariate.list, 
+                                        N=200)
 cov.params <- list(size = c(0.10))
 detect <- make.detectability(scale.param = 10, 
                              cov.param = cov.params, 
@@ -76,21 +75,21 @@ plot(detect, pop.desc)
 my.pop <- generate.population(pop.desc, detect, eg.region)
 transects <- make.design()
 simulation <- make.simulation()
-# thelines <- generate.transects(simulation)
-size.cov <- make.simulation(reps=150, region=eg.region, design=transects, 
+detmodel.size <- make.ds.analysis(dfmodel = list(~size),
+                                  key = "hn",
+                                  criteria = "AIC",
+                                  truncation=80)
+size.cov <- make.simulation(reps=150, design=transects, 
                             pop=pop.desc, det=detect,
-                            ddf.analyses.list=make.ddf.analysis.list(dsmodel=list(~cds(key="hn",
-                                                                                    formula=~size)),truncation=80))
-size.cov.sim <- run(size.cov, run.parallel = TRUE)
+                            ds.analysis = detmodel.size)
+size.cov.survey <- run.survey(size.cov)
 ```
 
 Do we have the tell-tale sign of size bias--missing small groups at large distances?
 
 ```{r}
 #| echo = FALSE
-survey.design <- create.survey.results(size.cov, dht.tables = TRUE)
-my.survey <- data.for.distance(object = survey.design)
-scatter.smooth(my.survey$distance, my.survey$size)
+scatter.smooth(size.cov.survey@dist.data$distance, size.cov.survey@dist.data$size)
 ```
 
 Perhaps small groups at large distances are missed; include group size in the detection function.
@@ -98,12 +97,18 @@ Perhaps small groups at large distances are missed; include group size in the de
 ## Analysis including group size covariate
 
 ```{r}
+runsim.cov <- run.simulation(size.cov, run.parallel = TRUE)
+```
+
+```{r}
 #| label = "small-with-covar",
 #| fig.width = 8,
 #| echo = FALSE
-hist(size.cov.sim@results$expected.size[1,1,1:150], main="Computed average group size\nGroup size covariate", xlab="Group size")
+hist(runsim.cov@results$expected.size[1,1,1:150], 
+     main="Computed average group size\nGroup size covariate", 
+     xlab="Group size", xlim=c(8,12))
 abline(v=unname(covariate.list$size[[1]][[2]][1]), lwd=2, lty=3)
-indiv <- size.cov.sim@results$individuals$N[1,1:6,151]
+indiv <- runsim.cov@results$individuals$N[1,1:6,151]
 ```
 
 The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function.  The average over the simulations estimated number of individuals was `r round(indiv[1],2)`.
@@ -117,12 +122,17 @@ As a comparison, what happens if we don't include size as a covariate in our det
 #| echo = FALSE,
 #| message = FALSE,
 #| fig.width = 8
-no.size.cov <- make.simulation(reps=150, region=eg.region, 
+detmodel.const <- make.ds.analysis(dfmodel = list(~1),
+                                  key = "hn",
+                                  criteria = "AIC",
+                                  truncation=80)
+no.size.cov <- make.simulation(reps=150, 
                                design=transects, pop=pop.desc, det=detect,
-                               ddf.analyses.list=make.ddf.analysis.list(dsmodel=list(~cds(key="hn",
-                                                                                    formula=~1)),truncation=80))
-no.size.sim <- run(size.cov, run.parallel = TRUE)
-hist(no.size.sim@results$expected.size[1,1,1:150], main="Computed average group size\nNo covariate", xlab="Group size")
+                               ds.analysis = detmodel.const)
+no.size.sim <- run.simulation(no.size.cov, run.parallel = TRUE)
+hist(no.size.sim@results$expected.size[1,1,1:150],
+     main="Computed average group size\nNo covariate", 
+     xlab="Group size", xlim=c(8,12))
 abline(v=unname(covariate.list$size[[1]][[2]][1]), lwd=2, lty=3)
 nosize.indiv <- no.size.sim@results$individuals$N[1,1:6,151]
 ```
@@ -144,30 +154,29 @@ sl <- log(3)
 group.size <- rlnorm(1000, ml, sl)
 mybr <- c(0,5,10,15,20,25,30,35,40,50,60,100,300,500)
 hist(group.size, breaks = mybr)
-covariate.list$size <- list(list("lognormal", 
-                                 list(meanlog = ml, sdlog = sl)))
-pop.desc <- make.population.description(covariates = covariate.list, N=200)
+covariate.list$size <- list(list(distribution="lognormal", 
+                                 meanlog = ml, sdlog = sl))
+pop.desc <- make.population.description(region = eg.region,
+                                        density = make.density(region=eg.region),
+                                        covariates = covariate.list, 
+                                        N=200)
 cov.params <- list(size = c(0.01))
 detect <- make.detectability(scale.param = 30, 
                              cov.param = cov.params, 
                              truncation = 80)
 plot(detect, pop.desc)
-transects <- make.design()
-simulation <- make.simulation()
-tail.size.cov <- make.simulation(reps=150, region=eg.region, design=transects, 
+tail.size.cov <- make.simulation(reps=150, design=transects, 
                                  pop=pop.desc, det=detect,
-                                 ddf.analyses.list=make.ddf.analysis.list(dsmodel=
-                                                                            list(~cds(key="hn",formula=~scale(size))),truncation=80))
-tail.size.cov.sim <- run(tail.size.cov, run.parallel = TRUE)
+                                 ds.analysis = detmodel.size)
+tail.size.cov.sim <- run.simulation(tail.size.cov, run.parallel = TRUE)
 tail.indiv <- tail.size.cov.sim@results$individuals$N[1,1:6,151]
 ```
 
 How about "missingness" of small groups at large distances?
 ```{r}
 #| echo = FALSE
-survey.design <- create.survey.results(size.cov, dht.tables = TRUE)
-my.survey <- data.for.distance(object = survey.design)
-scatter.smooth(my.survey$distance, my.survey$size)
+size.cov.survey <- run.survey(tail.size.cov)
+scatter.smooth(size.cov.survey@dist.data$distance, size.cov.survey@dist.data$size)
 ```
 
 ## Analysis with covariate
@@ -175,7 +184,9 @@ scatter.smooth(my.survey$distance, my.survey$size)
 ```{r}
 #| echo = FALSE,
 #| fig.margin = TRUE
-hist(tail.size.cov.sim@results$expected.size[1,1,1:150], main="Computed average group size\nGroup size covariate", xlab="Group size")
+hist(tail.size.cov.sim@results$expected.size[1,1,1:150], 
+     main="Computed average group size\nGroup size covariate", 
+     xlab="Group size")
 abline(v=exp(ml+sl^2/2), lty=3)
 ```
 
@@ -187,13 +198,14 @@ When including `size` as a covariate, estimates of average group size are not af
 #| label = "lognor-without",
 #| echo = FALSE,
 #| fig.margin = TRUE
-tail.size.NOcov <- make.simulation(reps=150, region=eg.region, design=transects, 
+tail.size.NOcov <- make.simulation(reps=150, design=transects, 
                                    pop=pop.desc, det=detect,
-                                   ddf.analyses.list=make.ddf.analysis.list(dsmodel=list(~cds(key="hn",
-                                                                                    formula=~1)),truncation=80))
-tail.size.NOcov.sim <- run(tail.size.NOcov, run.parallel = TRUE)
+                                   ds.analysis = detmodel.const)  
+tail.size.NOcov.sim <- run.simulation(tail.size.NOcov, run.parallel = TRUE)
 tail.indiv.NO <- tail.size.NOcov.sim@results$individuals$N[1,1:6,151]
-hist(tail.size.NOcov.sim@results$expected.size[1,1,1:150], main="Computed average group size\nNo covariate", xlab="Group size")
+hist(tail.size.NOcov.sim@results$expected.size[1,1,1:150], 
+     main="Computed average group size\nNo covariate", 
+     xlab="Group size")
 abline(v=exp(ml+sl^2/2), lty=3)
 ```
 

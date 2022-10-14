@@ -299,7 +299,7 @@ Supplement
 </div>
 <p>You can see it is very rare for herds to exceed a size of twice the mean.</p>
 <p>I’ll create a population with this distribution of herd size, with a true number of <strong>herds</strong> of 200; hence true number of individuals in the population is 2000.</p>
-<div class="cell" data-hash="Group-size-covariate_cache/html/sim10_f8c3cc203d91906a6d7a2b7d7302ca21">
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/sim10-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -314,11 +314,14 @@ Supplement
 <section id="analysis-including-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-including-group-size-covariate">Analysis including group size covariate</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>runsim.cov <span class="ot">&lt;-</span> <span class="fu">run.simulation</span>(size.cov, <span class="at">run.parallel =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2008.39.</p>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2272.47.</p>
 </section>
 <section id="analysis-without-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
@@ -328,7 +331,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2005.56.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2304.95.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
@@ -346,17 +349,17 @@ Supplement
 <p>How about “missingness” of small groups at large distances?</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <section id="analysis-with-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-with-covariate">Analysis with covariate</h2>
 <div class="cell" data-fig.margin="true">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4499.07.</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5453.55.</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -365,10 +368,10 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5420.44, 23.5 percent larger than the true number of individuals in the population, 4388.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5829.77, 32.9 percent larger than the true number of individuals in the population, 4388.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
