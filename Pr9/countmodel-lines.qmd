@@ -247,8 +247,8 @@ To generalise the code, and recognising the same call to `glm()` will need to be
 
 
 ```{r}
-#| label = "tbl-basicglmline",
-#| tbl-cap = "GLM model output"
+#| label: "tbl-basicglmline"
+#| tbl-cap: "GLM model output"
 univarpredictor <- all.vars(myglmmodel)[2]
 glmmodel <- glm(formula=myglmmodel, family="poisson", data=sitesadj)
 modelsum <- summary(glmmodel)

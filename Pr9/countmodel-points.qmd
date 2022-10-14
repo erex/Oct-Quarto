@@ -259,7 +259,7 @@ sitesadj <- effAreafn(woo.o, newthrasher, 10000, dettrunc, pointflag = pointtran
 As for the line transect example, fit a GLM to the observed counts, using as an offset the estimated effective area.  By default, specifying family as `poisson` assumes a `log` link function.  
 
 ```{r}
-#| label = "tbl-basicglmpt",
+#| label: "tbl-basicglmpt"
 #| tbl-cap: "GLM model output"
 univarpredictor <- all.vars(myglmmodel)[2]
 glmmodel <- glm(formula=myglmmodel, family="poisson", data=sitesadj)

@@ -608,21 +608,17 @@ Warning
 <h2 class="anchored" data-anchor-id="estimate-relationship-of-density-and-covariate">Estimate relationship of density and covariate</h2>
 <p>Fit a GLM to the observed counts, using as an offset the estimated effective area. By default, specifying family as <code>poisson</code> assumes a <code>log</code> link function. Consequently, the offset must also use the <code>log</code> transform.</p>
 <p>To generalise the code, and recognising the same call to <code>glm()</code> will need to be made elsewhere in this analysis, we specify the GLM model we wish to fit as an object of type <code>formula</code>. This was specified in the <a href="#analysis-parameters-specification">Analysis parameters specification</a> section above.</p>
-<div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>univarpredictor <span class="ot">&lt;-</span> <span class="fu">all.vars</span>(myglmmodel)[<span class="dv">2</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>glmmodel <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula=</span>myglmmodel, <span class="at">family=</span><span class="st">"poisson"</span>, <span class="at">data=</span>sitesadj)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>modelsum <span class="ot">&lt;-</span> <span class="fu">summary</span>(glmmodel)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tablecaption <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"GLM coefficients from counts as function of"</span>, </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      univarpredictor, <span class="st">"with log(effective area) offset."</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(modelsum<span class="sc">$</span>coef, <span class="at">digits=</span><span class="dv">4</span>, <span class="at">caption=</span>tablecaption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="tbl-basicglmline" class="cell tbl-parent quarto-layout-panel anchored">
-<div class="panel-caption table-caption">
-<p>Table 1: <strong>?(caption)</strong></p>
-</div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-basicglmline-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-basicglmline" style="flex-basis: 100.0%;justify-content: center;">
+<div class="cell-output-display">
+<div id="tbl-basicglmline" class="anchored">
 <table class="table table-sm table-striped">
-<caption>(a) GLM coefficients from counts as function of shrub with log(effective area) offset.</caption>
+<caption>Table 1: GLM model output</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -649,7 +645,6 @@ Warning
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
