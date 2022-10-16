@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-09-01">
+<meta name="dcterms.date" content="2022-10-16">
 
-<title>Distance sampling lab book - Exercise 6How much survey effort is needed?</title>
+<title>Distance sampling lab book - Effort and power calculations for line transect surveys</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,7 +78,6 @@ div.csl-indent {
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="readthedown.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -129,7 +128,7 @@ div.csl-indent {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Exercise 6<br>How much survey effort is needed?</h1>
+      <h1 class="quarto-secondary-nav-title">Effort and power calculations for line transect surveys</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -159,7 +158,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link active">Exercise 6<br>How much survey effort is needed?</a>
+  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link active">Effort and power calculations for line transect surveys</a>
   </div>
 </li>
     </ul>
@@ -189,7 +188,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Exercise 6<br>How much survey effort is needed?</h1>
+<h1 class="title d-none d-lg-block">Effort and power calculations for line transect surveys</h1>
 </div>
 
 
@@ -206,7 +205,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 1, 2022</p>
+      <p class="date">October 16, 2022</p>
     </div>
   </div>
     
@@ -215,8 +214,18 @@ div.csl-indent {
 
 </header>
 
-<div class="alert alert-success">
-<p><strong>Demonstration</strong> Effort needed to achieve objective</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Demonstration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Effort needed to achieve objective</p>
+</div>
 </div>
 <section id="why-is-study-being-undertaken" class="level1">
 <h1>Why is study being undertaken?</h1>
@@ -266,10 +275,13 @@ L = \frac{b}{cv_t\left(\hat{D}\right)^2} \times \frac{1}{\mbox{enc rate}_{pilot}
 <p>The methods presented in <span class="citation" data-cites="gerrodette1987">Gerrodette (<a href="#ref-gerrodette1987" role="doc-biblioref">1987</a>)</span> are reasonably simple. More sophisticated evaluation of distance sampling for population modelling is presented in <span class="citation" data-cites="andersen2020">Andersen &amp; Steidl (<a href="#ref-andersen2020" role="doc-biblioref">2020</a>)</span>. A suggestion by <span class="citation" data-cites="white2019">White (<a href="#ref-white2019" role="doc-biblioref">2019</a>)</span> is that without <em>a priori</em> assessment of power to detect change, most wildlife assessment studies exaggerate their ability to detect change.</p>
 <p>This Shiny app is intended to give investigators an approximate idea of the feasibility of conducting investigations to detect change in animal populations. A further set of computations could ensue that converts computed effort into a cost figure for annual surveys.</p>
 <p>The message is that conducting such investigations consistently with sufficient effort is a difficult challenge. The challenges are particularly acute when the objective is rapid assessment of small amounts of population change for a study animal with low encounter rates.</p>
+<iframe id="example1" src="https://erex.shinyapps.io/powershiny/" style="border: none; width: 100%; height: 720px" frameborder="0">
+</iframe>
 <div class="cell">
-<div class="cell-output-display">
-<p><iframe data-deferred-src="appa05a48694d659333768e2a3fc11d3f33/?w=&amp;__subapp__=1" width="800" height="800" class="shiny-frame shiny-frame-deferred"></iframe></p>
+
 </div>
+<div class="cell" data-context="server">
+
 </div>
 </section>
 <section id="references" class="level1">

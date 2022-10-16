@@ -1,0 +1,14 @@
+name: powershiny
+title: powershiny
+username:
+account: erex
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7321142
+bundleId: 6408365
+url: https://erex.shinyapps.io/powershiny/
+when: 1665934666.91949
+lastSyncTime: 1665934666.9195
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: apa.csl|design.qmd|effort-and-power.qmd|google-earth.jpg|leaflet-demo.qmd|nicerarea.cpg|nicerarea.dbf|nicerarea.prj|nicerarea.qpj|nicerarea.shp|nicerarea.shx|Pr6-instructions.qmd|references.bib|survey-unsplash.jpg|tentsmuir-points.gpx

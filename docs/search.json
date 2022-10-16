@@ -201,5 +201,33 @@
     "title": "Size bias—how large is the problem?",
     "section": "Analysis without the covariate",
     "text": "Analysis without the covariate\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5829.77, 32.9 percent larger than the true number of individuals in the population, 4388."
+  },
+  {
+    "objectID": "Pr6/effort-and-power.html",
+    "href": "Pr6/effort-and-power.html",
+    "title": "Effort and power calculations for line transect surveys",
+    "section": "",
+    "text": "Demonstration\n\n\n\nEffort needed to achieve objective"
+  },
+  {
+    "objectID": "Pr6/effort-and-power.html#cv-graph",
+    "href": "Pr6/effort-and-power.html#cv-graph",
+    "title": "Effort and power calculations for line transect surveys",
+    "section": "CV graph",
+    "text": "CV graph\nThe result tab showing the relationship between cumulative population change and necessary CV is shown in the CV graph tab. There is a positive relationship between these: greater population loss requires less precision to detect; or small population change requires more precise density estimates. The red dot and horizontal dotted line indicate the precision of annual estimates to detect the specified cumulative change over the specified number of annual surveys with the desired power. For these calculations, the encounter rate from the pilot survey plays no role."
+  },
+  {
+    "objectID": "Pr6/effort-and-power.html#effort-graph",
+    "href": "Pr6/effort-and-power.html#effort-graph",
+    "title": "Effort and power calculations for line transect surveys",
+    "section": "Effort graph",
+    "text": "Effort graph\nThe result tab labelled Effort graph brings information from the pilot survey into the calculations. The CV graph indicates the necessary precision to achieve the desired results, this CV is fed into the formula from Buckland et al. (2015) to estimate the amount of survey effort to be expended annually to achieve the precision derived from the power calculations.\nThe red ball and horizontal dotted line now indicates the amount of effort needed to achieve the specified objectives. Small changes in abundance require exponentially larger amounts of annual survey effort to detect. The steepness of that exponential curve is less extreme when encounter rates are large."
+  },
+  {
+    "objectID": "Pr6/effort-and-power.html#numerical-result-of-power-calculation",
+    "href": "Pr6/effort-and-power.html#numerical-result-of-power-calculation",
+    "title": "Effort and power calculations for line transect surveys",
+    "section": "Numerical result of power calculation",
+    "text": "Numerical result of power calculation\nThe final result tab simply provides a single numerical solution to the required CV and effort necessary to achieve that CV for the specified combination of cumulative change, number of annual surveys, power and pilot study encounter rate."
   }
 ]
