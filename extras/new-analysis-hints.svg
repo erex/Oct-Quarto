@@ -1,0 +1,594 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="700px" preserveAspectRatio="none" style="width:868px;height:700px;background:#00000000;" version="1.1" viewBox="0 0 868 700" width="868.75px" zoomAndPan="magnify"><defs/><g><!--MD5=[cb5a921a102c2c5311c0323fa43cc2df]
+entity select--><g id="elem_select"><svg x="329.1667" y="69.7917"><defs/><g transform="scale(1.0417,1.0417)" ><rect fill="#FFFFFF" style="width:230px;height:545px;background:#FFFFFF;" /> <!--MD5=[2bb4b2ee1b7681827cd11198249efeba]
+cluster Selection phase--><g id="cluster_Selection phase"><polygon points="16.6667,6.25,166.6667,6.25,173.9583,39.8926,212.5,39.8926,212.5,538.5417,16.6667,538.5417,16.6667,6.25" style="stroke:#000000;stroke-width:1.5625;fill:none;"/><line style="stroke:#000000;stroke-width:1.5625;fill:none;" x1="16.6667" x2="173.9583" y1="39.8926" y2="39.8926"/><text fill="#000000" font-family="sans-serif" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="133.3333" x="26.0417" y="27.0782">Selection phase</text></g><rect fill="#F1F1F1" height="45.8008" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="130.2083" x="49.4792" y="53.125"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="98.9583" x="65.1042" y="80.3528">Binned or exact</text><rect fill="#F1F1F1" height="45.8008" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="95.8333" x="66.6667" y="140.625"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="64.5833" x="82.2917" y="167.8528">Truncation</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="89.5833" x="69.7917" y="228.125"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="58.3333" x="85.4167" y="255.3528">Cutpoints</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="54.1667" x="85.4167" y="269.9036">if binned</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="162.5" x="33.3333" y="330.2083"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="131.25" x="48.9583" y="357.4361">Key and adjustments</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="122.9167" x="48.9583" y="371.9869">possibly covariates</text><rect fill="#F1F1F1" height="89.4531" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="152.0833" x="38.5417" y="432.2917"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="91.6667" x="54.1667" y="459.5194">Choose model</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="33.3333" x="54.1667" y="474.0702">using</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="78.125" x="54.1667" y="488.621">GOF and AIC</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="120.8333" x="54.1667" y="503.1718">supported by plots</text><!--MD5=[6f6094bfe94dad2c7f5c266b8e88dc03]
+link Binned or exact to Truncation--><g id="link_Binned or exact_Truncation"><path d="M114.5833,99.0802 C114.5833,110.1396 114.5833,123.6437 114.5833,135.3438 " fill="none" id="Binned or exact-to-Truncation" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="114.5833,140.5781,118.75,131.2031,114.5833,135.3698,110.4167,131.2031,114.5833,140.5781" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[814f6d772efcac1f0e8b2f0d4510e9e4]
+link Truncation to Cutpoints\nif binned--><g id="link_Truncation_Cutpoints\nif binned"><path d="M114.5833,186.5542 C114.5833,197.326 114.5833,210.5552 114.5833,222.6469 " fill="none" id="Truncation-to-Cutpoints\nif binned" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="114.5833,228.1094,118.75,218.7344,114.5833,222.901,110.4167,218.7344,114.5833,228.1094" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[1287c3c05682faf58ef88956799f0c88]
+link Cutpoints\nif binned to Key and adjustments\npossibly covariates--><g id="link_Cutpoints\nif binned_Key and adjustments\npossibly covariates"><path d="M114.5833,288.5677 C114.5833,299.8667 114.5833,312.8896 114.5833,324.6625 " fill="none" id="Cutpoints\nif binned-to-Key and adjustments\npossibly covariates" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="114.5833,329.9729,118.75,320.5979,114.5833,324.7646,110.4167,320.5979,114.5833,329.9729" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[91126fe223fa451293f92027284ea9b9]
+link Key and adjustments\npossibly covariates to Choose model\nusing\nGOF and AIC\nsupported by plots--><g id="link_Key and adjustments\npossibly covariates_Choose model\nusing\nGOF and AIC\nsupported by plots"><path d="M114.5833,390.6688 C114.5833,401.6927 114.5833,414.5583 114.5833,426.9073 " fill="none" id="Key and adjustments\npossibly covariates-to-Choose model\nusing\nGOF and AIC\nsupported by plots" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="114.5833,432.1615,118.75,422.7865,114.5833,426.9531,110.4167,422.7865,114.5833,432.1615" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[516820eaf2e180651887e72ce8bdf26a]
+@startuml
+partition "Selection phase" {
+     "Binned or exact"  - -> Truncation
+    - -> "Cutpoints\nif binned"
+    - -> "Key and adjustments\npossibly covariates"
+    - -> "Choose model\nusing\nGOF and AIC\nsupported by plots"
+    }
+@enduml
+
+PlantUML version 1.2022.2beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></g><!--MD5=[a6df08d62429cc7e382e487fec3dc789]
+entity explore--><g id="elem_explore"><svg x="16.6667" y="16.6667"><defs/><g transform="scale(1.0417,1.0417)" ><rect fill="#FFFFFF" style="width:236px;height:647px;background:#FFFFFF;" /> <!--MD5=[1b4f466072d871b32b673d6dbadc4cfd]
+cluster Exploratory phase--><g id="cluster_Exploratory phase"><polygon points="16.6667,6.25,186.4583,6.25,193.75,39.8926,218.75,39.8926,218.75,640.625,16.6667,640.625,16.6667,6.25" style="stroke:#000000;stroke-width:1.5625;fill:none;"/><line style="stroke:#000000;stroke-width:1.5625;fill:none;" x1="16.6667" x2="193.75" y1="39.8926" y2="39.8926"/><text fill="#000000" font-family="sans-serif" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="153.125" x="26.0417" y="27.0782">Exploratory phase</text></g><rect fill="#F1F1F1" height="45.8008" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="103.125" x="66.1458" y="53.125"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="71.875" x="81.7708" y="80.3528">Histograms</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="95.8333" x="69.7917" y="140.625"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="64.5833" x="85.4167" y="167.8528">Exact data</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="56.25" x="85.4167" y="182.4036">QQ plots</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="167.7083" x="33.8542" y="242.7083"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="121.875" x="49.4792" y="269.9361">Preliminary analysis</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="136.4583" x="49.4792" y="284.4869">Assumption violations</text><rect fill="#F1F1F1" height="74.9023" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="122.9167" x="56.25" y="344.7917"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="91.6667" x="71.875" y="372.0194">First decisions</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="64.5833" x="71.875" y="386.5702">Truncation</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="44.7917" x="71.875" y="401.121">Binning</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="122.9167" x="56.25" y="461.4583"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="91.6667" x="71.875" y="488.6861">Clustered data</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="63.5417" x="71.875" y="503.2369">Size bias?</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="150" x="42.7083" y="563.5417"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="118.75" x="58.3333" y="590.7694">Covariate boxplots</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="88.5417" x="58.3333" y="605.3202">Relationships?</text><!--MD5=[21c9d925b694979e3eb0676f4ab17b04]
+link Histograms to Exact data\nQQ plots--><g id="link_Histograms_Exact data\nQQ plots"><path d="M117.7083,99.0542 C117.7083,109.826 117.7083,123.0552 117.7083,135.1469 " fill="none" id="Histograms-to-Exact data\nQQ plots" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="117.7083,140.6094,121.875,131.2344,117.7083,135.401,113.5417,131.2344,117.7083,140.6094" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[f8371fc0e41b8c8f588192665386aecc]
+link Exact data\nQQ plots to Preliminary analysis\nAssumption violations--><g id="link_Exact data\nQQ plots_Preliminary analysis\nAssumption violations"><path d="M117.7083,201.0677 C117.7083,212.3667 117.7083,225.3896 117.7083,237.1625 " fill="none" id="Exact data\nQQ plots-to-Preliminary analysis\nAssumption violations" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="117.7083,242.4729,121.875,233.0979,117.7083,237.2646,113.5417,233.0979,117.7083,242.4729" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[6996ae042737b54314b47c109dd17e39]
+link Preliminary analysis\nAssumption violations to First decisions\nTruncation\nBinning--><g id="link_Preliminary analysis\nAssumption violations_First decisions\nTruncation\nBinning"><path d="M117.7083,303.276 C117.7083,314.3604 117.7083,327.2021 117.7083,339.225 " fill="none" id="Preliminary analysis\nAssumption violations-to-First decisions\nTruncation\nBinning" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="117.7083,344.6823,121.875,335.3073,117.7083,339.474,113.5417,335.3073,117.7083,344.6823" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[d6e5653e0d43bf05e7e1a40608acde30]
+link First decisions\nTruncation\nBinning to Clustered data\nSize bias?--><g id="link_First decisions\nTruncation\nBinning_Clustered data\nSize bias?"><path d="M117.7083,419.9573 C117.7083,431.5385 117.7083,444.301 117.7083,455.7563 " fill="none" id="First decisions\nTruncation\nBinning-to-Clustered data\nSize bias?" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="117.7083,461.2635,121.875,451.8885,117.7083,456.0552,113.5417,451.8885,117.7083,461.2635" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[981e0a64fc16a6162be109450d0e14d6]
+link Clustered data\nSize bias? to Covariate boxplots\nRelationships?--><g id="link_Clustered data\nSize bias?_Covariate boxplots\nRelationships?"><path d="M117.7083,521.901 C117.7083,533.2 117.7083,546.2229 117.7083,557.9957 " fill="none" id="Clustered data\nSize bias?-to-Covariate boxplots\nRelationships?" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="117.7083,563.3059,121.875,553.9309,117.7083,558.0976,113.5417,553.9309,117.7083,563.3059" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[88a499920eaab0fe724510f8f4739dd9]
+@startuml
+    partition "Exploratory phase" {
+    Histograms - -> "Exact data\nQQ plots"
+    - -> "Preliminary analysis\nAssumption violations"
+    - -> "First decisions\nTruncation\nBinning"
+    - -> "Clustered data\nSize bias?"
+    - -> "Covariate boxplots\nRelationships?"
+     }
+@enduml
+
+PlantUML version 1.2022.2beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></g><!--MD5=[13975603d50ae75a37e8557c4b6b6bc4]
+entity final--><g id="elem_final"><svg x="635.9375" y="122.9167"><defs/><g transform="scale(1.0417,1.0417)" ><rect fill="#FFFFFF" style="width:215px;height:443px;background:#FFFFFF;" /> <!--MD5=[4c35029aa7263f0f697fc359c2488424]
+cluster Final phase--><g id="cluster_Final phase"><polygon points="16.6667,6.25,129.1667,6.25,136.4583,39.8926,197.9167,39.8926,197.9167,436.4583,16.6667,436.4583,16.6667,6.25" style="stroke:#000000;stroke-width:1.5625;fill:none;"/><line style="stroke:#000000;stroke-width:1.5625;fill:none;" x1="16.6667" x2="136.4583" y1="39.8926" y2="39.8926"/><text fill="#000000" font-family="sans-serif" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="95.8333" x="26.0417" y="27.0782">Final phase</text></g><rect fill="#F1F1F1" height="45.8008" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="103.125" x="55.7292" y="53.125"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="71.875" x="71.3542" y="80.3528">Best model</text><rect fill="#F1F1F1" height="60.3516" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="106.25" x="54.1667" y="140.625"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="61.4583" x="69.7917" y="167.8528">Bootstrap</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="75" x="69.7917" y="182.4036">for variance</text><rect fill="#F1F1F1" height="89.4531" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="146.875" x="33.8542" y="242.7083"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="115.625" x="49.4792" y="269.9361">Extract summaries</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="69.7917" x="49.4792" y="284.4869">histograms</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="31.25" x="49.4792" y="299.0377">plots</text><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="112.5" x="49.4792" y="313.5885">candidate models</text><rect fill="#F1F1F1" height="45.8008" rx="13.0208" ry="13.0208" style="stroke:#181818;stroke-width:0.5208333333333334;" width="108.3333" x="53.125" y="373.9583"/><text fill="#000000" font-family="sans-serif" font-size="12.5" lengthAdjust="spacing" textLength="77.0833" x="68.75" y="401.1861">Write report</text><!--MD5=[773fea4851d506ca08bbf734c24e2ef1]
+link Best model to Bootstrap\nfor variance--><g id="link_Best model_Bootstrap\nfor variance"><path d="M107.2917,99.0542 C107.2917,109.826 107.2917,123.0552 107.2917,135.1469 " fill="none" id="Best model-to-Bootstrap\nfor variance" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="107.2917,140.6094,111.4583,131.2344,107.2917,135.401,103.125,131.2344,107.2917,140.6094" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[339faada0f6f780ba7c97fcb86585106]
+link Bootstrap\nfor variance to Extract summaries\nhistograms\nplots\ncandidate models--><g id="link_Bootstrap\nfor variance_Extract summaries\nhistograms\nplots\ncandidate models"><path d="M107.2917,201.0854 C107.2917,212.1094 107.2917,224.975 107.2917,237.324 " fill="none" id="Bootstrap\nfor variance-to-Extract summaries\nhistograms\nplots\ncandidate models" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="107.2917,242.5781,111.4583,233.2031,107.2917,237.3698,103.125,233.2031,107.2917,242.5781" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[d6edf614894fb0f237842439b363db62]
+link Extract summaries\nhistograms\nplots\ncandidate models to Write report--><g id="link_Extract summaries\nhistograms\nplots\ncandidate models_Write report"><path d="M107.2917,332.4906 C107.2917,344.725 107.2917,357.6555 107.2917,368.6213 " fill="none" id="Extract summaries\nhistograms\nplots\ncandidate models-to-Write report" style="stroke:#181818;stroke-width:1.0416666666666667;"/><polygon fill="#181818" points="107.2917,373.835,111.4583,364.46,107.2917,368.6267,103.125,364.46,107.2917,373.835" style="stroke:#181818;stroke-width:1.0416666666666667;"/></g><!--MD5=[7e538fe5f786e137195d4f99e9b0347e]
+@startuml
+    partition "Final phase" {
+    "Best model" - -> "Bootstrap\nfor variance"
+    - -> "Extract summaries\nhistograms\nplots\ncandidate models"
+    - -> "Write report"
+    }
+@enduml
+
+PlantUML version 1.2022.2beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></g><!--MD5=[02cf18d0aed3de807ec0f0c7ba90cc4c]
+link explore to select--><g id="link_explore_select"><path codeLine="35" d="M277.1333,614.1403 C287.4844,617.9367 297.8354,618.1857 308.1865,614.8876 " fill="none" id="explore-to-select" style="stroke:#446E9B;stroke-width:3.125;"/><polygon fill="#446E9B" points="313.2677,612.9836,303.0268,612.3712,308.3905,614.8111,305.9507,620.1748,313.2677,612.9836" style="stroke:#446E9B;stroke-width:3.125;"/></g><!--MD5=[857676f84248b61740bdd48a7e4fc88d]
+reverse link explore to select--><g id="link_explore_select"><path codeLine="36" d="M282.2146,90.5312 C292.5656,87.8958 302.9167,88.8073 313.2677,93.2667 " fill="none" id="explore-backto-select" style="stroke:#446E9B;stroke-width:3.125;"/><polygon fill="#446E9B" points="277.1333,92.1094,287.3227,93.305,282.1069,90.5631,284.8487,85.3473,277.1333,92.1094" style="stroke:#446E9B;stroke-width:3.125;"/></g><!--MD5=[f8f4827263fcbb6bd396c90410c8e861]
+link select to final--><g id="link_select_final"><path codeLine="37" d="M583.6115,353.125 C593.9625,353.125 604.3146,353.125 614.6656,353.125 " fill="none" id="select-to-final" style="stroke:#446E9B;stroke-width:3.125;"/><polygon fill="#446E9B" points="620.0792,353.125,610.7042,348.9583,614.8708,353.125,610.7042,357.2917,620.0792,353.125" style="stroke:#446E9B;stroke-width:3.125;"/></g><!--MD5=[654af0e21a4667ede782bad3e7b39e2e]
+@startuml
+!theme spacelab
+label select [
+{{
+partition "Selection phase" {
+     "Binned or exact"  - -> Truncation
+    - -> "Cutpoints\nif binned"
+    - -> "Key and adjustments\npossibly covariates"
+    - -> "Choose model\nusing\nGOF and AIC\nsupported by plots"
+    }
+}}
+]
+
+label explore [
+{{
+    partition "Exploratory phase" {
+    Histograms - -> "Exact data\nQQ plots"
+    - -> "Preliminary analysis\nAssumption violations"
+    - -> "First decisions\nTruncation\nBinning"
+    - -> "Clustered data\nSize bias?"
+    - -> "Covariate boxplots\nRelationships?"
+     }
+}}
+]
+
+label final [
+{{
+    partition "Final phase" {
+    "Best model" - -> "Bootstrap\nfor variance"
+    - -> "Extract summaries\nhistograms\nplots\ncandidate models"
+    - -> "Write report"
+    }
+}}
+]
+
+explore -right-> select
+select -left-> explore
+select -right-> final
+@enduml
+
+@startuml
+
+
+
+skinparam backgroundColor transparent
+skinparam useBetaStyle false
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor transparent
+    FontColor #ffffff
+    HyperLinkColor #fd7e14
+    LineColor #304d6d
+    LineThickness 1
+    Margin 10
+    Padding 6
+    Shadowing 0.0
+  }
+  node {
+   Padding 15
+   roundcorner 20
+   BackgroundColor #446e9b-#304d6d
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  groupHeader {
+    BackgroundColor #999999
+    FontColor #3399f3
+    FontStyle bold
+  }
+  header {
+    LineThickness 0
+  }
+  referenceHeader {
+    BackgroundColor transparent
+    FontColor #333333
+    FontStyle bold
+  }
+  separator {
+    BackgroundColor #ffffff
+    FontColor transparent
+    FontStyle bold
+  }
+  title {
+	FontSize 20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor  #b8b8b8-#999999
+	FontColor #446e9b
+	BorderColor #999999
+  }
+  nwdiagDiagram {
+	network {
+			FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d    
+		LineColor #446e9b
+		LineThickness 1.0
+		FontColor #304d6d
+	}
+	server {
+			FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	}
+	arrow {
+		FontColor #304d6d
+		LineColor #304d6d
+	}
+	group {
+		BackGroundColor #eeeeee
+		LineColor #a7a7a7
+		LineThickness 2.0
+		Margin 5
+		Padding 5
+	}
+  }
+  ganttDiagram {
+	task {
+			FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+		LineColor #446e9b
+		Margin 10
+		Padding 6
+	}
+	note {
+		FontColor #ffffff
+		LineColor #246baa
+		BackGroundColor #3399f3
+	}
+	separator {
+		LineColor #999999
+		BackGroundColor #999999-#6b6b6b
+		FontColor #ffffff
+	}
+	milestone {
+		FontColor #3399f3
+		FontSize 16
+		FontStyle italic
+		BackGroundColor #999999
+		LineColor #6b6b6b
+	}
+	timeline {
+		BackgroundColor #999999
+		FontColor #ffffff
+	}
+	closed {
+		BackgroundColor #945200
+		FontColor #ffffff
+	}
+  }
+</style>
+skinparam defaultFontName       "Verdana"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           8
+skinparam ParticipantPadding    40
+skinparam BoxPadding            40
+skinparam Padding               5
+skinparam ArrowColor            #333333
+skinparam stereotype {
+    CBackgroundColor #b8b8b8
+    CBorderColor #6b6b6b
+    ABackgroundColor #4cbc5c
+    ABorderColor #32a243
+    IBackgroundColor #dc4e4d
+    IBorderColor #900100
+    EBackgroundColor #e19e4d
+    EBorderColor #945200
+    NBackgroundColor #70b8f7
+    NBorderColor #246baa
+}
+skinparam title {
+	FontColor	                 #304d6d
+	BorderColor	                 #6b6b6b
+	FontSize	    	         20
+	BorderRoundCorner            8
+	BorderThickness 	         1
+	BackgroundColor              #b8b8b8-#999999
+}
+
+skinparam legend {
+	BackgroundColor #999999
+	BorderColor #6b6b6b
+	FontColor #eeeeee
+}
+
+skinparam swimlane {
+	BorderColor #3399f3
+	BorderThickness 2
+	TitleBackgroundColor  #b8b8b8-#999999
+	TitleFontColor #304d6d
+}
+
+
+skinparam activity {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	BarColor #3cb521
+	StartColor #3399f3
+	EndColor #3399f3
+	DiamondBackgroundColor #b8b8b8-#6b6b6b
+  	DiamondBorderColor #6b6b6b
+  	DiamondFontColor #ffffff
+}
+
+
+skinparam participant {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	ParticipantBorderThickness 2
+}
+
+
+skinparam actor {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam arrow {
+	Thickness 3
+	Color #446e9b
+	FontColor #ffffff
+}
+
+
+skinparam sequence {
+	BorderColor #446e9b
+	TitleFontColor #446e9b
+	BackgroundColor transparent
+	StartColor #446e9b
+	EndColor #446e9b
+	BoxBackgroundColor transparent
+	BoxBorderColor #333333
+	BoxFontColor #333333
+	DelayFontColor #333333
+	LifeLineBorderColor #999999
+	LifeLineBorderThickness 2
+	LifeLineBackgroundColor #6b6b6b-#6b6b6b
+	GroupBorderColor #333333
+	GroupFontColor #333333
+	GroupHeaderFontColor #3399f3
+	GroupBackgroundColor #6b6b6b-#6b6b6b
+	GroupHeaderBackgroundColor transparent
+	DividerBackgroundColor #707070-#242424
+    DividerBorderColor #333333
+    DividerBorderThickness 2
+    DividerFontColor #eeeeee
+	ReferenceBackgroundColor transparent
+	ReferenceBorderColor #333333
+	ReferenceFontColor #333333
+	ReferenceHeaderFontColor #3399f3
+	ReferenceHeaderBackgroundColor #6b6b6b-#6b6b6b
+	StereotypeFontColor #ffffff
+}
+
+
+skinparam partition {
+	BorderColor #446e9b
+	FontColor #446e9b
+	BackgroundColor transparent
+}
+
+
+skinparam collections {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam control {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam entity {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam boundary {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam agent {
+	BackgroundColor #d47500
+	BorderColor #e19e4d
+	FontColor #333333
+}
+
+
+skinparam note {
+	BorderThickness 1
+	BackgroundColor #70b8f7-#246baa
+	BorderColor #246baa
+	FontColor #ffffff
+}
+
+
+skinparam artifact {
+	BackgroundColor #333333
+	BorderColor #242424
+	FontColor #eeeeee
+}
+
+
+skinparam component {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam interface {
+	BackgroundColor  #900100
+	BorderColor  #cd0200
+	FontColor #333333
+}
+
+
+skinparam storage {
+	BackgroundColor #d47500
+  	BorderColor #945200
+	FontColor #ffffff
+}
+
+
+skinparam node {
+	BackgroundColor  #999999
+	BorderColor #eeeeee
+	FontColor #eeeeee
+}
+
+
+skinparam cloud {
+	BackgroundColor #F2FCFE-#eeeeee
+	BorderColor #F2FCFE
+	FontColor #333333
+}
+
+
+skinparam database {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam class {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	FontColor #ffffff
+	HeaderBackgroundColor #7c9ab9-#446e9b
+	StereotypeFontColor #eeeeee
+	BorderThickness 1
+	AttributeFontColor #eeeeee
+	AttributeFontSize 11
+}
+
+
+skinparam object {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	StereotypeFontColor #333333
+	BorderThickness 1
+	AttributeFontColor #ffffff
+	AttributeFontSize 11
+}
+
+
+skinparam usecase {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	BorderThickness 2
+	StereotypeFontColor #446e9b
+}
+
+
+skinparam rectangle {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	BackgroundColor #b8b8b8-#6b6b6b
+	BorderThickness 2
+	StereotypeFontColor #446e9b
+}
+
+
+skinparam package {
+	BackgroundColor #b8b8b8-#6b6b6b
+  	BorderColor #446e9b
+	FontColor #446e9b
+	BorderThickness 2
+}
+
+
+skinparam folder {
+	BackgroundColor #b8b8b8-#6b6b6b
+  	BorderColor #d47500
+	FontColor #d47500
+	BorderThickness 2
+}
+
+
+skinparam frame {
+	BackgroundColor #b8b8b8-#6b6b6b
+  	BorderColor #3399f3
+	FontColor #3399f3
+	BorderThickness 2
+}
+
+
+skinparam state {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+	StartColor #3399f3
+	EndColor #3399f3
+	AttributeFontColor #ffffff
+	AttributeFontSize 11
+}
+
+
+skinparam queue {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+
+
+skinparam card {
+	BackgroundColor #70b8f7-#246baa
+	BorderColor #246baa
+	FontColor #ffffff
+}
+
+
+skinparam file {
+	BackgroundColor #6b6b6b-#6b6b6b
+	BorderColor #eeeeee
+	FontColor #eeeeee
+}
+
+
+skinparam stack {
+		FontColor #ffffff
+	BorderColor #304d6d
+	BackgroundColor #7c9ab9-#304d6d
+}
+label select [
+{{
+partition "Selection phase" {
+     "Binned or exact"  - -> Truncation
+    - -> "Cutpoints\nif binned"
+    - -> "Key and adjustments\npossibly covariates"
+    - -> "Choose model\nusing\nGOF and AIC\nsupported by plots"
+    }
+}}
+]
+
+label explore [
+{{
+    partition "Exploratory phase" {
+    Histograms - -> "Exact data\nQQ plots"
+    - -> "Preliminary analysis\nAssumption violations"
+    - -> "First decisions\nTruncation\nBinning"
+    - -> "Clustered data\nSize bias?"
+    - -> "Covariate boxplots\nRelationships?"
+     }
+}}
+]
+
+label final [
+{{
+    partition "Final phase" {
+    "Best model" - -> "Bootstrap\nfor variance"
+    - -> "Extract summaries\nhistograms\nplots\ncandidate models"
+    - -> "Write report"
+    }
+}}
+]
+
+explore -right-> select
+select -left-> explore
+select -right-> final
+@enduml
+
+PlantUML version 1.2022.2beta6(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -26,6 +26,8 @@ website:
         file: Pr8/covariates.qmd
       - text: "Multipliers"
         file: Pr9/multipliers.qmd
+      - text: "Extras"
+        file: extras/extras.qmd
 
   sidebar:
     - title: "Sampling"
@@ -86,6 +88,12 @@ website:
         - Pr9/multi-analysis.qmd
         - Pr9/countmodel-lines.qmd
         - Pr9/countmodel-points.qmd
+        
+    - title: "Extras"
+      contents: 
+        - extras/extras.qmd
+        - extras/critique.qmd
+        - extras/mystery.qmd
         
 format:
   html:
