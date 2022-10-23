@@ -73,6 +73,7 @@ website:
         - Pr7/strata.qmd
         - Pr7/Pr7-instructions.qmd
         - Pr7/detecting-differences.qmd
+        - Pr7/stratumspecific-bias.qmd
         
     - title: "Covariates"
       contents: 

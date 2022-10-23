@@ -271,5 +271,47 @@
     "title": "Introductory distance sampling lab book",
     "section": "",
     "text": "Material contained herein will acquaint you with design, collection and analysis of distance sampling data.\nThe materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a detection function and ways to model it.\nFurther topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.\nThe second half of the material exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.\nAs well as the exercises and their solutions, there are numerous supplements, touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods."
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html",
+    "href": "Pr7/stratumspecific-bias.html",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "",
+    "text": "Demonstration\n\n\n\nDistance sampling simulation where detection functions differ between strata. When stratum-specific abundance estimates are produced using a pooled detection function, bias arises. The magnitude of the bias depends upon the magnitude of the difference in the detection functions."
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html#north-sea-study-area",
+    "href": "Pr7/stratumspecific-bias.html#north-sea-study-area",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "North Sea study area",
+    "text": "North Sea study area\nInterest is in estimating the density of minke whales in the western portion of the North Sea, off the east coast of Britain. The study area is divided into north and south strata, with the north stratum being roughly 1.9 times the size of the south stratum, as shown in the map below.\n\nm <- leaflet() %>% addProviderTiles(providers$Esri.OceanBasemap)\nm <- m %>% \n  setView(1.4, 55.5, zoom=5)\nminkes <- read_sf(myshapefilelocation)\nstudy.area.trans <- st_transform(minkes, '+proj=longlat +datum=WGS84')\nm <- addPolygons(m, data=study.area.trans$geometry, weight=2)\nm"
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html#properties-of-the-design",
+    "href": "Pr7/stratumspecific-bias.html#properties-of-the-design",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "Properties of the design",
+    "text": "Properties of the design\nTo demonstrate the estimated number of transects in each stratum, the run.coverage function is used to show the number of replicates in each stratum is allocated roughly according to stratum size.\n\ndesign.properties <- run.coverage(equal.cover, reps = 10, quiet=TRUE)\nmine <- data.frame(Num.transects=design.properties@design.statistics$sampler.count[3,],\n                   Proportion.covered=design.properties@design.statistics$p.cov.area[3,])\nkable(mine)\n\n\n\n\n\nNum.transects\nProportion.covered\n\n\n\n\nSouth\n17\n8.16\n\n\nNorth\n23\n8.11\n\n\nTotal\n40\n8.12"
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html#loop-over-delta-difference-in-sigma-between-strata",
+    "href": "Pr7/stratumspecific-bias.html#loop-over-delta-difference-in-sigma-between-strata",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "Loop over \\(\\Delta\\) difference in \\(\\sigma\\) between strata",
+    "text": "Loop over \\(\\Delta\\) difference in \\(\\sigma\\) between strata\n\ndelta.multiplier <- c(seq(from=0.5, to=1.1, by=0.1),\n#                      seq(from=0.85, to=1.15, by=0.1),\n                      seq(from=1.2, to=2.4, by=0.2))\nsigma.south <- 0.3\nnorth.sigma <- sigma.south*delta.multiplier\n\nScale parameter (\\(\\sigma\\)) for the southern stratum remains fixed at 0.3, but in the northern stratum, the scale parameter is a multiple of the southern stratum \\(\\sigma\\), ranging from a low of 0.15 to a maximum of 0.72.\n\nhn <- function(sigma, x) {return(exp(-x^2/(2*sigma^2)))}\nfor (i in seq_along(north.sigma)) {\n  curve(hn(north.sigma[i],x),from=0,to=0.8,add=i!=1,  \n        xlab=\"Distance\", ylab=\"Detection probability\", \n        main=\"Range of detection probability disparity\\nSouth function in blue\")\n}\ncurve(hn(sigma.south,x),from=0,to=0.8, lwd=2, col='blue', add=TRUE)\n\n\n\n\n\nequalcover <- list()\nwhichmodel <- list()\nnum.sims <- 10\nfor (i in seq_along(delta.multiplier)) {\n  sigma.strata <- c(sigma.south, sigma.south*delta.multiplier[i])\n  detect <- make.detectability(key.function = \"hn\",\n                               scale.param = sigma.strata,\n                               truncation = 0.8)\n  equalcover.sim <- make.simulation(reps = num.sims,\n                                    design = equal.cover,\n                                    population.description = minkepop,\n                                    detectability = detect,\n                                    ds.analysis = pooled.hn)\n  whichmodel.sim <- make.simulation(reps = num.sims,\n                                    design = equal.cover,\n                                    population.description = minkepop,\n                                    detectability = detect,\n                                    ds.analysis = strat.specific.or.not)\n  equalcover[[i]] <- run.simulation(equalcover.sim, run.parallel = TRUE, max.cores=10)\n  whichmodel[[i]] <- run.simulation(whichmodel.sim, run.parallel = TRUE, max.cores=10)\n}"
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html#conclusions-from-this-portion-of-study",
+    "href": "Pr7/stratumspecific-bias.html#conclusions-from-this-portion-of-study",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "Conclusions from this portion of study",
+    "text": "Conclusions from this portion of study\nNote bias in the estimated density for the entire study area is never greater than 10%, yet another demonstration of pooling robustness. Even with widely differing detection functions, the estimated density ignoring stratum-specific differences is essentially unbiased.\n\n\n\n\n\n\n\n\nConfidence interval coverage for stratum-specific estimates approaches nominal levels when \\(\\Delta \\approx 1\\). Coverage for the density estimate in the entire study area is nominal for all values of \\(\\Delta\\) with the exception of \\(\\Delta<0.7\\)."
+  },
+  {
+    "objectID": "Pr7/stratumspecific-bias.html#model-selection-sensitivity",
+    "href": "Pr7/stratumspecific-bias.html#model-selection-sensitivity",
+    "title": "Bias in stratum-specific abundance estimates",
+    "section": "Model selection sensitivity",
+    "text": "Model selection sensitivity\nThis small simulation demonstrates the peril of making stratum-specific estimates when using a detection function that does not recognise stratum-specific detection function differences. This situation can arise when numbers of stratum-specific detections are too small to support stratum-specific detection functions. This set of simulations was devised such that there was sufficient effort in each stratum to avoid small numbers of detections. Even so, use of the “wrong” (pooled) detection function leads to considerable bias in density estimates.\n\nplot(delta.multiplier, modelsel, \n     main=\"Stratum-specific model chosen\", type=\"b\", pch=20,\n     xlab=expression(Delta), ylab=\"Stratum covariate chosen\")\nabline(h=0.50)\n\n\n\n\nThere are two messages from this model selection assessment. Only when \\(\\Delta < 0.8\\) or \\(\\Delta > 1.2\\) is there a better than even chance AIC will detect the difference in detectability between strata. Values of \\(\\Delta\\) in this region do not lead to extreme bias in stratum-specific density estimates when the pooled detection function model is used. There is roughly a 10% negative bias in density estimates of the north stratum and a 5% positive bias in density estimates of the southern stratum."
   }
 ]
