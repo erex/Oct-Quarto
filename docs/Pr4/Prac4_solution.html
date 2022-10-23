@@ -303,7 +303,7 @@ Solution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Variance estimatino for systematic designs</p>
+<p>Variance estimation for systematic designs</p>
 </div>
 </div>
 <section id="basic-default-variance-estimation" class="level1">
@@ -313,15 +313,14 @@ Solution
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Systematic_variance_2"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"metre"</span>, <span class="st">"kilometre"</span>, <span class="st">"square kilometre"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a simple model</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sysvar2.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Systematic_variance_2, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>sysvar2.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sysvar2.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Systematic_variance_2, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sysvar2.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Label Estimate       se        cv      lcl      ucl       df
 1 Total 2044.592 566.3958 0.2770214 1161.012 3600.614 20.74468</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sysvar2.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sysvar2.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Label Estimate       se        cv     lcl      ucl       df
 1 Total 1022.296 283.1979 0.2770214 580.506 1800.307 20.74468</code></pre>
@@ -347,8 +346,8 @@ Boostraps          : 100
 Successes          : 100 
 Failures           : 0 
 
-     median   mean     se    lcl     ucl   cv
-Nhat 924.05 982.86 283.65 520.99 1590.85 0.31</code></pre>
+      median    mean    se    lcl     ucl   cv
+Nhat 1021.45 1031.38 282.4 544.14 1607.52 0.28</code></pre>
 </div>
 </div>
 <p>The bootstrap results are very similar to the analytical results, as we would expect, because again this process assumed the transects were placed at random.</p>
@@ -356,12 +355,10 @@ Nhat 924.05 982.86 283.65 520.99 1590.85 0.31</code></pre>
 <section id="post-stratification-to-improve-variance-estimation" class="level1">
 <h1>Post-stratification to improve variance estimation</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Post-stratification by O2 estimator</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ensure that Sample.Labels are numeric, for O2 ordering</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Systematic_variance_2<span class="sc">$</span>Sample.Label <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(Systematic_variance_2<span class="sc">$</span>Sample.Label)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the Fewster et al 2009, "O2" estimator </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>est.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar2.hn, <span class="at">flatfile=</span>Systematic_variance_2,   <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">"O2"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est.O2, <span class="at">report=</span><span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Systematic_variance_2<span class="sc">$</span>Sample.Label <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(Systematic_variance_2<span class="sc">$</span>Sample.Label)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>est.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar2.hn, <span class="at">flatfile=</span>Systematic_variance_2, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">"O2"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est.O2, <span class="at">report=</span><span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Density estimates from distance sampling
 Stratification : geographical 
@@ -383,7 +380,7 @@ Component percentages of variance:
   Total     52.03 47.97</code></pre>
 </div>
 </div>
-<p>The precision of the estimated abundance has greatly improved in the post-stratified analysis <span class="citation" data-cites="fewster2009">(<a href="#ref-fewster2009" role="doc-biblioref">Fewster et al., 2009</a>)</span> .</p>
+<p>The precision of the estimated abundance has greatly improved in the post-stratified analysis <span class="citation" data-cites="fewster2009">(<a href="#ref-fewster2009" role="doc-biblioref">Fewster et al., 2009</a>)</span>.</p>
 <p>It must be remembered that we have not made any change to our data by the post-stratification; we are using getting a better estimate of the variance. In this case, the increase in precision could make a fundamental difference to the utility of the survey: it might make the difference between being able to make a management decision or not. Usually, trends will not be as extreme as they are in this example and post-stratification will not make a great difference. Such an situation is illustrated in the next problem.</p>
 </section>
 <section id="systematic-designs-where-post-stratification-is-not-needed-optional" class="level1">
@@ -392,26 +389,22 @@ Component percentages of variance:
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the data</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Systematic_variance_1"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure that Sample.Labels are numeric, for O2 ordering</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>Systematic_variance_1<span class="sc">$</span>Sample.Label <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(Systematic_variance_1<span class="sc">$</span>Sample.Label)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># First fit a simple model</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sysvar1.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(Systematic_variance_1, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain default estimates for comparison</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>sysvar1.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Systematic_variance_1<span class="sc">$</span>Sample.Label <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(Systematic_variance_1<span class="sc">$</span>Sample.Label)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>sysvar1.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(Systematic_variance_1, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sysvar1.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Label Estimate       se         cv      lcl      ucl       df
 1 Total 1954.016 160.5554 0.08216688 1657.276 2303.888 50.59541</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sysvar1.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sysvar1.hn<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Label Estimate       se         cv      lcl      ucl       df
 1 Total 977.0078 80.27768 0.08216688 828.6378 1151.944 50.59541</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now use Fewster et al 2009, "O2" estimator </span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>est2.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar1.hn, <span class="at">flatfile=</span>Systematic_variance_1, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">"O2"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est2.O2, <span class="at">report=</span><span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>est2.O2 <span class="ot">&lt;-</span> <span class="fu">dht2</span>(sysvar1.hn, <span class="at">flatfile=</span>Systematic_variance_1, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">convert_units=</span>conversion.factor, <span class="at">er_est=</span><span class="st">"O2"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(est2.O2, <span class="at">report=</span><span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Density estimates from distance sampling
 Stratification : geographical 
