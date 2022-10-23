@@ -1,0 +1,134 @@
+---
+title: Line transect estimation using R **solution**
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+---
+
+```{r}
+#| label = "setup",
+#| include = FALSE
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+
+:::{.callout-tip}
+# Solution
+
+Line transect estimation
+:::
+
+# Inspect duck nest data
+
+Import and check the data.
+
+```{r}
+#| echo = TRUE,
+#| fig.width = 4,
+#| fig.height = 4
+library(Distance)
+data(ducknest)
+head(ducknest, n=3)
+nrow(ducknest)
+brks <- seq(from=0, to=2.4, by=0.3)
+hist(ducknest$distance, breaks=brks, xlab="Distance (m)",
+     main="Perpendicular distances duck nests")
+```
+
+# Fit detection functions
+
+Fit the three models using proper units of distance measure.
+
+The answer is another function `convert_units`.  Arguments to this function are
+
+- distance_units	
+    - units of measure for perpendicular/radial distances
+- effort_units	
+    - units of measure for effort (NULL for point transects)
+- area_units	
+    - units of measure for the study area.
+
+```{r}
+#| echo = T,
+#| message = FALSE
+conversion.factor <- convert_units("Meter", "Kilometer", "Square Kilometer")
+# Half-normal with no adjustments
+nest.hn <- ds(ducknest, key="hn", adjustment=NULL,
+              convert_units=conversion.factor)
+summary(nest.hn)
+```
+
+In addition to the half normal key function, fit uniform and hazard rate models with possible adjustment terms.
+
+```{r}
+#| message = FALSE
+nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos",
+                  convert_units=conversion.factor)
+nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm", 
+                  convert_units=conversion.factor)
+```
+
+#  Assess absolute model fit
+
+The goodness of fit for the basic model is shown below.
+
+```{r}
+#| echo = T
+gof_ds(nest.hn, plot=FALSE)
+```
+
+# Contrast competing models
+
+A function useful for contrasting models is `summarize_ds_models`.  A summary table of goodness of fit statistics for all models is created below.  
+
+```{r}
+#| echo = T
+# Summarise gof statistics
+knitr::kable(summarize_ds_models(nest.hn, nest.uf.cos, nest.hr.herm, output="plain"), 
+               caption="Model results for ducknest data set.", digits=3)
+```
+
+
+# Density estimates from the competing models
+
+The density results from all models are summarized below. 
+
+```{r}
+#| echo = F
+# This chunk of code is fiddly and needed only to harvest results
+#     and make them look pretty in the output.  Not important for your
+#     understanding of performing distance sampling estimation.
+nest.tab <- data.frame(Model=1:3, 
+                       DetectionFunction=c("Half-normal, no adjustments",
+                                           "Uniform, cosine adjustments",
+                                           "Hazard rate, no adjustments "),
+                       Density=rep(NA,3), LowerCI=rep(NA,3), UpperCI=rep(NA,3))
+
+get.results.f <- function(fit.model) {   
+  return(c(D=fit.model$dht$individuals$D$Estimate,
+         lCL=fit.model$dht$individuals$D$lcl,
+         uCL=fit.model$dht$individuals$D$ucl))
+}
+nest.tab[1,3:5] <- get.results.f(nest.hn)
+nest.tab[2,3:5] <- get.results.f(nest.uf.cos)
+nest.tab[3,3:5] <- get.results.f(nest.hr.herm)
+knitr::kable(nest.tab, 
+             caption="Density estimates and confidence intervals for three fitted models.", 
+             digits = 2)
+```
+
+# Visualise shape of key functions with duck nest data
+
+The detection function plots are shown below. 
+
+```{r}
+#| echo = T,
+#| fig.show = "hold",
+#| column = "body-outset"
+par(mfrow=c(1,3))
+plot(nest.hn, nc=8, main="Half normal, no adjustments")
+plot(nest.uf.cos, nc=8, main="Uniform, cosine adjustments")
+plot(nest.hr.herm, nc=8, main="Hazard rate, no adjustments")
+```
+
+The half-normal detection function with no adjustments has the smallest AIC which provides support for this model. The $\Delta$AIC values for all three models is small. In general, you should get similar density estimates using different detection function models, provided those models fit the data well, as in this example.
+

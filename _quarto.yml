@@ -36,30 +36,35 @@ website:
       contents:
         - Pr1/sampling.qmd
         - Pr1/Pr1-instructions.qmd
+        - Pr1/Prac1_solution.qmd
 
     - title: "Detection models"
       contents:
         - Pr2/detnfns.qmd
         - Pr2/Pr2-instructions.qmd
         - Pr2/truncation-decisions.qmd
+        - Pr2/Prac2_solution.qmd
 
     - title: "Criticism"
       contents:
         - Pr3/criticism.qmd
         - Pr3/Pr3-instructions.qmd
         - Pr3/modelsel-demo.qmd
+        - Pr3/Prac3_solution.qmd
 
     - title: "Precision"
       contents:
         - Pr4/precision.qmd
         - Pr4/Pr4-instructions.qmd
         - Pr4/left-truncation.qmd
+        - Pr4/Prac4_solution.qmd
 
     - title: "Points"
       contents:
         - Pr5/points.qmd
         - Pr5/Pr5-instructions.qmd
         - Pr5/animal_distribution.qmd
+        - Pr5/Prac5_solution.qmd
         
     - title: "Design"
       contents: 
