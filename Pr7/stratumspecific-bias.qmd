@@ -157,7 +157,7 @@ curve(hn(sigma.south,x),from=0,to=0.8, lwd=2, col='blue', add=TRUE)
 #| label = "loopsigma"
 equalcover <- list()
 whichmodel <- list()
-num.sims <- 10
+num.sims <- 500
 for (i in seq_along(delta.multiplier)) {
   sigma.strata <- c(sigma.south, sigma.south*delta.multiplier[i])
   detect <- make.detectability(key.function = "hn",
@@ -173,8 +173,8 @@ for (i in seq_along(delta.multiplier)) {
                                     population.description = minkepop,
                                     detectability = detect,
                                     ds.analysis = strat.specific.or.not)
-  equalcover[[i]] <- run.simulation(equalcover.sim, run.parallel = TRUE, max.cores=10)
-  whichmodel[[i]] <- run.simulation(whichmodel.sim, run.parallel = TRUE, max.cores=10)
+  equalcover[[i]] <- run.simulation(equalcover.sim, run.parallel = TRUE, max.cores=7)
+  whichmodel[[i]] <- run.simulation(whichmodel.sim, run.parallel = TRUE, max.cores=7)
 }
 ```
 
