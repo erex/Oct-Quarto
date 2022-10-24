@@ -2,21 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.36">
+<meta name="generator" content="quarto-1.2.219">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-14">
+<meta name="dcterms.date" content="2022-10-23">
 
 <title>Distance sampling lab book - Line transect detection function fitting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 </style>
 
 
@@ -70,40 +75,55 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="../index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Distance sampling lab book</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr1/sampling.html" aria-current="page">Sampling</a>
+    <a class="nav-link active" href="../Pr1/sampling.html" aria-current="page">
+ <span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">Points</a>
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">Design</a>
+    <a class="nav-link" href="../Pr6/design.html">
+ <span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -135,12 +155,17 @@ ul.task-list{list-style: none;}
   <a href="../Pr1/Pr1-instructions.html" class="sidebar-item-text sidebar-link active">Line transect detection function fitting</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr1/Prac1_solution.html" class="sidebar-item-text sidebar-link">Line transect detection function fitting <strong>solution</strong></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -171,9 +196,10 @@ ul.task-list{list-style: none;}
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2022</p>
+      <p class="date">October 23, 2022</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -241,8 +267,7 @@ ul.task-list{list-style: none;}
 <li>With the graph paper PDF provided, print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.</li>
 <li>Estimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e.&nbsp;the region within 2.4m of the transect centre line.</li>
 </ol>
-<p><span class="math display">\[ Area_{rectangle} = \]</span></p>
-<p><span class="math display">\[ Area_{curve} = \]</span></p>
+<p><span class="math display">\[ Area_{rectangle} = \]</span> <span class="math display">\[ Area_{curve} = \]</span></p>
 <p><span class="math display">\[ \hat{P}_a = \frac{Area_{curve}}{Area_{rectangle}} = \]</span></p>
 <ol start="3" type="1">
 <li>Obtain an estimate of the number of nests in the covered region (Note <span class="math inline">\(n=534\)</span>):</li>
@@ -251,33 +276,20 @@ ul.task-list{list-style: none;}
 <ol start="4" type="1">
 <li>Estimate density (Note <span class="math inline">\(L = 20 \times 128.75 = 2575\)</span> km):</li>
 </ol>
-<p><span class="math display">\[\hat{D} = \frac{\hat{N}_a}{a} = \frac{\hat{N}_a}{2wL} = \]</span></p>
-<!--
+<p><span class="math display">\[\hat{D} = \frac{\hat{N}_a}{a} = \frac{\hat{N}_a}{2wL} = \]</span> <!--
 5. Now use your histogram to estimate the effective half-width of search distance, $\mu$. 
-
-
 
 $$ \hat \mu = $$
 
-
-
 6. Use your estimate of $\mu$ to estimate nest density, $D$.
 
-
-
 $$\hat{D} = \frac{n}{2\hat \mu L} = $$
-
-
 
 How does it compare to your estimate from part 4?
 
 7. Rescale the $y$-axis to make your curve into the probability density function $f(x)$. Read off $f(0)$, and again estimate nest density $D$.
 
-
-
 $$\hat{D} = \frac{n \hat f(0)}{2L} = $$
-
-
 
 
 How does it compare with your previous estimates?
@@ -299,69 +311,41 @@ How does it compare with your previous estimates?
 
 2. To estimate the area under the curve, I read off the heights of the mid points of my fitted curve (red) as follows: 75, 74, 72, 70, 66, 62, 58, 53. Therefore, my estimate of area under the curve is:
 
-
-
 $$ Area_{curve} = (75+74+72+70+66+62+58+53) \times 0.3 = 530 \times 0.3 = 159 $$
-
-
 There are lots of other ways to work out the area under a curve, e.g. counting the number of grid squares under the curve on your graph paper or using the trapezoidal rule.
-
-
 
 $$Area_{rectangle} = height \times width = 75 \times 2.4 = 180$$
 
-
-
 Hence, my estimate of the proportion of nests detected in the covered region is: 
-
-
 
 $$\hat P_a = \frac{159}{180} = 0.883$$
 
-
-
 3. How many actual nests were there in the covered area? I saw 534 nests, and I estimate the proportion seen is 0.883, so my estimate of nests in the covered region is: 
 
-
-
 $$ \hat N_a = \frac{n}{\hat P_a} =\frac{534}{0.883} = 604.7 \textrm{ nests in the covered area}$$
-
-
 This estimate is for a covered area of $a = 2wL = 2 \times (\frac{2.4}{1000}) \times 2575 = 12.36$ km$^2$. 
 
 4. I therefore estimate nest density as: 
 
-
-
 $$\hat D = \frac{\hat N_a}{2wL} = \frac{604.7}{12.36} = 48.9 \textrm{ nests per km}^2$$
-
-
 
 5. The green vertical dashed line shows my estimated effective strip half-width of 2.13 metres; I estimate that the area below my curve to the right of 2.13 is the same as the area above the curve to the left of 2.13. 
 
 6. Using this estimate of the effective strip half-width, the effective area covered is estimated as $2\mu L = 2 \times \frac{2.13}{1000} \times 2575 = 10.97$ km$^2$. Therefore,   
 
-
-
 $$\hat{D} = \frac{n}{2\hat \mu L} = \frac{534}{10.97} = 48.7 \textrm{ nests per km}^2$$ 
-
-
 
 7. For my curve to represent the pdf $f(x)$, I need to rescale such that the area under the curve is 1.0. Since I estimated the area under my curve to be 159, I can rescale by dividing all the numbers on the $y$-axis by 159. The intercept, $f(0)$ is therefore $75/159 = 0.472$.
 
 Substituting this into the formula gives a density estimate of: 
 
-
-
 $$\hat{D} = \frac{n \hat f(0)}{2L} = \frac{534 \times (0.472 \times 1000)}{2 \times 2575} = \frac{252048}{5750} = 48.9 \textrm{ nests per km}^2$$
-
-
 
 (Note, I had to multiply $f(0)$ by 1,000 to convert from m$^{-1}$ to km$^{-1}$.)
 
 Another way to estimate $f(0)$ is $f(0)=1/\mu$: using this method I'd get the same density estimate as in Part 5.
 
--->
+--></p>
 
 
 </section>
@@ -408,7 +392,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -436,31 +437,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

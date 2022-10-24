@@ -1,0 +1,96 @@
+---
+title: Line transect detection function fitting **solution**
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+---
+
+:::{.callout-tip}
+# Solution
+
+Estimation of duck nest density by hand
+:::
+
+In this practical, we plot a histogram of line transect data and estimate a detection function. The data were collected during a line transect survey of duck nests in Monte Vista National Wildlife Refuge, Colorado, USA: twenty lines of 128.75 km were specified and a distance out to 2.4m was searched and the perpendicular distances of detected nests were recorded and summarised (Table 1). 
+
+```{r}
+#| echo = FALSE,
+#| message = FALSE,
+#| warning = FALSE
+library(tidyverse)
+nests.sum <- NULL
+nests.sum$"Distance band" <- c("0.0-0.3", "0.3-0.6", "0.6-0.9", "0.9-1.2", "1.2-1.5", "1.5-1.8", "1.8-2.1", "2.1-2.4")
+nests.sum$Frequency <- c(74, 73, 79, 66, 78, 58, 52, 54)
+nests.sum <- data.frame(nests.sum)
+knitr::kable(nests.sum, format = "html",
+             caption="Frequency of duck nests detected in perpendicular distance bands (metres)") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "responsive"),
+                            full_width = FALSE)
+```
+
+
+1. Histogram of detected nests (black) overlaid with the estimated detection function (red) is shown below.
+
+```{r}
+#| echo = FALSE
+# Read in data
+nests <- read.csv(file="IntroDS_1.1.csv", header=TRUE)
+brks <- seq(0,2.4, by=0.3)
+nests.hist <- hist(nests$distance, breaks=brks, plot=TRUE, main="", 
+                   ylim=c(0,82), xlab="Perpendicular distance (m)")
+lines(c(0,2.4), c(75,75), col=4, lty=2, lwd=2)
+lines(c(2.4,2.4), c(54,75), col=4, lty=2, lwd=2)
+x.pts <- seq(0, 2.4, 0.15)
+y.pts <- c(75,75,74.5,74,73,72,71,70,68,66,64,62,60,58,56,53,51.0)
+lines(x.pts, y.pts, lwd=2, col=2, lty=1)
+x.mid <- seq(0.15, 2.4, 0.3)
+y.mid <- c(75, 74, 72, 70, 66, 62, 58, 53)
+lines(x.pts, y.pts, lwd=2, col=2, lty=1)
+segments(x.mid, rep(0, 8), x.mid, y.mid, col=2, lty=3)
+segments(seq(0,2.1,0.3), y.mid, seq(0.3,2.4,0.3), y.mid, col=2, lty=3)
+text(c(0.75, 1.05, 1.35, 1.65), c(72, 70, 66, 62)+2.5, c(72, 70, 66, 62), col=2, cex=0.7)
+text(1.95, 60, 58, col=2, cex=0.7)
+text(2.25, 50, 53, col=2, cex=0.7)
+text(nests.hist$mids, nests.hist$counts+3, nests.hist$counts)
+# Add esw
+abline(v=2.13, col=3, lty=2, lwd=2)
+
+```
+
+2. To estimate the area under the curve, I read off the heights of the mid points of my fitted curve (red) as follows: 75, 74, 72, 70, 66, 62, 58, 53. Therefore, my estimate of area under the curve is:
+
+$$ Area_{curve} = (75+74+72+70+66+62+58+53) \times 0.3 = 530 \times 0.3 = 159 $$
+There are lots of other ways to work out the area under a curve, e.g. counting the number of grid squares under the curve on your graph paper or using the trapezoidal rule.
+
+$$Area_{rectangle} = height \times width = 75 \times 2.4 = 180$$
+
+Hence, my estimate of the proportion of nests detected in the covered region is: 
+
+$$\hat P_a = \frac{159}{180} = 0.883$$
+
+3. How many actual nests were there in the covered area? I saw 534 nests, and I estimate the proportion seen is 0.883, so my estimate of nests in the covered region is: 
+
+$$ \hat N_a = \frac{n}{\hat P_a} =\frac{534}{0.883} = 604.7 \textrm{ nests in the covered area}$$
+This estimate is for a covered area of $a = 2wL = 2 \times (\frac{2.4}{1000}) \times 2575 = 12.36$ km$^2$. 
+
+4. I therefore estimate nest density as: 
+
+$$\hat D = \frac{\hat N_a}{2wL} = \frac{604.7}{12.36} = 48.9 \textrm{ nests per km}^2$$
+
+<!--
+5. The green vertical dashed line shows my estimated effective strip half-width of 2.13 metres; I estimate that the area below my curve to the right of 2.13 is the same as the area above the curve to the left of 2.13. 
+
+6. Using this estimate of the effective strip half-width, the effective area covered is estimated as $2\mu L = 2 \times \frac{2.13}{1000} \times 2575 = 10.97$ km$^2$. Therefore,   
+
+$$\hat{D} = \frac{n}{2\hat \mu L} = \frac{534}{10.97} = 48.7 \textrm{ nests per km}^2$$ 
+
+7. For my curve to represent the pdf $f(x)$, I need to rescale such that the area under the curve is 1.0. Since I estimated the area under my curve to be 159, I can rescale by dividing all the numbers on the $y$-axis by 159. The intercept, $f(0)$ is therefore $75/159 = 0.472$.
+
+Substituting this into the formula gives a density estimate of: 
+
+$$\hat{D} = \frac{n \hat f(0)}{2L} = \frac{534 \times (0.472 \times 1000)}{2 \times 2575} = \frac{252048}{5750} = 48.9 \textrm{ nests per km}^2$$
+
+(Note, I had to multiply $f(0)$ by 1,000 to convert from m$^{-1}$ to km$^{-1}$.)
+
+Another way to estimate $f(0)$ is $f(0)=1/\mu$: using this method I'd get the same density estimate as in Part 5.
+
+-->
