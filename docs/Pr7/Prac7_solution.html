@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.219">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2022-10-25">
+
+<title>Distance sampling lab book - Analysis of data from stratified surveys solution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling lab book</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html">
+ <span class="menu-text">Sampling</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr6/design.html">
+ <span class="menu-text">Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#strata-treated-distinctly" id="toc-strata-treated-distinctly" class="nav-link active" data-scroll-target="#strata-treated-distinctly">Strata treated distinctly</a></li>
+  <li><a href="#detections-combined-across-strata" id="toc-detections-combined-across-strata" class="nav-link" data-scroll-target="#detections-combined-across-strata">Detections combined across strata</a></li>
+  <li><a href="#determining-the-correct-stratification-to-use" id="toc-determining-the-correct-stratification-to-use" class="nav-link" data-scroll-target="#determining-the-correct-stratification-to-use">Determining the correct stratification to use</a></li>
+  <li><a href="#differing-abundance-estimates-from-stratification-decision" id="toc-differing-abundance-estimates-from-stratification-decision" class="nav-link" data-scroll-target="#differing-abundance-estimates-from-stratification-decision">Differing abundance estimates from stratification decision</a></li>
+  <li><a href="#another-approach-to-stratification-advanced" id="toc-another-approach-to-stratification-advanced" class="nav-link" data-scroll-target="#another-approach-to-stratification-advanced">Another approach to stratification (advanced)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analysis of data from stratified surveys <strong>solution</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 25, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analysis of data from stratified surveys</p>
+</div>
+</div>
+<p>Reading in the data from the stratified survey in the Southern Ocean:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(minke)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(minke, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region.Label  Area Sample.Label Effort distance
+1        South 84734            1  86.75     0.10
+2        South 84734            1  86.75     0.22
+3        South 84734            1  86.75     0.16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify truncation distance</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>minke.trunc <span class="ot">&lt;-</span> <span class="fl">1.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="strata-treated-distinctly" class="level1">
+<h1>Strata treated distinctly</h1>
+<p>Fit detection function and encounter rate separately in each strata.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Fit to each region separately - full geographical stratification</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data set for South</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>minke.S <span class="ot">&lt;-</span> minke[minke<span class="sc">$</span>Region.Label<span class="sc">==</span><span class="st">"South"</span>, ]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>minke.df.S.strat <span class="ot">&lt;-</span> <span class="fu">ds</span>(minke.S, <span class="at">truncation=</span>minke.trunc, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(minke.df.S.strat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary for distance analysis 
+Number of observations :  39 
+Distance range         :  0  -  1.5 
+
+Model : Hazard-rate key function 
+AIC   : 8.617404 
+
+Detection function parameters
+Scale coefficient(s):  
+              estimate        se
+(Intercept) -0.5102606 0.1921723
+
+Shape coefficient(s):  
+            estimate        se
+(Intercept) 1.242147 0.3770239
+
+                      Estimate         SE       CV
+Average p            0.4956459  0.0662961 0.133757
+N in covered region 78.6852058 13.8143714 0.175565
+
+Summary statistics:
+  Region  Area CoveredArea Effort  n  k         ER      se.ER     cv.ER
+1  South 84734     1453.23 484.41 39 13 0.08051031 0.01809954 0.2248102
+
+Abundance:
+  Label Estimate       se        cv      lcl      ucl       df
+1 Total 4587.926 1200.166 0.2615924 2687.497 7832.219 21.14052
+
+Density:
+  Label   Estimate         se        cv        lcl        ucl       df
+1 Total 0.05414505 0.01416393 0.2615924 0.03171687 0.09243301 21.14052</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine selection and detection function fitting for North</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>minke.df.N.strat <span class="ot">&lt;-</span> <span class="fu">ds</span>(minke[minke<span class="sc">$</span>Region.Label<span class="sc">==</span><span class="st">"North"</span>, ],</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">truncation=</span>minke.trunc, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(minke.df.N.strat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary for distance analysis 
+Number of observations :  49 
+Distance range         :  0  -  1.5 
+
+Model : Hazard-rate key function 
+AIC   : 37.27825 
+
+Detection function parameters
+Scale coefficient(s):  
+               estimate        se
+(Intercept) -0.01081041 0.2203526
+
+Shape coefficient(s):  
+            estimate        se
+(Intercept) 1.022021 0.6907906
+
+                      Estimate         SE        CV
+Average p            0.7592309 0.09987673 0.1315499
+N in covered region 64.5389973 9.62021402 0.1490605
+
+Summary statistics:
+  Region   Area CoveredArea  Effort  n  k         ER      se.ER     cv.ER
+1  North 630582     4075.14 1358.38 49 12 0.03607238 0.01317937 0.3653591
+
+Abundance:
+  Label Estimate       se        cv      lcl      ucl       df
+1 Total 9986.683 3878.031 0.3883203 4469.865 22312.49 13.98197
+
+Density:
+  Label   Estimate          se        cv         lcl        ucl       df
+1 Total 0.01583725 0.006149924 0.3883203 0.007088475 0.03538397 13.98197</code></pre>
+</div>
+</div>
+</section>
+<section id="detections-combined-across-strata" class="level1">
+<h1>Detections combined across strata</h1>
+<p>Next we fitted a pooled detection function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>minke.df.all <span class="ot">&lt;-</span> <span class="fu">ds</span>(minke, <span class="at">truncation=</span>minke.trunc, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(minke.df.all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary for distance analysis 
+Number of observations :  88 
+Distance range         :  0  -  1.5 
+
+Model : Hazard-rate key function 
+AIC   : 48.63688 
+
+Detection function parameters
+Scale coefficient(s):  
+              estimate        se
+(Intercept) -0.2967912 0.1765812
+
+Shape coefficient(s):  
+            estimate        se
+(Intercept) 0.964833 0.3605009
+
+                       Estimate         SE        CV
+Average p             0.6224396  0.0668011 0.1073214
+N in covered region 141.3791725 17.7757788 0.1257312
+
+Summary statistics:
+  Region   Area CoveredArea  Effort  n  k         ER      se.ER     cv.ER
+1  North 630582     4075.14 1358.38 49 12 0.03607238 0.01317937 0.3653591
+2  South  84734     1453.23  484.41 39 13 0.08051031 0.01809954 0.2248102
+3  Total 715316     5528.37 1842.79 88 25 0.04133635 0.01181436 0.2858103
+
+Abundance:
+  Label  Estimate        se        cv      lcl       ucl       df
+1 North 12181.419 4638.6284 0.3807954 5499.950 26979.692 12.96781
+2 South  3653.345  910.0975 0.2491135 2181.595  6117.971 17.96263
+3 Total 15834.764 4834.2848 0.3052957 8388.423 29891.167 15.25496
+
+Density:
+  Label   Estimate          se        cv         lcl        ucl       df
+1 North 0.01931774 0.007356107 0.3807954 0.008722023 0.04278538 12.96781
+2 South 0.04311546 0.010740641 0.2491135 0.025746391 0.07220207 17.96263
+3 Total 0.02213674 0.006758251 0.3052957 0.011726878 0.04178736 15.25496</code></pre>
+</div>
+</div>
+<p>Compute combined AIC for entire study area.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>aic.all <span class="ot">&lt;-</span> <span class="fu">summary</span>(minke.df.all<span class="sc">$</span>ddf)<span class="sc">$</span>aic</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>aic.S <span class="ot">&lt;-</span> <span class="fu">summary</span>(minke.df.S.strat<span class="sc">$</span>ddf)<span class="sc">$</span>aic</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>aic.N <span class="ot">&lt;-</span> <span class="fu">summary</span>(minke.df.N.strat<span class="sc">$</span>ddf)<span class="sc">$</span>aic</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>aic.SN <span class="ot">&lt;-</span> aic.S <span class="sc">+</span> aic.N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="determining-the-correct-stratification-to-use" class="level1">
+<h1>Determining the correct stratification to use</h1>
+<p>The AIC value for the detection function in the South was 8.617 and the AIC for the North was 37.28. This gives a total AIC of 45.9. The AIC value for the pooled detection function was 48.64. Because 48.64 is greater than 45.9, estimation of separate detection functions in each stratum is preferable.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Prac7_solution_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="differing-abundance-estimates-from-stratification-decision" class="level1">
+<h1>Differing abundance estimates from stratification decision</h1>
+<div class="cell">
+
+</div>
+<p>In the full geographical stratification, both encounter rate and detection function were estimated separately for each region (or strata). This resulted in the following abundances:</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Abundance estimates using full geographical stratification.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Label </th>
+   <th style="text-align:right;"> Estimate </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> North </td>
+   <td style="text-align:right;"> 9987 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South </td>
+   <td style="text-align:right;"> 4588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 14575 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Next, the distances were combined to fit a pooled detection function but encounter rate was obtained for each region. This resulted in the following abundances:</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Abundance estimates calculating encounter rate by strata and a pooled detection function.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Label </th>
+   <th style="text-align:right;"> Estimate </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> North </td>
+   <td style="text-align:right;"> 12181 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> South </td>
+   <td style="text-align:right;"> 3653 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 15835 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="another-approach-to-stratification-advanced" class="level1">
+<h1>Another approach to stratification (advanced)</h1>
+<p>An equivalent result for full geographic stratification could be produced using the <code>dht2</code> function, which does not require the disaggregation of the data set into two data sets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geographical stratification with stratum-specific detection function </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>strat.specific.detfn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>minke, <span class="at">truncation=</span>minke.trunc, <span class="at">key=</span><span class="st">"hr"</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">formula=</span><span class="sc">~</span>Region.Label)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>abund.by.strata <span class="ot">&lt;-</span> <span class="fu">dht2</span>(<span class="at">ddf=</span>strat.specific.detfn, <span class="at">flatfile=</span>minke, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">strat_formula=</span><span class="sc">~</span>Region.Label, <span class="at">stratification=</span><span class="st">"geographical"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(abund.by.strata, <span class="at">report=</span><span class="st">"abundance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abundance estimates from distance sampling
+Stratification : geographical 
+Variance       : R2, n/L 
+Multipliers    : none 
+Sample fraction : 1 
+
+
+Summary statistics:
+ Region.Label   Area CoveredArea  Effort  n  k    ER se.ER cv.ER
+        North 630582     4075.14 1358.38 49 12 0.036 0.013 0.365
+        South  84734     1453.23  484.41 39 13 0.081 0.018 0.225
+        Total 715316     5528.37 1842.79 88 25 0.048 0.011 0.237
+
+Abundance estimates:
+ Region.Label Estimate       se    cv  LCI   UCI     df
+        North     9865 3761.296 0.381 4451 21860 13.035
+        South     4651 1224.818 0.263 2719  7955 22.163
+        Total    14515 3970.578 0.274 8215 25648 16.065
+
+Component percentages of variance:
+ Region.Label Detection    ER
+        North      6.33 93.67
+        South     15.14 84.86
+        Total     13.88 86.12</code></pre>
+</div>
+</div>
+<p>I won’t say anything just now about the wrinkle I introduced with the <code>formula</code> argument in the call to <code>ds()</code>. Recognise there is an alternative (easier) way to perform the full geographic stratification analysis without tearing apart the data. The abundance estimates presented in the last output do not identically match the estimates shown earlier for full geographic stratification, but they are close. The added benefit of this latter analysis is that the uncertainty in the total population size is computed within <code>dht2</code> rather than needing to be calculated manually using the delta method.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+An aside
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If geographic stratification were ignored, the abundance estimate of would be 18,293 minkes. This estimate is substantially larger than the estimates above. The reason is that the survey design was geographically stratified with a smaller proportion of the north stratum receiving sampling effort and a greater proportion of the southern stratum receiving survey effort. Ignoring this inequity in the unstratified analysis would lead us to believe that the more heavily sampled southern stratum is indicative of whale density throughout the study area.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
