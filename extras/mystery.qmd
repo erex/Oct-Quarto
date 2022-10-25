@@ -23,7 +23,7 @@ The data set (in CSV format) is available in the file space of this project, sho
 This will be your first adventure looking at data that is not contained within the `Distance` package.  Therefore, your first analysis task will be to read the data from the `.csv` file into R for subsequent analysis.  Example code below:
 
 ```{r, eval=FALSE}
-mydata <- read.csv("mystery.csv")
+mydata <- read.csv("https://raw.githubusercontent.com/erex/Oct-Quarto/main/extras/mystery.csv")
 ```
 
 What happens after this is up to you. `r knitr::asis_output("\U1F974      \U1F914")`
