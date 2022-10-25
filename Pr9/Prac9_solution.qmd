@@ -92,7 +92,7 @@ MIKE.persistence <- function(DATA) {
   abline(v=mean.decay, lwd=2, lty=3)
   return(out)
 }
-decay <- read.csv(file="IntroDS_9.1.csv")
+decay <- read.csv(file="https://raw.githubusercontent.com/erex/Oct-Quarto/main/Pr9/IntroDS_9.1.csv")
 persistence.time <- MIKE.persistence(decay)
 print(persistence.time)
 ```

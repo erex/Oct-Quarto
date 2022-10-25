@@ -348,7 +348,7 @@ div.csl-indent {
 <section id="multipliers" class="level2">
 <h2 class="anchored" data-anchor-id="multipliers">Multipliers</h2>
 <p>The next step is to create an object which contains the multipliers we wish to use. We already have estimates of dung production rates but need similar information on dung decay (or persistence) rate.</p>
-<p>Data to calculate this has been collected in the file <code>IntroDS_9.1.csv</code> in your directory. Following code comes from Meredith <span class="citation" data-cites="Meredith2017">(<a href="#ref-Meredith2017" role="doc-biblioref">2017</a>)</span>.</p>
+<p>Data to calculate this has been collected in the file <code>IntroDS_9.1.csv</code> that can be read from the Github internet repository. Following code comes from <span class="citation" data-cites="Meredith2017">Meredith (<a href="#ref-Meredith2017" role="doc-biblioref">2017</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>MIKE.persistence <span class="ot">&lt;-</span> <span class="cf">function</span>(DATA) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -388,7 +388,7 @@ div.csl-indent {
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v=</span>mean.decay, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">3</span>)</span>
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>decay <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"IntroDS_9.1.csv"</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>decay <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/erex/Oct-Quarto/main/Pr9/IntroDS_9.1.csv"</span>)</span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>persistence.time <span class="ot">&lt;-</span> <span class="fu">MIKE.persistence</span>(decay)</span>
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(persistence.time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
