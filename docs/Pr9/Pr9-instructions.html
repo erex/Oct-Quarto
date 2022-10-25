@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-13">
+<meta name="dcterms.date" content="2022-10-25">
 
 <title>Distance sampling lab book - Analyses using multipliers</title>
 <style>
@@ -293,7 +293,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2022</p>
+      <p class="date">October 25, 2022</p>
     </div>
   </div>
   
@@ -337,8 +337,7 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(sikadeer)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Work out conversion units</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"centimeter"</span>, <span class="st">"kilometer"</span>, <span class="st">"square kilometer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"centimeter"</span>, <span class="st">"kilometer"</span>, <span class="st">"square kilometer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="fit-detection-function-to-dung-pellets" class="level2">
@@ -457,7 +456,7 @@ div.csl-indent {
 </section>
 <section id="cue-counting-of-songbirds-optional" class="level1">
 <h1>Cue counting of songbirds optional</h1>
-<p>Remember the wren data that was introduced in the point transect exercises (Exercise 5): another data collection method that was used was cue counting. In this case, the cue was a song burst. These data are stored in <code>wren_cuecount</code> in the <code>Distance</code> package. The data arose from the point transect survey of songbirds described in Buckland <span class="citation" data-cites="buckland2006">(<a href="#ref-buckland2006" role="doc-biblioref">2006</a>)</span>.</p>
+<p>Remember the wren data that was introduced in the point transect exercises (Exercise 5): another data collection method that was used was cue counting. In this case, the cue was a song burst. These data are stored in <code>wren_cuecount</code> in the <code>Distance</code> package. The data arose from the point transect survey of songbirds described in <span class="citation" data-cites="buckland2006">Buckland (<a href="#ref-buckland2006" role="doc-biblioref">2006</a>)</span>.</p>
 <p>Following a similar approach to that of the whale data, estimate a detection function of songs, create a multipliers object and include this in the <code>dht2</code> function to estimate wren density. Call this <code>w3.est</code>). There are a few things that will be useful to know:</p>
 <ul>
 <li>search effort (measured in time) was 2 visits each lasting 5 minutes,</li>

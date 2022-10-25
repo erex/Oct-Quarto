@@ -56,7 +56,6 @@ These data (called `sikadeer`) are available in the `Distance` package. As in pr
 #| eval = F
 library(Distance)
 data(sikadeer)
-# Work out conversion units
 conversion.factor <- convert_units("centimeter", "kilometer", "square kilometer")
 ```
 
@@ -142,8 +141,7 @@ The final step is to use these multipliers to convert $\hat D_{\textrm{pellet gr
 -   `deer.df` is the detection function you have fitted.
 
 ```{r}
-#| echo = T,
-#| eval = F
+#| eval: false
 # Weight by effort because we have repeats
 deer.ests <- dht2(deer.df, flatfile=sikadeer, strat_formula=~Region.Label,
                  convert_units=conversion.factor, multipliers=mult, 
@@ -202,7 +200,7 @@ print(whale.est)
 
 # Cue counting of songbirds optional {#cue-counting-of-songbirds-optional}
 
-Remember the wren data that was introduced in the point transect exercises (Exercise 5): another data collection method that was used was cue counting. In this case, the cue was a song burst. These data are stored in `wren_cuecount` in the `Distance` package. The data arose from the point transect survey of songbirds described in Buckland [-@buckland2006].
+Remember the wren data that was introduced in the point transect exercises (Exercise 5): another data collection method that was used was cue counting. In this case, the cue was a song burst. These data are stored in `wren_cuecount` in the `Distance` package. The data arose from the point transect survey of songbirds described in @buckland2006.
 
 Following a similar approach to that of the whale data, estimate a detection function of songs, create a multipliers object and include this in the `dht2` function to estimate wren density. Call this `w3.est`). There are a few things that will be useful to know:
 

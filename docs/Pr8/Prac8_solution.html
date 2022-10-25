@@ -629,7 +629,7 @@ Cautionary tale
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>etp.hr.bf <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Beauf.class))</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>etp.hr.month <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Month))</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(etp.hr, etp.hr.search, etp.hr.cue, etp.hr.bf, etp.hr.month,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">output=</span><span class="st">"plain"</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">output=</span><span class="st">"latex"</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption=</span><span class="st">"ETP dolphin model selection."</span>, <span class="at">digits=</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -640,10 +640,10 @@ Cautionary tale
   <tr>
    <th style="text-align:left;"> Key function </th>
    <th style="text-align:left;"> Formula </th>
-   <th style="text-align:right;"> C-vM $p$-value </th>
-   <th style="text-align:right;"> Average detectability </th>
-   <th style="text-align:right;"> se(Average detectability) </th>
-   <th style="text-align:right;"> Delta AIC </th>
+   <th style="text-align:right;"> C-vM p-value </th>
+   <th style="text-align:right;"> $\hat{P_a}$ </th>
+   <th style="text-align:right;"> se($\hat{P_a}$) </th>
+   <th style="text-align:right;"> $\Delta$AIC </th>
   </tr>
  </thead>
 <tbody>

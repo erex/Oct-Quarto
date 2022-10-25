@@ -211,7 +211,7 @@ etp.hr.cue <- ds(ETP_Dolphin, key="hr", formula=~factor(Cue.type))
 etp.hr.bf <- ds(ETP_Dolphin, key="hr", formula=~factor(Beauf.class))
 etp.hr.month <- ds(ETP_Dolphin, key="hr", formula=~factor(Month))
 knitr::kable(summarize_ds_models(etp.hr, etp.hr.search, etp.hr.cue, etp.hr.bf, etp.hr.month,
-                                 output="plain")[,2:7], row.names = FALSE,
+                                 output="latex")[,2:7], row.names = FALSE,
                caption="ETP dolphin model selection.", digits=3) %>%
        kable_styling(bootstrap_options = "condensed", full_width = F)  
 ```
