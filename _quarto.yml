@@ -80,6 +80,7 @@ website:
         - Pr7/Pr7-instructions.qmd
         - Pr7/detecting-differences.qmd
         - Pr7/stratumspecific-bias.qmd
+        - Pr7/Prac7_solution.qmd
         
     - title: "Covariates"
       contents: 
@@ -87,6 +88,7 @@ website:
         - Pr8/Pr8-instructions.qmd
         - Pr8/Group-size-covariate.qmd
         - Pr8/alternative-selection-metrics.qmd
+        - Pr8/Prac8_solution.qmd
         
     - title: "Multipliers"
       contents: 
@@ -95,6 +97,7 @@ website:
         - Pr9/multi-analysis.qmd
         - Pr9/countmodel-lines.qmd
         - Pr9/countmodel-points.qmd
+        - Pr9/Prac9_solution.qmd
         
     - title: "Extras"
       contents: 
