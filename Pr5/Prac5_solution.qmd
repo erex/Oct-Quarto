@@ -1,5 +1,5 @@
 ---
-title: Exercise 5<br> Point transect sampling **solution**
+title: Point transect sampling **solution**
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: references.bib

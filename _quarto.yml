@@ -72,6 +72,7 @@ website:
         - Pr6/Pr6-instructions.qmd
         - Pr6/leaflet-demo.qmd
         - Pr6/effort-and-power.qmd
+        - Pr6/Pr6-solution.qmd
         
     - title: "Strata"
       contents: 

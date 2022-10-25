@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.219">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2022-10-25">
+
+<title>Distance sampling lab book - Distance sampling survey design solution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling lab book</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html">
+ <span class="menu-text">Sampling</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">
+ <span class="menu-text">Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Distance sampling survey design <strong>solution</strong></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/design.html" class="sidebar-item-text sidebar-link">Survey design practical 6</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/Pr6-instructions.html" class="sidebar-item-text sidebar-link">Distance sampling survey design</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/leaflet-demo.html" class="sidebar-item-text sidebar-link">Distance sampling survey design supplement</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link">Effort and power calculations for line transect surveys</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/Pr6-solution.html" class="sidebar-item-text sidebar-link active">Distance sampling survey design <strong>solution</strong></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay" id="toc-systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay" class="nav-link active" data-scroll-target="#systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay">Systematic parallel line aerial survey of marine mammals in St Andrews bay</a>
+  <ul class="collapse">
+  <li><a href="#systematic-parallel-line-design" id="toc-systematic-parallel-line-design" class="nav-link" data-scroll-target="#systematic-parallel-line-design">Systematic Parallel Line Design</a></li>
+  <li><a href="#equal-spaced-zigzag-design" id="toc-equal-spaced-zigzag-design" class="nav-link" data-scroll-target="#equal-spaced-zigzag-design">Equal Spaced Zigzag Design</a></li>
+  </ul></li>
+  <li><a href="#point-transect-bird-survey-in-tentsmuir-forest" id="toc-point-transect-bird-survey-in-tentsmuir-forest" class="nav-link" data-scroll-target="#point-transect-bird-survey-in-tentsmuir-forest">Point Transect Bird Survey in Tentsmuir Forest</a>
+  <ul class="collapse">
+  <li><a href="#coverage" id="toc-coverage" class="nav-link" data-scroll-target="#coverage">Coverage</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Distance sampling survey design <strong>solution</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 25, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Distance sampling survey design</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dssd)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+</div>
+<section id="systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay" class="level1">
+<h1>Systematic parallel line aerial survey of marine mammals in St Andrews bay</h1>
+<section id="systematic-parallel-line-design" class="level2">
+<h2 class="anchored" data-anchor-id="systematic-parallel-line-design">Systematic Parallel Line Design</h2>
+<p><em>What spacing would you select for this design? What is the maximum trackline length for the design you have selected? What on-effort line length are we likely to achieve?</em></p>
+<p>The spacing chosen by <code>dssd</code> of 4937.5m to generate a line length of 200km resulted in a maximum trackline length of around 261km (each exact answer will vary due to the random generate of surveys). If we choose this design then it is possible that when we randomly generate our survey we may not be able to complete it with the effort we have available.</p>
+<p>We should therefore increase the spacing between the transects and re-run the coverage simulations. A spacing of 5000m gave a maximum trackline length of around 249km (see summary table of Trackline length in the output below) so we can be fairly confident that we will be able to complete any survey which we randomly generate from this design. This spacing should allow us to achieve an on-effort line length of 199km (see Line length section of design summary below). The minimum line length we would expect to achieve is 184km and the maximum is 206km. [Note your values might differ slightly to those below]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"StAndrew.shp"</span>, <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>region.sab <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"St Andrews Bay"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">units =</span> <span class="st">"m"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">shape =</span> shapefile.name)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cover.sabay <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.sab, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">5000</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">90</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.spacing5km, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pr6-solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Coverage grid plot for parallel design of St Andrews Bay.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Strata St Andrews Bay:
+   _______________________
+Design:  systematically spaced transects
+Spacing:  5000
+Number of samplers:  NA
+Line length: NA
+Design angle:  90
+Edge protocol:  minus
+
+Strata areas:  987500079
+Region and effort units:  m
+Coverage Simulation repetitions:  250
+
+    Number of samplers:
+    
+        St Andrews Bay Total
+Minimum            7.0   7.0
+Mean               7.9   7.9
+Median             8.0   8.0
+Maximum            8.0   8.0
+sd                 0.3   0.3
+
+    Covered area:
+    
+        St Andrews Bay     Total
+Minimum      726227799 726227799
+Mean         760709863 760709863
+Median       766865413 766865413
+Maximum      778648935 778648935
+sd            16167381  16167381
+
+    % of region covered:
+    
+        St Andrews Bay Total
+Minimum          73.54 73.54
+Mean             77.03 77.03
+Median           77.66 77.66
+Maximum          78.85 78.85
+sd                1.64  1.64
+
+    Line length:
+    
+        St Andrews Bay     Total
+Minimum      184433.16 184433.16
+Mean         197224.66 197224.66
+Median       198866.08 198866.08
+Maximum      205771.95 205771.95
+sd             6175.46   6175.46
+
+    Trackline length:
+    
+        St Andrews Bay     Total
+Minimum      220528.39 220528.39
+Mean         242328.71 242328.71
+Median       246253.87 246253.87
+Maximum      248799.04 248799.04
+sd             8199.29   8199.29
+
+    Cyclic trackline length:
+    
+        St Andrews Bay     Total
+Minimum      251939.26 251939.26
+Mean         279060.74 279060.74
+Median       283708.98 283708.98
+Maximum      285985.43 285985.43
+sd             9671.29   9671.29
+
+    Coverage Score Summary:
+    
+        St Andrews Bay      Total
+Minimum     0.37600000 0.37600000
+Mean        0.77042897 0.77042897
+Median      0.79200000 0.79200000
+Maximum     0.83200000 0.83200000
+sd          0.08539526 0.08539526</code></pre>
+</div>
+</div>
+</section>
+<section id="equal-spaced-zigzag-design" class="level2">
+<h2 class="anchored" data-anchor-id="equal-spaced-zigzag-design">Equal Spaced Zigzag Design</h2>
+<p><em>Does this design meet our survey effort constraint? What is the maximum total trackline length for this design? What line length are we likely to achieve with this design? Is this higher or lower than the systematic parallel design?</em></p>
+<p>You were asked to then run a coverage simulation and check if the trackline length was within our effort constraints. I found the maximum trackline length to be 242km (see Trackline length summary table in the output below) so within our constraint of 250km. I then got a mean line length of 221km and minimum and maximum line lengths of 212km and 227km, respectively (see Line length summary table in the output below). We can therefore expect to achieve just over 20km more on-effort survey line length with the zigzag design than the systematic parallel line design - 10% gain. [Note your values may differ slightly]</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"eszigzag"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">4500</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bounding.shape =</span> <span class="st">"convex.hull"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.zz<span class="fl">.4500</span>, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coverage</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.zz<span class="fl">.4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pr6-solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Coverage grid plot for zigzag design of St Andrews Bay.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>Do you think the coverage scores look uniform across the study region? Where are they higher/lower? Why do you think this is?</em></p>
+<p>You were finally asked to look at the coverage scores across the survey region to see if this design has even coverage. There are some points with lower coverage around the survey region boundary. This is actually down to the fact we are using a minus sampling strategy. If we plotted coverage scores from a systematic parallel design we would see a similar pattern. Usually edge effects from minus sampling are minor unless we have a very long survey region boundary containing a small study area. If the fact that we are using a zigzag design was causing us issues with coverage we would expect to see higher coverage at the very top or very bottom of the survey region (as our design angle is 0). We do not see this. The survey region boundaries at the top and bottom are both quite wide and perpendicular to the design angle, in this situation zigzag designs perform well with regard to even coverage.</p>
+</section>
+</section>
+<section id="point-transect-bird-survey-in-tentsmuir-forest" class="level1">
+<h1>Point Transect Bird Survey in Tentsmuir Forest</h1>
+<p><em>What are the analysis implications of a design with unequal coverage?</em></p>
+<p>As our two strata have different coverage we should analyse them separately. We therefore need to make sure that we have sufficient transects in each strata to perform an analysis - ideally 20. There are 2 reasons that we should analyse them separately. Firstly, our covered area will not be representative of the study area as a whole. If density is higher or lower in one strata than the other we will get a biased estimate of abundance for the area as a whole using the standard distance sampling estimators. Secondly, pooling robustness between the two strata will no longer apply and it may be the case that detection functions differ between the two strata. We will no longer have a representative sample of observations across the entire study region either.</p>
+<p><em>What spacing was used in each strata to try and achieve the desired number of samplers? Did your survey achieve exactly the number of samplers you requested? Check if your neighbours achieved exactly the number of samplers requested. How much does coverage differ between the two strata for this realisation?</em></p>
+<section id="coverage" class="level2">
+<h2 class="anchored" data-anchor-id="coverage">Coverage</h2>
+<p>Organise the study area shape file.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"TentsmuirUnproj.shp"</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sf.shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(shapefile.name)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Coordinate Reference System:
+  User input: WGS 84 
+  wkt:
+GEOGCRS["WGS 84",
+    DATUM["World Geodetic System 1984",
+        ELLIPSOID["WGS 84",6378137,298.257223563,
+            LENGTHUNIT["metre",1]]],
+    PRIMEM["Greenwich",0,
+        ANGLEUNIT["degree",0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS["latitude",north,
+            ORDER[1],
+            ANGLEUNIT["degree",0.0174532925199433]],
+        AXIS["longitude",east,
+            ORDER[2],
+            ANGLEUNIT["degree",0.0174532925199433]],
+    ID["EPSG",4326]]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>proj4string <span class="ot">&lt;-</span> <span class="st">"+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">                +y_0=0 +ellps=intl +units=m"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>projected.shape <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf.shape, <span class="at">crs =</span> proj4string)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>region.tm <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"Tentsmuir"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata.name =</span> <span class="fu">c</span>(<span class="st">"Main Area"</span>, <span class="st">"Morton Lochs"</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">shape =</span> projected.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Create the coverage grid.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cover.tm <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.tm, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>design.tm <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.tm,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">transect.type =</span> <span class="st">"point"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">samplers =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">truncation =</span> <span class="dv">100</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">coverage.grid =</span> cover.tm)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>survey.tentsmuir <span class="ot">&lt;-</span> <span class="fu">generate.transects</span>(design.tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Strata Main Area:
+   __________________
+Design:  systematically spaced transects
+Spacing:  751.2295
+Number of samplers:  24
+Design angle:  0
+Edge protocol:  minus
+Covered area:  753455.1
+Strata coverage: 5.34%
+Strata area:  14108643
+
+   Strata Morton Lochs:
+   _____________________
+Design:  systematically spaced transects
+Spacing:  218.3674
+Number of samplers:  14
+Design angle:  0
+Edge protocol:  minus
+Covered area:  408680.8
+Strata coverage: 57.14%
+Strata area:  715264.9
+
+   Study Area Totals:
+   _________________
+Number of samplers:  38
+Covered area:  1162136
+Average coverage: 7.84%</code></pre>
+</div>
+</div>
+<p>A spacing of 751m was used in the main stratum and 218m in the Morton Lochs stratum - these values are calculated based on the stratum areas and should not vary between surveys generated from the same design. You may or may not have achieved the number of transects you requested, this will depend on the random start point calculated for your particular survey. There will also be some variability in coverage, my survey achieved a coverage of 5.7% in the main strata and 64.8% in the Morton Loch strata.</p>
+<p><em>View the design statistics. What is the minimum number of samplers you will achieve in each strata? Is this sufficient to complete separate analyses in each stratum?</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coverage.tentsmuir <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.tm, <span class="at">reps=</span><span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   Strata Main Area:
+   __________________
+Design:  systematically spaced transects
+Spacing:  NA
+Number of samplers:  25
+Design angle:  0
+Edge protocol:  minus
+
+   Strata Morton Lochs:
+   _____________________
+Design:  systematically spaced transects
+Spacing:  NA
+Number of samplers:  15
+Design angle:  0
+Edge protocol:  minus
+
+Strata areas:  14108643, 715265
+Region units:  m
+Coverage Simulation repetitions:  250
+
+    Number of samplers:
+    
+        Main Area Morton Lochs Total
+Minimum        22         12.0  36.0
+Mean           25         15.0  40.0
+Median         25         15.0  40.0
+Maximum        27         18.0  45.0
+sd              1          1.1   1.5
+
+    Covered area:
+    
+        Main Area Morton Lochs      Total
+Minimum 681390.03    350038.31 1077782.51
+Mean    767320.69    414353.54 1181674.23
+Median  770614.70    412746.95 1184999.35
+Maximum 821387.73    467729.37 1280322.44
+sd       28836.38     24735.04   36971.91
+
+    % of region covered:
+    
+        Main Area Morton Lochs Total
+Minimum      4.83        48.94  7.27
+Mean         5.44        57.93  7.97
+Median       5.46        57.71  7.99
+Maximum      5.82        65.39  8.64
+sd           0.20         3.46  0.25
+
+    Coverage Score Summary:
+    
+         Main Area Morton Lochs      Total
+Minimum 0.01200000    0.1880000 0.01200000
+Mean    0.05440353    0.5817667 0.07972709
+Median  0.05200000    0.6240000 0.05600000
+Maximum 0.09600000    0.7200000 0.72000000
+sd      0.01501969    0.1141008 0.11641912</code></pre>
+</div>
+</div>
+<p>My design statistics indicated I should achieve between 22 and 27 transects in the main stratum and between 12 and 18 in the Morton Lochs stratum. I might be a bit concerned about the possibility of only achieving 12 transects in the Morton Lochs stratum (remember I cannot just discard a survey due to the number of transects and generate another as it will affect my coverage properties) but whether this is sufficient will depend on a number of things… what are the objectives of the study? how many detections are you likely to get from each transect? etc. Information from a pilot study would be useful to help decide how many transects are required as a minimum.</p>
+<p><em>Does it appear that you that there is even coverage within strata?</em></p>
+<div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pr6-solution_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Coverage scores main stratum Tentsmuir Forest.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Pr6-solution_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Coverage scores Morton Lochs stratum Tentsmuir Forest.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The main strata looks to have fairly uniform coverage. The values appear to have such small levels of variability that the variability that is seen will be down to stochasticity as it is seen across the entire strata. The Morton Lochs strata we can see has areas of lower coverage around the edge of the study region. This grid is a bit too coarse to allow us to properly judge how much of an issue edge effects will be in this strata. It may be wise to re-run the coverage simulation with a finer coverage grid and more repetitions too. Edge effects could potentially be problematic in such small areas.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
