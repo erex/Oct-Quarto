@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.219">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2022-10-25">
+
+<title>Distance sampling lab book - Covariates in the detection function solution</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling lab book</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html">
+ <span class="menu-text">Sampling</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr6/design.html">
+ <span class="menu-text">Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#covariates-in-point-transect-detection-functions-amakihi" id="toc-covariates-in-point-transect-detection-functions-amakihi" class="nav-link active" data-scroll-target="#covariates-in-point-transect-detection-functions-amakihi">Covariates in point transect detection functions: Amakihi</a></li>
+  <li><a href="#more-mcds-with-line-transects-etp-dolphins-optional" id="toc-more-mcds-with-line-transects-etp-dolphins-optional" class="nav-link" data-scroll-target="#more-mcds-with-line-transects-etp-dolphins-optional">More MCDS with line transects: ETP dolphins (optional)</a>
+  <ul class="collapse">
+  <li><a href="#colourful-plot-noting-effect-of-cue-type" id="toc-colourful-plot-noting-effect-of-cue-type" class="nav-link" data-scroll-target="#colourful-plot-noting-effect-of-cue-type">Colourful plot noting effect of cue type</a></li>
+  </ul></li>
+  <li><a href="#more-mcds-with-point-transects-savannah-sparrow-optional" id="toc-more-mcds-with-point-transects-savannah-sparrow-optional" class="nav-link" data-scroll-target="#more-mcds-with-point-transects-savannah-sparrow-optional">More MCDS with point transects: Savannah sparrow (optional)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Covariates in the detection function <strong>solution</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 25, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Covariates in the detection function</p>
+</div>
+</div>
+<section id="covariates-in-point-transect-detection-functions-amakihi" class="level1">
+<h1>Covariates in point transect detection functions: Amakihi</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(amakihi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(amakihi<span class="sc">$</span>distance, <span class="at">xlab=</span><span class="st">"Radial distances (m)"</span>, <span class="at">main=</span><span class="st">"Amakihi point transect data."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>A truncation distance of 82.5 m was chosen by <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
+<p>Plots of the covariates were generated. Not surprisingly, <code>MAS</code> and <code>HAS</code> are correlated and so we need to be cautious of including them in the same model.</p>
+<div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>OBs, <span class="at">xlab=</span><span class="st">"Observer"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>HAS, <span class="at">xlab=</span><span class="st">"Hour"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>amakihi<span class="sc">$</span>MAS, <span class="at">y=</span>amakihi<span class="sc">$</span>distance, <span class="at">xlab=</span><span class="st">"Minutes after sunrise"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Distance (m)"</span>, <span class="at">pch=</span><span class="dv">20</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>amakihi<span class="sc">$</span>HAS, <span class="at">y=</span>amakihi<span class="sc">$</span>MAS, <span class="at">xlab=</span><span class="st">"Hours after sunrise"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Minutes after sunrise"</span>, <span class="at">pch=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Observer as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Hour since sunrise as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Minutes since sunrise as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Minutes and hours after sunrise plotted together</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Some rearrangement of the covariates, <code>relevel</code> simply shuffles the order of the observer and hour after sunrise factor covariates to conform to the analysis as presented in <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>HAS <span class="ot">&lt;-</span> <span class="fu">factor</span>(amakihi<span class="sc">$</span>HAS)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>OBs <span class="ot">&lt;-</span> <span class="fu">relevel</span>(amakihi<span class="sc">$</span>OBs, <span class="at">ref=</span><span class="st">"TKP"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>HAS <span class="ot">&lt;-</span> <span class="fu">relevel</span>(amakihi<span class="sc">$</span>HAS, <span class="at">ref=</span><span class="st">"5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The model selected by <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span> used a hazard rate key function and included observer and minutes after sunrise (treating time as a continuous rather than discrete covariate)- this model is fitted below. The PDF plot is shown.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit model selected by Marques et al (2007)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>conv <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>amak.hr.obs.mas <span class="ot">&lt;-</span> <span class="fu">ds</span>(amakihi, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span>OBs<span class="sc">+</span>MAS, <span class="at">convert_units =</span> conv,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation=</span><span class="fl">82.5</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(amak.hr.obs.mas, <span class="at">showpoints=</span><span class="cn">FALSE</span>, <span class="at">main=</span><span class="st">"Amakihi Observer and Minutes"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>sfzero <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"SGF"</span>, <span class="at">MAS=</span><span class="dv">0</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sf180 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"SGF"</span>, <span class="at">MAS=</span><span class="dv">180</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>t1zero <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"TJS"</span>, <span class="at">MAS=</span><span class="dv">0</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>t1180 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"TJS"</span>, <span class="at">MAS=</span><span class="dv">180</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>t2zero <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"TKP"</span>, <span class="at">MAS=</span><span class="dv">0</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>t2180 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">OBs=</span><span class="st">"TKP"</span>, <span class="at">MAS=</span><span class="dv">180</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>sfzero, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>sf180, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>t1zero, <span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"red"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>t1180, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"red"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>t2zero, <span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"green"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(amak.hr.obs.mas, <span class="at">data=</span>t2180, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"green"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"SF, minutes=0"</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"SF, minutes=180"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"TS, minutes=0"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"TS, minutes=180"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"TP, minutes=0"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"TP, minutes=180"</span>),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Covariate combination: observer and minutes"</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">times=</span><span class="dv">3</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span>), <span class="at">each=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Cautionary tale
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A second round of model criticism</p>
+</div>
+</div>
+<p>The model chosen by <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span> for making inference included minutes after sunrise (MAS) and observer (OBS) as covariates in the detection function. Did that model produce estimates of detection probability that were small for some detections? Recall, because we are using a Horwitz-Thompson-like estimator, our estimates of abundance are quite sensitive to detections with small values of <span class="math inline">\(\widehat{P_a(z_i)}\)</span>. Detections with small <span class="math inline">\(\widehat{P_a(z_i)}\)</span> can have quite large impacts upon population estimates.</p>
+<p>A new function in the most recent version of the <code>Distance</code> package, permits examination of the distribution of the <span class="math inline">\(\widehat{P_a(z_i)}\)</span> so we can assess whether this analysis guideline is violated:</p>
+<blockquote class="blockquote">
+<p>consider reducing the trunction distance if more than 5% of the <span class="math inline">\(\widehat{P_a(z_i)}\)</span> are &lt; 0.2, or if any are less than 0.1</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">p_dist_table</span>(amak.hr.obs.mas, <span class="at">proportion =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Distribution of $P_a(z_i)$ from preferred model when w=82.5</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> p </th>
+   <th style="text-align:right;"> count </th>
+   <th style="text-align:right;"> proportion </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 - 0.1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;"> 0.1 - 0.2 </td>
+   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 167 </td>
+   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0.134 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.2 - 0.3 </td>
+   <td style="text-align:right;"> 106 </td>
+   <td style="text-align:right;"> 0.085 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.3 - 0.4 </td>
+   <td style="text-align:right;"> 515 </td>
+   <td style="text-align:right;"> 0.414 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.4 - 0.5 </td>
+   <td style="text-align:right;"> 455 </td>
+   <td style="text-align:right;"> 0.366 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.5 - 0.6 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>This suggests redoing the analysis with stronger truncation. I’ll repeat the model fitting (without showing the code) using 70m as the truncation distance. What do we see when examining the distribution of the <span class="math inline">\(\widehat{P_a(z_i)}\)</span> with the more stringent truncation?</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Distribution of $P_a(z_i)$ from preferred model when w=70</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> p </th>
+   <th style="text-align:right;"> count </th>
+   <th style="text-align:right;"> proportion </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 0 - 0.1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;"> 0.1 - 0.2 </td>
+   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0 </td>
+   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.2 - 0.3 </td>
+   <td style="text-align:right;"> 207 </td>
+   <td style="text-align:right;"> 0.184 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.3 - 0.4 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 0.043 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.4 - 0.5 </td>
+   <td style="text-align:right;"> 678 </td>
+   <td style="text-align:right;"> 0.603 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 0.5 - 0.6 </td>
+   <td style="text-align:right;"> 191 </td>
+   <td style="text-align:right;"> 0.170 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><em>Should this much truncation cause concern for point estimates and precision?</em></p>
+<p>The news that model criticism should start over with a new truncation distance would not be good news. Concerns might also creep into your heads that removing data might affect the point estimates and possibly the precision. In this case, moving the truncation distance from 82.5m to 70m removed only 1.5% (19) detections, so it is unlikely that precision was affected.</p>
+<p>Regarding the effect upon the point estimates of amakihi density, let’s take a step back. If you were to examine the point and interval estimates for this data set from a number of detection function models, you would find the estimates are robust to model choice.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="estimate-comparisons.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Density estimates for amakihi data set under a variety ofdetection function models and truncation distances.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><em>My impression</em></p>
+<p>For this data set, the effort expended in discriminating between models with one vs two covariates as well as the angst about truncation distances had <strong>imperceptible effects</strong> upon the survey-specific density estimates. In fact, a model simply using survey replicate as a covariate produced largely the same density estimates. Understanding the temporal dynamics of the amakihi population was not influenced by covariate modelling.</p>
+</section>
+<section id="more-mcds-with-line-transects-etp-dolphins-optional" class="level1">
+<h1>More MCDS with line transects: ETP dolphins (optional)</h1>
+<p>We have not provided a comprehensive analysis of these data but have highlighted a few general feature of these data. A more complete analysis can be found in <span class="citation" data-cites="FMARBUC03">F. F. C. Marques &amp; Buckland (<a href="#ref-FMARBUC03" role="doc-biblioref">2003</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(ETP_Dolphin)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(ETP_Dolphin, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region.Label Area Sample.Label Effort object distance LnCluster Month
+1      Default    0            1      1      1     2.25  6.792344     6
+2      Default    0            1      1      2     3.15  7.080868     6
+3      Default    0            1      1      3     3.00  5.181784     6
+  Beauf.class Cue.type Search.method size Study.Area
+1           2        3             0  891    Dolphin
+2           2        1             2 1189    Dolphin
+3           2        1             2  178    Dolphin</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ETP_Dolphin_units[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Variable                Units
+1   Effort        nautical mile
+2 distance        nautical mile
+3     Area square nautical mile</code></pre>
+</div>
+</div>
+<p>Notice that effort and perpendicular distances are both measured in nautical miles and that density is to be reported in animals per square nautical mile, so the conversation factor in this case is 1 and we do not represent it here.</p>
+<p>To obtain an overall impression of the data, it is useful to fit a histogram with many intervals.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ETP_Dolphin<span class="sc">$</span>distance, <span class="at">nclass=</span><span class="dv">50</span>, <span class="at">xlab=</span><span class="st">"Distance (nm)"</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Tropical Pacific dolphin survey perpendicular distances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The spikes in the histogram suggest that distances have been rounded to zero and possibly other values. To mitigate these problems, the distances could be binned although we do not do so in the analysis below. The distances have already been truncated at 5 nm and so we will not truncate distances further.</p>
+<div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Search.method, <span class="at">xlab=</span><span class="st">"Search method"</span>, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Cue.type, <span class="at">xlab=</span><span class="st">"Cue"</span>, <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Beauf.class, <span class="at">xlab=</span><span class="st">"Beaufort class"</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Month, <span class="at">xlab=</span><span class="st">"Month"</span>, <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Search method as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Cue type as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Sea state as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Survey month as possible covariate</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>To decide whether to fit a half normal or a hazard rate key function, each of these is tried in turn.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>etp.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>etp.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">as.data.frame</span>(<span class="fu">AIC</span>(etp.hn, etp.hr))) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> df </th>
+   <th style="text-align:right;"> AIC </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> etp.hn </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3377.489 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> etp.hr </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3365.915 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>The AIC values suggest that hazard rate key function is preferable to the half normal and so this will be used as the key function in the MCDS models. Each covariate is introduced in turn.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>etp.hr.search <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Search.method))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>etp.hr.cue <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Cue.type))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>etp.hr.bf <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Beauf.class))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>etp.hr.month <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Month))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(etp.hr, etp.hr.search, etp.hr.cue, etp.hr.bf, etp.hr.month,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">output=</span><span class="st">"plain"</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption=</span><span class="st">"ETP dolphin model selection."</span>, <span class="at">digits=</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>ETP dolphin model selection.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Key function </th>
+   <th style="text-align:left;"> Formula </th>
+   <th style="text-align:right;"> C-vM $p$-value </th>
+   <th style="text-align:right;"> Average detectability </th>
+   <th style="text-align:right;"> se(Average detectability) </th>
+   <th style="text-align:right;"> Delta AIC </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Hazard-rate </td>
+   <td style="text-align:left;"> ~factor(Search.method) </td>
+   <td style="text-align:right;"> 0.388 </td>
+   <td style="text-align:right;"> 0.584 </td>
+   <td style="text-align:right;"> 0.036 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hazard-rate </td>
+   <td style="text-align:left;"> ~factor(Cue.type) </td>
+   <td style="text-align:right;"> 0.449 </td>
+   <td style="text-align:right;"> 0.587 </td>
+   <td style="text-align:right;"> 0.039 </td>
+   <td style="text-align:right;"> 23.314 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hazard-rate </td>
+   <td style="text-align:left;"> ~factor(Month) </td>
+   <td style="text-align:right;"> 0.494 </td>
+   <td style="text-align:right;"> 0.593 </td>
+   <td style="text-align:right;"> 0.039 </td>
+   <td style="text-align:right;"> 24.264 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hazard-rate </td>
+   <td style="text-align:left;"> ~1 </td>
+   <td style="text-align:right;"> 0.461 </td>
+   <td style="text-align:right;"> 0.601 </td>
+   <td style="text-align:right;"> 0.038 </td>
+   <td style="text-align:right;"> 26.140 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hazard-rate </td>
+   <td style="text-align:left;"> ~factor(Beauf.class) </td>
+   <td style="text-align:right;"> 0.474 </td>
+   <td style="text-align:right;"> 0.601 </td>
+   <td style="text-align:right;"> 0.039 </td>
+   <td style="text-align:right;"> 27.993 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Based on the AIC, it seems as though the model including search method was preferable and we could continue the model selection process by looking at models with two covariates. However, before going on it is worth looking at the search method model in more detail. If we look at the detection function parameters for this model:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(etp.hr.search<span class="sc">$</span>ddf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Distance sampling analysis object
+
+Summary for ds object
+Number of observations :  1090 
+Distance range         :  0  -  5 
+AIC                    :  3339.775 
+
+Detection function:
+ Hazard-rate key function 
+
+Detection function parameters 
+Scale coefficient(s): 
+                        estimate         se
+(Intercept)            0.3355216  0.2072092
+factor(Search.method)2 0.3208291  0.2112991
+factor(Search.method)3 3.1275291 78.6499662
+factor(Search.method)5 0.2430596  0.5378506
+
+Shape coefficient(s):  
+             estimate        se
+(Intercept) 0.0782788 0.1387477
+
+                        Estimate           SE         CV
+Average p              0.5837961   0.03602487 0.06170796
+N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
+</div>
+</div>
+<p>we see that the estimated scale coefficient for search method 3 is substantially larger than the estimated scale coefficients for other methods. The effect this has on the detection function is clearly seen in the detection function plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot search method detection function</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(etp.hr.search, <span class="at">pch=</span><span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Search method 3 indicated that the detection was from a helicopter and this detection function suggests that all dolphin schools out to 5 nm were being detected and so detection does not decrease as distance increases. One assumption of MCDS is that the perpendicular distance distributions of the covariate factor levels have the same shape and so it may be worth refitting the models but excluding the observations made by the helicopter.</p>
+<section id="colourful-plot-noting-effect-of-cue-type" class="level2">
+<h2 class="anchored" data-anchor-id="colourful-plot-noting-effect-of-cue-type">Colourful plot noting effect of cue type</h2>
+<p>Just an example of using the function <code>add_df_covar_line</code> to visually explore consequences of covariates on the detection function. A <em>regular</em> call to <code>plot()</code> is first used to produce the histogram and average detection function line; subsequent calls to the new function with different values of the covariate of interest completes the plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(etp.hr.cue, <span class="at">main=</span><span class="st">"ETP dolphin survey"</span>, <span class="at">showpoints=</span><span class="cn">FALSE</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(etp.hr.cue, <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Cue.type=</span><span class="dv">1</span>), <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(etp.hr.cue, <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Cue.type=</span><span class="dv">2</span>), <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(etp.hr.cue, <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Cue.type=</span><span class="dv">3</span>), <span class="at">col=</span><span class="st">'green'</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(etp.hr.cue, <span class="at">data =</span> <span class="fu">data.frame</span>(<span class="at">Cue.type=</span><span class="dv">4</span>), <span class="at">col=</span><span class="st">'purple'</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Birds"</span>,<span class="st">"Splashes"</span>,<span class="st">"Unspecified"</span>,<span class="st">"Floating objects"</span>),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"purple"</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">title =</span> <span class="st">"Cue type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/colourful-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Detection function with cue type as covariate.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="more-mcds-with-point-transects-savannah-sparrow-optional" class="level1">
+<h1>More MCDS with point transects: Savannah sparrow (optional)</h1>
+<p>Recall, these are data from Colorado, described by <span class="citation" data-cites="knopf1988">Knopf et al. (<a href="#ref-knopf1988" role="doc-biblioref">1988</a>)</span>. The question here was whether to include pasture as a covariate in the detection function. The biological question being, “does detectability of Savannah sparrows differ between the pastures in which the survey was conducted.”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Savannah_sparrow_1980)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Savannah_sparrow_1980, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region.Label Area Sample.Label Effort object distance Study.Area
+1    PASTURE 1    1    POINT   1      1     NA       NA  SASP 1980
+2    PASTURE 1    1    POINT   2      1     NA       NA  SASP 1980
+3    PASTURE 1    1    POINT   3      1     NA       NA  SASP 1980</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Savannah_sparrow_1980<span class="sc">$</span>distance, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">xlab=</span><span class="st">"Distance (m)"</span>,</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Savannah sparrow radial distances '80"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A truncation distance of 55m was chosen. The half normal and hazard rate functions were tried in turn, allowing AIC selection of cosine adjustment terms, then pasture was included as a covariate in the detection function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1980.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1980, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1980.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1980, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1980.hn.region <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1980, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">formula=</span><span class="sc">~</span>Region.Label)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1980.hr.region <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1980, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">formula=</span><span class="sc">~</span>Region.Label)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(Savannah_sparrow_1980.hn, Savannah_sparrow_1980.hr, Savannah_sparrow_1980.hn.region, Savannah_sparrow_1980.hr.region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                df      AIC
+Savannah_sparrow_1980.hn         2 2126.228
+Savannah_sparrow_1980.hr         2 2129.961
+Savannah_sparrow_1980.hn.region  3 2125.033
+Savannah_sparrow_1980.hr.region  4 2130.447</code></pre>
+</div>
+</div>
+<p>The half normal model with pasture as a covariate had a marginally smaller AIC than the half normal model without pasture. The plots and estimates are shown below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Savannah_sparrow_1980.hn.region, <span class="at">pch=</span><span class="st">"."</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Note different PDF shapes caused by the pasture covariate.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Savannah_sparrow_1980.hn.region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary for distance analysis 
+Number of observations :  271 
+Distance range         :  0  -  55 
+
+Model : Half-normal key function 
+AIC   : 2125.033 
+
+Detection function parameters
+Scale coefficient(s):  
+                         estimate         se
+(Intercept)            3.17237666 0.09850468
+Region.LabelPASTURE 2 -0.20459862 0.11098924
+Region.LabelPASTURE 3 -0.03286901 0.12333031
+
+                       Estimate          SE         CV
+Average p             0.2896553  0.01973518 0.06813332
+N in covered region 935.5946771 79.89055349 0.08539013
+
+Summary statistics:
+     Region Area CoveredArea Effort   n   k        ER      se.ER      cv.ER
+1 PASTURE 1    1    117.8411    124  59 124 0.4758065 0.07009015 0.14730811
+2 PASTURE 2    1    119.7418    126 121 126 0.9603175 0.09521957 0.09915427
+3 PASTURE 3    1    116.8908    123  91 123 0.7398374 0.07467322 0.10093193
+4     Total    3    354.4738    373 271 373 0.7253204 0.04661364 0.06426628
+
+Abundance:
+      Label Estimate        se         cv       lcl      ucl       df
+1 PASTURE 1 1.430170 0.3084008 0.21563923 0.9403572 2.175117 353.1228
+2 PASTURE 2 4.116182 0.5642114 0.13707154 3.1472623 5.383394 329.1061
+3 PASTURE 3 2.345631 0.3717609 0.15849077 1.7208931 3.197169 374.9983
+4     Total 7.891983 0.7427326 0.09411229 6.5625680 9.490706 537.6070
+
+Density:
+      Label Estimate        se         cv       lcl      ucl       df
+1 PASTURE 1 1.430170 0.3084008 0.21563923 0.9403572 2.175117 353.1228
+2 PASTURE 2 4.116182 0.5642114 0.13707154 3.1472623 5.383394 329.1061
+3 PASTURE 3 2.345631 0.3717609 0.15849077 1.7208931 3.197169 374.9983
+4     Total 2.630661 0.2475775 0.09411229 2.1875227 3.163569 537.6070</code></pre>
+</div>
+</div>
+<p>A similar process was conducted for the 1981 data: a truncation distance of 55m was again used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Savannah_sparrow_1981)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1981.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1981, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1981.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1981, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1981.hn.region <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1981, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">formula=</span><span class="sc">~</span>Region.Label)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>Savannah_sparrow_1981.hr.region <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>Savannah_sparrow_1981, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation=</span><span class="dv">55</span>,</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">convert_units=</span>conversion.factor,</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>                        <span class="at">formula=</span><span class="sc">~</span>Region.Label)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(Savannah_sparrow_1981.hn, Savannah_sparrow_1981.hr, Savannah_sparrow_1981.hn.region, Savannah_sparrow_1981.hr.region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                df      AIC
+Savannah_sparrow_1981.hn         1 1266.358
+Savannah_sparrow_1981.hr         2 1267.335
+Savannah_sparrow_1981.hn.region  4 1261.684
+Savannah_sparrow_1981.hr.region  5 1260.638</code></pre>
+</div>
+</div>
+<p>For 1981, there was a clear preference for including pasture as a covariate in the detection function but little to choose from between the half normal and hazard rate key function. For comparability with 1980, the plots and results below are for the half normal model although AIC showed a slight preference for the hazard rate model. The differences in detection between pastures can easily be seen and this is reflected in the estimated densities (birds per hectare).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pastures <span class="ot">&lt;-</span> <span class="fu">unique</span>(Savannah_sparrow_1981<span class="sc">$</span>Region.Label)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Savannah_sparrow_1981.hn.region, <span class="at">showpoints=</span><span class="cn">FALSE</span>, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Savannah sparrows with pasture covariate"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> pastures) {</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> k<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_df_covar_line</span>(Savannah_sparrow_1981.hn.region, </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">data=</span><span class="fu">data.frame</span>(<span class="at">Region.Label=</span><span class="fu">as.character</span>(i)),</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span>k, <span class="at">lwd=</span><span class="dv">3</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend=</span><span class="fu">tolower</span>(<span class="fu">as.character</span>(pastures)), </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="dv">2</span><span class="sc">:</span>k, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">title =</span> <span class="st">"Pastures"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="fl">0.038</span>, <span class="at">cex=</span><span class="fl">0.9</span>, <span class="at">pos=</span><span class="dv">4</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">expression</span>(<span class="fu">widehat</span>(sigma[p])<span class="sc">==</span><span class="fu">plain</span>(exp)(<span class="fu">widehat</span>(beta[<span class="dv">0</span>]) <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">1</span>]) <span class="sc">%.%</span> p[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">2</span>]) <span class="sc">%.%</span> p[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">3</span>]) <span class="sc">%.%</span> p[<span class="dv">3</span>])))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>parms <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">est=</span><span class="fu">c</span>(<span class="fl">2.944</span>, <span class="fl">0.736</span>, <span class="fl">0.166</span>, <span class="fl">0.271</span>),</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se=</span><span class="fu">c</span>(<span class="fl">0.111</span>, <span class="fl">0.373</span>, <span class="fl">0.153</span>, <span class="fl">0.179</span>))</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(parms) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"b0"</span>, <span class="st">"b1"</span>, <span class="st">"b2"</span>, <span class="st">"b3"</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">addtable2plot</span>(<span class="dv">2</span>, <span class="fl">0.027</span>, parms, <span class="at">bty=</span><span class="st">"o"</span>,</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">display.rownames=</span><span class="cn">TRUE</span>,<span class="at">hlines=</span><span class="cn">TRUE</span>, <span class="at">cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">xpad=</span><span class="fl">0.4</span>, <span class="at">vlines=</span><span class="cn">FALSE</span>,<span class="at">title=</span><span class="st">"Parameter estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
+<p></p><figcaption class="figure-caption">Stronger influence of pasture covariate seen here.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Savannah_sparrow_1981.hn.region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Summary for distance analysis 
+Number of observations :  162 
+Distance range         :  0  -  55 
+
+Model : Half-normal key function 
+AIC   : 1261.684 
+
+Detection function parameters
+Scale coefficient(s):  
+                       estimate        se
+(Intercept)           2.9440471 0.1110272
+Region.LabelPASTURE 1 0.7362681 0.3726357
+Region.LabelPASTURE 2 0.1660949 0.1524426
+Region.LabelPASTURE 3 0.2703034 0.1790810
+
+                       Estimate          SE        CV
+Average p             0.3435487  0.03715842 0.1081606
+N in covered region 471.5489315 59.62606187 0.1264472
+
+Summary statistics:
+     Region Area CoveredArea Effort   n   k    ER      se.ER      cv.ER
+1 PASTURE 0    1    95.03318    100  31 100 0.310 0.05448566 0.17576019
+2 PASTURE 1    1    95.03318    100  32 100 0.320 0.06175874 0.19299605
+3 PASTURE 2    1    95.03318    100  51 100 0.510 0.08225975 0.16129363
+4 PASTURE 3    1    95.03318    100  48 100 0.480 0.07174590 0.14947063
+5     Total    4   380.13271    400 162 400 0.405 0.03418422 0.08440547
+
+Abundance:
+      Label  Estimate        se        cv       lcl      ucl       df
+1 PASTURE 0 1.3887466 0.3779428 0.2721467 0.8203808 2.350880 255.9017
+2 PASTURE 1 0.5241867 0.1817587 0.3467442 0.2699503 1.017861 250.9726
+3 PASTURE 2 1.6980708 0.4057104 0.2389243 1.0676527 2.700732 251.7139
+4 PASTURE 3 1.3509360 0.3544528 0.2623757 0.8127396 2.245526 253.0658
+5     Total 4.9619401 0.6827259 0.1375925 3.7903971 6.495586 357.0057
+
+Density:
+      Label  Estimate        se        cv       lcl      ucl       df
+1 PASTURE 0 1.3887466 0.3779428 0.2721467 0.8203808 2.350880 255.9017
+2 PASTURE 1 0.5241867 0.1817587 0.3467442 0.2699503 1.017861 250.9726
+3 PASTURE 2 1.6980708 0.4057104 0.2389243 1.0676527 2.700732 251.7139
+4 PASTURE 3 1.3509360 0.3544528 0.2623757 0.8127396 2.245526 253.0658
+5     Total 1.2404850 0.1706815 0.1375925 0.9475993 1.623896 357.0057</code></pre>
+</div>
+</div>
+<p>In these models, the detection functions have been fitted to all the detections within the study region (for each year). An alternative would be to fit separate detection functions within each pasture (specified in <code>Region.Label</code>), provided there are enough detections. This would allow different shape detection functions to be fitted in each pasture (providing this is a reasonable thing to do).</p>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-knopf1988" class="csl-entry" role="doc-biblioentry">
+Knopf, F. L., Sedgwick, J. A., &amp; Cannon, R. W. (1988). Guild structure of a riparian avifauna relative to seasonal cattle grazing. <em>The Journal of Wildlife Management</em>, <em>52</em>(2), 280–290. <a href="https://doi.org/10.2307/3801235">https://doi.org/10.2307/3801235</a>
+</div>
+<div id="ref-FMARBUC03" class="csl-entry" role="doc-biblioentry">
+Marques, F. F. C., &amp; Buckland, S. T. (2003). Incorporating covariates into standard line transect analyses. <em>Biometrics</em>, <em>59</em>, 924–935. <a href="https://doi.org/10.1111/j.0006-341x.2003.00107.x">https://doi.org/10.1111/j.0006-341x.2003.00107.x</a>
+</div>
+<div id="ref-Marques2007" class="csl-entry" role="doc-biblioentry">
+Marques, T. A., Thomas, L., Fancy, S. G., &amp; Buckland, S. T. (2007). Improving estimates of bird density using multiple covariate distance sampling. <em>The Auk</em>, <em>127</em>, 1229–1243. <a href="https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2">https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
