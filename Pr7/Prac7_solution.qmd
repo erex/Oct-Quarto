@@ -69,8 +69,8 @@ aic.SN <- aic.S + aic.N
 The AIC value for the detection function in the South was `r format(aic.S, digits=4)` and the AIC for the North was `r format(aic.N, digits=4)`. This gives a total AIC of `r format(aic.SN, digits=4)`. The AIC value for the pooled detection function was `r format(aic.all, digits=4)`. Because `r format(aic.all, digits=4)` is greater than `r format(aic.SN, digits=4)`, estimation of separate detection functions in each stratum is preferable. 
 
 ```{r}
-#| echo = FALSE
-par(mfrow=c(2,2))
+#| echo: false
+#| layout-ncol: 2
 plot(minke.df.S.strat, main="South")
 plot(minke.df.N.strat, main="North")
 plot(minke.df.all, main="All")
