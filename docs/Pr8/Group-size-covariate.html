@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-14">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Size bias—how large is the problem?</title>
 <style>
@@ -225,6 +225,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">Other model selection metrics</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr8/Prac8_solution.html" class="sidebar-item-text sidebar-link">Covariates in the detection function <strong>solution</strong></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -271,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -296,8 +301,7 @@ Supplement
 </div>
 <section id="size-bias-in-distance-sampling-surveys" class="level1">
 <h1>Size bias in distance sampling surveys</h1>
-<p>As shown in the lecture, if detectability is a function not only of distance, but also size (big groups are easier to see than small groups), then groups in the sample are likely to be larger than groups in the entire population. Consequently, when the density of groups is scaled up to the density of individuals</p>
-<p><span class="math display">\[\hat{D}_{indiv} = \hat{D}_{groups} \times \overline{size}_{group}\]</span></p>
+<p>As shown in the lecture, if detectability is a function not only of distance, but also size (big groups are easier to see than small groups), then groups in the sample are likely to be larger than groups in the entire population. Consequently, when the density of groups is scaled up to the density of individuals <span class="math display">\[\hat{D}_{indiv} = \hat{D}_{groups} \times \overline{size}_{group}\]</span></p>
 <p><span class="math inline">\(\hat{D}_{indiv}\)</span> is overestimated.</p>
 <p>A resolution to this problem is to explicitly model the probability of detection as a function of group size using <code>size</code> as a covariate in the detection function. I will demonstrate two applications: one where group size variability is small and one where group size variability is large. I will use simulation (where the answer is known) to demonstrate.</p>
 <p>The necessary syntax to include covariates, group size in this instance, in the detection function is:</p>
@@ -342,7 +346,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2272.47.</p>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2244.38.</p>
 </section>
 <section id="analysis-without-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
@@ -352,7 +356,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2304.95.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2310.65.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
@@ -380,7 +384,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5453.55.</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5537.5.</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -389,7 +393,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5829.77, 32.9 percent larger than the true number of individuals in the population, 4388.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5809.16, 32.4 percent larger than the true number of individuals in the population, 4388.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
