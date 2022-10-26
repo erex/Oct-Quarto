@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-14">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Effect of habitat covariate upon estimated density–points</title>
 <style>
@@ -249,6 +249,11 @@ div.csl-indent {
   <a href="../Pr9/countmodel-points.html" class="sidebar-item-text sidebar-link active">Effect of habitat covariate upon estimated density–points</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/Prac9_solution.html" class="sidebar-item-text sidebar-link">Analysis with multipliers <strong>solution</strong></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -301,7 +306,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -319,11 +324,9 @@ div.csl-indent {
 <p>A number of authors have recognised the need to incorporate this uncertainty into the analysis of habitat effects upon estimated density. One approach (employed here) conducts the analyses in two stages: first detectability is estimated and <span class="math inline">\(P_a\)</span> or <span class="math inline">\(\mu\)</span> or <span class="math inline">\(\rho\)</span> is estimated. A second stage fits a model to count data adjusting using the estimated detectability parameters. This approach is exemplified by <span class="citation" data-cites="Buckland2009a">Buckland et al. (<a href="#ref-Buckland2009a" role="doc-biblioref">2009</a>)</span>. Alternatively, single state approaches have been described by <span class="citation" data-cites="rodriguezTortoiseAbundances2017">Rodríguez-Caro et al. (<a href="#ref-rodriguezTortoiseAbundances2017" role="doc-biblioref">2017</a>)</span>.</p>
 <p>Propagation of uncertainty from the first step into the second step is accomplished via a bootstrap, with the effective area sampled serving as an offset in the generalised linear modelling (GLM) analysis. The method described herein only applies when the link function is the <code>log</code> link, for the following reason.</p>
 <p>We want to model bird density in our GLM, derived from the counts we observed on each transect. Density is defined as</p>
-<p><span class="math display">\[D = \frac{n}{\text{Eff Area}} \]</span></p>
-<p>where <span class="math inline">\(n\)</span> is the count on each transect.</p>
+<p><span class="math display">\[D = \frac{n}{\text{Eff Area}} \]</span> where <span class="math inline">\(n\)</span> is the count on each transect.</p>
 <p>Therefore</p>
-<p><span class="math display">\[\frac{n}{\text{Eff Area}} = e^{\text{linear predictor}}\]</span></p>
-<p>when using a <code>log</code> link function.</p>
+<p><span class="math display">\[\frac{n}{\text{Eff Area}} = e^{\text{linear predictor}}\]</span> when using a <code>log</code> link function.</p>
 <p>Our count model works with <code>n</code> as the response variable</p>
 <p><span class="math display">\[
 \begin{align}
@@ -646,8 +649,7 @@ Warning
 <section id="visualise" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="visualise">Visualise</h2>
 <p>Even though we have computed the effective area for each transect based upon the fitted detection function, we have not used that effective area to adjust the observed counts. The simple formula</p>
-<p><span class="math display">\[\hat{D}_i = \frac{n_i}{EA_i}, i = 1, \ldots , n_{transects}\]</span></p>
-<p>where <span class="math inline">\(EA_i\)</span> is the effective area for the <span class="math inline">\(i^{th}\)</span> transect, describes this adjustment.</p>
+<p><span class="math display">\[\hat{D}_i = \frac{n_i}{EA_i}, i = 1, \ldots , n_{transects}\]</span> where <span class="math inline">\(EA_i\)</span> is the effective area for the <span class="math inline">\(i^{th}\)</span> transect, describes this adjustment.</p>
 <!-- We plot the estimated density against the continuous univariate predictor. -->
 <div class="cell">
 
