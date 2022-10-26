@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-25">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Point transect sampling solution</title>
 <style>
@@ -287,7 +287,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 25, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -327,7 +327,7 @@ Solution
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>PTExercise.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>PTExercise, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hn, <span class="at">pdf=</span><span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Simulated pt transect data</span><span class="sc">\n</span><span class="st">Half normal key function"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="384"></p>
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <section id="truncation-of-20m" class="level2">
@@ -414,17 +414,48 @@ Solution
 </section>
 <section id="plots-of-probability-density-functions-to-inspect-fit" class="level2">
 <h2 class="anchored" data-anchor-id="plots-of-probability-density-functions-to-inspect-fit">Plots of probability density functions to inspect fit</h2>
-<div class="cell">
-
+<div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hn, <span class="at">main=</span><span class="st">"Half normal, no truncation"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hn.t20m, <span class="at">main=</span><span class="st">"Half normal, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hr.t20m, <span class="at">main=</span><span class="st">"Hazard rate, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.uf.cos.t20m, <span class="at">main=</span><span class="st">"Uniform with cosine, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Half normal without truncation</figcaption><p></p>
+</figure>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hn, <span class="at">main=</span><span class="st">"Half normal, no truncation"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hn.t20m, <span class="at">main=</span><span class="st">"Half normal, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.hr.t20m, <span class="at">main=</span><span class="st">"Hazard rate, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PTExercise.uf.cos.t20m, <span class="at">main=</span><span class="st">"Uniform with cosine, truncation 20m"</span>, <span class="at">pdf=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Half normal 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Hazard rate 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Uniform cosine 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <p>We see a fair degree of variability between analyses - reliable analysis of point transect data is more difficult than for line transect data. We see greater loss in precision from truncating data relative to line transect sampling, but if we do not truncate data, different models can give widely differing estimates.</p>
@@ -432,17 +463,15 @@ Solution
 </section>
 <section id="wren-data-optional" class="level1">
 <h1>Wren data (Optional)</h1>
-<p>In the code provided below, each data set is loaded and detection functions selected in Buckland <span class="citation" data-cites="buckland2006">(<a href="#ref-buckland2006" role="doc-biblioref">2006</a>)</span> are fitted.</p>
+<p>In the code provided below, each data set is loaded and detection functions selected in <span class="citation" data-cites="buckland2006">Buckland (<a href="#ref-buckland2006" role="doc-biblioref">2006</a>)</span> are fitted.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"wren_5min"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"wren_snapshot"</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>wren5min.uf.cos.t110 <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>wren_5min, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">truncation=</span><span class="dv">110</span>, </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>wrensnap.hr.cos.t110 <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>wren_snapshot, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                        <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">truncation=</span><span class="dv">110</span>, </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                        <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>wren5min.uf.cos.t110 <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>wren_5min, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">truncation=</span><span class="dv">110</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>wrensnap.hr.cos.t110 <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>wren_snapshot, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">truncation=</span><span class="dv">110</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -475,13 +504,28 @@ Solution
 </div>
 <section id="probability-density-functions-for-bucklands-winter-wren-point-transects" class="level2">
 <h2 class="anchored" data-anchor-id="probability-density-functions-for-bucklands-winter-wren-point-transects">Probability density functions for Buckland’s winter wren point transects</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot detection functions</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wren5min.uf.cos.t110, <span class="at">main=</span><span class="st">"5 minute count"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wrensnap.hr.cos.t110, <span class="at">main=</span><span class="st">"Snapshot moment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wren5min.uf.cos.t110, <span class="at">main=</span><span class="st">"5 minute count"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(wrensnap.hr.cos.t110, <span class="at">main=</span><span class="st">"Snapshot moment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Detection function 5 minute count</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac5_solution_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Detection function snapshot</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <p>As the detection distance histograms indicate, winter wren showed evidence of observer avoidance, more than other species in the Montrave study. We show the detection function graph rather than the PDF to emphasise the evasive movement aspect of the data. If you conduct the goodness of fit test, using <code>gof_ds()</code>, you will find that the models still suitably fit the data.</p>

@@ -23,8 +23,6 @@ Point transect analysis exercise
 The code for accessing and checking these data and fitting various models is shown below.
 
 ```{r}
-#| fig.width = 4,
-#| fig.height = 4,
 #| message = FALSE
 library(Distance)
 data("PTExercise")
@@ -74,18 +72,12 @@ knitr::kable(pt.tab, caption="Results from simulated point transect data.", digi
 ## Plots of probability density functions to inspect fit
 
 ```{r}
-#| echo = FALSE,
-#| eval = FALSE
-par(mfrow=c(2,2))
-plot(PTExercise.hn, main="Half normal, no truncation")
-plot(PTExercise.hn.t20m, main="Half normal, truncation 20m")
-plot(PTExercise.hr.t20m, main="Hazard rate, truncation 20m")
-plot(PTExercise.uf.cos.t20m, main="Uniform with cosine, truncation 20m")
-```
-
-```{r}
-#| fig.height = 6
-par(mfrow=c(2,2))
+#| layout-ncol: 2
+#| fig.cap:
+#|   - "Half normal without truncation"
+#|   - "Half normal 20m truncation"
+#|   - "Hazard rate 20m truncation"
+#|   - "Uniform cosine 20m truncation"
 plot(PTExercise.hn, main="Half normal, no truncation", pdf=TRUE)
 plot(PTExercise.hn.t20m, main="Half normal, truncation 20m", pdf=TRUE)
 plot(PTExercise.hr.t20m, main="Hazard rate, truncation 20m", pdf=TRUE)
@@ -96,19 +88,15 @@ We see a fair degree of variability between analyses - reliable analysis of poin
 
 # Wren data (Optional)
 
-In the code provided below, each data set is loaded and detection functions selected in Buckland [-@buckland2006] are fitted.
+In the code provided below, each data set is loaded and detection functions selected in @buckland2006 are fitted.
 
 ```{r}
-#| echo = T,
-#| eval = T
 data("wren_5min")
 data("wren_snapshot")
 conversion.factor <- convert_units("meter", NULL, "hectare")
-wren5min.uf.cos.t110 <- ds(data=wren_5min, key="unif", adjustment="cos", 
-                        transect="point", truncation=110, 
+wren5min.uf.cos.t110 <- ds(data=wren_5min, key="unif", adjustment="cos", transect="point", truncation=110, 
                         convert_units=conversion.factor)
-wrensnap.hr.cos.t110 <- ds(data=wren_snapshot, key="hr", adjustment=NULL, 
-                        transect="point", truncation=110, 
+wrensnap.hr.cos.t110 <- ds(data=wren_snapshot, key="hr", adjustment=NULL, transect="point", truncation=110, 
                         convert_units=conversion.factor)
 ```
 
@@ -131,9 +119,10 @@ knitr::kable(wren.tab, caption="Winter wren density estimates from 5 minute coun
 ## Probability density functions for Buckland's winter wren point transects
 
 ```{r}
-#| fig.height = 4
-# Plot detection functions
-par(mfrow=c(1,2))
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Detection function 5 minute count"
+#|   - "Detection function snapshot"
 plot(wren5min.uf.cos.t110, main="5 minute count")
 plot(wrensnap.hr.cos.t110, main="Snapshot moment")
 ```

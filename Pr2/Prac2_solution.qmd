@@ -121,10 +121,12 @@ knitr::kable(nest.tab,
 The detection function plots are shown below. 
 
 ```{r}
-#| echo = T,
-#| fig.show = "hold",
-#| column = "body-outset"
-par(mfrow=c(1,3))
+#| echo: true
+#| layout-ncol: 3
+#| fig-cap: 
+#|   - "Half normal"
+#|   - "Uniform with cosine"
+#|   - "Hazard rate"
 plot(nest.hn, nc=8, main="Half normal, no adjustments")
 plot(nest.uf.cos, nc=8, main="Uniform, cosine adjustments")
 plot(nest.hr.herm, nc=8, main="Hazard rate, no adjustments")

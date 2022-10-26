@@ -48,7 +48,6 @@ This has excluded 2 observations.
 
 ```{r}
 #| message = FALSE
-# Truncate 10% of largest distances
 lt.hn.t10per <- ds(data=LTExercise, key="hn", adjustment=NULL, truncation="10%", 
                 convert_units=conversion.factor)
 summary(lt.hn.t10per)
@@ -57,10 +56,10 @@ summary(lt.hn.t10per)
 This has excluded 11 observations. The plots are shown below.
 
 ```{r}
-#| echo = TRUE,
-#| eval = TRUE
-# Divide plot window
-par(mfrow=c(1,2))
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Truncation at absolute distance"
+#|   - "Truncation at relative distance"
 plot(lt.hn.t20m, main="Truncation 20m")
 plot(lt.hn.t10per, main="Truncation 10%")
 ```
@@ -126,11 +125,12 @@ There is a change in $\hat P_a$ due to truncation but all the models provide ver
 *Take home message:* with care, we can get reliable estimates using the wrong model (remember the data were simulated using a half normal detection function). It is gratifying because, in practise, the 'correct' model is never known.
 
 ```{r}
-#| echo = TRUE,
-#| eval = TRUE
-# Divide plot window
-par(mfrow=c(2,2))
-# Plot detection functions
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Half normal without truncation"
+#|   - "Half normal 20m truncation"
+#|   - "Uniform with adj 20m truncation"
+#|   - "Hazard rate 20m truncation"
 plot(lt.hn, main="HN, no truncation")
 plot(lt.hn.cos.t20m, main="HN, truncation at 20m")
 plot(lt.uf.cos.t20m, main="Uniform, truncation at 20m")
@@ -142,16 +142,13 @@ plot(lt.hr.t20m, main="HR, truncation at 20m")
 After accessing these data, a basic model is fitted and plotted to determine if truncation is required. 
 
 ```{r}
-#| fig.height = 4,
-#| fig.width = 4,
 #| message = FALSE
 data(capercaillie)
-head(capercaillie, n=3)
+knitr::kable(head(capercaillie, n=3))
 conversion.factor <- convert_units("meter", "kilometer", "hectare")
 # Fit a half normal model with no adjustments and no truncation
 caper.hn <- ds(data=capercaillie, key="hn", adjustment=NULL, 
                convert_units=conversion.factor)
-# Plot with lots of bins, each of width 2m
 plot(caper.hn, nc=40)
 ```
 
@@ -174,21 +171,26 @@ caper.uf.cos <- ds(data=capercaillie, key="unif", adjustment="cos",
                    convert_units=conversion.factor)
 ```
 
-The detection functions and qq plots are shown below:
+The detection functions and QQ plots are shown below:
 
 ```{r}
-#| echo = TRUE,
-#| eval = TRUE,
-#| results = "hide"
-# Divide plot window
-par(mfrow=c(3,2))
-par(mar=c(4,4,.2,.1))
+#| layout-ncol: 2
+#| fig-cap: 
+#|   - "Half normal"
+#|   - "QQ plot half normal"
+#|   - "Hazard rate"
+#|   - "QQ plot hazard rate"
+#|   - "Uniform with adjustment"
+#|   - "QQ plot uniform adj"
 plot(caper.hn.cos, main="Half normal")
-gof_ds(caper.hn.cos)
+x <- gof_ds(caper.hn.cos)
+text(.5, .1, paste("P-value=", round(x$dsgof$CvM$p,3)))
 plot(caper.hr.cos, main="Hazard rate")
-gof_ds(caper.hr.cos)
+x <- gof_ds(caper.hr.cos)
+text(.5, .1, paste("P-value=", round(x$dsgof$CvM$p,3)))
 plot(caper.uf.cos, main="Uniform")
-gof_ds(caper.uf.cos)
+x <- gof_ds(caper.uf.cos)
+text(.5, .1, paste("P-value=", round(x$dsgof$CvM$p,3)))
 ```
 
 Summarise the goodness of fit statistics (in a pretty format). This table indicates that the hazard rate detection function had the lowest AIC but the difference in AIC between all three models was small. 
@@ -224,23 +226,16 @@ These capercaillie data are reasonably well-behaved and different models that fi
 To deal with rounding in the distance data, the exact distances can be converted into binned distances. The cutpoints need to be chosen with care so that the distance bins are sufficiently wide enough to ensure that the 'correct' perpendicular distance is in the band containing the rounded recorded value. The bin widths do not have to be equal, as shown in example here: the cutpoints are 0, 7.5, 17.5, 27.5, ..., 67.5, 80.0 m. Note, that any distances beyond the largest bin will be excluded.
 
 ```{r}
-#| echo = TRUE,
-#| eval = TRUE,
-#| fig.width = 5,
-#| fig.height = 4,
 #| message = FALSE
 # Specify (uneven) cutpoint for bins
 bins <- c(0, seq(from=7.5, to=67.5, by=10), 80)
-# Check bins
-bins
-# Specify model with binned distances
+print(bins)
 caper.hn.bin <- ds(data=capercaillie, key="hn", adjustment="cos", cutpoints=bins,
                    convert_units=conversion.factor)
-# Plot
 plot(caper.hn.bin, main="Capercaillie, binned distances")
-# Summarise results
-caper.hn.bin$dht$individuals$summary
-caper.hn.bin$dht$individuals$D[1:6]
+# See a portion of the results
+knitr::kable(caper.hn.bin$dht$individuals$summary, row.names = FALSE)
+knitr::kable(caper.hn.bin$dht$individuals$D[1:6], row.names = FALSE, digits=3)
 ```
 
 Note that the binning of the data results in virtually identical estimates of density (`r round(caper.hn.bin$dht$individuals$D$Estimate, 3)` birds per ha) and essentially no change in the precision of the density estimate compared with the estimates with analysis of exact distance data.

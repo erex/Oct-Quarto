@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-23">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Assessing line transect detection functions solution</title>
 <style>
@@ -265,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -351,10 +351,9 @@ Density:
 </div>
 <p>This has excluded 2 observations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Truncate 10% of largest distances</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>lt.hn.t10per <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>LTExercise, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">truncation=</span><span class="st">"10%"</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lt.hn.t10per)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lt.hn.t10per <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>LTExercise, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">truncation=</span><span class="st">"10%"</span>, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lt.hn.t10per)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Summary for distance analysis 
@@ -387,13 +386,28 @@ Density:
 </div>
 </div>
 <p>This has excluded 11 observations. The plots are shown below.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide plot window</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.t20m, <span class="at">main=</span><span class="st">"Truncation 20m"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.t10per, <span class="at">main=</span><span class="st">"Truncation 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.t20m, <span class="at">main=</span><span class="st">"Truncation 20m"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.t10per, <span class="at">main=</span><span class="st">"Truncation 10%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Truncation at absolute distance</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Truncation at relative distance</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <p>A few different models are shown below.</p>
@@ -500,16 +514,48 @@ Density:
 </div>
 <p>There is a change in <span class="math inline">\(\hat P_a\)</span> due to truncation but all the models provide very similar density results, although precision is slightly poorer for the hazard rate model (because more parameters are estimated). Agreement between the estimate and the known true density is less good if you do not truncate the data, or do not truncate sufficiently. Note that the AIC values can only be compared for models with the same truncation and hence the same objects.</p>
 <p><em>Take home message:</em> with care, we can get reliable estimates using the wrong model (remember the data were simulated using a half normal detection function). It is gratifying because, in practise, the ‘correct’ model is never known.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide plot window</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot detection functions</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn, <span class="at">main=</span><span class="st">"HN, no truncation"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.cos.t20m, <span class="at">main=</span><span class="st">"HN, truncation at 20m"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.uf.cos.t20m, <span class="at">main=</span><span class="st">"Uniform, truncation at 20m"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hr.t20m, <span class="at">main=</span><span class="st">"HR, truncation at 20m"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn, <span class="at">main=</span><span class="st">"HN, no truncation"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hn.cos.t20m, <span class="at">main=</span><span class="st">"HN, truncation at 20m"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.uf.cos.t20m, <span class="at">main=</span><span class="st">"Uniform, truncation at 20m"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lt.hr.t20m, <span class="at">main=</span><span class="st">"HR, truncation at 20m"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Half normal without truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Half normal 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Uniform with adj 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-10-4.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Hazard rate 20m truncation</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -518,25 +564,77 @@ Density:
 <p>After accessing these data, a basic model is fitted and plotted to determine if truncation is required.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(capercaillie)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(capercaillie, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Sample.Label Effort distance object size detected observer     Region.Label
-1            1    240       28      1    1        1        1 Monaughty Forest
-2            1    240       17      2    1        1        1 Monaughty Forest
-3            1    240       15      3    1        1        1 Monaughty Forest
-  Area
-1 1472
-2 1472
-3 1472</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="st">"kilometer"</span>, <span class="st">"hectare"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a half normal model with no adjustments and no truncation</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>caper.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with lots of bins, each of width 2m</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn, <span class="at">nc=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(capercaillie, <span class="at">n=</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="384"></p>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 20%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sample.Label</th>
+<th style="text-align: right;">Effort</th>
+<th style="text-align: right;">distance</th>
+<th style="text-align: right;">object</th>
+<th style="text-align: right;">size</th>
+<th style="text-align: right;">detected</th>
+<th style="text-align: right;">observer</th>
+<th style="text-align: left;">Region.Label</th>
+<th style="text-align: right;">Area</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Monaughty Forest</td>
+<td style="text-align: right;">1472</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Monaughty Forest</td>
+<td style="text-align: right;">1472</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Monaughty Forest</td>
+<td style="text-align: right;">1472</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="st">"kilometer"</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a half normal model with no adjustments and no truncation</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>caper.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn, <span class="at">nc=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>There is not a long tail to the histogram of perpendicular distances and so no truncation will be used.</p>
@@ -544,35 +642,88 @@ Density:
 <section id="fitting-multiple-models-to-exact-distance-data" class="level2">
 <h2 class="anchored" data-anchor-id="fitting-multiple-models-to-exact-distance-data">Fitting multiple models to exact distance data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Half normal model </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>caper.hn.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hazard rate model  </span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>caper.hr.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform model  </span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>caper.uf.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Half normal model </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>caper.hn.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Hazard rate model  </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>caper.hr.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform model  </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>caper.uf.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The detection functions and qq plots are shown below:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide plot window</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,.<span class="dv">2</span>,.<span class="dv">1</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn.cos, <span class="at">main=</span><span class="st">"Half normal"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">gof_ds</span>(caper.hn.cos)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hr.cos, <span class="at">main=</span><span class="st">"Hazard rate"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gof_ds</span>(caper.hr.cos)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.uf.cos, <span class="at">main=</span><span class="st">"Uniform"</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">gof_ds</span>(caper.uf.cos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p>The detection functions and QQ plots are shown below:</p>
+<div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn.cos, <span class="at">main=</span><span class="st">"Half normal"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">gof_ds</span>(caper.hn.cos)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(.<span class="dv">5</span>, .<span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"P-value="</span>, <span class="fu">round</span>(x<span class="sc">$</span>dsgof<span class="sc">$</span>CvM<span class="sc">$</span>p,<span class="dv">3</span>)))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hr.cos, <span class="at">main=</span><span class="st">"Hazard rate"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">gof_ds</span>(caper.hr.cos)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(.<span class="dv">5</span>, .<span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"P-value="</span>, <span class="fu">round</span>(x<span class="sc">$</span>dsgof<span class="sc">$</span>CvM<span class="sc">$</span>p,<span class="dv">3</span>)))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.uf.cos, <span class="at">main=</span><span class="st">"Uniform"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">gof_ds</span>(caper.uf.cos)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(.<span class="dv">5</span>, .<span class="dv">1</span>, <span class="fu">paste</span>(<span class="st">"P-value="</span>, <span class="fu">round</span>(x<span class="sc">$</span>dsgof<span class="sc">$</span>CvM<span class="sc">$</span>p,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Half normal</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">QQ plot half normal</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Hazard rate</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">QQ plot hazard rate</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-5.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Uniform with adjustment</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-13-6.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">QQ plot uniform adj</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </div>
 </div>
 <p>Summarise the goodness of fit statistics (in a pretty format). This table indicates that the hazard rate detection function had the lowest AIC but the difference in AIC between all three models was small.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(caper.hn.cos, caper.hr.cos, caper.uf.cos, <span class="at">output=</span><span class="st">"plain"</span>),</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption=</span><span class="st">"Summary of results of Capercaillie analysis."</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(caper.hn.cos, caper.hr.cos, caper.uf.cos, <span class="at">output=</span><span class="st">"plain"</span>),</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption=</span><span class="st">"Summary of results of Capercaillie analysis."</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Summary of results of Capercaillie analysis.</caption>
@@ -687,33 +838,91 @@ Density:
 <h2 class="anchored" data-anchor-id="converting-exact-distances-to-binned-distances">Converting exact distances to binned distances</h2>
 <p>To deal with rounding in the distance data, the exact distances can be converted into binned distances. The cutpoints need to be chosen with care so that the distance bins are sufficiently wide enough to ensure that the ‘correct’ perpendicular distance is in the band containing the rounded recorded value. The bin widths do not have to be equal, as shown in example here: the cutpoints are 0, 7.5, 17.5, 27.5, …, 67.5, 80.0 m. Note, that any distances beyond the largest bin will be excluded.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify (uneven) cutpoint for bins</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">7.5</span>, <span class="at">to=</span><span class="fl">67.5</span>, <span class="at">by=</span><span class="dv">10</span>), <span class="dv">80</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check bins</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>bins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify (uneven) cutpoint for bins</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>bins <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">seq</span>(<span class="at">from=</span><span class="fl">7.5</span>, <span class="at">to=</span><span class="fl">67.5</span>, <span class="at">by=</span><span class="dv">10</span>), <span class="dv">80</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(bins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.0  7.5 17.5 27.5 37.5 47.5 57.5 67.5 80.0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify model with binned distances</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>caper.hn.bin <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">cutpoints=</span>bins,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn.bin, <span class="at">main=</span><span class="st">"Capercaillie, binned distances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>caper.hn.bin <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>capercaillie, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">cutpoints=</span>bins,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(caper.hn.bin, <span class="at">main=</span><span class="st">"Capercaillie, binned distances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="480"></p>
+<p><img src="Prac3_solution_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarise results</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>caper.hn.bin<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            Region Area CoveredArea Effort   n k        ER se.ER cv.ER
-1 Monaughty Forest 1472        3840    240 112 1 0.4666667     0     0
-  mean.size se.mean
-1         1       0</code></pre>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See a portion of the results</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(caper.hn.bin<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>summary, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 11%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Region</th>
+<th style="text-align: right;">Area</th>
+<th style="text-align: right;">CoveredArea</th>
+<th style="text-align: right;">Effort</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">k</th>
+<th style="text-align: right;">ER</th>
+<th style="text-align: right;">se.ER</th>
+<th style="text-align: right;">cv.ER</th>
+<th style="text-align: right;">mean.size</th>
+<th style="text-align: right;">se.mean</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Monaughty Forest</td>
+<td style="text-align: right;">1472</td>
+<td style="text-align: right;">3840</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.4666667</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>caper.hn.bin<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Label   Estimate          se        cv        lcl        ucl
-1 Total 0.04531495 0.006899599 0.1522588 0.02587611 0.07935679</code></pre>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(caper.hn.bin<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>D[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Label</th>
+<th style="text-align: right;">Estimate</th>
+<th style="text-align: right;">se</th>
+<th style="text-align: right;">cv</th>
+<th style="text-align: right;">lcl</th>
+<th style="text-align: right;">ucl</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">0.045</td>
+<td style="text-align: right;">0.007</td>
+<td style="text-align: right;">0.152</td>
+<td style="text-align: right;">0.026</td>
+<td style="text-align: right;">0.079</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>Note that the binning of the data results in virtually identical estimates of density (0.045 birds per ha) and essentially no change in the precision of the density estimate compared with the estimates with analysis of exact distance data.</p>
