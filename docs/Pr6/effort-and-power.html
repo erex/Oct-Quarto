@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-16">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Effort and power calculations for line transect surveys</title>
 <style>
@@ -181,6 +181,11 @@ div.csl-indent {
   <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link active">Effort and power calculations for line transect surveys</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr6/Pr6-solution.html" class="sidebar-item-text sidebar-link">Distance sampling survey design <strong>solution</strong></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -225,7 +230,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 16, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -267,8 +272,7 @@ Demonstration
 <p>A pilot study is essential to test field protocols. However it is also essential to gauge the volume of detections we can expect in our study area. Insight into <em>encounter rate</em> will assist in designing the actual study. <span class="citation" data-cites="Buckland2015b">Buckland et al. (<a href="#ref-Buckland2015b" role="doc-biblioref">2015</a>)</span> outlines a formula for computing necessary transect effort given the <em>encounter rate</em> from a pilot study:</p>
 <p><span class="math display">\[
 L = \frac{b}{cv_t\left(\hat{D}\right)^2} \times \frac{1}{\mbox{enc rate}_{pilot}}
-\]</span></p>
-<p>with <span class="math inline">\(b\)</span>=3 and <span class="math inline">\(cv_t\left(\hat{D}\right)^2\)</span> being desired coefficient of variation. The Shiny application below has this formula embedded; users simply specify an encounter rate with the bottom-most slider, then consult the tab labelled <code>Eqn. 2.4</code> to discover the necessary transect length to achieve desired precision.</p>
+\]</span> with <span class="math inline">\(b\)</span>=3 and <span class="math inline">\(cv_t\left(\hat{D}\right)^2\)</span> being desired coefficient of variation. The Shiny application below has this formula embedded; users simply specify an encounter rate with the bottom-most slider, then consult the tab labelled <code>Eqn. 2.4</code> to discover the necessary transect length to achieve desired precision.</p>
 <p>Moving the <code>encounter rate</code> slider shows that as encounter rate increases, the necessary amount of effort decreases; but the fundamental shape of the relationship between effort and precision remains unchanged.</p>
 </section>
 <section id="precision-to-answer-a-question" class="level1">
