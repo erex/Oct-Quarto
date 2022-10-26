@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-14">
+<meta name="dcterms.date" content="2022-10-26">
 
 <title>Distance sampling lab book - Detecting differences in density estimates</title>
 <style>
@@ -85,6 +85,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -225,6 +244,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../Pr7/stratumspecific-bias.html" class="sidebar-item-text sidebar-link">Bias in stratum-specific abundance estimates</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/Prac7_solution.html" class="sidebar-item-text sidebar-link">Analysis of data from stratified surveys <strong>solution</strong></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -240,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#appendix-equations-describing-computation-of-estimated-density-differences" id="toc-appendix-equations-describing-computation-of-estimated-density-differences" class="nav-link" data-scroll-target="#appendix-equations-describing-computation-of-estimated-density-differences">Appendix: equations describing computation of estimated density differences</a>
   <ul class="collapse">
-  <li><a href="#this-is-section-3.6.5-of-buckland-et-al.-2001" id="toc-this-is-section-3.6.5-of-buckland-et-al.-2001" class="nav-link" data-scroll-target="#this-is-section-3.6.5-of-buckland-et-al.-2001">This is Section 3.6.5 of Buckland et al.&nbsp;(2001)</a></li>
+  <li><a href="#this-is-section-3.6.5-of-buckland2001" id="toc-this-is-section-3.6.5-of-buckland2001" class="nav-link" data-scroll-target="#this-is-section-3.6.5-of-buckland2001">This is Section 3.6.5 of <span class="citation" data-cites="buckland2001">Buckland et al. (2001)</span></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -267,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 14, 2022</p>
+      <p class="date">October 26, 2022</p>
     </div>
   </div>
   
@@ -311,12 +335,12 @@ Aside
 <p>First, detection functions are fitted to the data set. In the same way as in Practical 7, we fit a pooled detection function, the result placed in the object <code>hazard.pooled</code>. We also split the data by <code>Region.Label</code> and fit separate detection functions to each stratum, resulting in two additional fitted objects: <code>ideal.hr</code> and <code>marginal.hr</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>whales <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"stratify_examp.csv"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>whales <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/erex/Oct-Quarto/main/Pr7/stratify_examp.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hazard.pooled <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>whales, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation =</span> <span class="fl">1.5</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ideal.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>whales[whales<span class="sc">$</span>Region.Label<span class="sc">==</span><span class="st">"Ideal"</span>,], <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation=</span><span class="fl">1.5</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>marginal.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>whales[whales<span class="sc">$</span>Region.Label<span class="sc">==</span><span class="st">"Marginal"</span>,], <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">truncation=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Code below sources the new function from the file <code>density.difference.ds.r</code> and makes two calls to the function <code>density.difference.ds</code></p>
+<p>Code below sources the new function from the file <a href="density.difference.ds.r"><code>density.difference.ds.r</code></a> and makes two calls to the function <code>density.difference.ds</code></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"density.difference.ds.r"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">density.difference.ds</span>(hazard.pooled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -348,75 +372,73 @@ Aside
 <p>The last line of output shows the difference of estimated densities and its standard error. Following this is the test statistic which is distributed as a t-statistic (<a href="#eq-tstat">Equation&nbsp;2</a>) and its associated degrees of freedom (<a href="#eq-testdf">Equation&nbsp;3</a>) and an associated significance level for a two-tailed test. The final pair of values are the bounds of the confidence interval on the estimated difference computed from <a href="#eq-tconfint">Equation&nbsp;5</a>.</p>
 <p><em>Note:</em> When a pooled detection function is used, the difference is relatively small (~0.05) and non-significant. When separate detection functions are used, the magnitude of the estimated difference increases (~0.08), with a standard error of roughly the same magnitude. Quite a few degrees of freedom are lost by having to estimate two additional parameters from separate detection functions. The total width of the confidence interval changes little (0.1662 for separate detection functions versus 0.1614 for pooled detection function). However because of the shift in the estimated difference from 0.0484 to 0.0802, the significance level shifts from 0.234 to 0.058.</p>
 <p><em>Lesson for survey design:</em> The uncertainty in all of the density estimates come from encounter rate variability. If the purpose of the study was to demonstrate a difference in density between these strata, a better survey design, with more than 13 and 12 transects would have been required to produce better estimates of stratum-specific encounter rate uncertainty.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Footnote
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>What if I used stratum as a covariate in the detection function?</em></p>
+<p>At the time <span class="citation" data-cites="buckland2001">Buckland et al. (<a href="#ref-buckland2001" role="doc-biblioref">2001</a>)</span> was published, the use of covariates in the detection function was in early stages of development; hence that case was not considered when testing for differences between density estimates were described. Consequently, the appendix below does not address this situation.</p>
+<p>But code exists for addressing assessing differences in density between strata when stratum is a covariate in the detection function. The code along with two examples of its use, are presented in our <a href="http://examples.distancesampling.org/differences/differences.html">case study website</a>.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="appendix-equations-describing-computation-of-estimated-density-differences" class="level1">
 <h1>Appendix: equations describing computation of estimated density differences</h1>
-<section id="this-is-section-3.6.5-of-buckland-et-al.-2001" class="level2">
-<h2 class="anchored" data-anchor-id="this-is-section-3.6.5-of-buckland-et-al.-2001">This is Section 3.6.5 of Buckland et al.&nbsp;(2001)</h2>
+<section id="this-is-section-3.6.5-of-buckland2001" class="level2">
+<h2 class="anchored" data-anchor-id="this-is-section-3.6.5-of-buckland2001">This is Section 3.6.5 of <span class="citation" data-cites="buckland2001">Buckland et al. (<a href="#ref-buckland2001" role="doc-biblioref">2001</a>)</span></h2>
 <p>Frequently, we wish to draw inference on change in density over time, or difference in density between habitats. We consider here simple comparisons between two density estimates.</p>
-<p>Consider two density estimates, <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}.\)</span> Suppose first that they are <strong>independently estimated</strong>. We then estimate the difference in density by <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> with variance</p>
-<p><span id="eq-vardiff"><span class="math display">\[
+<p>Consider two density estimates, <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}.\)</span> Suppose first that they are <strong>independently estimated</strong>. We then estimate the difference in density by <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> with variance <span id="eq-vardiff"><span class="math display">\[
 \widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)=\widehat{\operatorname{var}}\left(\hat{D}_{1}\right)+\widehat{\operatorname{var}}\left(\hat{D}_{2}\right)
-\tag{1}\]</span></span></p>
-<p>Distance provides approximate degrees of freedom <span class="math inline">\(\mathrm{df}_{1}\)</span> for <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\mathrm{df}_{2}\)</span> for <span class="math inline">\(\hat{D}_{2},\)</span> based on Satterthwaite’s approximation. We can use these to obtain an approximate <span class="math inline">\(t\)</span>-statistic:</p>
-<p><span id="eq-tstat"><span class="math display">\[
+\tag{1}\]</span></span> Distance provides approximate degrees of freedom <span class="math inline">\(\mathrm{df}_{1}\)</span> for <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\mathrm{df}_{2}\)</span> for <span class="math inline">\(\hat{D}_{2},\)</span> based on Satterthwaite’s approximation. We can use these to obtain an approximate <span class="math inline">\(t\)</span>-statistic:<br>
+<span id="eq-tstat"><span class="math display">\[
 T=\frac{\left(\hat{D}_{1}-\hat{D}_{2}\right)-\left(D_{1}-D_{2}\right)}{\sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}} \sim t_{\mathrm{df}}
 \tag{2}\]</span></span></p>
-<p>where</p>
-<p><span id="eq-testdf"><span class="math display">\[
+<p>where <span id="eq-testdf"><span class="math display">\[
 \mathrm{d} \mathrm{f} \simeq \frac{\left\{\widehat{v a r}\left(\hat{D}_{1}\right)+\widehat{v a r}\left(\hat{D}_{2}\right)\right\}^{2}}{\left\{\widehat{v a r}\left(\hat{D}_{1}\right)\right\}^{2} / \mathrm{df}_{1}+\left\{\widehat{v a r}\left(\hat{D}_{2}\right)\right\}^{2} / \mathrm{df}_{2}}
 \tag{3}\]</span></span></p>
-<p>Provided df are around 30 or more, the simpler <span class="math inline">\(z\)</span>-statistic provides a good approximation:</p>
-<p><span id="eq-zstat"><span class="math display">\[
+<p>Provided df are around 30 or more, the simpler <span class="math inline">\(z\)</span>-statistic provides a good approximation: <span id="eq-zstat"><span class="math display">\[
 Z=\frac{\left(\hat{D}_{1}-\hat{D}_{2}\right)-\left(D_{1}-D_{2}\right)}{\sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}} \sim N(0,1)
-\tag{4}\]</span></span></p>
-<p>For either statistic, we can test the null hypothesis <span class="math inline">\(H_{0}: D_{1}=D_{2}\)</span> by substituting <span class="math inline">\(D_{1}-D_{2}=0\)</span> in <a href="#eq-tstat">Equation&nbsp;2</a> or <a href="#eq-zstat">Equation&nbsp;4</a>, and looking at the resulting value in <span class="math inline">\(t\)</span>-tables or <span class="math inline">\(z\)</span>-tables. Approximate <span class="math inline">\(100(1-2 \alpha) \%\)</span> confidence limits for <span class="math inline">\(\left(D_{1}-D_{2}\right)\)</span> are given by</p>
-<p><span id="eq-tconfint"><span class="math display">\[
+\tag{4}\]</span></span> For either statistic, we can test the null hypothesis <span class="math inline">\(H_{0}: D_{1}=D_{2}\)</span> by substituting <span class="math inline">\(D_{1}-D_{2}=0\)</span> in <a href="#eq-tstat">Equation&nbsp;2</a> or <a href="#eq-zstat">Equation&nbsp;4</a>, and looking at the resulting value in <span class="math inline">\(t\)</span>-tables or <span class="math inline">\(z\)</span>-tables. Approximate <span class="math inline">\(100(1-2 \alpha) \%\)</span> confidence limits for <span class="math inline">\(\left(D_{1}-D_{2}\right)\)</span> are given by <span id="eq-tconfint"><span class="math display">\[
 \left(\hat{D}_{1}-\hat{D}_{2}\right) \pm t_{\mathrm{df}}(\alpha) \sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}
 \tag{5}\]</span></span></p>
-<p>for df <span class="math inline">\(&lt;30,\)</span> or</p>
-<p><span id="eq-zconfint"><span class="math display">\[
+<p>for df <span class="math inline">\(&lt;30,\)</span> or <span id="eq-zconfint"><span class="math display">\[
 \left(\hat{D}_{1}-\hat{D}_{2}\right) \pm z(\alpha) \sqrt{\widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right)}  
-\tag{6}\]</span></span></p>
-<p>otherwise. Often, a single detection function is fitted to pooled data, so that</p>
-<p><span id="eq-dcommon"><span class="math display">\[
+\tag{6}\]</span></span> otherwise. Often, a single detection function is fitted to pooled data, so that <span id="eq-dcommon"><span class="math display">\[
 \hat{D}_{1}=\frac{n_{1} \hat{f}(0) \hat{E}_{1}(s)}{2 L_{1}} \quad \text { and } \quad \hat{D}_{2}=\frac{n_{2} \hat{f}(0) \hat{E}_{2}(s)}{2 L_{2}}
-\tag{7}\]</span></span></p>
-<p>(where the terms <span class="math inline">\(\hat{E}_{i}(s)\)</span> are omitted if the objects are not in clusters). Because <span class="math inline">\(\hat{f}(0)\)</span> appears in both equations, we can no <strong>longer assume that <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}\)</span> are independent</strong>. Instead, we can write</p>
-<p><span id="eq-dwithm"><span class="math display">\[
+\tag{7}\]</span></span> (where the terms <span class="math inline">\(\hat{E}_{i}(s)\)</span> are omitted if the objects are not in clusters). Because <span class="math inline">\(\hat{f}(0)\)</span> appears in both equations, we can no <strong>longer assume that <span class="math inline">\(\hat{D}_{1}\)</span> and <span class="math inline">\(\hat{D}_{2}\)</span> are independent</strong>. Instead, we can write <span id="eq-dwithm"><span class="math display">\[
 \hat{D}_{i}=\hat{M}_{i} \hat{f}(0), \quad i=1,2
-\tag{8}\]</span></span></p>
-<p>where</p>
-<p><span id="eq-mdefn"><span class="math display">\[
+\tag{8}\]</span></span> where <span id="eq-mdefn"><span class="math display">\[
 \hat{M}_{i}=\frac{n_{i} \hat{E}_{i}(s)}{2 L_{i}}
-\tag{9}\]</span></span></p>
-<p>As the <span class="math inline">\(M_{i}\)</span> are independently estimated, and are assumed to be independent of <span class="math inline">\(\hat{f}(0),\)</span> we can now find the variance of <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> using the delta method:</p>
-<p><span id="eq-diffusingm"><span class="math display">\[
+\tag{9}\]</span></span> As the <span class="math inline">\(M_{i}\)</span> are independently estimated, and are assumed to be independent of <span class="math inline">\(\hat{f}(0),\)</span> we can now find the variance of <span class="math inline">\(\hat{D}_{1}-\hat{D}_{2}\)</span> using the delta method: <span id="eq-diffusingm"><span class="math display">\[
 \hat{D}_{1}-\hat{D}_{2}=\left(\hat{M}_{1}-\hat{M}_{2}\right) \hat{f}(0)
-\tag{10}\]</span></span></p>
-<p>so that</p>
-<p><span id="eq-varwithm"><span class="math display">\[
+\tag{10}\]</span></span> so that <span id="eq-varwithm"><span class="math display">\[
 \begin{aligned}
 \widehat{\operatorname{var}}\left(\hat{D}_{1}-\hat{D}_{2}\right) &amp;=\left(\hat{D}_{1}-\hat{D}_{2}\right)^{2}\left[\frac{\widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)}{\left(\hat{M}_{1}-\hat{M}_{2}\right)^{2}}+\frac{\widehat{\operatorname{var}}\{\hat{f}(0)\}}{\{\hat{f}(0)\}^{2}}\right] \\
 &amp;=\{\hat{f}(0)\}^{2} \widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)+\left(\hat{M}_{1}-\hat{M}_{2}\right)^{2} \widehat{var}\{\hat{f}(0)\}
 \end{aligned}
-\tag{11}\]</span></span></p>
-<p>where</p>
-<p><span id="eq-varmdiff"><span class="math display">\[
+\tag{11}\]</span></span> where <span id="eq-varmdiff"><span class="math display">\[
 \widehat{\operatorname{var}}\left(\hat{M}_{1}-\hat{M}_{2}\right)=\widehat{\operatorname{var}}\left(\hat{M}_{1}\right)+\widehat{\operatorname{var}}\left(\hat{M}_{2}\right)
-\tag{12}\]</span></span></p>
-<p>and</p>
-<p><span id="eq-varm"><span class="math display">\[
+\tag{12}\]</span></span> and <span id="eq-varm"><span class="math display">\[
 \widehat{\operatorname{var}}\left(\hat{M}_{i}\right)=\hat{M}_{i}^{2}\left[\frac{\widehat{\operatorname{var}}\left(n_{i}\right)}{n_{i}^{2}}+\frac{\widehat{\operatorname{var}}\left\{\hat{E}_{i}(s)\right\}}{\left\{\hat{E}_{i}(s)\right\}^{2}}\right], \quad i=1,2
-\tag{13}\]</span></span></p>
-<p>Note that the second form of <a href="#eq-varwithm">Equation&nbsp;11</a> still applies when <span class="math inline">\(\left(\hat{M}_{1}-\hat{M}_{2}\right)=0,\)</span> whereas the first form leads to a ratio of zero over zero. Inference can now proceed as before, either with additional applications of Satterthwaite’s approximation in conjunction with <a href="#eq-tstat">Equation&nbsp;2</a> if an approximate <span class="math inline">\(t\)</span>-statistic is required, or more usually, by straightforward application of <a href="#eq-zstat">Equation&nbsp;4</a>.</p>
+\tag{13}\]</span></span> Note that the second form of <a href="#eq-varwithm">Equation&nbsp;11</a> still applies when <span class="math inline">\(\left(\hat{M}_{1}-\hat{M}_{2}\right)=0,\)</span> whereas the first form leads to a ratio of zero over zero. Inference can now proceed as before, either with additional applications of Satterthwaite’s approximation in conjunction with <a href="#eq-tstat">Equation&nbsp;2</a> if an approximate <span class="math inline">\(t\)</span>-statistic is required, or more usually, by straightforward application of <a href="#eq-zstat">Equation&nbsp;4</a>.</p>
+
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-buckland2001" class="csl-entry" role="doc-biblioentry">
+Buckland, S. T., Anderson, D. R., Burnham, K. P., Laake, J. L., Borchers, D. L., &amp; Thomas, L. (2001). <em>Introduction to distance sampling: Estimating abundance of biological populations</em>. Oxford, New York: Oxford University Press.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

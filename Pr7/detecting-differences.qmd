@@ -2,6 +2,8 @@
 title: Detecting differences in density estimates
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+bibliography: multi.bib
+csl: apa.csl
 ---
 
 :::{.callout-tip}
@@ -34,13 +36,13 @@ First, detection functions are fitted to the data set.  In the same way as in Pr
 #| results = "hide",
 #| warning = FALSE
 library(Distance)
-whales <- read.csv("stratify_examp.csv")
+whales <- read.csv("https://raw.githubusercontent.com/erex/Oct-Quarto/main/Pr7/stratify_examp.csv")
 hazard.pooled <- ds(data=whales, key="hr", truncation = 1.5)
 ideal.hr <- ds(data=whales[whales$Region.Label=="Ideal",], key="hr", truncation=1.5)
 marginal.hr <- ds(data=whales[whales$Region.Label=="Marginal",], key="hr", truncation=1.5)
 ```
 
-Code below sources the new function from the file `density.difference.ds.r` and makes two calls to the function `density.difference.ds`
+Code below sources the new function from the file [`density.difference.ds.r`](density.difference.ds.r) and makes two calls to the function `density.difference.ds`
 
 ```{r}
 source("density.difference.ds.r")
@@ -58,9 +60,21 @@ The last line of output shows the difference of estimated densities and its stan
 
 *Lesson for survey design:* The uncertainty in all of the density estimates come from encounter rate variability.  If the purpose of the study was to demonstrate a difference in density between these strata, a better survey design, with more than 13 and 12 transects would have been required to produce better estimates of stratum-specific encounter rate uncertainty.
 
+:::{.callout-tip}
+
+## Footnote
+
+*What if I used stratum as a covariate in the detection function?*
+
+At the time @buckland2001 was published, the use of covariates in the detection function was in early stages of development; hence that case was not considered when testing for differences between density estimates were described. Consequently, the appendix below does not address this situation.
+
+But code exists for addressing assessing differences in density between strata when stratum is a covariate in the detection function. The code along with two examples of its use, are presented in our [case study website](http://examples.distancesampling.org/differences/differences.html).
+
+:::
+
 # Appendix: equations describing computation of estimated density differences
 
-## This is Section 3.6.5 of Buckland et al. (2001)
+## This is Section 3.6.5 of @buckland2001
 
 Frequently, we wish to draw inference on change in density over time, or difference in density between habitats. We consider here simple comparisons between two density estimates. 
 
