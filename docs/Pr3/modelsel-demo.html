@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.219">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-23">
+<meta name="dcterms.date" content="2022-11-27">
 
 <title>Distance sampling lab book - Demonstration two stages of model selection</title>
 <style>
@@ -171,44 +171,34 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr3/criticism.html" aria-current="page">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link active" href="../Pr3/criticism.html" aria-current="page">Criticism</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html">Extras</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -297,10 +287,9 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2022</p>
+      <p class="date">November 27, 2022</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -335,7 +324,7 @@ Demonstration
 <h1>What does it mean to <em>include adjustment terms</em>?</h1>
 <p>When I submit the following code, I am actually requesting that a number of models with a half-normal key be fitted to data. I am leaving it to the <code>ds()</code> function to perform model selection among competing half-normal keys with 0, 1, 2, 3, 4 or 5 adjustment terms.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>some.results <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>bino, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustments=</span><span class="st">"cos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>some.results <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>bino, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>If the model with a single adjustment term is preferable to the model without an adjustment term, then a model with two adjustment terms is fitted and its AIC is compared to the single term model’s AIC. This pattern repeats until the best half-normal with cosine adjustments model is identified in a stepwise fashion.</p>
 </section>
@@ -363,7 +352,7 @@ Demonstration
 <pre><code>Fitting half-normal key function with cosine(2) adjustments</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>AIC= 2805.973</code></pre>
+<pre><code>AIC= 2806.01</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Fitting half-normal key function with cosine(2,3) adjustments</code></pre>
@@ -381,7 +370,7 @@ Half-normal key function with cosine(2) adjustments selected.</code></pre>
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">%%{init: {'theme': 'forest' } }%%
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-1">%%{init: {'theme': 'forest' } }%%
 graph TD
    D(ds_data, key='hn', adj='cos')
    D --&gt; ID0
@@ -451,7 +440,7 @@ Uniform key function with cosine(1,2,3) adjustments selected.</code></pre>
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">%%{init: {'theme': 'forest' } }%%
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-2">%%{init: {'theme': 'forest' } }%%
 graph TD
    D(ds_data, key='unif', adj='cos')
    D --&gt; ID1
@@ -506,7 +495,7 @@ Hazard-rate key function selected.</code></pre>
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">%%{init: {'theme': 'forest' } }%%
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-3">%%{init: {'theme': 'forest' } }%%
 graph TD
    D(ds_data, key='hr', adj='cos')
    D --&gt; ID0
@@ -554,8 +543,8 @@ graph TD
   </tr>
   <tr>
    <td style="text-align:left;"> Half-normal with cosine adjustment term of order 2 </td>
-   <td style="text-align:right;"> 0.467 </td>
-   <td style="text-align:right;"> 0.506 </td>
+   <td style="text-align:right;"> 0.465 </td>
+   <td style="text-align:right;"> 0.543 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Uniform with cosine adjustment terms of order 1,2,3 </td>
@@ -571,7 +560,7 @@ graph TD
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">%%{init: {'theme': 'forest' } }%%
+</p><pre class="mermaid" data-tooltip-selector="#mermaid-tooltip-4">%%{init: {'theme': 'forest' } }%%
 graph TD
    D(summarise_ds_models.hn1, unif3, hr0)
    D --&gt; hn1(hn1&lt;br&gt;AIC=2806)
@@ -611,7 +600,7 @@ graph TD
   </tr>
   <tr>
    <td style="text-align:left;"> Half-normal with cosine adjustment term of order 2 </td>
-   <td style="text-align:right;"> 0.564 </td>
+   <td style="text-align:right;"> 0.563 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Uniform with cosine adjustment terms of order 1,2,3 </td>
@@ -714,24 +703,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -767,42 +739,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

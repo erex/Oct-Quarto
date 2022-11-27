@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.219">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-26">
+<meta name="dcterms.date" content="2022-11-27">
 
 <title>Distance sampling lab book - Effect of habitat covariate upon estimated density—lines</title>
 <style>
@@ -165,44 +165,34 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page">Multipliers</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html">Extras</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -306,10 +296,9 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 26, 2022</p>
+      <p class="date">November 27, 2022</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -553,13 +542,13 @@ Warning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(woo.o, <span class="at">showpoints=</span><span class="cn">FALSE</span>, <span class="at">main=</span><span class="st">"Brewer's sparrow</span><span class="sc">\n</span><span class="st">Detection with observer covariate"</span>,</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pdf=</span>pointtransect) </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs1"</span>), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs2"</span>), <span class="at">col=</span><span class="st">"green"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs3"</span>), <span class="at">col=</span><span class="st">"dark green"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs4"</span>), <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs5"</span>), <span class="at">col=</span><span class="st">"purple"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs1"</span>), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">pdf=</span>pointtransect) </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs2"</span>), <span class="at">col=</span><span class="st">"green"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs3"</span>), <span class="at">col=</span><span class="st">"dark green"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect) </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs4"</span>), <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">pdf=</span>pointtransect) </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">add_df_covar_line</span>(woo.o, <span class="fu">data.frame</span>(<span class="at">obs=</span><span class="st">"obs5"</span>), <span class="at">col=</span><span class="st">"purple"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">pdf=</span>pointtransect)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">title=</span><span class="st">"Observer"</span>, <span class="at">legend=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"dark green"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"dark green"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="countmodel-lines_files/figure-html/detfnploto-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -747,8 +736,8 @@ Warning
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>fig1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">dat=</span>sitesadj, <span class="fu">aes</span>(shrub, density)) <span class="sc">+</span></span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>predict, <span class="at">group=</span>group), big.df, <span class="at">alpha=</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>y, <span class="at">x=</span>x), orig.fit, <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>value, <span class="at">group=</span>stat), quants, <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>y, <span class="at">x=</span>x), orig.fit, <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">linewidth=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>value, <span class="at">group=</span>stat), quants, <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">y=</span><span class="fl">0.6</span>, <span class="at">label=</span> b0label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span><span class="dv">20</span>, <span class="at">y=</span><span class="fl">0.3</span>, <span class="at">label=</span> b1label, <span class="at">size=</span><span class="dv">5</span>) <span class="sc">+</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Percent shrub cover"</span>, <span class="at">y=</span><span class="st">"Estimate bird density (per ha)"</span>,</span>
@@ -756,7 +745,7 @@ Warning
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
 <span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># inset histogram for sampling distribution</span></span>
 <span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>bounds <span class="ot">&lt;-</span> <span class="fu">quantile</span>(slope.est, <span class="at">probs =</span> <span class="fu">c</span>(alpha<span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>))</span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>fig2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>slope.est) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>fig2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x=</span>slope.est) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> .<span class="dv">005</span>) <span class="sc">+</span></span>
 <span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span>bounds, <span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Estimate of slope"</span>, <span class="at">y=</span><span class="st">"Frequency"</span>) <span class="sc">+</span></span>
 <span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span>.<span class="dv">025</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">1</span>],<span class="dv">3</span>)) <span class="sc">+</span></span>
@@ -866,24 +855,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -919,42 +891,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>
