@@ -42,7 +42,7 @@ When I submit the following code, I am actually requesting that a number of mode
 ```{r}
 #| label = "withadj",
 #| eval = FALSE
-some.results <- ds(data=bino, key="hn", adjustments="cos")
+some.results <- ds(data=bino, key="hn", adjustment="cos")
 ```
 
 If the model with a single adjustment term is preferable to the model without an adjustment term, then a model with two adjustment terms is fitted and its AIC is compared to the single term model's AIC. This pattern repeats until the best half-normal with cosine adjustments model is identified in a stepwise fashion.

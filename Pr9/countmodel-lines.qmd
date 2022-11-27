@@ -166,13 +166,13 @@ All of the candidate models fit the Brewer's sparrow line transect data.  Also n
 #| eval = TRUE
 plot(woo.o, showpoints=FALSE, main="Brewer's sparrow\nDetection with observer covariate",
      pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs1"), col="red", lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs2"), col="green", lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs3"), col="dark green", lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs4"), col="blue", lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs5"), col="purple", lwd=2, pdf=pointtransect)
+add_df_covar_line(woo.o, data.frame(obs="obs1"), col="red", lwd=2, lty=1, pdf=pointtransect) 
+add_df_covar_line(woo.o, data.frame(obs="obs2"), col="green", lty=1, lwd=2, pdf=pointtransect) 
+add_df_covar_line(woo.o, data.frame(obs="obs3"), col="dark green", lty=1, lwd=2, pdf=pointtransect) 
+add_df_covar_line(woo.o, data.frame(obs="obs4"), col="blue", lwd=2, lty=1, pdf=pointtransect) 
+add_df_covar_line(woo.o, data.frame(obs="obs5"), col="purple", lty=1, lwd=2, pdf=pointtransect)
 legend("topright", title="Observer", legend=1:5,
-       lwd=2, lty=2, col=c("red", "green", "dark green", "blue", "purple"))
+       lwd=2, lty=1, col=c("red", "green", "dark green", "blue", "purple"))
 ```
 
 ## Prepare for GLM computation
@@ -352,8 +352,8 @@ b1label <- bquote(~widehat(beta[1]) == .(round(coef(glmmodel)[2],4)))
 fig1 <- ggplot(dat=sitesadj, aes(shrub, density)) +
   geom_point() +
   geom_line(aes(y=predict, group=group), big.df, alpha=0.1) + 
-  geom_line(aes(y=y, x=x), orig.fit, colour="red", size=2) +
-  geom_line(aes(y=value, group=stat), quants, col='blue', size=1) +
+  geom_line(aes(y=y, x=x), orig.fit, colour="red", linewidth=2) +
+  geom_line(aes(y=value, group=stat), quants, col='blue', linewidth=1) +
   annotate(geom="text", x=20, y=0.6, label= b0label, size=5) +
   annotate(geom="text", x=20, y=0.3, label= b1label, size=5) +
   labs(x="Percent shrub cover", y="Estimate bird density (per ha)",
@@ -361,7 +361,7 @@ fig1 <- ggplot(dat=sitesadj, aes(shrub, density)) +
   theme_bw()
 # inset histogram for sampling distribution
 bounds <- quantile(slope.est, probs = c(alpha/2, 1-alpha/2))
-fig2 <- ggplot() + aes(x=slope.est) + geom_histogram() +
+fig2 <- ggplot() + aes(x=slope.est) + geom_histogram(binwidth = .005) +
   geom_vline(xintercept=bounds, size=1) +
   labs(x="Estimate of slope", y="Frequency") +
   annotate(geom="text", x=.025, y=11, label=round(bounds[1],3)) +
