@@ -32,6 +32,6 @@ As well as the exercises (green) and their solutions (yellow), there are numerou
 I can write something here and hopefully point to a PDF hiding inside the
 `docs/lectures` folder.
 
-- [Design lecture](lectures/BlockF-design.pdf
+- [Design lecture](lectures/BlockF-design.pdf)
 
 The end of my list of things.  Still interested in perhaps embedding PDFs also.
