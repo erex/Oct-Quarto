@@ -8,6 +8,13 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 09 January 2023
+
+[Fundamental principles](lectures/BlockA2023.pdf)
+:::
+
+
 ## Estimating $\widehat{P_a}$ with a pencil
 
 This exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.

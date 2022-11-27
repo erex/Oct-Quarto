@@ -25,12 +25,3 @@ The second half of the material (second clothesline diagram) exposes you to slig
 :::
 
 As well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.
-
-why is there a (silent) complaint about a first order header here. Now removed.
-
-I can write something here and hopefully point to a PDF hiding inside the
-`docs/lectures` folder.
-
-- [Design lecture](lectures/BlockF-design.pdf)
-
-The end of my list of things.  Still interested in perhaps embedding PDFs also.

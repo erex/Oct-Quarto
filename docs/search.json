@@ -642,5 +642,19 @@
     "title": "Demonstration two stages of model selection",
     "section": "Hazard rate cosine",
     "text": "Hazard rate cosine\n\nhrcos <- ds(bino, key=\"hr\", adj=\"cos\")\n\nStarting AIC adjustment term selection.\n\n\nFitting hazard-rate key function\n\n\nAIC= 2805.467\n\n\nFitting hazard-rate key function with cosine(2) adjustments\n\n\nAIC= 2807.47\n\n\n\nHazard-rate key function selected.\n\n\nTwo models are fitted with the hazard rate key function. The addition of a single adjustment term does not improve the AIC score, so there is no point in fitting a more complex model with additional adjustment terms.\n\n\n\n\n%%{init: {'theme': 'forest' } }%%\ngraph TD\n   D(ds_data, key='hr', adj='cos')\n   D --> ID0\n   D --> ID1\n   ID0(hr0<br>AIC=2805)\n   ID1(hr1<br>AIC=2807)\n   FIN(hr0)\n   ID0 --> FIN\n   ID1 --> FIN\n\n\n\n\n\n\n\n\nThe contestants that emerge from the first round of model competition are:\n\nhalf-normal with 1 adjustment term\nuniform with 3 adjustment terms\nhazard rate with no adjustment terms"
+  },
+  {
+    "objectID": "Pr1/sampling.html",
+    "href": "Pr1/sampling.html",
+    "title": "Sampling practical 1",
+    "section": "",
+    "text": "Lecture slides for 09 January 2023\n\n\n\nFundamental principles"
+  },
+  {
+    "objectID": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
+    "href": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
+    "title": "Sampling practical 1",
+    "section": "Estimating \\(\\widehat{P_a}\\) with a pencil",
+    "text": "Estimating \\(\\widehat{P_a}\\) with a pencil\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.\n\nPhoto by Shelby Cohron on Unsplash"
   }
 ]
