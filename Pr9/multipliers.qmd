@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 19 January 2023
 
-### [Fundamental principles](../lectures/BlockI-22.pdf)
+### [Including multipliers in distance sampling analysis](../lectures/BlockI-22.pdf)
 :::
 
 ## Multipliers and indirect surveys

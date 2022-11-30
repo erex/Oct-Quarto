@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 11 January 2023
 
-### [Fundamental principles](../lectures/BlockC-22.pdf)
+### [Model criticism (selection and fit assessment)](../lectures/BlockC-22.pdf)
 :::
 
 ## Goodness of fit and model selection

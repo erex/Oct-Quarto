@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 17 January 2023
 
-### [Fundamental principles](../lectures/BlockG-22.pdf)
+### [Analysis of stratified surveys](../lectures/BlockG-22.pdf)
 :::
 
 ## Analysis of stratified surveys

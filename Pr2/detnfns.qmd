@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 10 January 2023
 
-### [Fundamental principles](../lectures/BlockB-22.pdf)
+### [Detection functions](../lectures/BlockB-22.pdf)
 :::
 
 ## Estimating density of duck nests

@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 13 January 2023
 
-### [Fundamental principles](../lectures/BlockE-22.pdf)
+### [Point transect analysis and detailed example](../lectures/BlockE-22.pdf)
 :::
 
 ## Analysis of point transect data

@@ -11,7 +11,7 @@ fontsize: "15px"
 ::: {.callout-tip}
 ## Lecture slides for 18 January 2023
 
-### [Fundamental principles](../lectures/BlockH-22.pdf)
+### [Covariates in the detection function](../lectures/BlockH-22.pdf)
 :::
 
 ## Covariates in detection function
