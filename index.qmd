@@ -8,20 +8,52 @@ about:
 fontsize: "16px"
 ---
 
+```{=html}
+<style>
+a.link {
+  color: blue;
+  font-family: verdana;
+  font-size: 300%;
+}
+a.hover {
+  color: red;
+  font-family: verdana;
+  font-size: 160%;
+}
+</style>
+```
 Material contained herein will acquaint you with design, collection and analysis of distance sampling data.
 
 The materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a **detection function** and ways to model it.
 
 Further topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.
 
-:::{.column-body-outset}
-![](ericline 1.svg)
+::: column-body-outset
+![](ericline%201.svg)
 :::
 
 The second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.
 
-:::{.column-body-outset}
+::: column-body-outset
 ![](wkshp-part2.svg)
 :::
 
 As well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.
+
+------------------------------------------------------------------------
+
+Each set of exercises is accompanied by a discussion of distance sampling principles. PDFs of those discussion materials are linked in the table below (as well as linked from the landing page of each exercise).
+
+| Topic                                                                              |    Date    |
+|---------------------------------------------------|:-------------------:|
+| [Fundamental principles](../lectures/BlockA-22.pdf)                              | 09 January |
+| [Detection functions](../lectures/BlockB-22.pdf)                                 | 10 January |
+| [Model criticism (selection and fit assessment)](../lectures/BlockC-22.pdf)      | 11 January |
+| [Measuring precision and controlling variance](../lectures/BlockD-22.pdf)        | 12 January |
+| [Point transect analysis and detailed example](../lectures/BlockE-22.pdf)        | 13 January |
+| [Design of distance sampling surveys](../lectures/BlockF-22.pdf)                 | 16 January |
+| [Analysis of stratified surveys](../lectures/BlockG-22.pdf)                      | 17 January |
+| [Covariates in the detection function](../lectures/BlockH-22.pdf)                | 18 January |
+| [Including multipliers in distance sampling analysis](../lectures/BlockI-22.pdf) | 19 January |
+| [Field methods and summary](../lectures/BlockJ-22.pdf)                             | 20 January |
+|                                                                                    |            |
