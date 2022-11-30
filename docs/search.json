@@ -263,7 +263,7 @@
     "href": "extras/extras.html",
     "title": "Development of additional skills",
     "section": "",
-    "text": "The practicals you have seen thus far have been targeted on specific pedagogical tasks: fitting detection functions, assessing precision, designing surveys, etc. The exercises presented as “extras” take a broader view.\nEven if you never conduct a distance sampling analysis, you will have the opportunity to “consume” the results of distance sampling surveys. In that consumption, you will have to determine the credibility of published findings. Given your skills understanding how to design surveys and analyse data from those surveys, you can apply those skills in assessing the defensibility of work presented by others. This is the intent of the literature critique exercise. Examine one of the three published papers as a critical consumer and make determinations about the credibility of the findings.\nA “mystery” data set is provided to take an analysis from start to finish. With this data set, you will make the series of decisions associated with distance sampling analysis. More importantly, you should emphasize the evidence used to support the decisions made."
+    "text": "Even if you never conduct a distance sampling analysis, you will have the opportunity to “consume” the results of distance sampling surveys. In that consumption, you will have to determine the credibility of published findings. Given your skills understanding how to design surveys and analyse data from those surveys, you can apply those skills in assessing the defensibility of work presented by others. This is the intent of the literature critique exercise. Examine one of the three published papers as a critical consumer and make determinations about the credibility of the findings.\nA “mystery” data set is provided to take an analysis from start to finish. With this data set, you will make the series of decisions associated with distance sampling analysis. More importantly, you should emphasize the evidence used to support the decisions made.\n\n\nAnnouncements\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -740,5 +740,33 @@
     "title": "Stratification practical 7",
     "section": "Analysis of stratified surveys",
     "text": "Analysis of stratified surveys\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\nPhoto by Nick Fewings on Unsplash"
+  },
+  {
+    "objectID": "announce/Announce1.html",
+    "href": "announce/Announce1.html",
+    "title": "Announcement Number 1",
+    "section": "",
+    "text": "That’s all I wanted to say, be sure to do it or you’ll be sorry."
+  },
+  {
+    "objectID": "announce/Announce2.html",
+    "href": "announce/Announce2.html",
+    "title": "Announcement Number 2",
+    "section": "",
+    "text": "More work for everybody to do!!"
+  },
+  {
+    "objectID": "announce/2022-11-30-announce1/index.html",
+    "href": "announce/2022-11-30-announce1/index.html",
+    "title": "Announcement Number 1",
+    "section": "",
+    "text": "That’s all I wanted to say, be sure to do it or you’ll be sorry."
+  },
+  {
+    "objectID": "announce/2022-12-01-announce2/index.html",
+    "href": "announce/2022-12-01-announce2/index.html",
+    "title": "Announcement Number 2",
+    "section": "",
+    "text": "More work for everybody to do!!"
   }
 ]

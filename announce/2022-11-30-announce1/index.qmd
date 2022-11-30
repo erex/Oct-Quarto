@@ -1,0 +1,10 @@
+---
+title: "Announcement Number 1"
+description: "Be sure to complete Practical 1"
+author: 
+  - name: "Fizz McPhee"
+date: 11-30-2022
+draft: false
+---
+
+That's all I wanted to say, be sure to do it or you'll be sorry.

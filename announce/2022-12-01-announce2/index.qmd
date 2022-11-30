@@ -1,0 +1,10 @@
+---
+title: "Announcement Number 2"
+description: "Be sure to complete Practical 2"
+author: 
+  - name: "Fizz McPhee"
+date: 12-01-2022
+draft: false
+---
+
+More work for everybody to do!!
