@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 12 January 2023
+
+### [Fundamental principles](../lectures/BlockD-22.pdf)
+:::
+
 ## Precision of density estimates
 
 This exercise examines the ability to precisely estimate density from line transect data.

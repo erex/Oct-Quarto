@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 11 January 2023
+
+### [Fundamental principles](../lectures/BlockC-22.pdf)
+:::
+
 ## Goodness of fit and model selection
 
 This practical continues the theme of fitting detection functions to line transect distance sampling data.  Follow along with the Rmarkdown (.rmd) file found in the project.

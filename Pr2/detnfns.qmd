@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 10 January 2023
+
+### [Fundamental principles](../lectures/BlockB-22.pdf)
+:::
+
 ## Estimating density of duck nests
 
 The data are the famous "ducknest" data similar to those data described by Anderson and Pospahala (1970).  Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.

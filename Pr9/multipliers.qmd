@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 19 January 2023
+
+### [Fundamental principles](../lectures/BlockI-22.pdf)
+:::
+
 ## Multipliers and indirect surveys
 
 It is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals.  In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density.  This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate.  Those rates are termed multipliers.

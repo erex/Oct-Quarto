@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 13 January 2023
+
+### [Fundamental principles](../lectures/BlockE-22.pdf)
+:::
+
 ## Analysis of point transect data
 
 Having mastered analysis of line transect data, we move on to analysis of point transect data.  These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.

@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 17 January 2023
+
+### [Fundamental principles](../lectures/BlockG-22.pdf)
+:::
+
 ## Analysis of stratified surveys
 
 Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.

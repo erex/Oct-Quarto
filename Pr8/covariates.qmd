@@ -8,6 +8,12 @@ about:
 fontsize: "15px"
 ---
 
+::: {.callout-tip}
+## Lecture slides for 18 January 2023
+
+### [Fundamental principles](../lectures/BlockH-22.pdf)
+:::
+
 ## Covariates in detection function
 
 It is not just distance from the transect that influences the detectability of animals.  In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.
