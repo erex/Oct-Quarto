@@ -25,4 +25,4 @@ Subsequent calculations produce an estimate of the density of nests in the sampl
 
 ---
 
-Photo by <a href="https://unsplash.com/es/@scohron?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shelby Cohron</a> on <a href="https://unsplash.com/images/animals/dolphin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/es/@scohron?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shelby Cohron</a> on <a href="https://unsplash.com/images/animals/dolphin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>

@@ -22,5 +22,5 @@ It is actually difficult for humans to do things that are actually random.  Comp
 
 You have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys.  The marine study will use aircraft so considerations such as fuel load add "incentives" to produce the optimal survey design while allowing the aircraft to return safely to land.  The terrestrial study deploys point transects into strata of a natural area.
 
-Photo by <a href="https://unsplash.com/@ray30?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ray rui</a> on <a href="https://unsplash.com/s/photos/field-survey?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@ray30?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">ray rui</a> on <a href="https://unsplash.com/s/photos/field-survey?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
   

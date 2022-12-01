@@ -25,5 +25,5 @@ You are to analyse these data in several ways, focusing your attention on the pr
 There is a second data set that shares the same survey design (short transects in the west, long transects in the east).  But in this second data set, there in no accompanying animal density gradient.  Perform similar analyses with this data set.
 
 ---
-Photo by <a href="https://unsplash.com/@andreasonda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Andrea Sonda</a> on <a href="https://unsplash.com/s/photos/precision?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@andreasonda?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Andrea Sonda</a> on <a href="https://unsplash.com/s/photos/precision?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
   

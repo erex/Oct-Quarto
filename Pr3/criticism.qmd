@@ -25,5 +25,5 @@ The data you are analysing are simulated, where the true density and the true de
 After completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.
 
 ---
-Photo by <a href="https://unsplash.com/@blakecheekk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Blake Cheek</a> on <a href="https://unsplash.com/s/photos/outdoor?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@blakecheekk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Blake Cheek</a> on <a href="https://unsplash.com/s/photos/outdoor?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
   
