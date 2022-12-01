@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.219">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-26">
+<meta name="dcterms.date" content="2022-12-01">
 
 <title>Distance sampling lab book - Size bias—how large is the problem?</title>
 <style>
@@ -146,44 +146,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">Covariates</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html">Extras</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -276,10 +266,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 26, 2022</p>
+      <p class="date">December 1, 2022</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -346,7 +335,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2244.38.</p>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2235.07.</p>
 </section>
 <section id="analysis-without-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
@@ -356,7 +345,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2310.65.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2297.36.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
@@ -384,7 +373,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5537.5.</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5462.57.</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -393,7 +382,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5809.16, 32.4 percent larger than the true number of individuals in the population, 4388.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5744.95, 30.9 percent larger than the true number of individuals in the population, 4388.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
@@ -450,24 +439,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -503,42 +475,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

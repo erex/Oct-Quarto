@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.219">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-26">
+<meta name="dcterms.date" content="2022-12-01">
 
 <title>Distance sampling lab book - Analysis of data from stratified surveys solution</title>
 <style>
@@ -148,44 +148,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr7/strata.html" aria-current="page">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link active" href="../Pr7/strata.html" aria-current="page">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html">Extras</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -271,10 +261,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 26, 2022</p>
+      <p class="date">December 1, 2022</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -302,10 +291,10 @@ Solution
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(minke)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(minke, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Region.Label  Area Sample.Label Effort distance
-1        South 84734            1  86.75     0.10
-2        South 84734            1  86.75     0.22
-3        South 84734            1  86.75     0.16</code></pre>
+<pre><code>  Region.Label  Area Sample.Label Effort distance object
+1        South 84734            1  86.75     0.10      1
+2        South 84734            1  86.75     0.22      2
+3        South 84734            1  86.75     0.16      3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify truncation distance</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>minke.trunc <span class="ot">&lt;-</span> <span class="fl">1.5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -565,9 +554,9 @@ Abundance estimates:
 
 Component percentages of variance:
  Region.Label Detection    ER
-        North      6.33 93.67
-        South     15.14 84.86
-        Total     13.88 86.12</code></pre>
+        North      8.18 91.82
+        South     27.13 72.87
+        Total     12.49 87.51</code></pre>
 </div>
 </div>
 <p>I won’t say anything just now about the wrinkle I introduced with the <code>formula</code> argument in the call to <code>ds()</code>. Recognise there is an alternative (easier) way to perform the full geographic stratification analysis without tearing apart the data. The abundance estimates presented in the last output do not identically match the estimates shown earlier for full geographic stratification, but they are close. The added benefit of this latter analysis is that the uncertainty in the total population size is computed within <code>dht2</code> rather than needing to be calculated manually using the delta method.</p>
@@ -630,24 +619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -683,42 +655,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

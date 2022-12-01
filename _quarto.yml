@@ -104,6 +104,7 @@ website:
         - extras/extras.qmd
         - extras/critique.qmd
         - extras/mystery.qmd
+        - announce.qmd
         
 format:
   html:

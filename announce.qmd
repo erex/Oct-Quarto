@@ -1,0 +1,14 @@
+---
+title: Announcements
+theme: morph
+listing: 
+  contents: announce
+  type: grid
+  sort: "date desc"
+  fields: 
+    - image
+    - title
+    - description
+    - date
+    - reading-time
+---

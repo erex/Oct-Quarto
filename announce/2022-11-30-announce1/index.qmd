@@ -1,10 +1,11 @@
 ---
-title: "Announcement Number 1"
-description: "Be sure to complete Practical 1"
+title: Work to do prior to the workshop beginning
+description: A pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.
 author: 
-  - name: "Fizz McPhee"
+  - name: Eric Rexstad
 date: 11-30-2022
+image: https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZXdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60
 draft: false
 ---
 
-That's all I wanted to say, be sure to do it or you'll be sorry.
+This exercise is not computer-based. Therefore, you won’t find anything in my RStudio/Cloud account related to Practical 1. Instead, below find links to an [instruction file](/Pr1/Pr1-instructions.html) and a PDF. Print the PDF prior to our first session, because you will work with paper and pencil during the exercise portion of our meeting on that date. The HTML file contains the instructions of what you are to do during the exercise.

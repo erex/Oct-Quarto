@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.219">
+<meta name="generator" content="quarto-1.1.189">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-10-26">
+<meta name="dcterms.date" content="2022-12-01">
 
 <title>Distance sampling lab book - Effect of habitat covariate upon estimated density–points</title>
 <style>
@@ -165,44 +165,34 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html">Points</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html">Design</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page">Multipliers</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html">Extras</a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -306,10 +296,9 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 26, 2022</p>
+      <p class="date">December 1, 2022</p>
     </div>
   </div>
-  
     
   </div>
   
@@ -447,13 +436,13 @@ Warning
 <table class="table table-sm table-striped">
 <caption>Halfnormal detection function model selection of covariates.</caption>
 <colgroup>
+<col style="width: 19%">
+<col style="width: 12%">
 <col style="width: 14%">
-<col style="width: 36%">
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 8%">
+<col style="width: 12%">
 <col style="width: 11%">
-<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -478,12 +467,12 @@ Warning
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal with cosine adjustment term of order 2</td>
+<td style="text-align: left;">Half-normal</td>
 <td style="text-align: left;">~1</td>
-<td style="text-align: right;">0.097</td>
-<td style="text-align: right;">0.395</td>
-<td style="text-align: right;">0.124</td>
-<td style="text-align: right;">12.889</td>
+<td style="text-align: right;">0.037</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">0.034</td>
+<td style="text-align: right;">17.170</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -831,24 +820,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -884,42 +856,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>

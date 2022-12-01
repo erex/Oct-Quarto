@@ -1,9 +1,5 @@
 ---
 title: "Development of additional skills"
-listing: 
-  id: announce-here
-  contents: announce
-  type: default
 ---
 
 The practicals you have seen thus far have been targeted on specific pedagogical tasks: fitting detection functions, assessing precision, designing surveys, etc. The exercises presented as "extras" take a broader view.  
@@ -11,12 +7,3 @@ The practicals you have seen thus far have been targeted on specific pedagogical
 Even if you never conduct a distance sampling analysis, you will have the opportunity to "consume" the results of distance sampling surveys.  In that consumption, you will have to determine the credibility of published findings. Given your skills understanding how to design surveys and analyse data from those surveys, you can apply those skills in assessing the defensibility of work presented by others. This is the intent of the literature critique exercise.  Examine one of the three published papers as a critical consumer and make determinations about the credibility of the findings.
 
 A "mystery" data set is provided to take an analysis from start to finish. With this data set, you will make the series of decisions associated with distance sampling analysis. More importantly, you should emphasize the evidence used to support the decisions made.
-
----
-
-# Announcements
-
----
-
-::: {#announce-here}
-:::

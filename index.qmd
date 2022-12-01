@@ -1,5 +1,5 @@
 ---
-title: Introductory distance sampling lab book
+title: Introductory distance sampling workshop
 image: D60generic.jpg
 about: 
   template: trestles

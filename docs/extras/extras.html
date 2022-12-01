@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,37 +58,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-announce-here .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-announce-here'] = new List('listing-announce-here', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -176,18 +144,17 @@ ul.task-list li input[type="checkbox"] {
   <a href="../extras/mystery.html" class="sidebar-item-text sidebar-link">Your skills as a distance sampling analyst</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../announce.html" class="sidebar-item-text sidebar-link">Announcements</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#announcements" id="toc-announcements" class="nav-link active" data-scroll-target="#announcements">Announcements</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -211,22 +178,8 @@ ul.task-list li input[type="checkbox"] {
 <p>The practicals you have seen thus far have been targeted on specific pedagogical tasks: fitting detection functions, assessing precision, designing surveys, etc. The exercises presented as “extras” take a broader view.</p>
 <p>Even if you never conduct a distance sampling analysis, you will have the opportunity to “consume” the results of distance sampling surveys. In that consumption, you will have to determine the credibility of published findings. Given your skills understanding how to design surveys and analyse data from those surveys, you can apply those skills in assessing the defensibility of work presented by others. This is the intent of the literature critique exercise. Examine one of the three published papers as a critical consumer and make determinations about the credibility of the findings.</p>
 <p>A “mystery” data set is provided to take an analysis from start to finish. With this data set, you will make the series of decisions associated with distance sampling analysis. More importantly, you should emphasize the evidence used to support the decisions made.</p>
-<hr>
-<section id="announcements" class="level1">
-<h1>Announcements</h1>
-<hr>
-<div id="listing-announce-here" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
 
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
