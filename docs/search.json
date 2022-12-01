@@ -95,7 +95,7 @@
     "href": "Pr2/detnfns.html#estimating-density-of-duck-nests",
     "title": "Detection functions practical 2",
     "section": "Estimating density of duck nests",
-    "text": "Estimating density of duck nests\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit.\n\nPhoto by Freysteinn G. Jonsson on Unsplash"
+    "text": "Estimating density of duck nests\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit.\n\n\nPhoto by Freysteinn G. Jonsson on Unsplash"
   },
   {
     "objectID": "Pr2/Pr2-instructions.html",
@@ -382,7 +382,7 @@
     "href": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
     "title": "Survey design practical 6",
     "section": "Designing surveys and determining effort to achieve objectives",
-    "text": "Designing surveys and determining effort to achieve objectives\nFundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.\nIt is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.\nYou have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.\n\nPhoto by ray rui on Unsplash"
+    "text": "Designing surveys and determining effort to achieve objectives\nFundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.\nIt is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.\nYou have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.\n\n\nPhoto by ray rui on Unsplash"
   },
   {
     "objectID": "Pr6/effort-and-power.html",
@@ -564,7 +564,7 @@
     "href": "Pr7/strata.html#analysis-of-stratified-surveys-1",
     "title": "Stratification practical 7",
     "section": "Analysis of stratified surveys",
-    "text": "Analysis of stratified surveys\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\n\nPhoto by Nick Fewings on Unsplash"
+    "text": "Analysis of stratified surveys\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\n\n\nPhoto by Nick Fewings on Unsplash"
   },
   {
     "objectID": "Pr7/stratumspecific-bias.html",

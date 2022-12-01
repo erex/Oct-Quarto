@@ -22,6 +22,7 @@ Multiple analyses arise because it is an open question whether a single detectio
 
 Employing an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.
 
+---
 <p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nick Fewings</a> on <a href="https://unsplash.com/s/photos/strata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
   
   
