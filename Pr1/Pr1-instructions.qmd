@@ -29,7 +29,7 @@ The aim of this exercise is to plot a histogram of the perpendicular distances t
 
 These steps will produce an estimate of duck nest density.
 
-1. With the graph paper PDF [found at this link](../../Pr1/ducknest-graph-paper.pdf), print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.
+1. With the graph paper PDF [found at this link](/Pr1/ducknest-graph-paper.pdf), print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.
 2. Estimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e. the region within 2.4m of the transect centre line.
 
 $$ Area_{rectangle} = $$
