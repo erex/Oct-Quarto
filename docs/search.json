@@ -14,18 +14,11 @@
     "text": "This exercise is not computer-based. Therefore, you won’t find anything in the RStudio/Cloud account related to Practical 1. Instead, below find links to an instruction file and a sketch of the data to complete. Print the sketch and use it to fit a detection function to the data and complete the exercise. The HTML file contains the instructions explaining how to estimate duck nest density from your figure.."
   },
   {
-    "objectID": "announce/2022-12-01-announce2/index.html",
-    "href": "announce/2022-12-01-announce2/index.html",
-    "title": "Announcement Number 2",
-    "section": "",
-    "text": "If I add considerably more text, this might extend the reading time beyond zero minutes.\nI think I would struggle to complete reading of this announcement down to 5 minutes. There is a lot of text here."
-  },
-  {
     "objectID": "announce.html",
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "0 min\n\n\nBe sure to complete Practical 2\n\n\n\nDec 1, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n0 min\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nNov 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Work to do prior to the workshop beginning\n\n\n0 min\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nNov 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -60,7 +53,7 @@
     "href": "Pr1/Pr1-instructions.html",
     "title": "Line transect detection function fitting",
     "section": "",
-    "text": "Frequency of duck nests detected in perpendicular distance bands (metres)\n \n  \n    Distance.band \n    Frequency \n  \n \n\n  \n    0.0-0.3 \n    74 \n  \n  \n    0.3-0.6 \n    73 \n  \n  \n    0.6-0.9 \n    79 \n  \n  \n    0.9-1.2 \n    66 \n  \n  \n    1.2-1.5 \n    78 \n  \n  \n    1.5-1.8 \n    58 \n  \n  \n    1.8-2.1 \n    52 \n  \n  \n    2.1-2.4 \n    54 \n  \n\n\n\n\n\n\nObjectives\nThe aim of this exercise is to plot a histogram of the perpendicular distances to the detected duck nests and estimate (by eye) a detection function and hence estimate density of duck nests, i.e. the number of nests per square metre or per square kilometre (be careful of units).\n\n\nAnswer these questions in sequence\nThese steps will produce an estimate of duck nest density.\n\nWith the graph paper PDF provided, print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.\nEstimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e. the region within 2.4m of the transect centre line.\n\n\\[ Area_{rectangle} = \\] \\[ Area_{curve} = \\]\n\\[ \\hat{P}_a = \\frac{Area_{curve}}{Area_{rectangle}} = \\]\n\nObtain an estimate of the number of nests in the covered region (Note \\(n=534\\)):\n\n\\[ \\hat{N}_a = \\frac{n}{\\hat{P}_a} = \\]\n\nEstimate density (Note \\(L = 20 \\times 128.75 = 2575\\) km):\n\n\\[\\hat{D} = \\frac{\\hat{N}_a}{a} = \\frac{\\hat{N}_a}{2wL} = \\]"
+    "text": "In this practical, we plot a histogram of line transect data and estimate a detection function. The data were collected during a line transect survey of duck nests in Monte Vista National Wildlife Refuge, Colorado, USA: twenty lines of 128.75 km were specified and a distance out to 2.4m was searched and the perpendicular distances of detected nests were recorded and summarised (Table 1).\n\n\n\n\nFrequency of duck nests detected in perpendicular distance bands (metres)\n \n  \n    Distance.band \n    Frequency \n  \n \n\n  \n    0.0-0.3 \n    74 \n  \n  \n    0.3-0.6 \n    73 \n  \n  \n    0.6-0.9 \n    79 \n  \n  \n    0.9-1.2 \n    66 \n  \n  \n    1.2-1.5 \n    78 \n  \n  \n    1.5-1.8 \n    58 \n  \n  \n    1.8-2.1 \n    52 \n  \n  \n    2.1-2.4 \n    54 \n  \n\n\n\n\n\n\nObjectives\nThe aim of this exercise is to plot a histogram of the perpendicular distances to the detected duck nests and estimate (by eye) a detection function and hence estimate density of duck nests, i.e. the number of nests per square metre or per square kilometre (be careful of units).\n\n\nAnswer these questions in sequence\nThese steps will produce an estimate of duck nest density.\n\nWith the graph paper PDF found at this link, print the PDF and plot a histogram of the data in Table 1 and fit a detection function by eye.\nEstimate the areas under the rectangle and the fitted detection function curve and hence estimate the proportion of nests that are detected in the covered region, i.e. the region within 2.4m of the transect centre line.\n\n\\[ Area_{rectangle} = \\] \\[ Area_{curve} = \\]\n\\[ \\hat{P}_a = \\frac{Area_{curve}}{Area_{rectangle}} = \\]\n\nObtain an estimate of the number of nests in the covered region (Note \\(n=534\\)):\n\n\\[ \\hat{N}_a = \\frac{n}{\\hat{P}_a} = \\]\n\nEstimate density (Note \\(L = 20 \\times 128.75 = 2575\\) km):\n\n\\[\\hat{D} = \\frac{\\hat{N}_a}{a} = \\frac{\\hat{N}_a}{2wL} = \\]"
   },
   {
     "objectID": "Pr1/Prac1_solution.html",
