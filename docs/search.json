@@ -74,7 +74,7 @@
     "href": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
     "title": "Sampling practical 1",
     "section": "Estimating \\(\\widehat{P_a}\\) with a pencil",
-    "text": "Estimating \\(\\widehat{P_a}\\) with a pencil\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.\n\n\nPhoto by Shelby Cohron on Unsplash"
+    "text": "Estimating \\(\\widehat{P_a}\\) with a pencil\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.\n\n\n\n\n\n\nPhoto by Shelby Cohron on Unsplash"
   },
   {
     "objectID": "Pr2/detnfns.html",
