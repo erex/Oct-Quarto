@@ -333,7 +333,7 @@ for (i in pastures) {
 legend("topright", legend=tolower(as.character(pastures)), 
        col=2:k, lwd=2, title = "Pastures")
 text(-2,0.038, cex=0.9, pos=4,
-     expression(widehat(sigma[p])==plain(exp)(widehat(beta[0]) + widehat(beta[1]) %.% p[1] + widehat(beta[2]) %.% p[2] + widehat(beta[3]) %.% p[3])))
+     expression(widehat(sigma[p])==plain(exp)(widehat(beta[0]) + widehat(beta[1]) * p[1] + widehat(beta[2]) * p[2] + widehat(beta[3]) * p[3])))
 library(plotrix)
 parms <- data.frame(est=c(2.944, 0.736, 0.166, 0.271),
                     se=c(0.111, 0.373, 0.153, 0.179))
