@@ -31,7 +31,7 @@ The materials are intended to be experiential rather than used as a reference. E
 Further topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.
 
 ::: column-body-outset
-![](ericline%201.svg)
+![](ericline1.svg)
 :::
 
 The second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.
