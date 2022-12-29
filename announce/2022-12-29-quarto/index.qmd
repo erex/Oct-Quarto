@@ -1,0 +1,29 @@
+---
+title: Working with Quarto files
+description: Quarto files are provided for all practicals on the Posit/cloud workspace.
+author: 
+  - name: Eric Rexstad
+date: 12-29-2022
+image: https://images.unsplash.com/photo-1532619675605-1ede6c2ed2b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YW5hbHlzaXN8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60
+draft: false
+---
+
+Learning materials exist in two places:
+- this website you are currently viewing and
+- the Posit/cloud space I created that you all share.
+
+distance sampling analysis is best learned by performing analyses
+
+you should take the opportunity to experiment and play
+with Posit/cloud you are free to make mistakes, if things go completely wrong, simply delete your copy of a practical workspace and begin again
+
+I envision your workflow to have the instructions for a practical open in one browser window or tab, and be working with Posit/cloud in another window or tab.
+
+A quarto file consists both of R code and "human" language describing the purpose of the code. These files are the "raw material" I used to produce the pages of this website.
+
+In performing a practical, you can take either of two approaches, or a hybrid of both.
+- build code in Posix/cloud from scratch, typing all code yourself
+- use copy/paste of code from the instructions to move code from the instructions page into your Posit/cloud session
+  - you will note a small clipboard appear in the upper right corner of code blocks as you hover your mouse above; that lets you copy the content of the block to your clipboard
+- as the workshop progresses, I expect you will make the transition from using the former to using the latter
+- remember to experiment as well. Use the code I provide as a starting point; from which you can investigate alternative analyses.

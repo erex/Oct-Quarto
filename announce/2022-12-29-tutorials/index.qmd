@@ -1,0 +1,14 @@
+---
+title: How to use tutorials
+description: Tutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.
+author: 
+  - name: Eric Rexstad
+date: 12-29-2022
+image: https://images.unsplash.com/photo-1586943759074-f741c014c5d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dHV0b3JpYWx8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60
+draft: false
+---
+
+I intend to describe 
+how to find them 
+how to answer them 
+your answers are private
