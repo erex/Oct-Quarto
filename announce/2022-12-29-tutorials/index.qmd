@@ -16,8 +16,16 @@ In some tutorials, I ask you to complete a short bit of R code to perform some c
 
 # Where to find the practicals
 
+Open the `Tutorial` tab of the upper right Posit/cloud pane. You will see a number of tutorial titles. Those relevant to you have the label
+
+`introtutor: pracX` 
+
+under the tutorial title, where `X` is the number of the workshop practical to which the tutorial pertains.
+
 
 # How to complete the practicals
+
+Press `Start Tutorial` in the Tutorial tab of the upper right Posit/cloud pane. In pressing this button, you may see code execution messages in the `Background Jobs` tab of the lower left pane.  Eventually (for some tutorials you may need to be patient), the tutorial will appear in the upper right pane.  There is a small icon at the top of this pane showing an arrow and window; press this if you wish the tutorial to pop out of the pane and open a new window.
 
 ## Don't worry about selecting incorrect answers
 
