@@ -1,5 +1,5 @@
 ---
-title: Effective of truncation upon density estimates
+title: Effect of truncation upon density estimates
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 ---

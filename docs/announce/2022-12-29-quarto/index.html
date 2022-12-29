@@ -166,7 +166,15 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-materials" id="toc-learning-materials" class="nav-link active" data-scroll-target="#learning-materials">Learning materials</a></li>
+  <li><a href="#possible-workflow" id="toc-possible-workflow" class="nav-link" data-scroll-target="#possible-workflow">Possible workflow</a></li>
+  <li><a href="#alternative-workflow" id="toc-alternative-workflow" class="nav-link" data-scroll-target="#alternative-workflow">Alternative workflow</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -174,26 +182,45 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Learning materials exist in two places:</p>
+<section id="learning-materials" class="level1">
+<h1>Learning materials</h1>
+<p>These exist in two places:</p>
 <ul>
 <li>this website you are currently viewing and</li>
 <li>the Posit/cloud space I created that you all share.</li>
 </ul>
-<p>Distance sampling analysis is best learned by performing analyses. Take the opportunity to experiment and play. With Posit/cloud you are free to make mistakes, if things go completely wrong, simply delete your copy of a practical workspace and begin again</p>
+<p>Distance sampling analysis is best learned by performing analyses. Take the opportunity to experiment and play. With Posit/cloud you are free to make mistakes, if things go completely wrong, simply delete your copy of a practical workspace and begin again.</p>
+</section>
+<section id="possible-workflow" class="level1">
+<h1>Possible workflow</h1>
 <p>I envision your workflow to have the instructions for a practical open in one browser window or tab, and be working with Posit/cloud in another window or tab.</p>
-<p>A quarto file consists both of R code and “human” language describing the purpose of the code. These files are the “raw material” I used to produce the pages of this website.</p>
+<div>
+<div style="float: left; position: relative; top: 0px; padding: 30px;">
+<p><img src="clipboard.png" class="img-fluid"></p>
+</div>
+<p>A Quarto file (file with <code>.qmd</code> extension) consists both of R code and “human” language describing the purpose of the code. These files are the “raw material” I used to produce the pages of this website.</p>
 <p>In performing a practical, you can take either of two approaches, or a hybrid of both.</p>
 <ul>
 <li>build code in Posix/cloud from scratch, typing all code yourself</li>
-<li>use copy/paste of code from the instructions to move code from the instructions page into your Posit/cloud session
+<li>use copy/paste of code from the instructions to move code from the instructions webpage into your Posit/cloud session
 <ul>
 <li>you will note a small clipboard appear in the upper right corner of code blocks as you hover your mouse above; that lets you copy the content of the block to your clipboard</li>
 </ul></li>
 <li>as the workshop progresses, I expect you will make the transition from using the former to using the latter</li>
 <li>remember to experiment as well. Use the code I provide as a starting point; from which you can investigate alternative analyses.</li>
 </ul>
+</div></section>
+<section id="alternative-workflow" class="level1">
+<h1>Alternative workflow</h1>
+<div>
+<div style="float: right; position: relative; top: 0px; padding: 30px;">
+<p><img src="qmd.png" class="img-fluid"></p>
+</div>
+<p>You can also open a <code>.qmd</code> file in Posit/cloud. Pressing the <code>Render</code> arrow in the editor should recreate the document, for example a solution to a practical. To take a more studied approach to working with the code, use the green triangle at the top right of each chunk of R code to execute each bit of code individually.</p>
+<p>Whatever way you interact with the code within these files, pay special attention to the output produced and experiment with additional analyses.</p>
 
 
+</div></section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
