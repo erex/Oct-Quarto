@@ -5,10 +5,10 @@ listing:
   contents: announce
   type: grid
   sort: "date desc"
+  image-height: 300px
   fields: 
     - image
     - title
     - description
     - date
-    - reading-time
 ---
