@@ -22,6 +22,8 @@ You will do some exploratory analysis of the detection distances, then use the f
 
 The estimated detection functions will be plotted and assessed for goodness of fit.
 
+<div style="position: relative; padding-bottom: 95%; height: 0;"><iframe src="https://www.loom.com/embed/170eaa3cbeff463eb1db99e94121d0bc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
 ---
 <p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@freys?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Freysteinn G. Jonsson</a> on <a href="https://unsplash.com/s/photos/duck-nests?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
   
