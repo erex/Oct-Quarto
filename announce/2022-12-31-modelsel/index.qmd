@@ -1,0 +1,33 @@
+---
+title: Is this analysis sound?
+description: How would you respond to this query, if somebody asked your opinion?
+author: 
+  - name: Eric Rexstad
+date: 12-31-2022
+image: https://images.unsplash.com/photo-1518718486060-ad84afd779a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW9yZSUyMHJlc291cmNlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
+draft: true
+---
+
+# Received this email
+
+A former workshop participant recently wrote more than a year after attending this workshop. She had been working on her own data and was concluding her analysis. She sent this table (produced by the `summarize_ds_models()` function) asking 
+
+> Is it fine for me to use the model with the smallest AIC for inference for this survey?
+
+![](HP_models_2021.png)
+
+How would you respond?
+
+---
+
+# Postscript
+
+The email also included a table of stratum-specific estimates. I hide this table so as not to spoil the answer to the question above. If you are curious, simply click on the arrow on the top right.
+
+::: {.callout-note  collapse="true"}
+## Estimates from the preferred model
+
+![](hp_hn_size_2021.png)
+The warning signs are more obvious in this output than from the model selection table. However, you are discouraged from looking at estimates produced by models until your model selection process in complete. This prevents subconscious bias to use models that produce results the analyst "likes."
+
+:::
