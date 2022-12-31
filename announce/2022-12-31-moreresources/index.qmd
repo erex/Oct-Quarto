@@ -1,0 +1,32 @@
+---
+title: More resources
+description: Not all concepts can be discussed in this 10-session training workshop. Where to go if you want more information?
+author: 
+  - name: Eric Rexstad
+date: 12-31-2022
+image: https://images.unsplash.com/photo-1518718486060-ad84afd779a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bW9yZSUyMHJlc291cmNlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
+draft: false
+---
+
+# Database of papers related to these lectures
+
+Examine the [bibliography associated with St Andrews workshops](https://workshops.distancesampling.org/standrews-2019/intro/bibliography.html).  This is a subset of a much [larger searchable data base](http://distancesampling.org/dbib.html) of publications dealing with distance sampling compiled by Tiago Marques.
+
+
+I encourage you to keep [this paper](https://www.jstatsoft.org/index.php/jss/article/view/v089i01/v89i01.pdf) as a reference for the coding done during the workshop:
+
+> Miller, D., Rexstad, E., Thomas, L., Marshall, L., & Laake, J. 2019. Distance Sampling in R. Journal of Statistical Software. [Online] 89:1 https://dx.doi.org/10.18637/jss.v089.i01
+
+# Books
+
+The standard reference for distance sampling is [Buckland *et al.* (2001)](https://global.oup.com/academic/product/introduction-to-distance-sampling-9780198509271).  This was most recently updated in [Buckland *et al.* (2015)](https://www.springer.com/us/book/9783319192185).  If you are affiliated with a university that is a member of ‘Springerlink’, the 2015 version can be purchased in softcover for ~40 USD/GBP/EUR; look up the [MyCopy program](https://support.springer.com/en/support/solutions/articles/6000230903-mycopy-book-information).
+
+# Websites
+
+- News and general information about distance sampling can be found at our home website [distancesampling.org](http://distancesampling.org).  
+- Our workshop materials reside on their own website [workshops.distancesampling.org](https://workshops.distancesampling.org).
+- If you wish to watch narrated lecture videos and narrated exercises, visit [workshops.distancesampling.org/online-course](https://workshops.distancesampling.org/online-course).
+
+# Email list for assistance
+
+We operate a forum where you can ask questions and see if others have asked questions similar to yours.  Joining instructions to access the Google list can be [found following this link](http://distancesampling.org/distancelist.html).
