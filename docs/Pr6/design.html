@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -79,34 +79,44 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
+    <a class="nav-link" href="../Pr1/sampling.html">
+ <span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">Points</a>
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">Design</a>
+    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">
+ <span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">Extras</a>
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -188,6 +198,10 @@ Lecture slides for 16 January 2023
 <p>Fundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.</p>
 <p>It is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.</p>
 <p>You have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.</p>
+<div style="position: relative; padding-bottom: 95%; height: 0;">
+<iframe src="https://www.loom.com/embed/246816235ef64233ab9e67e7bf51d0fd" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+</iframe>
+</div>
 <hr>
 <p style="font-size: x-small; text-align:right">
 Photo by <a href="https://unsplash.com/@ray30?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">ray rui</a> on <a href="https://unsplash.com/s/photos/field-survey?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
@@ -236,7 +250,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -272,24 +303,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
