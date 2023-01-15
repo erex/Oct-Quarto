@@ -1,0 +1,75 @@
+---
+title: Effort computation for camera traps
+description: A question about effort calculation for camera traps. This deals with only the basics of the calculation. Based on the duiker data found in Distance package.
+author: 
+  - name: Eric Rexstad
+date: 01-15-2023
+image: https://images.unsplash.com/photo-1565087918595-8c2af193ecbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGNhbWVyYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
+bibliography: howeetal18.bib
+csl: apa.csl
+draft: false
+---
+
+# How to calculate effort
+
+Computation of effort for each camera involves a series of steps. Computation is not difficult, just remember the steps. We use as an example, Howe's Maxwell duiker data.  In his data (`DuikerCameraTrap`) supplied in the Distance package, the effort associated with each camera is
+
+```{r duiker}
+suppressPackageStartupMessages(library(Distance))
+data("DuikerCameraTraps")
+print(DuikerCameraTraps$Effort[1])
+```
+
+This note describes how to that effort was calculated.
+
+# How many days were cameras deployed?
+
+From the Methods section of @howeetal, we find the dates of deployment and collection
+
+![](text1.png)
+
+```{r deploy}
+start <- as.Date("2014-06-28")
+end <- as.Date("2014-09-21")
+daysbetween <- as.numeric(difftime(end, start, units="days"))
+daysout <- daysbetween - 1
+print(daysout)
+```
+
+Only days when there was no research presence are included in analysis, hence one day is subtracted from duration of cameras in the field.
+
+# Seconds per day cameras in analysis
+
+Data provided in the Distance package is for detections made during "peak" activity period for duikers. That peak period is specified further in the Methods section:
+
+![](text2.png)
+
+In the above snippet of text, @howeetal states there are 8098 snapshot events per day within this peak activity period.  For their cameras, the duration of a snapshot was 2 seconds. Let's recreate that value:
+
+```{r peak}
+snapshot.duration <- 2
+morning.start <- as.POSIXct("2014-06-28 06:30:00" , format="%Y-%m-%d %H:%M:%OS")
+morning.end <- as.POSIXct("2014-06-28 08:59:58" , format="%Y-%m-%d %H:%M:%OS")
+evening.start <- as.POSIXct("2014-06-28 16:00:00" , format="%Y-%m-%d %H:%M:%OS")
+evening.end <- as.POSIXct("2014-06-28 17:59:58" , format="%Y-%m-%d %H:%M:%OS")
+
+morning <- difftime(morning.end, morning.start, units="secs")
+evening <- difftime(evening.end, evening.start, units="secs")
+total.secs <- as.numeric(morning) + as.numeric(evening)
+daily.snapshots <- total.secs / snapshot.duration
+print(daily.snapshots)
+```
+
+# Snapshot events for entire duration
+
+Nearly finished. Multiply daily snapshots by the number of days of deployment:
+
+```{r finish}
+total.snapshots <- daysout * daily.snapshots
+print(total.snapshots)
+print(total.snapshots == DuikerCameraTraps$Effort[1])
+```
+
+Hooray!
+
+# References
