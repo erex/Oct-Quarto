@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Effort computation for camera traps\n\n\nA question about effort calculation for camera traps. This deals with only the basics of the calculation. Based on the duiker data found in Distance package.\n\n\n\nJan 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 31, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 31, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nDec 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nDec 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nNov 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Solution to mystery analysis\n\n\nRemember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.\n\n\n\nJan 19, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEffort computation for camera traps\n\n\nA question about effort calculation for camera traps. This deals with only the basics of the calculation. Based on the duiker data found in Distance package.\n\n\n\nJan 15, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 31, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 31, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nDec 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nDec 29, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nNov 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -648,28 +648,28 @@
     "href": "Pr8/Group-size-covariate.html#analysis-including-group-size-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis including group size covariate",
-    "text": "Analysis including group size covariate\n\nrunsim.cov <- run.simulation(size.cov, run.parallel = TRUE)\n\n\n\n\n\n\nThe distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2235.07."
+    "text": "Analysis including group size covariate\n\nrunsim.cov <- run.simulation(size.cov, run.parallel = TRUE)\n\nSummary of warnings and errors:\n\n\nError: No models could be fitted. (Model number: 1) (occurred 1 time(s) in repetition(s):  80)\n\n\nsimpleWarning in ddf.ds(model = dsmodel, data, meta.data = meta.data, control = control, : Model fitting did not converge. Try different initial values or different model\n\n (Model number: 1) (occurred 1 time(s) in repetition(s):  80)\n\n\nNone of the models converged for this dataset. (occurred 1 time(s) in repetition(s):  80)\n\n\n-----\n\n\n\n\n\n\n\nThe distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2246.52."
   },
   {
     "objectID": "Pr8/Group-size-covariate.html#analysis-without-group-size-covariate",
     "href": "Pr8/Group-size-covariate.html#analysis-without-group-size-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis without group size covariate",
-    "text": "Analysis without group size covariate\nAs a comparison, what happens if we don’t include size as a covariate in our detection function?\n\n\n\n\n\nThe distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average \\(\\hat{N}_{indiv}\\) across all simulations is 2297.36."
+    "text": "Analysis without group size covariate\nAs a comparison, what happens if we don’t include size as a covariate in our detection function?\n\n\n\n\n\nThe distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average \\(\\hat{N}_{indiv}\\) across all simulations is 2307.19."
   },
   {
     "objectID": "Pr8/Group-size-covariate.html#analysis-with-covariate",
     "href": "Pr8/Group-size-covariate.html#analysis-with-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis with covariate",
-    "text": "Analysis with covariate\n\n\n\n\n\nWhen including size as a covariate, estimates of average group size are not affected (figure above). Likewise, mean \\(\\hat{N}_{indiv}\\) is effectively unbiased: 5462.57."
+    "text": "Analysis with covariate\n\n\n\n\n\nWhen including size as a covariate, estimates of average group size are not affected (figure above). Likewise, mean \\(\\hat{N}_{indiv}\\) is effectively unbiased: 5640.44."
   },
   {
     "objectID": "Pr8/Group-size-covariate.html#analysis-without-the-covariate",
     "href": "Pr8/Group-size-covariate.html#analysis-without-the-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis without the covariate",
-    "text": "Analysis without the covariate\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5744.95, 30.9 percent larger than the true number of individuals in the population, 4388."
+    "text": "Analysis without the covariate\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5802.93, 32.2 percent larger than the true number of individuals in the population, 4388."
   },
   {
     "objectID": "Pr8/Pr8-instructions.html",
@@ -943,5 +943,33 @@
     "title": "Effort computation for camera traps",
     "section": "",
     "text": "How to calculate effort\nComputation of effort for each camera involves a series of steps. Computation is not difficult, just remember the steps. We use as an example, Howe’s Maxwell duiker data. In his data (DuikerCameraTrap) supplied in the Distance package, the effort associated with each camera is\n\nsuppressPackageStartupMessages(library(Distance))\ndata(\"DuikerCameraTraps\")\nprint(DuikerCameraTraps$Effort[1])\n\n[1] 680232\n\n\nThis note describes how to that effort was calculated.\n\n\nHow many days were cameras deployed?\nFrom the Methods section of Howe, Buckland, Després-Einspenner, & Kühl (2017), we find the dates of deployment and collection\n\n\nstart <- as.Date(\"2014-06-28\")\nend <- as.Date(\"2014-09-21\")\ndaysbetween <- as.numeric(difftime(end, start, units=\"days\"))\ndaysout <- daysbetween - 1\nprint(daysout)\n\n[1] 84\n\n\nOnly days when there was no research presence are included in analysis, hence one day is subtracted from duration of cameras in the field.\n\n\nSeconds per day cameras in analysis\nData provided in the Distance package is for detections made during “peak” activity period for duikers. That peak period is specified further in the Methods section:\n\nIn the above snippet of text, Howe et al. (2017) states there are 8098 snapshot events per day within this peak activity period. For their cameras, the duration of a snapshot was 2 seconds. Let’s recreate that value:\n\nsnapshot.duration <- 2\nmorning.start <- as.POSIXct(\"2014-06-28 06:30:00\" , format=\"%Y-%m-%d %H:%M:%OS\")\nmorning.end <- as.POSIXct(\"2014-06-28 08:59:58\" , format=\"%Y-%m-%d %H:%M:%OS\")\nevening.start <- as.POSIXct(\"2014-06-28 16:00:00\" , format=\"%Y-%m-%d %H:%M:%OS\")\nevening.end <- as.POSIXct(\"2014-06-28 17:59:58\" , format=\"%Y-%m-%d %H:%M:%OS\")\n\nmorning <- difftime(morning.end, morning.start, units=\"secs\")\nevening <- difftime(evening.end, evening.start, units=\"secs\")\ntotal.secs <- as.numeric(morning) + as.numeric(evening)\ndaily.snapshots <- total.secs / snapshot.duration\nprint(daily.snapshots)\n\n[1] 8098\n\n\n\n\nSnapshot events for entire duration\nNearly finished. Multiply daily snapshots by the number of days of deployment:\n\ntotal.snapshots <- daysout * daily.snapshots\nprint(total.snapshots)\n\n[1] 680232\n\nprint(total.snapshots == DuikerCameraTraps$Effort[1])\n\n[1] TRUE\n\n\nHooray!\n\n\n\n\n\n\n\n\nReferences\n\nHowe, E. J., Buckland, S. T., Després-Einspenner, M.-L., & Kühl, H. S. (2017). Distance sampling with camera traps. Methods in Ecology and Evolution, 8(11), 1558–1565. https://doi.org/10.1111/2041-210X.12790"
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html",
+    "href": "announce/2023-01-02-mysterysoln/index.html",
+    "title": "Solution to mystery analysis",
+    "section": "",
+    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set"
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "title": "Solution to mystery analysis",
+    "section": "AIC among remaining five competitors",
+    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      3 309.1185\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %>%\n      kable_styling(full_width = F) %>%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\n\nFive competing models with truncation at 50m\n \n  \n    Model \n    Key function \n    Formula \n    C-vM $p$-value \n    Average detectability \n    se(Average detectability) \n    Delta AIC \n  \n \n\n  \n    hn.sex \n    Half-normal \n    ~sex \n    0.727 \n    0.567 \n    0.092 \n    0.000 \n  \n  \n    hr.sex \n    Hazard-rate \n    ~sex \n    0.863 \n    0.449 \n    0.198 \n    1.415 \n  \n  \n    hn \n    Half-normal \n    ~1 \n    0.683 \n    0.638 \n    0.091 \n    3.157 \n  \n  \n    unicos \n    Uniform with cosine adjustment term of order 1 \n    NA \n    0.706 \n    0.624 \n    0.079 \n    3.610 \n  \n  \n    hr \n    Hazard-rate with cosine adjustment term of order 2 \n    ~1 \n    0.923 \n    0.554 \n    0.122 \n    4.929 \n  \n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Best model, Half normal with sex covariate",
+    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout <- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, convert_units = myunits)\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds <- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\nConfidence interval bounds from bootstrap are (123, 399), somewhat wider than the analytical confidence interval bounds specified above."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
+    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
   }
 ]

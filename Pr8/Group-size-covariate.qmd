@@ -58,7 +58,7 @@ I'll create a population with this distribution of herd size, with a true number
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE
-set.seed(2462)
+set.seed(4561532)
 eg.region <- make.region()
 covariate.list <- list()
 covariate.list$size <- list(list(distribution="ztruncpois", 
@@ -152,7 +152,7 @@ The *median* of this distribution is 12 (not far from 10 in the previous example
 ml <- log(12)
 sl <- log(3)
 group.size <- rlnorm(1000, ml, sl)
-mybr <- c(0,5,10,15,20,25,30,35,40,50,60,100,300,500)
+mybr <- c(0,5,10,15,20,25,30,35,40,50,60,100,300,1000)
 hist(group.size, breaks = mybr)
 covariate.list$size <- list(list(distribution="lognormal", 
                                  meanlog = ml, sdlog = sl))
