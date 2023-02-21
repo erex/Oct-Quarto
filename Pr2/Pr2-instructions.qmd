@@ -186,7 +186,7 @@ Prior to making inference based upon a detection function model, it is prudent t
 #| eval = answer,
 #| fig.width = 4,
 #| fig.height = 4
-gof_ds(nest.hn, nc=8)
+gof_ds(nest.hn)
 ```
 
 # Specifying different detection functions
