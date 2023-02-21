@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 18 January 2023
+## Lecture slides for 29 March 2023
 
 ### [Covariates in the detection function](../lectures/BlockH-22.pdf)
 :::
