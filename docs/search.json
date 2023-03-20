@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Working with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Working with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -908,5 +908,19 @@
     "title": "Working with Quarto files",
     "section": "",
     "text": "Learning materials\nThese exist in two places:\n\nthis website you are currently viewing and\nthe Posit/cloud space I created that you all share.\n\nDistance sampling analysis is best learned by performing analyses. Take the opportunity to experiment and play. With Posit/cloud you are free to make mistakes, if things go completely wrong, simply delete your copy of a practical workspace and begin again.\n\n\nPossible workflow\nI envision your workflow to have the instructions for a practical open in one browser window or tab, and be working with Posit/cloud in another window or tab.\n\n\n\n\nA Quarto file (file with .qmd extension) consists both of R code and “human” language describing the purpose of the code. These files are the “raw material” I used to produce the pages of this website.\nIn performing a practical, you can take either of two approaches, or a hybrid of both.\n\nbuild code in Posix/cloud from scratch, typing all code yourself\nuse copy/paste of code from the instructions to move code from the instructions webpage into your Posit/cloud session\n\nyou will note a small clipboard appear in the upper right corner of code blocks as you hover your mouse above; that lets you copy the content of the block to your clipboard\n\nas the workshop progresses, I expect you will make the transition from using the former to using the latter\nremember to experiment as well. Use the code I provide as a starting point; from which you can investigate alternative analyses.\n\n\n\nAlternative workflow\n\n\n\n\nYou can also open a .qmd file in Posit/cloud. Pressing the Render arrow in the editor should recreate the document, for example a solution to a practical. To take a more studied approach to working with the code, use the green triangle at the top right of each chunk of R code to execute each bit of code individually.\nWhatever way you interact with the code within these files, pay special attention to the output produced and experiment with additional analyses."
+  },
+  {
+    "objectID": "announce/2022-12-29-tutorials/index.html",
+    "href": "announce/2022-12-29-tutorials/index.html",
+    "title": "How to use tutorials",
+    "section": "",
+    "text": "While I intend to discuss the solutions to every practical, I want you to have the opportunity to do some self-assessment either before we discuss the solution together, or if you choose to return to a practical sometime in the future.\nI have created a few short answer/multiple choice questions to accompany Practicals 2-8. These tutorials re-create output from the practicals and ask you to interpret that output.\nIn some tutorials, I ask you to complete a short bit of R code to perform some calculations (hints are provided to help you do this). In all tutorials I ask you to step back from pouring over output and ask to to make biological interpretations."
+  },
+  {
+    "objectID": "announce/2022-12-29-tutorials/index.html#dont-worry-about-selecting-incorrect-answers",
+    "href": "announce/2022-12-29-tutorials/index.html#dont-worry-about-selecting-incorrect-answers",
+    "title": "How to use tutorials",
+    "section": "Don’t worry about selecting incorrect answers",
+    "text": "Don’t worry about selecting incorrect answers\nThere is no “grade” associated with these tutorials. The answers you provide cannot be seen by me or your fellow participants. The tutorials offer you another opportunity to explore distance sampling analyses. You can assess the results of your explorations through using the tutorials.\nUse of the tutorials is completely optional. If they help you learn about distance sampling analyses, by all means use them. If they interfere with your learning, concentrate on other facets of the workshop materials."
   }
 ]

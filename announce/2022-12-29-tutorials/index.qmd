@@ -5,7 +5,7 @@ author:
   - name: Eric Rexstad
 date: 03-20-2023
 image: https://images.unsplash.com/photo-1586943759074-f741c014c5d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dHV0b3JpYWx8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60
-draft: true
+draft: false
 ---
 
 While I intend to discuss the solutions to every practical, I want you to have the opportunity to do some self-assessment either before we discuss the solution together, or if you choose to return to a practical sometime in the future.
@@ -19,7 +19,7 @@ In some tutorials, I ask you to complete a short bit of R code to perform some c
 ![](tutorial.png)
 </div>
 
-# Where to find the practicals
+# Where to find the tutorials
 
 Open the `Tutorial` tab of the upper right Posit/cloud pane. You will see a number of tutorial titles. Those relevant to you have the label
 
@@ -28,12 +28,12 @@ Open the `Tutorial` tab of the upper right Posit/cloud pane. You will see a numb
 under the tutorial title, where `X` is the number of the workshop practical to which the tutorial pertains.
 
 
-# How to complete the practicals
+# How to complete the tutorials
 
 Press `Start Tutorial` in the Tutorial tab of the upper right Posit/cloud pane. In pressing this button, you may see code execution messages in the `Background Jobs` tab of the lower left pane.  Eventually (for some tutorials you may need to be patient), the tutorial will appear in the upper right pane.  There is a small icon at the top of this pane showing an arrow and window; press this if you wish the tutorial to pop out of the pane and open a new window.
 
 ## Don't worry about selecting incorrect answers
 
-There is no "grade" associated with these practicals. The answers you provide cannot be seen by me or your fellow participants. The practicals offer you another opportunity to explore distance sampling analyses. You can assess the results of your explorations through using the practicals.
+There is no "grade" associated with these tutorials. The answers you provide cannot be seen by me or your fellow participants. The tutorials offer you another opportunity to explore distance sampling analyses. You can assess the results of your explorations through using the tutorials.
 
-Use of the practicals is completely optional. If they help you learn about distance sampling analyses, by all means use them. If they interfere with your learning, concentrate on other facets of the workshop materials.
+Use of the tutorials is completely optional. If they help you learn about distance sampling analyses, by all means use them. If they interfere with your learning, concentrate on other facets of the workshop materials.
