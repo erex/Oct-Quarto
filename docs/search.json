@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Working with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "More resources\n\n\nNot all concepts can be discussed in this 10-session training workshop. Where to go if you want more information?\n\n\n\nMar 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution to mystery analysis\n\n\nRemember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.\n\n\n\nMar 31, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nMar 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nMar 6, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -922,5 +922,40 @@
     "title": "How to use tutorials",
     "section": "Don’t worry about selecting incorrect answers",
     "text": "Don’t worry about selecting incorrect answers\nThere is no “grade” associated with these tutorials. The answers you provide cannot be seen by me or your fellow participants. The tutorials offer you another opportunity to explore distance sampling analyses. You can assess the results of your explorations through using the tutorials.\nUse of the tutorials is completely optional. If they help you learn about distance sampling analyses, by all means use them. If they interfere with your learning, concentrate on other facets of the workshop materials."
+  },
+  {
+    "objectID": "announce/2022-12-31-moreresources/index.html",
+    "href": "announce/2022-12-31-moreresources/index.html",
+    "title": "More resources",
+    "section": "",
+    "text": "Database of papers related to these lectures\nExamine the bibliography associated with St Andrews workshops. This is a subset of a much larger searchable data base of publications dealing with distance sampling compiled by Tiago Marques.\nI encourage you to keep this paper as a reference for the coding done during the workshop:\n\nMiller, D., Rexstad, E., Thomas, L., Marshall, L., & Laake, J. 2019. Distance Sampling in R. Journal of Statistical Software. [Online] 89:1 https://dx.doi.org/10.18637/jss.v089.i01\n\n\n\nBooks\nThe standard reference for distance sampling is Buckland et al. (2001). This was most recently updated in Buckland et al. (2015). If you are affiliated with a university that is a member of ‘Springerlink’, the 2015 version can be purchased in softcover for ~40 USD/GBP/EUR; look up the MyCopy program.\n\n\nWebsites\n\nNews and general information about distance sampling can be found at our home website distancesampling.org.\n\nOur workshop materials reside on their own website workshops.distancesampling.org.\nIf you wish to watch narrated lecture videos and narrated exercises, visit workshops.distancesampling.org/online-course.\n\n\n\nEmail list for assistance\nWe operate a forum where you can ask questions and see if others have asked questions similar to yours. Joining instructions to access the Google list can be found following this link."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html",
+    "href": "announce/2023-01-02-mysterysoln/index.html",
+    "title": "Solution to mystery analysis",
+    "section": "",
+    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set"
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "title": "Solution to mystery analysis",
+    "section": "AIC among remaining five competitors",
+    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      3 309.1185\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %>%\n      kable_styling(full_width = F) %>%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\n\nFive competing models with truncation at 50m\n \n  \n    Model \n    Key function \n    Formula \n    C-vM $p$-value \n    Average detectability \n    se(Average detectability) \n    Delta AIC \n  \n \n\n  \n    hn.sex \n    Half-normal \n    ~sex \n    0.727 \n    0.567 \n    0.092 \n    0.000 \n  \n  \n    hr.sex \n    Hazard-rate \n    ~sex \n    0.863 \n    0.449 \n    0.198 \n    1.415 \n  \n  \n    hn \n    Half-normal \n    ~1 \n    0.683 \n    0.638 \n    0.091 \n    3.157 \n  \n  \n    unicos \n    Uniform with cosine adjustment term of order 1 \n    NA \n    0.706 \n    0.624 \n    0.079 \n    3.610 \n  \n  \n    hr \n    Hazard-rate with cosine adjustment term of order 2 \n    ~1 \n    0.923 \n    0.554 \n    0.122 \n    4.929 \n  \n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Best model, Half normal with sex covariate",
+    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout <- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, convert_units = myunits)\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds <- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\nConfidence interval bounds from bootstrap are (116, 407), somewhat wider than the analytical confidence interval bounds specified above."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
+    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
   }
 ]
