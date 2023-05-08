@@ -46,7 +46,8 @@ Here animals occur in small herds.  The distribution of herd size is Poisson wit
 #| fig.width = 8,
 #| echo = FALSE
 group.size <- rtpois(1000,lambda = 10)
-hist(group.size, xlab="Group size")
+hist(group.size, xlab="Group size", 
+     main="True group size in population")
 ```
 
 You can see it is very rare for herds to exceed a size of twice the mean.
@@ -58,7 +59,7 @@ I'll create a population with this distribution of herd size, with a true number
 #| echo = FALSE,
 #| message = FALSE,
 #| warning = FALSE
-set.seed(4561532)
+#set.seed(4561532)
 eg.region <- make.region()
 covariate.list <- list()
 covariate.list$size <- list(list(distribution="ztruncpois", 
@@ -73,7 +74,7 @@ detect <- make.detectability(scale.param = 10,
                              truncation = 80)
 plot(detect, pop.desc)
 my.pop <- generate.population(pop.desc, detect, eg.region)
-transects <- make.design()
+transects <- make.design(truncation=80)
 simulation <- make.simulation()
 detmodel.size <- make.ds.analysis(dfmodel = list(~size),
                                   key = "hn",
@@ -89,7 +90,11 @@ Do we have the tell-tale sign of size bias--missing small groups at large distan
 
 ```{r}
 #| echo = FALSE
-scatter.smooth(size.cov.survey@dist.data$distance, size.cov.survey@dist.data$size)
+scatter.smooth(size.cov.survey@dist.data$distance,
+               size.cov.survey@dist.data$size,
+               xlab="Detection distance",
+               ylab="Observed group size",
+               main="Detected group size as fn of detection distance")
 ```
 
 Perhaps small groups at large distances are missed; include group size in the detection function.
@@ -101,6 +106,7 @@ runsim.cov <- run.simulation(size.cov, run.parallel = TRUE)
 ```
 
 ```{r}
+#| message: false,
 #| label = "small-with-covar",
 #| fig.width = 8,
 #| echo = FALSE
@@ -141,14 +147,15 @@ The distribution of computed average groups sizes is shown above.  We would expe
 
 # Example 2: Possible dolphin pods or seabird rafts
 
-I use a different distribution to mimic the group size distribution.  A log normal distribution (you heard about it during the **precision** lecture) is like a normal distribution that has had its right tail pulled out.
+I use a different distribution to mimic the group size distribution.  A log normal distribution (you heard about it during the **precision** lecture) is like a normal distribution that has had its right tail pulled out. In all other respects the survey is the same (same design, etc.)
 
 The *median* of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the *mean* is 21.9.  This changes the true number of individuals in the population to 200*21.9=4388
 
 ```{r}
-#| label = "lognor-with",
-#| fig.margin = TRUE,
-#| echo = FALSE
+#| label: "lognor-with"
+#| fig.margin: TRUE
+#| echo: FALSE
+#| #| message: false
 ml <- log(12)
 sl <- log(3)
 group.size <- rlnorm(1000, ml, sl)
@@ -176,7 +183,11 @@ How about "missingness" of small groups at large distances?
 ```{r}
 #| echo = FALSE
 size.cov.survey <- run.survey(tail.size.cov)
-scatter.smooth(size.cov.survey@dist.data$distance, size.cov.survey@dist.data$size)
+scatter.smooth(size.cov.survey@dist.data$distance,
+               size.cov.survey@dist.data$size,
+               xlab="Detection distance",
+               ylab="Observed group size",
+               main="Detected group size as fn of detection distance")
 ```
 
 ## Analysis with covariate

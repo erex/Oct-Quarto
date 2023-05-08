@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2023-01-18">
+<meta name="dcterms.date" content="2023-05-08">
 
 <title>Distance sampling workshop - Size bias—how large is the problem?</title>
 <style>
@@ -129,7 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -174,7 +174,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">
+    <a class="nav-link" href="../Pr8/covariates.html">
  <span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
@@ -190,49 +190,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Size bias—how large is the problem?</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr8/covariates.html" class="sidebar-item-text sidebar-link">Covariates practical 8</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr8/Pr8-instructions.html" class="sidebar-item-text sidebar-link">Covariates in detection function model</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr8/Group-size-covariate.html" class="sidebar-item-text sidebar-link active">Size bias—how large is the problem?</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">Other model selection metrics</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr8/Prac8_solution.html" class="sidebar-item-text sidebar-link">Covariates in the detection function <strong>solution</strong></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -259,7 +220,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Size bias—how large is the problem?</h1>
+<h1 class="title">Size bias—how large is the problem?</h1>
 </div>
 
 
@@ -276,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 18, 2023</p>
+      <p class="date">May 8, 2023</p>
     </div>
   </div>
   
@@ -344,15 +305,15 @@ Supplement
 <pre><code>Summary of warnings and errors:</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Error: No models could be fitted. (Model number: 1) (occurred 1 time(s) in repetition(s):  80)</code></pre>
+<pre><code>Error: No models could be fitted. (Model number: 1) (occurred 1 time(s) in repetition(s):  40)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>simpleWarning in ddf.ds(model = dsmodel, data, meta.data = meta.data, control = control, : Model fitting did not converge. Try different initial values or different model
 
- (Model number: 1) (occurred 1 time(s) in repetition(s):  80)</code></pre>
+ (Model number: 1) (occurred 1 time(s) in repetition(s):  40)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>None of the models converged for this dataset. (occurred 1 time(s) in repetition(s):  80)</code></pre>
+<pre><code>None of the models converged for this dataset. (occurred 1 time(s) in repetition(s):  40)</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>-----</code></pre>
@@ -363,7 +324,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2246.52.</p>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 1984.65.</p>
 </section>
 <section id="analysis-without-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
@@ -373,12 +334,12 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2307.19.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2004.91.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
 <h1>Example 2: Possible dolphin pods or seabird rafts</h1>
-<p>I use a different distribution to mimic the group size distribution. A log normal distribution (you heard about it during the <strong>precision</strong> lecture) is like a normal distribution that has had its right tail pulled out.</p>
+<p>I use a different distribution to mimic the group size distribution. A log normal distribution (you heard about it during the <strong>precision</strong> lecture) is like a normal distribution that has had its right tail pulled out. In all other respects the survey is the same (same design, etc.)</p>
 <p>The <em>median</em> of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the <em>mean</em> is 21.9. This changes the true number of individuals in the population to 200*21.9=4388</p>
 <div class="cell" data-fig.margin="true">
 <div class="cell-output-display">
@@ -386,6 +347,23 @@ Supplement
 </div>
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/lognor-with-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Summary of warnings and errors:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Error: No models could be fitted. (Model number: 1) (occurred 1 time(s) in repetition(s):  129)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>simpleWarning in ddf.ds(model = dsmodel, data, meta.data = meta.data, control = control, : Model fitting did not converge. Try different initial values or different model
+
+ (Model number: 1) (occurred 1 time(s) in repetition(s):  129)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>None of the models converged for this dataset. (occurred 1 time(s) in repetition(s):  129)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>-----</code></pre>
 </div>
 </div>
 <p>How about “missingness” of small groups at large distances?</p>
@@ -401,7 +379,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 5640.44.</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4407.68.</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -410,7 +388,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5802.93, 32.2 percent larger than the true number of individuals in the population, 4388.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5373.25, 22.5 percent larger than the true number of individuals in the population, 4388.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
