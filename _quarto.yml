@@ -85,6 +85,7 @@ website:
     - title: "Covariates"
       contents: 
         - Pr8/covariates.qmd
+        - Pr8/Group-size-covariate.qmd
         - Pr8/Pr8-instructions.qmd
         - Pr8/alternative-selection-metrics.qmd
         - Pr8/Prac8_solution.qmd
