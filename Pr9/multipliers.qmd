@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 30 March 2023
+## Lecture slides for 20 July 2023
 
 ### [Including multipliers in distance sampling analysis](../lectures/BlockI-22.pdf)
 :::
@@ -20,7 +20,7 @@ It is potentially easier to estimate the density of things produced by animals (
 
 This exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier.  There is a study of whale blows from a moving ship--effort is measured in units of time rather than distance.  Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field.
 
-<div style="position: relative; padding-bottom: 102.27272727272727%; height: 0;"><iframe src="https://www.loom.com/embed/26a874243c6449d791c862423e7dd517" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 90.30100334448161%; height: 0;"><iframe src="https://www.loom.com/embed/a84be922994b445683d2af60f60d2c78?sid=e754b461-d4a9-4ae2-a3ae-468d1bd28382" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 ---
 <p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@jamshaidpro?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Jamshaid Mughal</a> on <a href="https://unsplash.com/s/photos/nests?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
