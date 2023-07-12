@@ -1,0 +1,14 @@
+name: adjtermsplot
+title: adjtermsplot
+username:
+account: erex
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9444933
+bundleId: 7447560
+url: https://erex.shinyapps.io/adjtermsplot/
+when: 1689151810.18358
+lastSyncTime: 1689151810.18359
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: index.qmd

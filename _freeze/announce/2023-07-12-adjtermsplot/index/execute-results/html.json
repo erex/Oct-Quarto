@@ -1,0 +1,14 @@
+{
+  "hash": "fe9855102ac6592886a90ee8420f97a7",
+  "result": {
+    "markdown": "---\ntitle: Build your own detection function\ndescription: See the effect of adding adjustment terms with this interactive app.\nauthor: \n  - name: Eric Rexstad\ndate: 07-12-2023\nimage: https://images.unsplash.com/photo-1581089778245-3ce67677f718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXF1YXRpb25zfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60\ndraft: false\n---\n\n\n# Build your own detection function\n\nTo show the effects of none, one or two cosine adjustment terms upon half normal and hazard rate key functions.\n\n<iframe id=\"example1\" src=\"https://erex.shinyapps.io/adjtermsplot/\" style=\"border: none; width: 100%; height: 720px\" frameborder=\"0\"></iframe>\n\n\n::: {.cell}\n\n:::\n\n::: {.cell context='server'}\n\n:::\n\n\nThis is a very simple application intended to provide a visual impression of the effect of adjustment terms upon the shape of key functions. You will note the ease with which non-monotonic (functions that both decrease and increase with detection distance) detection functions can be created with only two adjustment terms.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
