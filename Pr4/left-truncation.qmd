@@ -18,9 +18,7 @@ Situations arise where detectability on/near the transect line is obscured, eith
 
 ```{r}
 #| out.width = "60%",
-#| fig.cap = "Downward view of aerial survey, with distance bands 
-#| emanating from the transect.  Note area directly underneath 
-#| plane where detections are not possible.",
+#| fig.cap = "Downward view of aerial survey, with distance bands emanating from the transect.  Note area directly underneath plane where detections are not possible.",
 #| echo = FALSE
 knitr::include_graphics("Fig7-8.png")
 ```
