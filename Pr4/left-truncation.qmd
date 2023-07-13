@@ -23,7 +23,7 @@ Situations arise where detectability on/near the transect line is obscured, eith
 knitr::include_graphics("Fig7-8.png")
 ```
 
-The following are extracts from Buckland et al. [-@buckland2001], with my emphasis added describe analyses with data that are left truncated.
+The following are extracts from @buckland2001, with my emphasis added describe analyses with data that are left truncated.
 
 ## 4.3.2 Left-truncation
 
