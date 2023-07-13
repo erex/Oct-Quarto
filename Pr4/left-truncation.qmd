@@ -14,12 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Left truncation
 
-Situations arise where detectability on/near the transect line is obscured, either because of inability to look under a survey aircraft, or because travel along the transect is difficult. One solution to such situations is to perform *left truncation* upon the distances resulting from the survey. Recognise however, detections at small distances have high information content. But these are the data that are lost through left truncation; approach such an analysis with caution.
+Situations arise where detectability on/near the transect line is obscured, either because of inability to look under a survey aircraft, or because travel along the transect is difficult. One solution to such situations is to perform *left truncation* upon the distances resulting from the survey. Recognise however, detections at small distances have high information content. But these are the data that are lost through left truncation; approach such an analysis with caution. Such cautions are expressed in @Marques2016.
 
 ```{r}
 #| out.width = "60%",
-#| fig.cap = "Downward view of aerial survey, with distance bands
-#| emanating from the transect.  Note area directly underneath
+#| fig.cap = "Downward view of aerial survey, with distance bands 
+#| emanating from the transect.  Note area directly underneath 
 #| plane where detections are not possible.",
 #| echo = FALSE
 knitr::include_graphics("Fig7-8.png")
