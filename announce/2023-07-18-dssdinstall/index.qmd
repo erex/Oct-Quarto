@@ -1,0 +1,27 @@
+---
+title: Installing `dssd` package
+description: At present (July 2023) `dssd` must be installed from Github
+author: 
+  - name: Eric Rexstad
+date: 07-18-2023
+image: irelandsurvey.png
+draft: false
+---
+
+# Installing `dssd` from Github
+
+The survey design R package `dssd`, does not currently reside on CRAN because of the dependency `dssd` has upon another package that has been removed from CRAN. This means the process of installing `dssd` onto your computer is only slightly more difficult, I believe.
+
+We develop our packages using a Cloud service called `Github`. You can acquire a copy of the `dssd` package from there to install onto your local computer.  The process is as follows:
+
+- Download a file from Github, dependent upon whether your machine is Windows or Mac:
+  - `dssd_1.0.0.zip` for Windows
+  - `dssd_1.0.0.tgz` for Mac
+  - in either case, the file to download is located at
+    `https://github.com/DistanceDevelopment/dssd/releases/tag/dssd1.0.0-R4.2.3`
+- Using RStudio, request `Install package from package archive file
+  - ![](installmenu.png)
+  - pointing the dialog to the location where you downloaded the file from Github
+- proceed with your R session with the command `library(dssd)`
+  
+Note: as I don't have a Mac, the comment about installing from a Mac is untested.
