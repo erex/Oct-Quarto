@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Installing dssd package\n\n\nAt present (July 2023) dssd must be installed from Github\n\n\n\nJul 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nJul 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nJul 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Solution to mystery analysis\n\n\nRemember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.\n\n\n\nJul 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInstalling dssd package\n\n\nAt present (July 2023) dssd must be installed from Github\n\n\n\nJul 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nJul 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nJul 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -950,5 +950,33 @@
     "title": "Installing dssd package",
     "section": "",
     "text": "Installing dssd from Github\nThe survey design R package dssd, does not currently reside on CRAN because of the dependency dssd has upon another package that has been removed from CRAN. This means the process of installing dssd onto your computer is only slightly more difficult, I believe.\nWe develop our packages using a Cloud service called Github. You can acquire a copy of the dssd package from there to install onto your local computer. The process is as follows:\n\nDownload a file from Github, dependent upon whether your machine is Windows or Mac:\n\ndssd_1.0.0.zip for Windows\ndssd_1.0.0.tgz for Mac\nin either case, the file to download is located at https://github.com/DistanceDevelopment/dssd/releases/tag/dssd1.0.0-R4.2.3\n\nUsing RStudio, request `Install package from package archive file\n\n\npointing the dialog to the location where you downloaded the file from Github\n\nproceed with your R session with the command library(dssd)\n\nNote: as I don’t have a Mac, the comment about installing from a Mac is untested."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html",
+    "href": "announce/2023-01-02-mysterysoln/index.html",
+    "title": "Solution to mystery analysis",
+    "section": "",
+    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set"
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "title": "Solution to mystery analysis",
+    "section": "AIC among remaining five competitors",
+    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      3 309.1185\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %>%\n      kable_styling(full_width = F) %>%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\n\nFive competing models with truncation at 50m\n \n  \n    Model \n    Key function \n    Formula \n    C-vM $p$-value \n    Average detectability \n    se(Average detectability) \n    Delta AIC \n  \n \n\n  \n    hn.sex \n    Half-normal \n    ~sex \n    0.727 \n    0.567 \n    0.092 \n    0.000 \n  \n  \n    hr.sex \n    Hazard-rate \n    ~sex \n    0.863 \n    0.449 \n    0.198 \n    1.415 \n  \n  \n    hn \n    Half-normal \n    ~1 \n    0.683 \n    0.638 \n    0.091 \n    3.157 \n  \n  \n    unicos \n    Uniform with cosine adjustment term of order 1 \n    NA \n    0.706 \n    0.624 \n    0.079 \n    3.610 \n  \n  \n    hr \n    Hazard-rate with cosine adjustment term of order 2 \n    ~1 \n    0.923 \n    0.554 \n    0.122 \n    4.929 \n  \n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Best model, Half normal with sex covariate",
+    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout <- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, convert_units = myunits)\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds <- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\nConfidence interval bounds from bootstrap are (123, 404), somewhat wider than the analytical confidence interval bounds specified above."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
+    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
   }
 ]
