@@ -39,14 +39,14 @@
     "href": "extras/mystery.html",
     "title": "Your skills as a distance sampling analyst",
     "section": "",
-    "text": "There was one covariate recorded ✍ with each detection–whether the animal was male or female .\nUnits of measure 📏 are: perpendicular distances in meters, effort (transect lengths) in kilometers and area of study region in square kilometers.\n\nDon’t forget to set the units properly\n\nlibrary(Distance)\nconversion <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n\nRemember some of the hints I have provided (in decision sequence above) along with decisions you will need to make regarding truncation.\nDo a competent job with your analysis and we will share our findings (preferred model, point estimate of abundance and precision of abundance estimate) on Thursday during the practical session.\nThe data set (in CSV format) is available in the file space of this project, shown in the File panel, named mystery.csv.\nThis will be your first adventure looking at data that is not contained within the Distance package. Therefore, your first analysis task will be to read the data from the .csv file into R for subsequent analysis. Example code below:\n\nmydata <- read.csv(\"https://raw.githubusercontent.com/erex/Oct-Quarto/main/extras/mystery.csv\")\n\nWhat happens after this is up to you. 🥴 🤔\n\n\n\n\nworkflow"
+    "text": "If you wish to perform a distance sampling analysis upon a data set, I have one for you to download. It is a bit of a scrappy data set, not very many line transects (12), not very many detections (43). As such, it might present a couple of challenges to you, but hopefully not too many. 🕵\n\nThere was one covariate recorded ✍ with each detection–whether the animal was male or female .\nUnits of measure 📏 are: perpendicular distances in meters, effort (transect lengths) in kilometers and area of study region in square kilometers.\n\nDon’t forget to set the units properly\n\nlibrary(Distance)\nconversion &lt;- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n\nRemember some of the hints I have provided (in decision sequence above) along with decisions you will need to make regarding truncation.\nDo a competent job with your analysis and we will share our findings (preferred model, point estimate of abundance and precision of abundance estimate) on Thursday during the practical session.\nThe data set (in CSV format) is available in the file space of this project, shown in the File panel, named mystery.csv.\nThis will be your first adventure looking at data that is not contained within the Distance package. Therefore, your first analysis task will be to read the data from the .csv file into R for subsequent analysis. Example code below:\n\nmydata &lt;- read.csv(\"https://raw.githubusercontent.com/erex/Oct-Quarto/main/extras/mystery.csv\")\n\nWhat happens after this is up to you. 🥴 🤔\n\n\n\n\nworkflow"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Introductory distance sampling workshop",
     "section": "",
-    "text": "Material contained herein will acquaint you with design, collection and analysis of distance sampling data.\nThe materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a detection function and ways to model it.\nFurther topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.\n\n\n\nThe second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.\n\n\n\nAs well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.\n\nEach set of exercises is accompanied by a discussion of distance sampling principles. PDFs of those discussion materials are linked in the table below (as well as linked from the landing page of each exercise).\n\n\n\nTopic\nDate\n\n\n\n\nFundamental principles\n10 July\n\n\nDetection functions\n11 July\n\n\nModel criticism (selection and fit assessment)\n12 July\n\n\nMeasuring precision and controlling variance\n13 July\n\n\nPoint transect analysis and detailed example\n14 July\n\n\nDesign of distance sampling surveys\n17 July\n\n\nAnalysis of stratified surveys\n18 July\n\n\nCovariates in the detection function\n19 July\n\n\nIncluding multipliers in distance sampling analysis\n20 July\n\n\nField methods and summary\n21 July"
+    "text": "Material contained herein will acquaint you with design, collection and analysis of distance sampling data.\nThe materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a detection function and ways to model it.\nFurther topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.\n\n\n\nThe second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.\n\n\n\nAs well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.\n\nEach set of exercises is accompanied by a discussion of distance sampling principles. PDFs of those discussion materials are linked in the table below (as well as linked from the landing page of each exercise).\n\n\n\nTopic\nDate\n\n\n\n\nFundamental principles\n9 October\n\n\nDetection functions\n10 October\n\n\nModel criticism (selection and fit assessment)\n11 October\n\n\nMeasuring precision and controlling variance\n12 October\n\n\nPoint transect analysis and detailed example\n13 October\n\n\nDesign of distance sampling surveys\n16 October\n\n\nAnalysis of stratified surveys\n17 October\n\n\nCovariates in the detection function\n18 October\n\n\nIncluding multipliers in distance sampling analysis\n19 October\n\n\nField methods and summary\n20 October"
   },
   {
     "objectID": "Pr1/Pr1-instructions.html",
@@ -67,7 +67,7 @@
     "href": "Pr1/sampling.html",
     "title": "Sampling practical 1",
     "section": "",
-    "text": "Lecture slides for 10 July 2023"
+    "text": "Lecture slides for 09 October 2023"
   },
   {
     "objectID": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
@@ -81,7 +81,7 @@
     "href": "Pr2/detnfns.html",
     "title": "Detection functions practical 2",
     "section": "",
-    "text": "Lecture slides for 11 July 2023"
+    "text": "Lecture slides for 10 October 2023"
   },
   {
     "objectID": "Pr2/detnfns.html#estimating-density-of-duck-nests",
@@ -130,7 +130,7 @@
     "href": "Pr3/criticism.html",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "Lecture slides for 12 July 2023"
+    "text": "Lecture slides for 11 October 2023"
   },
   {
     "objectID": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
@@ -249,7 +249,7 @@
     "href": "Pr4/precision.html",
     "title": "Precision practical 4",
     "section": "",
-    "text": "Lecture slides for 13 July 2023"
+    "text": "Lecture slides for 12 October 2023"
   },
   {
     "objectID": "Pr4/precision.html#precision-of-density-estimates",
@@ -305,7 +305,7 @@
     "href": "Pr5/points.html",
     "title": "Point transects practical 5",
     "section": "",
-    "text": "Lecture slides for 14 July 2023"
+    "text": "Lecture slides for 13 October 2023"
   },
   {
     "objectID": "Pr5/points.html#analysis-of-point-transect-data",
@@ -368,7 +368,7 @@
     "href": "Pr6/design.html",
     "title": "Survey design practical 6",
     "section": "",
-    "text": "Lecture slides for 17 July 2023"
+    "text": "Lecture slides for 16 October 2023"
   },
   {
     "objectID": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
@@ -550,7 +550,7 @@
     "href": "Pr7/strata.html",
     "title": "Stratification practical 7",
     "section": "",
-    "text": "Lecture slides for 18 July 2023"
+    "text": "Lecture slides for 17 October 2023"
   },
   {
     "objectID": "Pr7/strata.html#analysis-of-stratified-surveys-1",
@@ -627,7 +627,7 @@
     "href": "Pr8/covariates.html",
     "title": "Covariates practical 8",
     "section": "",
-    "text": "Lecture slides for 19 July 2023"
+    "text": "Lecture slides for 18 October 2023"
   },
   {
     "objectID": "Pr8/covariates.html#covariates-in-detection-function",
@@ -858,7 +858,7 @@
     "href": "Pr9/multipliers.html",
     "title": "Multipliers practical 9",
     "section": "",
-    "text": "Lecture slides for 20 July 2023"
+    "text": "Lecture slides for 19 October 2023"
   },
   {
     "objectID": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
