@@ -26,7 +26,7 @@ This exercise demonstrated how to examine the properties of various distance sam
 ```{r}
 #| label = "tenleaf1",
 #| echo = FALSE
-m <- leaflet() %>% addProviderTiles(providers$Esri.WorldTopoMap)
+m <- leaflet() %>% addProviderTiles(providers$Esri.NatGeoWorldMap)#Esri.WorldTopoMap)
 m <- m %>% 
   setView(-2.83, 56.43, zoom=12) %>%
   addMeasure(
@@ -95,7 +95,7 @@ A different base map is used with `leaflet` to depict this marine survey.  The b
 ```{r}
 #| label = "irelandsetup",
 #| echo = FALSE
-m <- leaflet() %>% addProviderTiles(providers$Esri.OceanBasemap)
+m <- leaflet() %>% addProviderTiles(providers$Esri.NatGeoWorldMap)#OceanBasemap)
 m <- m %>% 
   setView(-5, 54, zoom=6) %>%
   addMeasure(

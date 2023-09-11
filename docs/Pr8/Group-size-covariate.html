@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2023-05-08">
+<meta name="dcterms.date" content="2023-09-10">
 
 <title>Distance sampling workshop - Size bias—how large is the problem?</title>
 <style>
@@ -276,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 8, 2023</p>
+      <p class="date">September 10, 2023</p>
     </div>
   </div>
   
@@ -308,6 +308,9 @@ Supplement
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a.covariate <span class="ot">&lt;-</span> <span class="fu">ds</span>(my.data, <span class="at">transect=</span><span class="st">"line"</span>, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">formula=</span><span class="sc">~</span>size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+
+</div>
 </section>
 <section id="example-1-perhaps-a-terrestrial-ungulate" class="level1">
 <h1>Example 1: Perhaps a terrestrial ungulate</h1>
@@ -317,7 +320,7 @@ Supplement
 <div id="fig-nocap-margin-first" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Group-size-covariate_files/figure-html/fig-nocap-margin-first-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Group size distribution for animals in small groups</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -332,7 +335,7 @@ Supplement
 <p>Do we have the tell-tale sign of size bias–missing small groups at large distances?</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Perhaps small groups at large distances are missed; include group size in the detection function.</p>
@@ -346,7 +349,7 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/small-with-covar-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2000.34, a bias of 0%.</p>
+<p>The distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 1970.9, a bias of -1.5%.</p>
 </section>
 <section id="analysis-without-group-size-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-group-size-covariate">Analysis without group size covariate</h2>
@@ -356,13 +359,16 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/nocov-10-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
-<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2011.52, a bias of 0.6%.</p>
+<p>The distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average <span class="math inline">\(\hat{N}_{indiv}\)</span> across all simulations is 2020.56, a bias of 1%.</p>
 </section>
 </section>
 <section id="example-2-possible-dolphin-pods-or-seabird-rafts" class="level1">
 <h1>Example 2: Possible dolphin pods or seabird rafts</h1>
 <p>I use a different distribution to mimic the group size distribution. A log normal distribution (you heard about it during the <strong>precision</strong> lecture) is like a normal distribution that has had its right tail pulled out. In all other respects the survey is the same (same design, etc.)</p>
-<p>The <em>median</em> of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the <em>mean</em> is 21.9. This changes the true number of individuals in the population to 200*21.9=4388</p>
+<div class="cell">
+
+</div>
+<p>The <em>median</em> of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the <em>mean</em> is 20.7. This changes the true number of individuals in the population (for the same 200 groups) to 4142.</p>
 <div class="cell" data-fig.margin="true">
 <div class="cell-output-display">
 <p><img src="Group-size-covariate_files/figure-html/lognor-with-1.png" class="img-fluid" width="672"></p>
@@ -374,17 +380,17 @@ Supplement
 <p>How about “missingness” of small groups at large distances?</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <section id="analysis-with-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-with-covariate">Analysis with covariate</h2>
 <div class="cell" data-fig.margin="true">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4421.29, a bias of 0.9%. .</p>
+<p>When including <code>size</code> as a covariate, estimates of average group size are not affected (figure above). Likewise, mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is effectively unbiased: 4465.31, a bias of 7.8%. .</p>
 </section>
 <section id="analysis-without-the-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-without-the-covariate">Analysis without the covariate</h2>
@@ -393,10 +399,10 @@ Supplement
 <p><img src="Group-size-covariate_files/figure-html/lognor-without-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5259.34, a bias of 20.1%.</p>
+<p>Now mean <span class="math inline">\(\hat{N}_{indiv}\)</span> is <strong>considerably biased</strong>: 5289.79, a bias of 27.7%.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="Group-size-covariate_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>

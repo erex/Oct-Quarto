@@ -21,11 +21,17 @@ library(sf)
 
 ## Systematic Parallel Line Design
 
+
+:::{.callout-tip}
+## Answers
+
 *What spacing would you select for this design? What is the maximum trackline length for the design you have selected? What on-effort line length are we likely to achieve?*
 
-The spacing chosen by `dssd` of 4937.5m to generate a line length of 200km resulted in a maximum trackline length of around 261km (each exact answer will vary due to the random generate of surveys). If we choose this design then it is possible that when we randomly generate our survey we may not be able to complete it with the effort we have available.
+> The spacing chosen by `dssd` of 4937.5m to generate a line length of 200km resulted in a maximum trackline length of around 261km (each exact answer will vary due to the random generate of surveys). If we choose this design then it is possible that when we randomly generate our survey we may not be able to complete it with the effort we have available.
 
-We should therefore increase the spacing between the transects and re-run the coverage simulations. A spacing of 5000m gave a maximum trackline length of around 249km (see summary table of Trackline length in the output below) so we can be fairly confident that we will be able to complete any survey which we randomly generate from this design. This spacing should allow us to achieve an on-effort line length of 199km (see Line length section of design summary below). The minimum line length we would expect to achieve is 184km and the maximum is 206km. [Note your values might differ slightly to those below]
+> We should therefore increase the spacing between the transects and re-run the coverage simulations. A spacing of 5000m gave a maximum trackline length of around 249km (see summary table of Trackline length in the output below) so we can be fairly confident that we will be able to complete any survey which we randomly generate from this design. This spacing should allow us to achieve an on-effort line length of 199km (see Line length section of design summary below). The minimum line length we would expect to achieve is 184km and the maximum is 206km. [Note your values might differ to those below]
+
+:::
 
 ```{r}
 shapefile.name <- system.file("extdata", "StAndrew.shp", package = "dssd")
@@ -54,9 +60,13 @@ print(design.spacing5km)
 ```
 ## Equal Spaced Zigzag Design
 
+:::{.callout-tip}
+## Answers
 *Does this design meet our survey effort constraint? What is the maximum total trackline length for this design? What line length are we likely to achieve with this design? Is this higher or lower than the systematic parallel design?*
 
-You were asked to then run a coverage simulation and check if the trackline length was within our effort constraints. I found the maximum trackline length to be 242km (see Trackline length summary table in the output below) so within our constraint of 250km. I then got a mean line length of 221km and minimum and maximum line lengths of 212km and 227km, respectively (see Line length summary table in the output below). We can therefore expect to achieve just over 20km more on-effort survey line length with the zigzag design than the systematic parallel line design - 10% gain. [Note your values may differ slightly]
+> You were asked to then run a coverage simulation and check if the trackline length was within our effort constraints. I found the maximum trackline length to be 242km (see Trackline length summary table in the output below) so within our constraint of 250km. I then got a mean line length of 221km and minimum and maximum line lengths of 212km and 227km, respectively (see Line length summary table in the output below). We can therefore expect to achieve just over 20km more on-effort survey line length with the zigzag design than the systematic parallel line design - 10% gain. [Note your values may differ]
+
+:::
 
 ```{r}
 design.zz.4500 <- make.design(region = region.sab,
@@ -77,17 +87,24 @@ design.zz.4500 <- run.coverage(design.zz.4500, reps = 250, quiet=TRUE)
 plot(design.zz.4500)
 ```
 
+:::{.callout-tip}
+## Answers
 *Do you think the coverage scores look uniform across the study region? Where are they higher/lower? Why do you think this is?*
 
-You were finally asked to look at the coverage scores across the survey region to see if this design has even coverage. There are some points with lower coverage around the survey region boundary. This is actually down to the fact we are using a minus sampling strategy. If we plotted coverage scores from a systematic parallel design we would see a similar pattern. Usually edge effects from minus sampling are minor unless we have a very long survey region boundary containing a small study area. If the fact that we are using a zigzag design was causing us issues with coverage we would expect to see higher coverage at the very top or very bottom of the survey region (as our design angle is 0). We do not see this. The survey region boundaries at the top and bottom are both quite wide and perpendicular to the design angle, in this situation zigzag designs perform well with regard to even coverage.
+> You were finally asked to look at the coverage scores across the survey region to see if this design has even coverage. There are some points with lower coverage around the survey region boundary. This is actually down to the fact we are using a minus sampling strategy. If we plotted coverage scores from a systematic parallel design we would see a similar pattern. Usually edge effects from minus sampling are minor unless we have a very long survey region boundary containing a small study area. If the fact that we are using a zigzag design was causing us issues with coverage we would expect to see higher coverage at the very top or very bottom of the survey region (as our design angle is 0). We do not see this. The survey region boundaries at the top and bottom are both quite wide and perpendicular to the design angle, in this situation zigzag designs perform well with regard to even coverage.
+
+:::
 
 # Point Transect Bird Survey in Tentsmuir Forest
 
+:::{.callout-tip}
+## Answers
+
 *What are the analysis implications of a design with unequal coverage?*
 
-As our two strata have different coverage we should analyse them separately. We therefore need to make sure that we have sufficient transects in each strata to perform an analysis - ideally 20. There are 2 reasons that we should analyse them separately. Firstly, our covered area will not be representative of the study area as a whole. If density is higher or lower in one strata than the other we will get a biased estimate of abundance for the area as a whole using the standard distance sampling estimators. Secondly, pooling robustness between the two strata will no longer apply and it may be the case that detection functions differ between the two strata. We will no longer have a representative sample of observations across the entire study region either.
+> As our two strata have different coverage we should analyse them separately. We therefore need to make sure that we have sufficient transects in each strata to perform an analysis - ideally 20. There are two reasons that we should analyse them separately. Firstly, our covered area will not be representative of the study area as a whole. If density is higher or lower in one strata than the other we will get a biased estimate of abundance for the area as a whole using the standard distance sampling estimators. Secondly, pooling robustness between the two strata will no longer apply and it may be the case that detection functions differ between the two strata. We will no longer have a representative sample of observations across the entire study region either.
 
-*What spacing was used in each strata to try and achieve the desired number of samplers? Did your survey achieve exactly the number of samplers you requested? Check if your neighbours achieved exactly the number of samplers requested. How much does coverage differ between the two strata for this realisation?*
+:::
 
 ## Coverage
 
@@ -123,18 +140,27 @@ survey.tentsmuir <- generate.transects(design.tm)
 print(survey.tentsmuir)
 ```
 
-A spacing of 751m was used in the main stratum and 218m in the Morton Lochs stratum - these values are calculated based on the stratum areas and should not vary between surveys generated from the same design. You may or may not have achieved the number of transects you requested, this will depend on the random start point calculated for your particular survey. There will also be some variability in coverage, my survey achieved a coverage of 5.7% in the main strata and 64.8% in the Morton Loch strata.
+:::{.callout-tip}
+## Answers
 
-*View the design statistics. What is the minimum number of samplers you will achieve in each strata? Is this sufficient to complete separate analyses in each stratum?*
+*What spacing was used in each strata to try and achieve the desired number of samplers? Did your survey achieve exactly the number of samplers you requested? How much does coverage differ between the two strata for this realisation?*
+
+> A spacing of 751m was used in the main stratum and 218m in the Morton Lochs stratum - these values are calculated based on the stratum areas and should not vary between surveys generated from the same design. You may or may not have achieved the number of transects you requested, this will depend on the random start point calculated for your particular survey. There will also be some variability in coverage, my survey achieved a coverage of 5.7% in the main strata and 64.8% in the Morton Loch strata.
+
+:::
 
 ```{r}
 coverage.tentsmuir <- run.coverage(design.tm, reps=250, quiet=TRUE)
 print(coverage.tentsmuir)
 ```
 
-My design statistics indicated I should achieve between 22 and 27 transects in the main stratum and between 12 and 18 in the Morton Lochs stratum. I might be a bit concerned about the possibility of only achieving 12 transects in the Morton Lochs stratum (remember I cannot just discard a survey due to the number of transects and generate another as it will affect my coverage properties) but whether this is sufficient will depend on a number of things… what are the objectives of the study? how many detections are you likely to get from each transect? etc. Information from a pilot study would be useful to help decide how many transects are required as a minimum.
+:::{.callout-tip}
+## Answers
+*View the design statistics. What is the minimum number of samplers you will achieve in each strata? Is this sufficient to complete separate analyses in each stratum?*
 
-*Does it appear that you that there is even coverage within strata?*
+> My design statistics indicated I should achieve between 22 and 27 transects in the main stratum and between 12 and 18 in the Morton Lochs stratum. I might be a bit concerned about the possibility of only achieving 12 transects in the Morton Lochs stratum (remember I cannot just discard a survey due to the number of transects and generate another as it will affect my coverage properties) but whether this is sufficient will depend on a number of things… what are the objectives of the study? how many detections are you likely to get from each transect? etc. Information from a pilot study would be useful to help decide how many transects are required as a minimum.
+
+:::
 
 ```{r}
 #| layout-ncol: 2
@@ -145,4 +171,10 @@ plot(coverage.tentsmuir, strata=1)
 plot(coverage.tentsmuir, strata=2)
 ```
 
-The main strata looks to have  fairly uniform coverage. The values appear to have such small levels of variability that the variability that is seen will be down to stochasticity as it is seen across the entire strata. The Morton Lochs strata we can see has areas of lower coverage around the edge of the study region. This grid is a bit too coarse to allow us to properly judge how much of an issue edge effects will be in this strata. It may be wise to re-run the coverage simulation with a finer coverage grid and more repetitions too. Edge effects could potentially be problematic in such small areas.
+:::{.callout-tip}
+## Answers
+*Does it appear that you that there is even coverage within strata?*
+
+> The main strata looks to have  fairly uniform coverage. The values appear to have such small levels of variability that the variability that is seen will be down to stochasticity as it is seen across the entire strata. The Morton Lochs strata we can see has areas of lower coverage around the edge of the study region. This grid is a bit too coarse to allow us to properly judge how much of an issue edge effects will be in this strata. It may be wise to re-run the coverage simulation with a finer coverage grid and more repetitions too. Edge effects could potentially be problematic in such small areas.
+
+:::

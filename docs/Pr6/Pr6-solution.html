@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-12-01">
+<meta name="dcterms.date" content="2023-09-11">
 
-<title>Distance sampling lab book - Distance sampling survey design solution</title>
+<title>Distance sampling workshop - Distance sampling survey design solution</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Distance sampling lab book</span>
+    <span class="navbar-title">Distance sampling workshop</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -145,34 +145,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
+    <a class="nav-link" href="../Pr1/sampling.html">
+ <span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+    <a class="nav-link" href="../Pr2/detnfns.html">
+ <span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+    <a class="nav-link" href="../Pr3/criticism.html">
+ <span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+    <a class="nav-link" href="../Pr4/precision.html">
+ <span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">Points</a>
+    <a class="nav-link" href="../Pr5/points.html">
+ <span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">Design</a>
+    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">
+ <span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+    <a class="nav-link" href="../Pr7/strata.html">
+ <span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+    <a class="nav-link" href="../Pr8/covariates.html">
+ <span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">Multipliers</a>
+    <a class="nav-link" href="../Pr9/multipliers.html">
+ <span class="menu-text">Multipliers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">Extras</a>
+    <a class="nav-link" href="../extras/extras.html">
+ <span class="menu-text">Extras</span></a>
   </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
@@ -262,9 +272,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2022</p>
+      <p class="date">September 11, 2023</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -288,34 +299,53 @@ Solution
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dssd)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<pre><code>Warning: package 'sf' was built under R version 4.3.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE</code></pre>
 </div>
 </div>
 <section id="systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay" class="level1">
 <h1>Systematic parallel line aerial survey of marine mammals in St Andrews bay</h1>
 <section id="systematic-parallel-line-design" class="level2">
 <h2 class="anchored" data-anchor-id="systematic-parallel-line-design">Systematic Parallel Line Design</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>What spacing would you select for this design? What is the maximum trackline length for the design you have selected? What on-effort line length are we likely to achieve?</em></p>
+<blockquote class="blockquote">
 <p>The spacing chosen by <code>dssd</code> of 4937.5m to generate a line length of 200km resulted in a maximum trackline length of around 261km (each exact answer will vary due to the random generate of surveys). If we choose this design then it is possible that when we randomly generate our survey we may not be able to complete it with the effort we have available.</p>
-<p>We should therefore increase the spacing between the transects and re-run the coverage simulations. A spacing of 5000m gave a maximum trackline length of around 249km (see summary table of Trackline length in the output below) so we can be fairly confident that we will be able to complete any survey which we randomly generate from this design. This spacing should allow us to achieve an on-effort line length of 199km (see Line length section of design summary below). The minimum line length we would expect to achieve is 184km and the maximum is 206km. [Note your values might differ slightly to those below]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"StAndrew.shp"</span>, <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>region.sab <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"St Andrews Bay"</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">units =</span> <span class="st">"m"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">shape =</span> shapefile.name)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cover.sabay <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.sab, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">5000</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">90</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</blockquote>
+<blockquote class="blockquote">
+<p>We should therefore increase the spacing between the transects and re-run the coverage simulations. A spacing of 5000m gave a maximum trackline length of around 249km (see summary table of Trackline length in the output below) so we can be fairly confident that we will be able to complete any survey which we randomly generate from this design. This spacing should allow us to achieve an on-effort line length of 199km (see Line length section of design summary below). The minimum line length we would expect to achieve is 184km and the maximum is 206km. [Note your values might differ to those below]</p>
+</blockquote>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.spacing5km, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"StAndrew.shp"</span>, <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>region.sab <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"St Andrews Bay"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">units =</span> <span class="st">"m"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">shape =</span> shapefile.name)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>cover.sabay <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.sab, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">5000</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">90</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.spacing5km, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -326,7 +356,7 @@ Solution
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata St Andrews Bay:
@@ -354,78 +384,92 @@ sd                 0.3   0.3
     Covered area:
     
         St Andrews Bay     Total
-Minimum      726120697 726120697
-Mean         761566787 761566787
-Median       766957698 766957698
-Maximum      778650766 778650766
-sd            15560206  15560206
+Minimum      725916779 725916779
+Mean         760768771 760768771
+Median       767000577 767000577
+Maximum      778652930 778652930
+sd            16272834  16272834
 
     % of region covered:
     
         St Andrews Bay Total
-Minimum          73.53 73.53
-Mean             77.12 77.12
+Minimum          73.51 73.51
+Mean             77.04 77.04
 Median           77.67 77.67
 Maximum          78.85 78.85
-sd                1.58  1.58
+sd                1.65  1.65
 
     Line length:
     
         St Andrews Bay     Total
-Minimum      184427.22 184427.22
-Mean         197514.10 197514.10
-Median       198870.66 198870.66
-Maximum      205772.41 205772.41
-sd             5946.04   5946.04
+Minimum      184437.19 184437.19
+Mean         197295.04 197295.04
+Median       198869.38 198869.38
+Maximum      205763.76 205763.76
+sd             6098.03   6098.03
 
     Trackline length:
     
         St Andrews Bay     Total
-Minimum      220530.48 220530.48
-Mean         242619.03 242619.03
-Median       246270.51 246270.51
-Maximum      248796.27 248796.27
-sd             8077.55   8077.55
+Minimum      220530.15 220530.15
+Mean         242100.27 242100.27
+Median       246257.92 246257.92
+Maximum      248791.14 248791.14
+sd             8596.52   8596.52
 
     Cyclic trackline length:
     
         St Andrews Bay     Total
-Minimum      251943.08 251943.08
-Mean         279376.37 279376.37
-Median       283849.57 283849.57
-Maximum      285982.65 285982.65
-sd             9523.22   9523.22
+Minimum      251942.48 251942.48
+Mean         278831.03 278831.03
+Median       283763.05 283763.05
+Maximum      285977.54 285977.54
+sd            10027.67  10027.67
 
     Coverage Score Summary:
     
         St Andrews Bay     Total
-Minimum      0.3680000 0.3680000
-Mean         0.7714334 0.7714334
+Minimum      0.3640000 0.3640000
+Mean         0.7703113 0.7703113
 Median       0.7960000 0.7960000
-Maximum      0.8280000 0.8280000
-sd           0.0842902 0.0842902</code></pre>
+Maximum      0.8360000 0.8360000
+sd           0.0864654 0.0864654</code></pre>
 </div>
 </div>
 </section>
 <section id="equal-spaced-zigzag-design" class="level2">
 <h2 class="anchored" data-anchor-id="equal-spaced-zigzag-design">Equal Spaced Zigzag Design</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>Does this design meet our survey effort constraint? What is the maximum total trackline length for this design? What line length are we likely to achieve with this design? Is this higher or lower than the systematic parallel design?</em></p>
-<p>You were asked to then run a coverage simulation and check if the trackline length was within our effort constraints. I found the maximum trackline length to be 242km (see Trackline length summary table in the output below) so within our constraint of 250km. I then got a mean line length of 221km and minimum and maximum line lengths of 212km and 227km, respectively (see Line length summary table in the output below). We can therefore expect to achieve just over 20km more on-effort survey line length with the zigzag design than the systematic parallel line design - 10% gain. [Note your values may differ slightly]</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"eszigzag"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">4500</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bounding.shape =</span> <span class="st">"convex.hull"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>You were asked to then run a coverage simulation and check if the trackline length was within our effort constraints. I found the maximum trackline length to be 242km (see Trackline length summary table in the output below) so within our constraint of 250km. I then got a mean line length of 221km and minimum and maximum line lengths of 212km and 227km, respectively (see Line length summary table in the output below). We can therefore expect to achieve just over 20km more on-effort survey line length with the zigzag design than the systematic parallel line design - 10% gain. [Note your values may differ]</p>
+</blockquote>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.zz<span class="fl">.4500</span>, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coverage</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.zz<span class="fl">.4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"eszigzag"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">4500</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bounding.shape =</span> <span class="st">"convex.hull"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.zz<span class="fl">.4500</span>, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coverage</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.zz<span class="fl">.4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -435,23 +479,50 @@ sd           0.0842902 0.0842902</code></pre>
 </div>
 </div>
 </div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>Do you think the coverage scores look uniform across the study region? Where are they higher/lower? Why do you think this is?</em></p>
+<blockquote class="blockquote">
 <p>You were finally asked to look at the coverage scores across the survey region to see if this design has even coverage. There are some points with lower coverage around the survey region boundary. This is actually down to the fact we are using a minus sampling strategy. If we plotted coverage scores from a systematic parallel design we would see a similar pattern. Usually edge effects from minus sampling are minor unless we have a very long survey region boundary containing a small study area. If the fact that we are using a zigzag design was causing us issues with coverage we would expect to see higher coverage at the very top or very bottom of the survey region (as our design angle is 0). We do not see this. The survey region boundaries at the top and bottom are both quite wide and perpendicular to the design angle, in this situation zigzag designs perform well with regard to even coverage.</p>
+</blockquote>
+</div>
+</div>
 </section>
 </section>
 <section id="point-transect-bird-survey-in-tentsmuir-forest" class="level1">
 <h1>Point Transect Bird Survey in Tentsmuir Forest</h1>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><em>What are the analysis implications of a design with unequal coverage?</em></p>
-<p>As our two strata have different coverage we should analyse them separately. We therefore need to make sure that we have sufficient transects in each strata to perform an analysis - ideally 20. There are 2 reasons that we should analyse them separately. Firstly, our covered area will not be representative of the study area as a whole. If density is higher or lower in one strata than the other we will get a biased estimate of abundance for the area as a whole using the standard distance sampling estimators. Secondly, pooling robustness between the two strata will no longer apply and it may be the case that detection functions differ between the two strata. We will no longer have a representative sample of observations across the entire study region either.</p>
-<p><em>What spacing was used in each strata to try and achieve the desired number of samplers? Did your survey achieve exactly the number of samplers you requested? Check if your neighbours achieved exactly the number of samplers requested. How much does coverage differ between the two strata for this realisation?</em></p>
+<blockquote class="blockquote">
+<p>As our two strata have different coverage we should analyse them separately. We therefore need to make sure that we have sufficient transects in each strata to perform an analysis - ideally 20. There are two reasons that we should analyse them separately. Firstly, our covered area will not be representative of the study area as a whole. If density is higher or lower in one strata than the other we will get a biased estimate of abundance for the area as a whole using the standard distance sampling estimators. Secondly, pooling robustness between the two strata will no longer apply and it may be the case that detection functions differ between the two strata. We will no longer have a representative sample of observations across the entire study region either.</p>
+</blockquote>
+</div>
+</div>
 <section id="coverage" class="level2">
 <h2 class="anchored" data-anchor-id="coverage">Coverage</h2>
 <p>Organise the study area shape file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"TentsmuirUnproj.shp"</span>, </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sf.shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(shapefile.name)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"TentsmuirUnproj.shp"</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sf.shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(shapefile.name)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coordinate Reference System:
   User input: WGS 84 
@@ -471,64 +542,78 @@ GEOGCRS["WGS 84",
             ANGLEUNIT["degree",0.0174532925199433]],
     ID["EPSG",4326]]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>proj4string <span class="ot">&lt;-</span> <span class="st">"+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">                +y_0=0 +ellps=intl +units=m"</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>projected.shape <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf.shape, <span class="at">crs =</span> proj4string)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>region.tm <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"Tentsmuir"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata.name =</span> <span class="fu">c</span>(<span class="st">"Main Area"</span>, <span class="st">"Morton Lochs"</span>),</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">shape =</span> projected.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>proj4string <span class="ot">&lt;-</span> <span class="st">"+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">                +y_0=0 +ellps=intl +units=m"</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>projected.shape <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf.shape, <span class="at">crs =</span> proj4string)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>region.tm <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"Tentsmuir"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata.name =</span> <span class="fu">c</span>(<span class="st">"Main Area"</span>, <span class="st">"Morton Lochs"</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">shape =</span> projected.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create the coverage grid.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cover.tm <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.tm, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>design.tm <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.tm,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">transect.type =</span> <span class="st">"point"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">samplers =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">truncation =</span> <span class="dv">100</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">coverage.grid =</span> cover.tm)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>survey.tentsmuir <span class="ot">&lt;-</span> <span class="fu">generate.transects</span>(design.tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cover.tm <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.tm, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>design.tm <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.tm,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">transect.type =</span> <span class="st">"point"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">samplers =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">truncation =</span> <span class="dv">100</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">coverage.grid =</span> cover.tm)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>survey.tentsmuir <span class="ot">&lt;-</span> <span class="fu">generate.transects</span>(design.tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata Main Area:
    __________________
 Design:  systematically spaced transects
 Spacing:  751.2295
-Number of samplers:  27
+Number of samplers:  25
 Design angle:  0
 Edge protocol:  minus
-Covered area:  809013
-Strata coverage: 5.73%
+Covered area:  764615.7
+Strata coverage: 5.42%
 Strata area:  14108643
 
    Strata Morton Lochs:
    _____________________
 Design:  systematically spaced transects
 Spacing:  218.3674
-Number of samplers:  17
+Number of samplers:  16
 Design angle:  0
 Edge protocol:  minus
-Covered area:  453781.4
-Strata coverage: 63.44%
+Covered area:  424678.9
+Strata coverage: 59.37%
 Strata area:  715264.9
 
    Study Area Totals:
    _________________
-Number of samplers:  44
-Covered area:  1262794
-Average coverage: 8.52%</code></pre>
+Number of samplers:  41
+Covered area:  1189295
+Average coverage: 8.02%</code></pre>
 </div>
 </div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>What spacing was used in each strata to try and achieve the desired number of samplers? Did your survey achieve exactly the number of samplers you requested? How much does coverage differ between the two strata for this realisation?</em></p>
+<blockquote class="blockquote">
 <p>A spacing of 751m was used in the main stratum and 218m in the Morton Lochs stratum - these values are calculated based on the stratum areas and should not vary between surveys generated from the same design. You may or may not have achieved the number of transects you requested, this will depend on the random start point calculated for your particular survey. There will also be some variability in coverage, my survey achieved a coverage of 5.7% in the main strata and 64.8% in the Morton Loch strata.</p>
-<p><em>View the design statistics. What is the minimum number of samplers you will achieve in each strata? Is this sufficient to complete separate analyses in each stratum?</em></p>
+</blockquote>
+</div>
+</div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coverage.tentsmuir <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.tm, <span class="at">reps=</span><span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coverage.tentsmuir <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.tm, <span class="at">reps=</span><span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata Main Area:
@@ -554,45 +639,59 @@ Coverage Simulation repetitions:  250
     Number of samplers:
     
         Main Area Morton Lochs Total
-Minimum      22.0         11.0  35.0
-Mean         24.9         15.0  39.9
-Median       25.0         15.0  40.0
-Maximum      27.0         18.0  44.0
-sd            1.1          1.2   1.6
+Minimum        22         13.0  37.0
+Mean           25         15.0  40.0
+Median         25         15.0  40.0
+Maximum        27         18.0  44.0
+sd              1          1.2   1.5
 
     Covered area:
     
-        Main Area Morton Lochs     Total
-Minimum 682512.01    332404.08 1052968.5
-Mean    763558.27    414012.13 1177570.4
-Median  765989.19    412220.42 1178210.6
-Maximum 821747.35    469068.05 1276134.0
-sd       30633.34     26469.33   42267.2
+        Main Area Morton Lochs      Total
+Minimum 675512.36    358567.90 1081912.57
+Mean    765201.51    416096.43 1181297.95
+Median  769126.17    416511.10 1178822.49
+Maximum 821365.27    467506.18 1263964.64
+sd       28183.37     25837.28   37407.98
 
     % of region covered:
     
         Main Area Morton Lochs Total
-Minimum      4.84        46.47  7.10
-Mean         5.41        57.88  7.94
-Median       5.43        57.63  7.95
-Maximum      5.82        65.58  8.61
-sd           0.22         3.70  0.29
+Minimum      4.79        50.13  7.30
+Mean         5.42        58.17  7.97
+Median       5.45        58.23  7.95
+Maximum      5.82        65.36  8.53
+sd           0.20         3.61  0.25
 
     Coverage Score Summary:
     
          Main Area Morton Lochs      Total
-Minimum 0.00400000    0.2000000 0.00400000
-Mean    0.05408155    0.5819667 0.07943017
-Median  0.05600000    0.6360000 0.05600000
-Maximum 0.09600000    0.7280000 0.72800000
-sd      0.01607712    0.1135346 0.11663505</code></pre>
+Minimum 0.00400000     0.216000 0.00400000
+Mean    0.05415301     0.584400 0.07961505
+Median  0.05200000     0.634000 0.05600000
+Maximum 0.10000000     0.728000 0.72800000
+sd      0.01521609     0.112922 0.11698597</code></pre>
 </div>
 </div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>View the design statistics. What is the minimum number of samplers you will achieve in each strata? Is this sufficient to complete separate analyses in each stratum?</em></p>
+<blockquote class="blockquote">
 <p>My design statistics indicated I should achieve between 22 and 27 transects in the main stratum and between 12 and 18 in the Morton Lochs stratum. I might be a bit concerned about the possibility of only achieving 12 transects in the Morton Lochs stratum (remember I cannot just discard a survey due to the number of transects and generate another as it will affect my coverage properties) but whether this is sufficient will depend on a number of things… what are the objectives of the study? how many detections are you likely to get from each transect? etc. Information from a pilot study would be useful to help decide how many transects are required as a minimum.</p>
-<p><em>Does it appear that you that there is even coverage within strata?</em></p>
+</blockquote>
+</div>
+</div>
 <div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">1</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
@@ -614,7 +713,22 @@ sd      0.01607712    0.1135346 0.11663505</code></pre>
 </div>
 </div>
 </div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>Does it appear that you that there is even coverage within strata?</em></p>
+<blockquote class="blockquote">
 <p>The main strata looks to have fairly uniform coverage. The values appear to have such small levels of variability that the variability that is seen will be down to stochasticity as it is seen across the entire strata. The Morton Lochs strata we can see has areas of lower coverage around the edge of the study region. This grid is a bit too coarse to allow us to properly judge how much of an issue edge effects will be in this strata. It may be wise to re-run the coverage simulation with a finer coverage grid and more repetitions too. Edge effects could potentially be problematic in such small areas.</p>
+</blockquote>
+</div>
+</div>
 
 
 </section>
@@ -662,7 +776,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -698,24 +829,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

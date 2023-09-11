@@ -37,21 +37,31 @@ The necessary syntax to include covariates, group size in this instance, in the 
 a.covariate <- ds(my.data, transect="line", key="hn", formula=~size)
 ```
 
+```{r}
+#| echo: false
+#| eval: true
+#| label: ex1para
+numgroup1 <- 200
+meangroup1 <- 10
+nsim1 <- 100
+```
+
 # Example 1: Perhaps a terrestrial ungulate
 
-Here animals occur in small herds.  The distribution of herd size is Poisson with a mean herd size of 10.
+Here animals occur in small herds.  The distribution of herd size is Poisson with a mean herd size of `r meangroup1`.
 
 ```{r}
-#| label = "fig-nocap-margin-first",
-#| echo = FALSE
-group.size <- rtpois(1000,lambda = 10)
-hist(group.size, xlab="Group size", 
+#| label: "fig-nocap-margin-first"
+#| echo: FALSE
+#| fig-cap: "Group size distribution for animals in small groups"
+group.size <- rtpois(1000,lambda = meangroup1)
+hist(group.size, xlab="Group size", breaks=seq(0, max(group.size)),
      main="True group size in population")
 ```
 
 You can see it is very rare for herds to exceed a size of twice the mean.
 
-I'll create a population with this distribution of herd size, with a true number of **herds** of 200; hence true number of individuals in the population is 2000.  
+I'll create a population with this distribution of herd size, with a true number of **herds** of `r numgroup1`; hence true number of individuals in the population is `r numgroup1*meangroup1`.  
 
 ```{r}
 #| label = "sim10",
@@ -59,11 +69,11 @@ I'll create a population with this distribution of herd size, with a true number
 #| message = FALSE,
 #| warning = FALSE
 #set.seed(4561532)
-nsim <- 500
+nsim <- nsim1
 eg.region <- make.region()
 covariate.list <- list()
-true.N.groups <- 200
-true.mean.size <- 10
+true.N.groups <- numgroup1
+true.mean.size <- meangroup1
 covariate.list$size <- list(list(distribution="ztruncpois", 
                                  mean = true.mean.size))
 pop.desc <- make.population.description(region = eg.region,
@@ -114,7 +124,7 @@ runsim.cov <- run.simulation(size.cov, run.parallel = TRUE)
 #| label = "small-with-covar",
 #| fig.width = 8,
 #| echo = FALSE
-hist(runsim.cov@results$expected.size[1,1,1:150], 
+hist(runsim.cov@results$expected.size[1,1,1:nsim], 
      main="Computed average group size\nGroup size covariate", 
      xlab="Group size", xlim=c(8,12))
 abline(v=unname(covariate.list$size[[1]][[2]][1]), lwd=2, lty=3)
@@ -140,7 +150,7 @@ no.size.cov <- make.simulation(reps=nsim,
                                design=transects, pop=pop.desc, det=detect,
                                ds.analysis = detmodel.const)
 no.size.sim <- run.simulation(no.size.cov, run.parallel = TRUE)
-hist(no.size.sim@results$expected.size[1,1,1:150],
+hist(no.size.sim@results$expected.size[1,1,1:nsim],
      main="Computed average group size\nNo covariate", 
      xlab="Group size", xlim=c(8,12))
 abline(v=unname(covariate.list$size[[1]][[2]][1]), lwd=2, lty=3)
@@ -153,25 +163,35 @@ The distribution of computed average groups sizes is shown above.  We would expe
 
 I use a different distribution to mimic the group size distribution.  A log normal distribution (you heard about it during the **precision** lecture) is like a normal distribution that has had its right tail pulled out. In all other respects the survey is the same (same design, etc.)
 
-The *median* of this distribution is 12 (not far from 10 in the previous example), but because of the right tail, the *mean* is 21.9.  This changes the true number of individuals in the population to 200*21.9=4388
+```{r}
+#| label: param2
+#| echo: false
+#| eval: true
+
+dolph.median <- 12
+ml <- log(dolph.median)
+sl <- log(3)
+group.size <- rlnorm(1000, ml, sl)
+mean.group.size <- mean(group.size)
+true.N.indiv.dolphin <- true.N.groups * mean.group.size
+```
+
+The *median* of this distribution is `r dolph.median` (not far from 10 in the previous example), but because of the right tail, the *mean* is `r round(mean.group.size,1)`.  This changes the true number of individuals in the population (for the same `r true.N.groups` groups) to `r round(true.N.indiv.dolphin)`.
 
 ```{r}
 #| label: "lognor-with"
 #| fig.margin: TRUE
 #| echo: FALSE
 #| message: false
-ml <- log(12)
-sl <- log(3)
-group.size <- rlnorm(1000, ml, sl)
-true.N.indiv.dolphin <- 200*21.9
+
 #mybr <- c(0,5,10,15,20,25,30,35,40,50,60,100,300,1000)
-hist(group.size, main="Distribution of group size in population")
+hist(group.size, nc=25, main="Distribution of group size in population")
 covariate.list$size <- list(list(distribution="lognormal", 
                                  meanlog = ml, sdlog = sl))
 pop.desc <- make.population.description(region = eg.region,
                                         density = make.density(region=eg.region),
                                         covariates = covariate.list, 
-                                        N=200)
+                                        N=true.N.groups)
 cov.params <- list(size = c(0.01))
 detect <- make.detectability(scale.param = 30, 
                              cov.param = cov.params, 
@@ -233,7 +253,7 @@ Now mean $\hat{N}_{indiv}$ is **considerably biased**: `r round(tail.indiv.NO[1]
 #| echo = FALSE
 hist(tail.size.NOcov.sim@results$individuals$N[1,1,1:nsim],
      main="Estimates of abundance without size covariate", xlab="Abundance estimate",
-     sub="Dotted vertical line is true value")
+     sub="Dotted vertical line is true abundance")
 abline(v=exp(ml+sl^2/2)*200, lty=3)
 ```
 
