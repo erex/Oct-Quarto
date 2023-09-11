@@ -1,9 +1,9 @@
 ---
 title: Installing `dssd` package
-description: At present (July 2023) `dssd` must be installed from Github
+description: At present (October 2023) `dssd` must be installed from Github
 author: 
   - name: Eric Rexstad
-date: 07-18-2023
+date: 10-16-2023
 image: irelandsurvey.png
 draft: false
 ---

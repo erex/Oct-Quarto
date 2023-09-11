@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 11 July 2023
+## Lecture slides for 10 October 2023
 
 ### [Detection functions](../lectures/BlockB-22.pdf)
 :::

@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "More resources\n\n\nNot all concepts can be discussed in this 10-session training workshop. Where to go if you want more information?\n\n\n\nJul 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution to mystery analysis\n\n\nRemember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.\n\n\n\nJul 20, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInstalling dssd package\n\n\nAt present (July 2023) dssd must be installed from Github\n\n\n\nJul 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nJul 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nJul 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nJul 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nJun 26, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Installing dssd package\n\n\nAt present (October 2023) dssd must be installed from Github\n\n\n\nOct 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nOct 12, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nOct 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nSep 25, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -39,14 +39,14 @@
     "href": "extras/mystery.html",
     "title": "Your skills as a distance sampling analyst",
     "section": "",
-    "text": "There was one covariate recorded ✍ with each detection–whether the animal was male or female .\nUnits of measure 📏 are: perpendicular distances in meters, effort (transect lengths) in kilometers and area of study region in square kilometers.\n\nDon’t forget to set the units properly\n\nlibrary(Distance)\nconversion <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n\nRemember some of the hints I have provided (in decision sequence above) along with decisions you will need to make regarding truncation.\nDo a competent job with your analysis and we will share our findings (preferred model, point estimate of abundance and precision of abundance estimate) on Thursday during the practical session.\nThe data set (in CSV format) is available in the file space of this project, shown in the File panel, named mystery.csv.\nThis will be your first adventure looking at data that is not contained within the Distance package. Therefore, your first analysis task will be to read the data from the .csv file into R for subsequent analysis. Example code below:\n\nmydata <- read.csv(\"https://raw.githubusercontent.com/erex/Oct-Quarto/main/extras/mystery.csv\")\n\nWhat happens after this is up to you. 🥴 🤔\n\n\n\n\nworkflow"
+    "text": "If you wish to perform a distance sampling analysis upon a data set, I have one for you to download. It is a bit of a scrappy data set, not very many line transects (12), not very many detections (43). As such, it might present a couple of challenges to you, but hopefully not too many. 🕵\n\nThere was one covariate recorded ✍ with each detection–whether the animal was male or female .\nUnits of measure 📏 are: perpendicular distances in meters, effort (transect lengths) in kilometers and area of study region in square kilometers.\n\nDon’t forget to set the units properly\n\nlibrary(Distance)\nconversion &lt;- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n\nRemember some of the hints I have provided (in decision sequence above) along with decisions you will need to make regarding truncation.\nDo a competent job with your analysis and we will share our findings (preferred model, point estimate of abundance and precision of abundance estimate) on Thursday during the practical session.\nThe data set (in CSV format) is available in the file space of this project, shown in the File panel, named mystery.csv.\nThis will be your first adventure looking at data that is not contained within the Distance package. Therefore, your first analysis task will be to read the data from the .csv file into R for subsequent analysis. Example code below:\n\nmydata &lt;- read.csv(\"https://raw.githubusercontent.com/erex/Oct-Quarto/main/extras/mystery.csv\")\n\nWhat happens after this is up to you. 🥴 🤔\n\n\n\n\nworkflow"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Introductory distance sampling workshop",
     "section": "",
-    "text": "Material contained herein will acquaint you with design, collection and analysis of distance sampling data.\nThe materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a detection function and ways to model it.\nFurther topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.\n\n\n\nThe second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.\n\n\n\nAs well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.\n\nEach set of exercises is accompanied by a discussion of distance sampling principles. PDFs of those discussion materials are linked in the table below (as well as linked from the landing page of each exercise).\n\n\n\nTopic\nDate\n\n\n\n\nFundamental principles\n10 July\n\n\nDetection functions\n11 July\n\n\nModel criticism (selection and fit assessment)\n12 July\n\n\nMeasuring precision and controlling variance\n13 July\n\n\nPoint transect analysis and detailed example\n14 July\n\n\nDesign of distance sampling surveys\n17 July\n\n\nAnalysis of stratified surveys\n18 July\n\n\nCovariates in the detection function\n19 July\n\n\nIncluding multipliers in distance sampling analysis\n20 July\n\n\nField methods and summary\n21 July"
+    "text": "Material contained herein will acquaint you with design, collection and analysis of distance sampling data.\nThe materials are intended to be experiential rather than used as a reference. Exercises are paced to bring you up to speed with the fundamentals of distance sampling; how this method of population assessment differs from other forms of population sampling. This leads to the introduction of a detection function and ways to model it.\nFurther topics of model selection, assessing precision of population estimates and collection and analysis of point transect data round out the first half of the materials. These topics are depicted by the clothesline diagram below. At this point, you will have acquired sufficient experience to analyse basic distance sampling data.\n\n\n\nThe second half of the material (second clothesline diagram) exposes you to slightly more advanced concepts: design of distance sampling surveys, including the use of stratification. Also discussed are analytical methods associated with stratified surveys. This gives way to including predictors other than distance in modelling the detection process. Finally multipliers and methods associated with indirect animal surveys are introduced.\n\n\n\nAs well as the exercises (green) and their solutions (yellow), there are numerous supplements (grey), touching upon topics or demonstrating issues related to the analysis of distance sampling data. The supplements are not fundamental to successfully employing distance sampling methods, however, the more you understand tools such as distance sampling (via these supplements), the better you will be able to employ such methods.\n\nEach set of exercises is accompanied by a discussion of distance sampling principles. PDFs of those discussion materials are linked in the table below (as well as linked from the landing page of each exercise).\n\n\n\nTopic\nDate\n\n\n\n\nFundamental principles\n9 October\n\n\nDetection functions\n10 October\n\n\nModel criticism (selection and fit assessment)\n11 October\n\n\nMeasuring precision and controlling variance\n12 October\n\n\nPoint transect analysis and detailed example\n13 October\n\n\nDesign of distance sampling surveys\n16 October\n\n\nAnalysis of stratified surveys\n17 October\n\n\nCovariates in the detection function\n18 October\n\n\nIncluding multipliers in distance sampling analysis\n19 October\n\n\nField methods and summary\n20 October"
   },
   {
     "objectID": "Pr1/Pr1-instructions.html",
@@ -67,7 +67,7 @@
     "href": "Pr1/sampling.html",
     "title": "Sampling practical 1",
     "section": "",
-    "text": "Lecture slides for 10 July 2023"
+    "text": "Lecture slides for 09 October 2023"
   },
   {
     "objectID": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
@@ -81,7 +81,7 @@
     "href": "Pr2/detnfns.html",
     "title": "Detection functions practical 2",
     "section": "",
-    "text": "Lecture slides for 11 July 2023"
+    "text": "Lecture slides for 10 October 2023"
   },
   {
     "objectID": "Pr2/detnfns.html#estimating-density-of-duck-nests",
@@ -130,7 +130,7 @@
     "href": "Pr3/criticism.html",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "Lecture slides for 12 July 2023"
+    "text": "Lecture slides for 11 October 2023"
   },
   {
     "objectID": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
@@ -249,7 +249,7 @@
     "href": "Pr4/precision.html",
     "title": "Precision practical 4",
     "section": "",
-    "text": "Lecture slides for 13 July 2023"
+    "text": "Lecture slides for 12 October 2023"
   },
   {
     "objectID": "Pr4/precision.html#precision-of-density-estimates",
@@ -305,7 +305,7 @@
     "href": "Pr5/points.html",
     "title": "Point transects practical 5",
     "section": "",
-    "text": "Lecture slides for 14 July 2023"
+    "text": "Lecture slides for 13 October 2023"
   },
   {
     "objectID": "Pr5/points.html#analysis-of-point-transect-data",
@@ -368,7 +368,7 @@
     "href": "Pr6/design.html",
     "title": "Survey design practical 6",
     "section": "",
-    "text": "Lecture slides for 17 July 2023"
+    "text": "Lecture slides for 16 October 2023"
   },
   {
     "objectID": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
@@ -550,7 +550,7 @@
     "href": "Pr7/strata.html",
     "title": "Stratification practical 7",
     "section": "",
-    "text": "Lecture slides for 18 July 2023"
+    "text": "Lecture slides for 17 October 2023"
   },
   {
     "objectID": "Pr7/strata.html#analysis-of-stratified-surveys-1",
@@ -627,7 +627,7 @@
     "href": "Pr8/covariates.html",
     "title": "Covariates practical 8",
     "section": "",
-    "text": "Lecture slides for 19 July 2023"
+    "text": "Lecture slides for 18 October 2023"
   },
   {
     "objectID": "Pr8/covariates.html#covariates-in-detection-function",
@@ -858,7 +858,7 @@
     "href": "Pr9/multipliers.html",
     "title": "Multipliers practical 9",
     "section": "",
-    "text": "Lecture slides for 20 July 2023"
+    "text": "Lecture slides for 19 October 2023"
   },
   {
     "objectID": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
@@ -928,7 +928,7 @@
     "href": "announce/2023-07-12-adjtermsplot/index.html",
     "title": "Build your own detection function",
     "section": "",
-    "text": "Build your own detection function\nTo show the effects of none, one or two cosine adjustment terms upon half normal and hazard rate key functions.\n\n\n\n\n\n\n\n\nThis is a very simple application intended to provide a visual impression of the effect of adjustment terms upon the shape of key functions. You will note the ease with which non-monotonic (functions that both decrease and increase with detection distance) detection functions can be created with only two adjustment terms."
+    "text": "Build your own detection function\nTo show the effects of none, one or two cosine adjustment terms upon half normal and hazard rate key functions.\n\n\nThis is a very simple application intended to provide a visual impression of the effect of adjustment terms upon the shape of key functions. You will note the ease with which non-monotonic (functions that both decrease and increase with detection distance) detection functions can be created with only two adjustment terms."
   },
   {
     "objectID": "announce/2023-07-12-labelledoutput/index.html",
@@ -938,13 +938,6 @@
     "text": "Below is output produced from fitting a hazard rate key function (without adjustment terms) to the ducknest data set. It is important to study model output, not just focus upon the estimated density. There may be clues in the output to indicate that data have not been analysed as you intended (misspecification of truncation distances, mistyping of the key function, etc.)\nFirst four lines are R code to fit the model, remainder of lines is output produced by the summary() function.\n\nI have not labelled everything to prevent the image from becoming too cluttered. I have not labelled the different measures of precision associated with estimates and summary statistics. I have not fitted a model that included adjustment terms; had I done so, the output would also have contained estimates of the adjustment term coefficients (\\(\\alpha_i\\)) and their measures of precision.\nThe ducknest data are objects that appear singly (not in groups). Has this been a model fitted to objects that were detected as clusters, there would have been additional output. Likewise, if the survey had been a stratified survey, there would have been density (and abundance) estimates for each stratum.\nThe labelled output should assist you in navigating the model objects created by the ds() function."
   },
   {
-    "objectID": "announce/2022-12-31-modelsel/index.html",
-    "href": "announce/2022-12-31-modelsel/index.html",
-    "title": "Is this analysis sound?",
-    "section": "",
-    "text": "Received this email\nA former workshop participant recently wrote more than a year after attending this workshop. She had been working on her own data and was concluding her analysis. She sent this table (produced by the summarize_ds_models() function) asking\n\nIs it fine for me to use the model with the smallest AIC for inference for this survey?\n\n\nHow would you respond?\n\n\n\nPostscript\nThe email also included a table of stratum-specific estimates. I hide this table so as not to spoil the answer to the question above. If you are curious, simply click on the arrow on the top right.\n\n\n\n\n\n\nEstimates from the preferred model\n\n\n\n\n\n The warning signs are more obvious in this output than from the model selection table. However, you are discouraged from looking at estimates produced by models until your model selection process in complete. This prevents subconscious bias to use models that produce results the analyst “likes.”"
-  },
-  {
     "objectID": "announce/2023-07-18-dssdinstall/index.html",
     "href": "announce/2023-07-18-dssdinstall/index.html",
     "title": "Installing dssd package",
@@ -952,38 +945,10 @@
     "text": "Installing dssd from Github\nThe survey design R package dssd, does not currently reside on CRAN because of the dependency dssd has upon another package that has been removed from CRAN. This means the process of installing dssd onto your computer is only slightly more difficult, I believe.\nWe develop our packages using a Cloud service called Github. You can acquire a copy of the dssd package from there to install onto your local computer. The process is as follows:\n\nDownload a file from Github, dependent upon whether your machine is Windows or Mac:\n\ndssd_1.0.0.zip for Windows\ndssd_1.0.0.tgz for Mac\nin either case, the file to download is located at https://github.com/DistanceDevelopment/dssd/releases/tag/dssd1.0.0-R4.2.3\n\nUsing RStudio, request `Install package from package archive file\n\n\npointing the dialog to the location where you downloaded the file from Github\n\nproceed with your R session with the command library(dssd)\n\nNote: as I don’t have a Mac, the comment about installing from a Mac is untested."
   },
   {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html",
-    "href": "announce/2023-01-02-mysterysoln/index.html",
-    "title": "Solution to mystery analysis",
+    "objectID": "announce/2023-07-12-labelledoutput/index.html#making-sense-of-fitted-model-objects",
+    "href": "announce/2023-07-12-labelledoutput/index.html#making-sense-of-fitted-model-objects",
+    "title": "Annotated ds output",
     "section": "",
-    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set"
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
-    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
-    "title": "Solution to mystery analysis",
-    "section": "AIC among remaining five competitors",
-    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      3 309.1185\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %>%\n      kable_styling(full_width = F) %>%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\n\nFive competing models with truncation at 50m\n \n  \n    Model \n    Key function \n    Formula \n    C-vM $p$-value \n    Average detectability \n    se(Average detectability) \n    Delta AIC \n  \n \n\n  \n    hn.sex \n    Half-normal \n    ~sex \n    0.727 \n    0.567 \n    0.092 \n    0.000 \n  \n  \n    hr.sex \n    Hazard-rate \n    ~sex \n    0.863 \n    0.449 \n    0.198 \n    1.415 \n  \n  \n    hn \n    Half-normal \n    ~1 \n    0.683 \n    0.638 \n    0.091 \n    3.157 \n  \n  \n    unicos \n    Uniform with cosine adjustment term of order 1 \n    NA \n    0.706 \n    0.624 \n    0.079 \n    3.610 \n  \n  \n    hr \n    Hazard-rate with cosine adjustment term of order 2 \n    ~1 \n    0.923 \n    0.554 \n    0.122 \n    4.929 \n  \n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
-    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
-    "title": "Solution to mystery analysis",
-    "section": "Best model, Half normal with sex covariate",
-    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout <- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, convert_units = myunits)\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds <- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\nConfidence interval bounds from bootstrap are (123, 404), somewhat wider than the analytical confidence interval bounds specified above."
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
-    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
-    "title": "Solution to mystery analysis",
-    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
-    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
-  },
-  {
-    "objectID": "announce/2022-12-31-moreresources/index.html",
-    "href": "announce/2022-12-31-moreresources/index.html",
-    "title": "More resources",
-    "section": "",
-    "text": "Database of papers related to these lectures\nExamine the bibliography associated with St Andrews workshops. This is a subset of a much larger searchable data base of publications dealing with distance sampling compiled by Tiago Marques.\nI encourage you to keep this paper as a reference for the coding done during the workshop:\n\nMiller, D., Rexstad, E., Thomas, L., Marshall, L., & Laake, J. 2019. Distance Sampling in R. Journal of Statistical Software. [Online] 89:1 https://dx.doi.org/10.18637/jss.v089.i01\n\n\n\nBooks\nThe standard reference for distance sampling is Buckland et al. (2001). This was most recently updated in Buckland et al. (2015). If you are affiliated with a university that is a member of ‘Springerlink’, the 2015 version can be purchased in softcover for ~40 USD/GBP/EUR; look up the MyCopy program.\n\n\nWebsites\n\nNews and general information about distance sampling can be found at our home website distancesampling.org.\n\nOur workshop materials reside on their own website workshops.distancesampling.org.\nIf you wish to watch narrated lecture videos and narrated exercises, visit workshops.distancesampling.org/online-course.\n\n\n\nEmail list for assistance\nWe operate a forum where you can ask questions and see if others have asked questions similar to yours. Joining instructions to access the Google list can be found following this link."
+    "text": "Below is output produced from fitting a hazard rate key function (without adjustment terms) to the ducknest data set. It is important to study model output, not just focus upon the estimated density. There may be clues in the output to indicate that data have not been analysed as you intended (misspecification of truncation distances, mistyping of the key function, etc.)\nFirst four lines are R code to fit the model, remainder of lines is output produced by the summary() function.\n\nI have not labelled everything to prevent the image from becoming too cluttered. I have not labelled the different measures of precision associated with estimates and summary statistics. I have not fitted a model that included adjustment terms; had I done so, the output would also have contained estimates of the adjustment term coefficients (\\(\\alpha_i\\)) and their measures of precision.\nThe ducknest data are objects that appear singly (not in groups). Has this been a model fitted to objects that were detected as clusters, there would have been additional output. Likewise, if the survey had been a stratified survey, there would have been density (and abundance) estimates for each stratum.\nThe labelled output should assist you in navigating the model objects created by the ds() function."
   }
 ]
