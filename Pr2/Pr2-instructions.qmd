@@ -43,12 +43,11 @@ The distances allow different key functions/adjustments to be fitted in the dete
 
 # Using the `Distance` package
 
-The `Distance` package has been installed in RStudio/Cloud. *When you work on your own machine*, you will need to install it with this pair of commands:
+The `Distance` package has been installed in RStudio/Cloud. *When you work on your own machine*, you will need to install it from CRAN:
 
 ```{r}
 #| eval = FALSE
-install.packages(remotes)
-remotes::install_github("DistanceDevelopment/Distance")
+install.packages(Distance)
 ```
 
 # Accessing the data
