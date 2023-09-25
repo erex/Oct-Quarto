@@ -5,7 +5,7 @@ author:
   - name: Eric Rexstad
 date: 10-16-2023
 image: irelandsurvey.png
-draft: false
+draft: true
 ---
 
 # Installing `dssd` from Github
