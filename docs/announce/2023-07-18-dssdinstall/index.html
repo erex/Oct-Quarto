@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eric Rexstad">
-<meta name="dcterms.date" content="2023-10-16">
+<meta name="dcterms.date" content="2023-10-18">
 <meta name="description" content="At present (October 2023) dssd must be installed from Github">
 
 <title>Distance sampling workshop - Installing dssd package</title>
@@ -157,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 16, 2023</p>
+        <p class="date">October 18, 2023</p>
       </div>
     </div>
     
@@ -188,20 +188,16 @@ ul.task-list li input[type="checkbox"] {
 <p>The survey design R package <code>dssd</code>, does not currently reside on CRAN because of the dependency <code>dssd</code> has upon another package that has been removed from CRAN. This means the process of installing <code>dssd</code> onto your computer is only slightly more difficult, I believe.</p>
 <p>We develop our packages using a Cloud service called <code>Github</code>. You can acquire a copy of the <code>dssd</code> package from there to install onto your local computer. The process is as follows:</p>
 <ul>
-<li>Download a file from Github, dependent upon whether your machine is Windows or Mac:
+<li>install the <code>remotes</code> R package
 <ul>
-<li><code>dssd_1.0.0.zip</code> for Windows</li>
-<li><code>dssd_1.0.0.tgz</code> for Mac</li>
-<li>in either case, the file to download is located at <code>https://github.com/DistanceDevelopment/dssd/releases/tag/dssd1.0.0-R4.2.3</code></li>
+<li><code>install.packages("remotes")</code></li>
 </ul></li>
-<li>Using RStudio, request `Install package from package archive file
+<li>with the <code>remotes</code> package installed, issue this command from the console
 <ul>
-<li><img src="installmenu.png" class="img-fluid"></li>
-<li>pointing the dialog to the location where you downloaded the file from Github</li>
+<li><code>install_github("DistanceDevelopment/dssd", ref="CRAN-1.0.1, build_vignettes=TRUE")</code></li>
 </ul></li>
-<li>proceed with your R session with the command <code>library(dssd)</code></li>
 </ul>
-<p>Note: as I don’t have a Mac, the comment about installing from a Mac is untested.</p>
+<p>Fingers crossed, that will install the package (and perhaps a few supporting packages also)</p>
 
 
 </section>
