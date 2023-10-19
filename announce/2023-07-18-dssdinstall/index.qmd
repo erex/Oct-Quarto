@@ -17,6 +17,6 @@ We develop our packages using a Cloud service called `Github`. You can acquire a
 - install the `remotes` R package
   - `install.packages("remotes")`
 - with the `remotes` package installed, issue this command from the console
-  - `install_github("DistanceDevelopment/dssd", ref="CRAN-1.0.1, build_vignettes=TRUE")`
+  - `install_github("DistanceDevelopment/dssd", build_vignettes=TRUE")`
   
 Fingers crossed, that will install the package (and perhaps a few supporting packages also)
