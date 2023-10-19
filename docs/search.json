@@ -18,7 +18,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Installing dssd package\n\n\nAt present (October 2023) dssd must be installed from Github\n\n\n\nOct 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nSep 25, 2023\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Is this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nOct 19, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInstalling dssd package\n\n\nAt present (October 2023) dssd must be installed from Github\n\n\n\nOct 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow to use tutorials\n\n\nTutorials accompany most practicals. They provide you with simple self-assessment of your understanding of main messages of the practicals.\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nOct 10, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nSep 25, 2023\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "extras/critique.html",
@@ -943,5 +943,12 @@
     "title": "Installing dssd package",
     "section": "",
     "text": "Installing dssd from Github\nThe survey design R package dssd, does not currently reside on CRAN because of the dependency dssd has upon another package that has been removed from CRAN. This means the process of installing dssd onto your computer is only slightly more difficult, I believe.\nWe develop our packages using a Cloud service called Github. You can acquire a copy of the dssd package from there to install onto your local computer. The process is as follows:\n\ninstall the remotes R package\n\ninstall.packages(\"remotes\")\n\nwith the remotes package installed, issue this command from the console\n\ninstall_github(\"DistanceDevelopment/dssd\", build_vignettes=TRUE\")\n\n\nFingers crossed, that will install the package (and perhaps a few supporting packages also)"
+  },
+  {
+    "objectID": "announce/2022-12-31-modelsel/index.html",
+    "href": "announce/2022-12-31-modelsel/index.html",
+    "title": "Is this analysis sound?",
+    "section": "",
+    "text": "Received this email\nA former workshop participant recently wrote more than a year after attending this workshop. She had been working on her own data and was concluding her analysis. She sent this table (produced by the summarize_ds_models() function) asking\n\nIs it fine for me to use the model with the smallest AIC for inference for this survey?\n\n\nHow would you respond?\n\n\n\nPostscript\nThe email also included a table of stratum-specific estimates. I hide this table so as not to spoil the answer to the question above. If you are curious, simply click on the arrow on the top right.\n\n\n\n\n\n\nEstimates from the preferred model\n\n\n\n\n\n The warning signs are more obvious in this output than from the model selection table. However, you are discouraged from looking at estimates produced by models until your model selection process in complete. This prevents subconscious bias to use models that produce results the analyst “likes.”"
   }
 ]
