@@ -7,7 +7,7 @@ date: 10-13-2023
 image: https://images.unsplash.com/photo-1565087918595-8c2af193ecbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGNhbWVyYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
 bibliography: howeetal18.bib
 csl: apa.csl
-draft: true
+draft: false
 ---
 
 # How to calculate effort
