@@ -88,7 +88,7 @@
     "href": "Pr2/detnfns.html#estimating-density-of-duck-nests",
     "title": "Detection functions practical 2",
     "section": "Estimating density of duck nests",
-    "text": "Estimating density of duck nests\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit.\n\n\n\n\n\n\n\n\n\nPhoto by Freysteinn G. Jonsson on Unsplash"
+    "text": "Estimating density of duck nests\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit.\n\n\n\n\n\n\n\n\nPhoto by Freysteinn G. Jonsson on Unsplash"
   },
   {
     "objectID": "Pr2/Pr2-instructions.html",

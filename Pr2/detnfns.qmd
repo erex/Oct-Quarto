@@ -22,8 +22,10 @@ You will do some exploratory analysis of the detection distances, then use the f
 
 The estimated detection functions will be plotted and assessed for goodness of fit.
 
+<!--
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JBVfKf73O_U?si=XrItFfx_POC6ZxEw" title="Eric experiments with Loom and embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+-->
 
 {{< video https://www.youtube.com/embed/JBVfKf73O_U
           title=`'Using video rather than embed'
