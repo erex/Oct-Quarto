@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eric Rexstad">
-<meta name="dcterms.date" content="2023-10-20">
+<meta name="dcterms.date" content="2024-03-15">
 <meta name="description" content="Remember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.">
 
 <title>Distance sampling workshop - Solution to mystery analysis</title>
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 20, 2023</p>
+        <p class="date">March 15, 2024</p>
       </div>
     </div>
     
@@ -629,22 +629,25 @@ N in covered region 70.5283160 13.91222961 0.1972574</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bootout <span class="ot">&lt;-</span> <span class="fu">bootdht</span>(hn.sex, <span class="at">flatfile=</span>mydata, <span class="at">summary_fun =</span> bootdht_Nhat_summarize,</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nboot=</span><span class="dv">500</span>, <span class="at">convert_units =</span> myunits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Performing 500 bootstraps</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootout<span class="sc">$</span>Nhat, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of bootstrap replicates"</span>, <span class="at">xlab=</span><span class="st">"Abundance estimate"</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>mybounds <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">quantile</span>(bootout<span class="sc">$</span>Nhat, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>mybounds, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootout<span class="sc">$</span>Nhat, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Distribution of bootstrap replicates"</span>, <span class="at">xlab=</span><span class="st">"Abundance estimate"</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>mybounds <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">quantile</span>(bootout<span class="sc">$</span>Nhat, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>mybounds, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/plotit-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Confidence interval bounds from bootstrap are (126, 382), somewhat wider than the analytical confidence interval bounds specified above.</p>
+<p>Confidence interval bounds from bootstrap are (122, 393), somewhat wider than the analytical confidence interval bounds specified above.</p>
 </section>
 <section id="closest-aic-score-competitor-hazard-rate-with-sex-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="closest-aic-score-competitor-hazard-rate-with-sex-covariate">Closest AIC score competitor, Hazard rate with sex covariate</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hr.sex<span class="sc">$</span>dht<span class="sc">$</span>individual<span class="sc">$</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(hr.sex<span class="sc">$</span>dht<span class="sc">$</span>individual<span class="sc">$</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Label Estimate      se        cv     lcl      ucl       df
 1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291</code></pre>
