@@ -3,9 +3,9 @@ title: Is this analysis sound?
 description: How would you respond to this query, if somebody asked your opinion?
 author: 
   - name: Eric Rexstad
-date: 10-19-2023
+date: 03-06-2024
 image: https://plus.unsplash.com/premium_photo-1661956524374-cf33d885689a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtcGJhY2slMjB3aGFsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
-draft: false
+draft: true
 ---
 
 # Received yet another email

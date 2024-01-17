@@ -3,7 +3,7 @@ title: Work to do prior to the workshop beginning
 description: A pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.
 author: 
   - name: Eric Rexstad
-date: 09-25-2023
+date: 03-04-2024
 image: https://images.unsplash.com/photo-1560785496-3c9d27877182?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG9tZXdvcmt8ZW58MHx8MHx8&auto=format&fit=crop&w=400&q=60
 draft: false
 ---
