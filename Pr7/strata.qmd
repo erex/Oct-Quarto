@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 17 October 2023
+## Lecture slides for 12 March 2024
 
 ### [Analysis of stratified surveys](../lectures/BlockG-22.pdf)
 :::

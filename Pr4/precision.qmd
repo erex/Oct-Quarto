@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 12 October 2023
+## Lecture slides for 07 March 2024
 
 ### [Measuring precision and controlling variance](../lectures/BlockD-22.pdf)
 :::

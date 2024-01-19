@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 19 October 2023
+## Lecture slides for 14 March 2024
 
 ### [Including multipliers in distance sampling analysis](../lectures/BlockI-22.pdf)
 :::

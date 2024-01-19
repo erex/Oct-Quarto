@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 11 October 2023
+## Lecture slides for 06 March 2024
 
 ### [Model criticism (selection and fit assessment)](../lectures/BlockC-22.pdf)
 :::

@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 09 October 2023
+## Lecture slides for 04 March 2024
 
 ### [Fundamental principles](../lectures/BlockA-22.pdf)
 :::

@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 13 October 2023
+## Lecture slides for 08 March 2024
 
 ### [Point transect analysis and detailed example](../lectures/BlockE-22.pdf)
 :::

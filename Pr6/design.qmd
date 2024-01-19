@@ -9,7 +9,7 @@ fontsize: "15px"
 ---
 
 ::: {.callout-tip}
-## Lecture slides for 16 October 2023
+## Lecture slides for 11 March 2024
 
 ### [Design of distance sampling surveys](../lectures/BlockF-22.pdf)
 :::
