@@ -24,7 +24,7 @@ This note describes how to that effort was calculated.
 
 # How many days were cameras deployed?
 
-From the Methods section of @howeetal, we find the dates of deployment and collection
+From the Methods section of @howeetal, we find the maximum (see @sec-more below) dates of deployment and collection
 
 ![](text1.png)
 
@@ -62,7 +62,7 @@ print(daily.snapshots)
 
 # Snapshot events for entire duration
 
-Nearly finished. Multiply daily snapshots by the number of days of deployment:
+Nearly finished. Multiply daily snapshots by the maximum number of days of deployment:
 
 ```{r finish}
 total.snapshots <- daysout * daily.snapshots
@@ -70,6 +70,38 @@ print(total.snapshots)
 print(total.snapshots == DuikerCameraTraps$Effort[1])
 ```
 
-Hooray!
+This tells us the first sampling station had the camera operating for the full duration of the period (28 June through 21 September). However, that is not the case for all the cameras deployed in the survey.
+
+# But wait, there is more {#sec-more}
+
+This calculation is fine for the camera placed at the first sampling location. However, if you examine `DuikerCameraTraps$Effort` you will note that the number of snapshot moments differs between stations. If you have conducted field work with camera traps, this comes as no surprise to you. Each camera deployment is unique for several reasons:
+
+- battery failure
+- camera is dislodged by weather, animals or humans
+- time lag between camera deployments and collections
+  - particularly in difficult environments like Côte d'Ivoire, travel time between sampling stations may be several days.
+
+In the study described by @howeetal, sampling stations were separated by 1km. Consequently, deployment (and camera collection) dates differed among cameras. We can reconstruct the number of days cameras were active by dividing their number of snapshot moments by the number of snapshot moments per day:
+
+```{r maketable}
+#| echo: true
+#| warning: false
+stations <- unique(DuikerCameraTraps$Sample.Label)
+station.effort <- vector("numeric", length=length(stations))
+for( i in 1:length(stations)) {
+  station.effort[i] <- DuikerCameraTraps$Effort[DuikerCameraTraps$Sample.Label==stations[i]]
+}
+station.days <- station.effort/daily.snapshots
+```
+
+Hence the number of days each station was active is shown in the following table:
+
+```{r print table}
+station.table <- data.frame(Station=stations, Snapshots=station.effort,
+                            Days=station.days)
+knitr::kable(station.table,
+             caption="Days each camera trap station was active for Duiker survey (peak activity)",
+             align='r')
+```
 
 # References

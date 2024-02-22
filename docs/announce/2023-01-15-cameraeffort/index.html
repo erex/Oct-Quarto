@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eric Rexstad">
-<meta name="dcterms.date" content="2023-10-13">
+<meta name="dcterms.date" content="2024-03-08">
 <meta name="description" content="A question about effort calculation for camera traps. This deals with only the basics of the calculation. Based on the duiker data found in Distance package.">
 
 <title>Distance sampling workshop - Effort computation for camera traps</title>
@@ -210,7 +210,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 13, 2023</p>
+        <p class="date">March 8, 2024</p>
       </div>
     </div>
     
@@ -230,6 +230,7 @@ div.csl-indent {
   <li><a href="#how-many-days-were-cameras-deployed" id="toc-how-many-days-were-cameras-deployed" class="nav-link" data-scroll-target="#how-many-days-were-cameras-deployed">How many days were cameras deployed?</a></li>
   <li><a href="#seconds-per-day-cameras-in-analysis" id="toc-seconds-per-day-cameras-in-analysis" class="nav-link" data-scroll-target="#seconds-per-day-cameras-in-analysis">Seconds per day cameras in analysis</a></li>
   <li><a href="#snapshot-events-for-entire-duration" id="toc-snapshot-events-for-entire-duration" class="nav-link" data-scroll-target="#snapshot-events-for-entire-duration">Snapshot events for entire duration</a></li>
+  <li><a href="#sec-more" id="toc-sec-more" class="nav-link" data-scroll-target="#sec-more">But wait, there is more</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -244,15 +245,9 @@ div.csl-indent {
 <h1>How to calculate effort</h1>
 <p>Computation of effort for each camera involves a series of steps. Computation is not difficult, just remember the steps. We use as an example, Howe’s Maxwell duiker data. In his data (<code>DuikerCameraTrap</code>) supplied in the Distance package, the effort associated with each camera is</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(Distance))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'Distance' was built under R version 4.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'mrds' was built under R version 4.3.1</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"DuikerCameraTraps"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(DuikerCameraTraps<span class="sc">$</span>Effort[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(Distance))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"DuikerCameraTraps"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(DuikerCameraTraps<span class="sc">$</span>Effort[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 680232</code></pre>
 </div>
@@ -261,14 +256,14 @@ div.csl-indent {
 </section>
 <section id="how-many-days-were-cameras-deployed" class="level1">
 <h1>How many days were cameras deployed?</h1>
-<p>From the Methods section of <span class="citation" data-cites="howeetal">Howe, Buckland, Després-Einspenner, &amp; Kühl (<a href="#ref-howeetal" role="doc-biblioref">2017</a>)</span>, we find the dates of deployment and collection</p>
+<p>From the Methods section of <span class="citation" data-cites="howeetal">Howe, Buckland, Després-Einspenner, &amp; Kühl (<a href="#ref-howeetal" role="doc-biblioref">2017</a>)</span>, we find the maximum (see <a href="#sec-more">Section&nbsp;5</a> below) dates of deployment and collection</p>
 <p><img src="text1.png" class="img-fluid"></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2014-06-28"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2014-09-21"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>daysbetween <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(end, start, <span class="at">units=</span><span class="st">"days"</span>))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>daysout <span class="ot">&lt;-</span> daysbetween <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(daysout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>start <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2014-06-28"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>end <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2014-09-21"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>daysbetween <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(end, start, <span class="at">units=</span><span class="st">"days"</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>daysout <span class="ot">&lt;-</span> daysbetween <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(daysout)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 84</code></pre>
 </div>
@@ -281,17 +276,17 @@ div.csl-indent {
 <p><img src="text2.png" class="img-fluid"></p>
 <p>In the above snippet of text, <span class="citation" data-cites="howeetal">Howe et al. (<a href="#ref-howeetal" role="doc-biblioref">2017</a>)</span> states there are 8098 snapshot events per day within this peak activity period. For their cameras, the duration of a snapshot was 2 seconds. Let’s recreate that value:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>snapshot.duration <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>morning.start <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 06:30:00"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>morning.end <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 08:59:58"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>evening.start <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 16:00:00"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>evening.end <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 17:59:58"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>morning <span class="ot">&lt;-</span> <span class="fu">difftime</span>(morning.end, morning.start, <span class="at">units=</span><span class="st">"secs"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>evening <span class="ot">&lt;-</span> <span class="fu">difftime</span>(evening.end, evening.start, <span class="at">units=</span><span class="st">"secs"</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>total.secs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(morning) <span class="sc">+</span> <span class="fu">as.numeric</span>(evening)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>daily.snapshots <span class="ot">&lt;-</span> total.secs <span class="sc">/</span> snapshot.duration</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(daily.snapshots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>snapshot.duration <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>morning.start <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 06:30:00"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>morning.end <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 08:59:58"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>evening.start <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 16:00:00"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>evening.end <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">"2014-06-28 17:59:58"</span> , <span class="at">format=</span><span class="st">"%Y-%m-%d %H:%M:%OS"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>morning <span class="ot">&lt;-</span> <span class="fu">difftime</span>(morning.end, morning.start, <span class="at">units=</span><span class="st">"secs"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>evening <span class="ot">&lt;-</span> <span class="fu">difftime</span>(evening.end, evening.start, <span class="at">units=</span><span class="st">"secs"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>total.secs <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(morning) <span class="sc">+</span> <span class="fu">as.numeric</span>(evening)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>daily.snapshots <span class="ot">&lt;-</span> total.secs <span class="sc">/</span> snapshot.duration</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(daily.snapshots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8098</code></pre>
 </div>
@@ -299,19 +294,167 @@ div.csl-indent {
 </section>
 <section id="snapshot-events-for-entire-duration" class="level1">
 <h1>Snapshot events for entire duration</h1>
-<p>Nearly finished. Multiply daily snapshots by the number of days of deployment:</p>
+<p>Nearly finished. Multiply daily snapshots by the maximum number of days of deployment:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>total.snapshots <span class="ot">&lt;-</span> daysout <span class="sc">*</span> daily.snapshots</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total.snapshots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>total.snapshots <span class="ot">&lt;-</span> daysout <span class="sc">*</span> daily.snapshots</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total.snapshots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 680232</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total.snapshots <span class="sc">==</span> DuikerCameraTraps<span class="sc">$</span>Effort[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total.snapshots <span class="sc">==</span> DuikerCameraTraps<span class="sc">$</span>Effort[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>Hooray!</p>
+<p>This tells us the first sampling station had the camera operating for the full duration of the period (28 June through 21 September). However, that is not the case for all the cameras deployed in the survey.</p>
+</section>
+<section id="sec-more" class="level1">
+<h1>But wait, there is more</h1>
+<p>This calculation is fine for the camera placed at the first sampling location. However, if you examine <code>DuikerCameraTraps$Effort</code> you will note that the number of snapshot moments differs between stations. If you have conducted field work with camera traps, this comes as no surprise to you. Each camera deployment is unique for several reasons:</p>
+<ul>
+<li>battery failure</li>
+<li>camera is dislodged by weather, animals or humans</li>
+<li>time lag between camera deployments and collections
+<ul>
+<li>particularly in difficult environments like Côte d’Ivoire, travel time between sampling stations may be several days.</li>
+</ul></li>
+</ul>
+<p>In the study described by <span class="citation" data-cites="howeetal">Howe et al. (<a href="#ref-howeetal" role="doc-biblioref">2017</a>)</span>, sampling stations were separated by 1km. Consequently, deployment (and camera collection) dates differed among cameras. We can reconstruct the number of days cameras were active by dividing their number of snapshot moments by the number of snapshot moments per day:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>stations <span class="ot">&lt;-</span> <span class="fu">unique</span>(DuikerCameraTraps<span class="sc">$</span>Sample.Label)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>station.effort <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="at">length=</span><span class="fu">length</span>(stations))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(stations)) {</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  station.effort[i] <span class="ot">&lt;-</span> DuikerCameraTraps<span class="sc">$</span>Effort[DuikerCameraTraps<span class="sc">$</span>Sample.Label<span class="sc">==</span>stations[i]]</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>station.days <span class="ot">&lt;-</span> station.effort<span class="sc">/</span>daily.snapshots</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hence the number of days each station was active is shown in the following table:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>station.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Station=</span>stations, <span class="at">Snapshots=</span>station.effort,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Days=</span>station.days)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(station.table,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption=</span><span class="st">"Days each camera trap station was active for Duiker survey (peak activity)"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">align=</span><span class="st">'r'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Days each camera trap station was active for Duiker survey (peak activity)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Station</th>
+<th style="text-align: right;">Snapshots</th>
+<th style="text-align: right;">Days</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">A1</td>
+<td style="text-align: right;">680232</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">A2</td>
+<td style="text-align: right;">129568</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">A3</td>
+<td style="text-align: right;">672134</td>
+<td style="text-align: right;">83</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">A4</td>
+<td style="text-align: right;">680232</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">B1</td>
+<td style="text-align: right;">680232</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">B2</td>
+<td style="text-align: right;">591154</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">B3</td>
+<td style="text-align: right;">591154</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">B4</td>
+<td style="text-align: right;">502076</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">C1</td>
+<td style="text-align: right;">680232</td>
+<td style="text-align: right;">84</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">C2</td>
+<td style="text-align: right;">672134</td>
+<td style="text-align: right;">83</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">C3</td>
+<td style="text-align: right;">655938</td>
+<td style="text-align: right;">81</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">C4</td>
+<td style="text-align: right;">639742</td>
+<td style="text-align: right;">79</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">C5</td>
+<td style="text-align: right;">623546</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">C6</td>
+<td style="text-align: right;">647840</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">D3</td>
+<td style="text-align: right;">631644</td>
+<td style="text-align: right;">78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">D4</td>
+<td style="text-align: right;">623546</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">D5</td>
+<td style="text-align: right;">542566</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">E3</td>
+<td style="text-align: right;">291528</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">E4</td>
+<td style="text-align: right;">631644</td>
+<td style="text-align: right;">78</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">E5</td>
+<td style="text-align: right;">583056</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">E6</td>
+<td style="text-align: right;">566860</td>
+<td style="text-align: right;">70</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
 <section id="references" class="level1">
 
