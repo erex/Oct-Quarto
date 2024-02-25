@@ -130,14 +130,14 @@
     "href": "Pr3/criticism.html",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "Lecture slides for 06 March 2024\n\n\n\n\n\n\n\n\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird."
+    "text": "Lecture slides for 06 March 2024\n\n\n\n\n\n\n\n\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash"
   },
   {
     "objectID": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
     "href": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "This practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances."
+    "text": "This practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird."
   },
   {
     "objectID": "Pr3/modelsel-demo.html",
@@ -550,14 +550,14 @@
     "href": "Pr7/strata.html",
     "title": "Stratification practical 7",
     "section": "",
-    "text": "Lecture slides for 12 March 2024\n\n\n\n\n\n\n\n\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\n\n\n\n\n\nPhoto by Nick Fewings on Unsplash\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function."
+    "text": "Lecture slides for 12 March 2024\n\n\n\n\n\n\n\n\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\n\n\n\n\n\nPhoto by Nick Fewings on Unsplash"
   },
   {
     "objectID": "Pr7/strata.html#analysis-of-stratified-surveys-1",
     "href": "Pr7/strata.html#analysis-of-stratified-surveys-1",
     "title": "Stratification practical 7",
     "section": "",
-    "text": "Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability."
+    "text": "Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function."
   },
   {
     "objectID": "Pr7/stratumspecific-bias.html",
@@ -858,14 +858,14 @@
     "href": "Pr9/multipliers.html",
     "title": "Multipliers practical 9",
     "section": "",
-    "text": "Lecture slides for 14 March 2024\n\n\n\n\n\n\n\n\nIt is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers.\n\n\n\n\n\nPhoto by Jamshaid Mughal on Unsplash\nThis exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier. There is a study of whale blows from a moving ship–effort is measured in units of time rather than distance. Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field."
+    "text": "Lecture slides for 14 March 2024\n\n\n\n\n\n\n\n\nIt is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers.\nThis exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier. There is a study of whale blows from a moving ship–effort is measured in units of time rather than distance. Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field.\n\n\n\n\n\nPhoto by Jamshaid Mughal on Unsplash"
   },
   {
     "objectID": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
     "href": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
     "title": "Multipliers practical 9",
     "section": "",
-    "text": "It is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers."
+    "text": "It is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers.\nThis exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier. There is a study of whale blows from a moving ship–effort is measured in units of time rather than distance. Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field."
   },
   {
     "objectID": "Pr9/Pr9-instructions.html",

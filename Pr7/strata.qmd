@@ -16,6 +16,8 @@ title: Stratification practical 7
 Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.
 
 Multiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.
+
+Employing an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.
 :::
 
 ::: {.column width='40%'}
@@ -26,9 +28,5 @@ Multiple analyses arise because it is an open question whether a single detectio
 :::
 
 ::::
-
-
-
-Employing an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.
 
 <div style="position: relative; padding-bottom: 90.15025041736227%; height: 0;"><iframe src="https://www.loom.com/embed/4390a998fc1f42c4b0af1f0545bf4d27?sid=4df8980a-07a0-4ddf-a3ae-57eb12effede" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
