@@ -67,28 +67,28 @@
     "href": "Pr1/sampling.html",
     "title": "Sampling practical 1",
     "section": "",
-    "text": "Lecture slides for 04 March 2024"
+    "text": "Lecture slides for 04 March 2024\n\n\n\n\n\n\n\n\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\n\n\n\n\n\nPhoto by Shelby Cohron on Unsplash\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region."
   },
   {
     "objectID": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
     "href": "Pr1/sampling.html#estimating-widehatp_a-with-a-pencil",
     "title": "Sampling practical 1",
-    "section": "Estimating \\(\\widehat{P_a}\\) with a pencil",
-    "text": "Estimating \\(\\widehat{P_a}\\) with a pencil\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.\n\n\n\n\n\n\nPhoto by Shelby Cohron on Unsplash"
+    "section": "",
+    "text": "This exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided."
   },
   {
     "objectID": "Pr2/detnfns.html",
     "href": "Pr2/detnfns.html",
     "title": "Detection functions practical 2",
     "section": "",
-    "text": "Lecture slides for 05 March 2024"
+    "text": "Lecture slides for 05 March 2024\n\n\n\n\n\n\n\n\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\n\n\n\n\n\nPhoto by Freysteinn G. Jonsson on Unsplash\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit."
   },
   {
     "objectID": "Pr2/detnfns.html#estimating-density-of-duck-nests",
     "href": "Pr2/detnfns.html#estimating-density-of-duck-nests",
     "title": "Detection functions practical 2",
-    "section": "Estimating density of duck nests",
-    "text": "Estimating density of duck nests\nThe data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.\nYou will do some exploratory analysis of the detection distances, then use the function ds() to fit detection functions to the data. You’ll also use the function convert_units() for properly dealing with different units of measure in the data.\nThe estimated detection functions will be plotted and assessed for goodness of fit.\n\n\n\n\nPhoto by Freysteinn G. Jonsson on Unsplash"
+    "section": "",
+    "text": "The data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data."
   },
   {
     "objectID": "Pr2/Pr2-instructions.html",
@@ -130,14 +130,14 @@
     "href": "Pr3/criticism.html",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "Lecture slides for 06 March 2024"
+    "text": "Lecture slides for 06 March 2024\n\n\n\n\n\n\n\n\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird."
   },
   {
     "objectID": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
     "href": "Pr3/criticism.html#goodness-of-fit-and-model-selection",
     "title": "Model criticism practical 3",
-    "section": "Goodness of fit and model selection",
-    "text": "Goodness of fit and model selection\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Rmarkdown (.rmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.\n\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash"
+    "section": "",
+    "text": "This practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances."
   },
   {
     "objectID": "Pr3/modelsel-demo.html",
@@ -249,14 +249,14 @@
     "href": "Pr4/precision.html",
     "title": "Precision practical 4",
     "section": "",
-    "text": "Lecture slides for 07 March 2024"
+    "text": "Lecture slides for 07 March 2024\n\n\n\n\n\n\n\n\nThis exercise examines the ability to precisely estimate density from line transect data.\n\n\n\n\n\nPhoto by Andrea Sonda on Unsplash\nThe data are again simulated and there are two data sets. The first data set you will analyse has transects of varying lengths; increasing from west to east in the study area. In addition to this change in transect lengths, there is an accompanying gradient in animal density, decreasing from west to east. In combination, this leads to transects with very high encounter rates in the west and transects with very low encounter rates in the east.\nYou are to analyse these data in several ways, focusing your attention on the precision associated with each estimation method.\nThere is a second data set that shares the same survey design (short transects in the west, long transects in the east). But in this second data set, there in no accompanying animal density gradient. Perform similar analyses with this data set."
   },
   {
     "objectID": "Pr4/precision.html#precision-of-density-estimates",
     "href": "Pr4/precision.html#precision-of-density-estimates",
     "title": "Precision practical 4",
-    "section": "Precision of density estimates",
-    "text": "Precision of density estimates\nThis exercise examines the ability to precisely estimate density from line transect data.\nThe data are again simulated and there are two data sets. The first data set you will analyse has transects of varying lengths; increasing from west to east in the study area. In addition to this change in transect lengths, there is an accompanying gradient in animal density, decreasing from west to east. In combination, this leads to transects with very high encounter rates in the west and transects with very low encounter rates in the east.\nYou are to analyse these data in several ways, focusing your attention on the precision associated with each estimation method.\nThere is a second data set that shares the same survey design (short transects in the west, long transects in the east). But in this second data set, there in no accompanying animal density gradient. Perform similar analyses with this data set.\n\n\n\n\n\n\nPhoto by Andrea Sonda on Unsplash"
+    "section": "",
+    "text": "This exercise examines the ability to precisely estimate density from line transect data."
   },
   {
     "objectID": "Pr5/animal_distribution.html",
@@ -305,14 +305,14 @@
     "href": "Pr5/points.html",
     "title": "Point transects practical 5",
     "section": "",
-    "text": "Lecture slides for 08 March 2024"
+    "text": "Lecture slides for 08 March 2024\n\n\n\n\n\n\n\n\nHaving mastered analysis of line transect data, we move on to analysis of point transect data. These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.\n\n\n\n\n\nPhoto by Vincent van Zalinge on Unsplash\nAssessing fit to point transect data also represents a challenge. Consequently, we use plots of the probability density function to gain perspective regarding the influence of regions of the probability density function upon lack of fit.\nTwo data sets are to be analysed: the first is a simulated data set in which both the true shape of the detection function as well as true animal density is known. Fit various detection functions to these data, also examining the effect of truncation (truncation for points is often more severe than for lines) upon estimates. Look for congruence in density estimates–as you did with a similar exercise performed on simulated line transect data in Practical 3.\nFinally, there are two optional data sets of winter wrens collected by Prof. Buckland. Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the “snapshot” method."
   },
   {
     "objectID": "Pr5/points.html#analysis-of-point-transect-data",
     "href": "Pr5/points.html#analysis-of-point-transect-data",
     "title": "Point transects practical 5",
-    "section": "Analysis of point transect data",
-    "text": "Analysis of point transect data\nHaving mastered analysis of line transect data, we move on to analysis of point transect data. These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.\nAssessing fit to point transect data also represents a challenge. Consequently, we use plots of the probability density function to gain perspective regarding the influence of regions of the probability density function upon lack of fit.\nTwo data sets are to be analysed: the first is a simulated data set in which both the true shape of the detection function as well as true animal density is known. Fit various detection functions to these data, also examining the effect of truncation (truncation for points is often more severe than for lines) upon estimates. Look for congruence in density estimates–as you did with a similar exercise performed on simulated line transect data in Practical 3.\nFinally, there are two optional data sets of winter wrens collected by Prof. Buckland. Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the “snapshot” method.\n\n\n\n\n\n\nPhoto by Vincent van Zalinge on Unsplash"
+    "section": "",
+    "text": "Having mastered analysis of line transect data, we move on to analysis of point transect data. These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce."
   },
   {
     "objectID": "Pr5/Pr5-instructions.html",
@@ -368,14 +368,14 @@
     "href": "Pr6/design.html",
     "title": "Survey design practical 6",
     "section": "",
-    "text": "Lecture slides for 11 March 2024"
+    "text": "Lecture slides for 11 March 2024\n\n\n\n\n\n\n\n\nFundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.\n\n\n\n\n\nPhoto by ray rui on Unsplash\nIt is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.\nYou have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area."
   },
   {
     "objectID": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
     "href": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
     "title": "Survey design practical 6",
-    "section": "Designing surveys and determining effort to achieve objectives",
-    "text": "Designing surveys and determining effort to achieve objectives\nFundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.\nIt is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.\nYou have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.\n\n\n\n\n\n\n\n\n\n\nPhoto by ray rui on Unsplash"
+    "section": "",
+    "text": "Fundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort."
   },
   {
     "objectID": "Pr6/effort-and-power.html",
@@ -550,14 +550,14 @@
     "href": "Pr7/strata.html",
     "title": "Stratification practical 7",
     "section": "",
-    "text": "Lecture slides for 12 March 2024"
+    "text": "Lecture slides for 12 March 2024\n\n\n\n\n\n\n\n\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\n\n\n\n\n\nPhoto by Nick Fewings on Unsplash\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function."
   },
   {
     "objectID": "Pr7/strata.html#analysis-of-stratified-surveys-1",
     "href": "Pr7/strata.html#analysis-of-stratified-surveys-1",
     "title": "Stratification practical 7",
-    "section": "Analysis of stratified surveys",
-    "text": "Analysis of stratified surveys\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\n\n\n\n\n\n\nPhoto by Nick Fewings on Unsplash"
+    "section": "",
+    "text": "Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability."
   },
   {
     "objectID": "Pr7/stratumspecific-bias.html",
@@ -627,14 +627,14 @@
     "href": "Pr8/covariates.html",
     "title": "Covariates practical 8",
     "section": "",
-    "text": "Lecture slides for 13 March 2024"
+    "text": "Lecture slides for 13 March 2024\n\n\n\n\n\n\n\n\nIt is not just distance from the transect that influences the detectability of animals. In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.\n\n\n\n\n\nPhoto by Roman Mager on Unsplash\nThere are some situations in which covariates in addition to distance can be added to models of the detection function. One example of this is animal group size. It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population. By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size. The use of group size as a covariate is the recommended way to remove that bias.\nThis exercise presents three sets of data: Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning. Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes. Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata–we examine whether the geographic stratum effect can be modelled as a covariate."
   },
   {
     "objectID": "Pr8/covariates.html#covariates-in-detection-function",
     "href": "Pr8/covariates.html#covariates-in-detection-function",
     "title": "Covariates practical 8",
-    "section": "Covariates in detection function",
-    "text": "Covariates in detection function\nIt is not just distance from the transect that influences the detectability of animals. In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.\nThere are some situations in which covariates in addition to distance can be added to models of the detection function. One example of this is animal group size. It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population. By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size. The use of group size as a covariate is the recommended way to remove that bias.\nThis exercise presents three sets of data: Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning. Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes. Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata–we examine whether the geographic stratum effect can be modelled as a covariate.\n\n\n\n\n\n\nPhoto by Roman Mager on Unsplash"
+    "section": "",
+    "text": "It is not just distance from the transect that influences the detectability of animals. In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted."
   },
   {
     "objectID": "Pr8/Group-size-covariate.html",
@@ -858,14 +858,14 @@
     "href": "Pr9/multipliers.html",
     "title": "Multipliers practical 9",
     "section": "",
-    "text": "Lecture slides for 14 March 2024"
+    "text": "Lecture slides for 14 March 2024\n\n\n\n\n\n\n\n\nIt is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers.\n\n\n\n\n\nPhoto by Jamshaid Mughal on Unsplash\nThis exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier. There is a study of whale blows from a moving ship–effort is measured in units of time rather than distance. Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field."
   },
   {
     "objectID": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
     "href": "Pr9/multipliers.html#multipliers-and-indirect-surveys",
     "title": "Multipliers practical 9",
-    "section": "Multipliers and indirect surveys",
-    "text": "Multipliers and indirect surveys\nIt is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers.\nThis exercise presents data on a Sika deer dung study in southern Scotland, where data on dung disappearance needs to be analysed via logistic regression to produce the disappearance rate multiplier. There is a study of whale blows from a moving ship–effort is measured in units of time rather than distance. Finally, we return to the Montrave Estate study of Prof Buckland to estimate density of winter wrens via detections of song; necessitated because of evasive movement of winter wrens in the field.\n\n\n\n\n\n\nPhoto by Jamshaid Mughal on Unsplash"
+    "section": "",
+    "text": "It is potentially easier to estimate the density of things produced by animals (songs, dung, nests) than to estimate density of animals. In this situation, the calculated density of animal cues needs to be transformed into an estimate of animal density. This requires companion field investigations to estimate cue production rate and possibly, cue disappearance rate. Those rates are termed multipliers."
   },
   {
     "objectID": "Pr9/Pr9-instructions.html",

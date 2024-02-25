@@ -1,13 +1,10 @@
 ---
 title: Covariates practical 8
-image: covariates-unsplash.jpg
-about: 
-  template: solana
-  image-width: 500px
-  image-shape: rounded
-fontsize: "15px"
 ---
 
+:::: {.columns}
+
+::: {.column width='60%'}
 ::: {.callout-tip}
 ## Lecture slides for 13 March 2024
 
@@ -18,13 +15,20 @@ fontsize: "15px"
 
 It is not just distance from the transect that influences the detectability of animals.  In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.
 
+:::
+
+::: {.column width='40%'}
+![](covariates-unsplash.jpg)
+
+---
+<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Mager</a> on <a href="https://unsplash.com/s/photos/equations?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+:::
+
+::::
+
+
 There are some situations in which covariates in addition to distance can be added to models of the detection function.  One example of this is animal group size.  It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population.  By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size.  The use of group size as a covariate is the recommended way to remove that bias.
 
 This exercise presents three sets of data:  Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning.  Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes.  Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata--we examine whether the geographic stratum effect can be modelled as a covariate.
 
-<div style="position: relative; padding-bottom: 99.6309963099631%; height: 0;"><iframe src="https://www.loom.com/embed/6e0bfd582cb346ffb764038495351786?sid=c862ac0d-ba48-4522-b3ae-836e90ceaa39" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
----
-<p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Mager</a> on <a href="https://unsplash.com/s/photos/equations?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-  
-  
+<div style="position: relative; padding-bottom: 91.52542372881356%; height: 0;"><iframe src="https://www.loom.com/embed/284cd11a4394479b9ad7147fb6018683?sid=1dc9663c-d2f4-40f2-bc26-620a729436d5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>

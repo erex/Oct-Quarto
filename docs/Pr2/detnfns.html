@@ -33,6 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -173,26 +174,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#estimating-density-of-duck-nests" id="toc-estimating-density-of-duck-nests" class="nav-link active" data-scroll-target="#estimating-density-of-duck-nests">Estimating density of duck nests</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
-<div class="quarto-about-solana column-body">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Detection functions practical 2</h1>
 </div>
-<div class="quarto-title-meta">
-  </div>
-</header> 
-      <div class="about-contents"><main class="content" id="quarto-document-content">
 
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -203,33 +208,31 @@ Lecture slides for 05 March 2024
 </div>
 </div>
 <section id="detection-functions" class="level3 callout-body-container callout-body">
-<h3 data-anchor-id="detection-functions"><a href="../lectures/BlockB-22.pdf">Detection functions</a></h3>
+<h3 class="anchored" data-anchor-id="detection-functions"><a href="../lectures/BlockB-22.pdf">Detection functions</a></h3>
 </section>
 </div>
 <section id="estimating-density-of-duck-nests" class="level2">
-<h2 data-anchor-id="estimating-density-of-duck-nests">Estimating density of duck nests</h2>
+<h2 class="anchored" data-anchor-id="estimating-density-of-duck-nests">Estimating density of duck nests</h2>
 <p>The data are the famous “ducknest” data similar to those data described by Anderson and Pospahala (1970). Data exist within the Distance package, so emphasis will be upon performing analysis rather than acquiring data.</p>
-<p>You will do some exploratory analysis of the detection distances, then use the function <code>ds()</code> to fit detection functions to the data. You’ll also use the function <code>convert_units()</code> for properly dealing with different units of measure in the data.</p>
-<p>The estimated detection functions will be plotted and assessed for goodness of fit.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/JBVfKf73O_U" title="`" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<!--
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JBVfKf73O_U?si=XrItFfx_POC6ZxEw" title="Eric experiments with Loom and embed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div style="position: relative; padding-bottom: 95.23809523809523%; height: 0;"><iframe src="https://www.loom.com/embed/4394ad0dcdea40a39de3d5141676ae45?sid=90029fea-3169-4b34-9324-03e8e1be8ecc" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
--->
+</section>
+</div><div class="column" style="width:40%;">
+<p><img src="nest-unsplash.jpg" class="img-fluid"></p>
 <hr>
 <p style="font-size: x-small; text-align:right">
 Photo by <a href="https://unsplash.com/@freys?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Freysteinn G. Jonsson</a> on <a href="https://unsplash.com/s/photos/duck-nests?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>
 </p>
-
-
-</section>
-</main></div>
-    </div>
-    <img src="nest-unsplash.jpg" class="about-image
-  rounded " style="width: 500px;">
-  </div>
 </div>
- <!-- /main -->
+</div>
+<p>You will do some exploratory analysis of the detection distances, then use the function <code>ds()</code> to fit detection functions to the data. You’ll also use the function <code>convert_units()</code> for properly dealing with different units of measure in the data.</p>
+<p>The estimated detection functions will be plotted and assessed for goodness of fit.</p>
+<div style="position: relative; padding-bottom: 101.50375939849626%; height: 0;">
+<iframe src="https://www.loom.com/embed/35b051a5aa5e401099748a56a81277b8?sid=55dad41f-7c11-4925-bbd4-410c5f9dcb54" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+</iframe>
+</div>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -250,6 +253,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

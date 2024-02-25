@@ -1,13 +1,10 @@
 ---
 title: Stratification practical 7
-image: strata-unsplash.jpg
-about: 
-  template: solana
-  image-width: 500px
-  image-shape: rounded
-fontsize: "15px"
 ---
 
+:::: {.columns}
+
+::: {.column width='60%'}
 ::: {.callout-tip}
 ## Lecture slides for 12 March 2024
 
@@ -19,12 +16,19 @@ fontsize: "15px"
 Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.
 
 Multiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.
+:::
 
-Employing an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.
-
-<div style="position: relative; padding-bottom: 99.6309963099631%; height: 0;"><iframe src="https://www.loom.com/embed/3f56fcd5e38f462e8ecaf36b4f6c53b6?sid=cd2661fe-f923-4405-8f62-ac51d680bba8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+::: {.column width='40%'}
+![](strata-unsplash.jpg)
 
 ---
 <p style="font-size: x-small; text-align:right">Photo by <a href="https://unsplash.com/@jannerboy62?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Nick Fewings</a> on <a href="https://unsplash.com/s/photos/strata?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-  
-  
+:::
+
+::::
+
+
+
+Employing an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.
+
+<div style="position: relative; padding-bottom: 90.15025041736227%; height: 0;"><iframe src="https://www.loom.com/embed/4390a998fc1f42c4b0af1f0545bf4d27?sid=4df8980a-07a0-4ddf-a3ae-57eb12effede" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
