@@ -96,7 +96,6 @@ website:
         - Pr9/Pr9-instructions.qmd
         - Pr9/multi-analysis.qmd
         - Pr9/countmodel-lines.qmd
-        - Pr9/countmodel-points.qmd
         - Pr9/Prac9_solution.qmd
         
     - title: "Extras"

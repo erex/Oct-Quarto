@@ -6,9 +6,7 @@ bibliography: referencesglm.bib
 csl: apa.csl
 ---
 
-```{r}
-#| label = "setup",
-#| include = FALSE
+```{r setup, include=FALSE}
 library(knitr)
 library(tidyverse)
 library(patchwork)
@@ -27,8 +25,7 @@ opts_knit$set(width=105)
 
 Investigators often wish to make inferences from their surveys beyond simply reporting "What is the animal density?" Ecological curiosity desires answers to questions such as
 
-> What effect does change in habitat characteristic X have upon animal
-> density?
+> What effect does change in habitat characteristic X have upon animal density?
 
 Answers to such questions are sought through use of generalised linear modelling (of which analysis of variance and regression are subsets). However, simple modelling of counts fails to take into account imperfect detectability. When detectability is imperfect, the response variable possesses uncertainty derived from uncertainty in the probability of detection.
 
@@ -65,7 +62,7 @@ We present an example of such an analysis, using data from the package `RDistanc
 
 Before walking through the code, we provide some guidance regarding adaptation of this approach for your data.  The code is not sufficiently modularised so that you can merely slot your data into a function.  There are matters to consider regarding data organisation, naming of data frame columns, choice of detection functions to fit and specification of count model used for inference.  These points are summarised in the box below.
 
-:::{.callout-important}
+::: {.callout-important}
 **Programming details to adapt for your use**
 
 - Check the data organisation
@@ -86,98 +83,121 @@ Before walking through the code, we provide some guidance regarding adaptation o
 
 # Analysis of line transect survey
 
-```{r}
-#| label = "loaddata"
+```{r loaddata}
 library(Rdistance)
 data("sparrowDetectionData")
 data("sparrowSiteData")
 sparrowSiteData$myCount <- tapply(sparrowDetectionData$groupsize,
-                                  sparrowDetectionData$siteID, sum)
+                                  sparrowDetectionData$siteID, length)
 sparrowSiteData$myCount[is.na(sparrowSiteData$myCount)] <- 0
 library(Distance)
 ```
 
 ## Data organisation
 
-In Carlisle's data set, sightings information is kept separate from
-information about each site. For our purposes, we will merge those
-together. In addition, some field names are changed for consistency with
-functions in the `Distance` package.
+In Carlisle's data set, sightings information is kept separate from information about each site. For our purposes, we will merge those together. In addition, some field names are changed for consistency with functions in the `Distance` package.
 
-```{r}
-#| label = "dataorg"
+```{r dataorg}
 newsparrow <- merge(sparrowDetectionData, sparrowSiteData, by="siteID", all=TRUE)
 names(newsparrow) <- sub("observer", "obs", names(newsparrow))
 names(newsparrow) <- sub("dist", "distance", names(newsparrow))
 names(newsparrow) <- sub("length", "Effort", names(newsparrow))
+newsparrow$distance <- as.numeric(newsparrow$distance)
+newsparrow$Effort <- as.numeric(newsparrow$Effort)
 ```
 
 ## Analysis parameters specification
 
 Although not formally written as a set of functions, we bring to the front of the code arguments the user will need to change to alter to suite their needs.  Candidate transect-level predictors for the detection function are **`r names(sparrowSiteData)[3:8]`**.  The same predictors, with the exception of **observer** could be used to model the sparrow counts.
 
-:::{.callout-warning}
-```{r}
-#| label = "mandatory",
+:::{.callout-important}
+```{r mandatory}
+alpha <- 0.05          # type I error rate for confidence intervals
 pointtransect <- FALSE        # survey conducted using lines or points
 dettrunc <- 100  # truncation for detection function
+transect.length <- newsparrow$Effort[1] # each transect the same length
+meterstohectares <- 10000
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 500       # number of bootstrap replicates
-set.seed(19191)   # random number seed
+nboot <- 50       # number of bootstrap replicates
+set.seed(255992)   # random number seed
 ```
-
 :::
 
 ## Fit detection function 
 
 We fit a series of detection function models using the transect-level covariates available in the Brewer's sparrow data set.
 
-```{r}
-#| label = "detfn"
+```{r detfn}
 surveytype <- ifelse(pointtransect, "point", "line")
 woo.o <- ds(data=newsparrow, truncation=dettrunc, formula=~obs, 
             transect=surveytype, quiet=TRUE)
-woo.obare <- ds(data=newsparrow, truncation=dettrunc, formula=~obs+scale(bare),
+woo.bare <- ds(data=newsparrow, truncation=dettrunc, formula=~bare,
                 transect=surveytype, quiet=TRUE)
-woo.oht <- ds(data=newsparrow, truncation=dettrunc, formula=~obs+scale(height), 
-             transect=surveytype, quiet=TRUE)
-woo.oshrc <- ds(data=newsparrow, truncation=dettrunc, formula=~obs+shrubclass, 
-             transect=surveytype, quiet=TRUE)
-woo.ht <- ds(data=newsparrow, truncation=dettrunc, formula=~scale(height), 
+woo.ht <- ds(data=newsparrow, truncation=dettrunc, formula=~height, 
              transect=surveytype, quiet=TRUE)
 woo.shrc <- ds(data=newsparrow, truncation=dettrunc, formula=~shrubclass, 
             transect=surveytype, quiet=TRUE)
-woo.shrub <- ds(data=newsparrow, truncation=dettrunc, formula=~scale(shrub), 
+woo.shrub <- ds(data=newsparrow, truncation=dettrunc, formula=~shrub, 
             transect=surveytype, quiet=TRUE)
 woo <- ds(data=newsparrow, truncation=dettrunc, formula=~1, 
           transect=surveytype, quiet=TRUE)
-knitr::kable(summarize_ds_models(woo.o,  woo.obare, woo.oht, woo.oshrc,
+knitr::kable(summarize_ds_models(woo.o,  woo.bare,
                                  woo.ht, woo.shrc, woo.shrub, woo), digits=3, 
              caption="Halfnormal detection function model selection of covariates.", row.names = FALSE)
+winner <- woo.bare
+
 ```
 
-All of the candidate models fit the Brewer's sparrow line transect data.  Also note that the estimate detection probability of all six models is the same to the third decimal.  There is a small difference in AIC between the factor covariate `shrubclass` and the continuous covariate `height`.  Simply for the purposes of demonstration, we will base our inference on the detection function that includes `observer` as a covariate.  There is likely little effect of this model selection choice upon the ecological question of interest.
+All of the candidate models fit the Brewer's sparrow line transect data.  Also note that the estimate detection probability of all six models is the same to the third decimal.  The detection function model using bare ground as a predictor is slightly favoured by AIC; we will base our inference on the detection function that includes `bare` as a covariate.  There is likely little effect of this model selection choice upon the ecological question of interest.
 
 ### Plot of detection function
 
-```{r}
-#| label = "detfnploto",
-#| echo = TRUE,
-#| eval = TRUE
-plot(woo.o, showpoints=FALSE, main="Brewer's sparrow\nDetection with observer covariate",
-     pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs1"), col="red", lwd=2, lty=1, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs2"), col="green", lty=1, lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs3"), col="dark green", lty=1, lwd=2, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs4"), col="blue", lwd=2, lty=1, pdf=pointtransect) 
-add_df_covar_line(woo.o, data.frame(obs="obs5"), col="purple", lty=1, lwd=2, pdf=pointtransect)
-legend("topright", title="Observer", legend=1:5,
-       lwd=2, lty=1, col=c("red", "green", "dark green", "blue", "purple"))
+```{r detfnplot, echo=TRUE, eval=TRUE}
+if(winner$ddf$ds$aux$ddfobj$scale$formula == "~obs") {
+  plot(woo.o, showpoints=FALSE, main="Brewer's sparrow\nDetection with observer covariate", pdf=pointtransect) 
+  add_df_covar_line(woo.o, data.frame(obs="obs1"), col="red", lwd=2, lty=1, pdf=pointtransect) 
+  add_df_covar_line(woo.o, data.frame(obs="obs2"), col="green", lwd=2, lty=1, pdf=pointtransect) 
+  add_df_covar_line(woo.o, data.frame(obs="obs3"), col="darkgreen", lwd=2, lty=1, pdf=pointtransect) 
+  add_df_covar_line(woo.o, data.frame(obs="obs4"), col="blue", lwd=2, lty=1, pdf=pointtransect) 
+  add_df_covar_line(woo.o, data.frame(obs="obs5"), col="purple", lwd=2, lty=1, pdf=pointtransect)
+  legend("topright", title="Observer", legend=1:5,
+         lwd=2, lty=1, col=c("red", "green", "darkgreen", "blue", "purple"))
+} else if(winner$ddf$ds$aux$ddfobj$scale$formula == "~bare") {
+  plot(woo.bare, showpoints=FALSE, main="Brewer's sparrow\nDetection with bare ground covariate", pdf=pointtransect) 
+  quantvals <- quantile(sparrowSiteData$bare, probs = c(0.25, 0.5, 0.75))
+  add_df_covar_line(woo.bare, data.frame(bare=quantvals[1]), col="red", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.bare, data.frame(bare=quantvals[2]), col="darkgreen", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.bare, data.frame(bare=quantvals[3]), col="blue", lwd=2, lty=1, pdf=pointtransect)
+  legend("topright", title="Bare ground", legend=quantvals,
+         lwd=2, lty=1, col=c("red", "green", "blue"))
+} else if(winner$ddf$ds$aux$ddfobj$scale$formula == "~height") {
+  plot(woo.ht, showpoints=FALSE, main="Brewer's sparrow\nDetection with shrub height covariate", pdf=pointtransect) 
+  threeheights <- quantile(sparrowSiteData$height, probs = c(0.25, 0.5, 0.75))
+  add_df_covar_line(woo.ht, data.frame(height=threeheights[1]), col="red", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.ht, data.frame(height=threeheights[2]), col="darkgreen", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.ht, data.frame(height=threeheights[3]), col="blue", lwd=2, lty=1, pdf=pointtransect)
+  legend("topright", title="Shrub height", legend=threeheights,
+         lwd=2, lty=1, col=c("red", "green", "blue"))
+} else if(winner$ddf$ds$aux$ddfobj$scale$formula == "~shrubclass") {
+  plot(woo.shrc, showpoints=FALSE, main="Brewer's sparrow\nDetection with shrub height class covariate", pdf=pointtransect) 
+  add_df_covar_line(woo.shrc, data.frame(shrubclass="Low"), col="red", lwd=2, lty=1, pdf=pointtransect) 
+  add_df_covar_line(woo.shrc, data.frame(shrubclass="High"), col="green", lwd=2, lty=1, pdf=pointtransect) 
+  legend("topright", title="Shrub height class", legend=c("Low", "High"),
+         lwd=2, lty=1, col=c("red", "green"))
+} else if(winner$ddf$ds$aux$ddfobj$scale$formula == "~shrub") {
+  plot(woo.shrc, showpoints=FALSE, main="Brewer's sparrow\nDetection with percent shrub covariate", pdf=pointtransect) 
+  quantvals <- quantile(sparrowSiteData$shrub, probs = c(0.25, 0.5, 0.75))
+  add_df_covar_line(woo.shrub, data.frame(shrub=quantvals[1]), col="red", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.shrub, data.frame(shrub=quantvals[2]), col="darkgreen", lwd=2, lty=1, pdf=pointtransect)
+  add_df_covar_line(woo.shrub, data.frame(shrub=quantvals[3]), col="blue", lwd=2, lty=1, pdf=pointtransect) 
+  legend("topright", title="Shrub cover", legend=quantvals,
+         lwd=2, lty=1, col=c("red", "green"))
+}
 ```
 
 ## Prepare for GLM computation
 
-Considerable processing is necessary to correctly calculate the offset value for the GLM.  The offset is the effective area sampled by each transect.  Effective area $(EA)$ is computed differently, depending upon whether sampling was done with line or point transects.  
+Considerable processing is necessary to correctly calculate the offset value for the GLM.  The offset is the effective area sampled by each transect.  Effective area $(EA)$ is computed differently, depending upon whether sampling was done with line or point transects.
 
 - For line transects the computation uses the effective strip half-width $(ESW)$ multiplied by 2 (for each side of the transect), multiplied by the transect length.  $ESW$ is derived for each detection by acquiring the detection probability for the detection from the fitted detection function object `detfnobj$ddf$fitted`.  However a detection probability is only computed for detections at distances less than the truncation distance; so some coding is required to deal with detections beyond the truncation distance.  $ESW$ is derived from $P_a$ as $P_a \cdot w$ where $w$ is the truncation distance.
 - For point transects, effective area is computed as $\pi \cdot P_a \cdot w^2$.  This value is returned directly when the `predict()` function is used, but is derived by calculation from the fitted detection function object `detfnobj$ddf$fitted` for each detection.
@@ -186,58 +206,54 @@ There is also a distinction between line and point transect computations regardi
 
 Because only need transect level information, the observation-level information can be removed, to make computation easier.  However, transects on which animals were not detected (counts=0) must also be carried forward to the GLM analysis; because 0's constitute legitimate observations.  If the offset values remained missing values (NA), the relationship between animal density and the predictor covariate(s) would not be properly estimated.
 
-```{r}
-#| label = "trimdata"
-effAreafn <- function(detfnobj, newdata, areaconv, truncation, pointflag) {
-#
-# Input: detfnobj - model object created by `ds()`
-#        newdata - data frame of detections and site-level covariates
-#        areaconv - conversion of transect length units to area units (m2 to ha for example)
-#        truncation - truncation distance for detection function fit
-#        pointflag - TRUE if point transect survey, FALSE for line transects
-#
-# Output: data frame of transects with effective area appended for each transect (to be used as offset)
-#
-  newdata$Pa <- NA
-  k <- 0
-  for (i in 1:dim(newdata)[1]) {
-    if(newdata[i, "distance"] <= truncation & !is.na(newdata[i,"distance"])) {
-      k <- k+1
-      newdata$Pa[i] <- detfnobj$ddf$fitted[k]
-    }
-  }
-  if(!pointflag) {
-    newdata$effArea <- ifelse(is.na(newdata$Pa), NA, 2 * newdata$Pa * truncation * newdata$Effort / areaconv)
-  }else{
-    newdata$effArea <- ifelse(is.na(newdata$Pa), NA, newdata$Pa * truncation^2 * pi / areaconv)
-  }
-  result <- newdata[!duplicated(newdata$siteID),]
-#    newdata must contain all covariates used in the detection function!  
-  if(!pointflag) {
-#     predict for line transects when esw=TRUE returns the ESW that needs to be converted to effective area    
-    result$effArea <- ifelse(result$myCount==0,
-                              2 * predict(detfnobj, 
-                                          newdata=data.frame(obs=result$obs, bare=result$bare,
-                                                             herb=result$herb, shrub=result$shrub,
-                                                             height=result$height),
-                                          esw = TRUE)$fitted * result$Effort / areaconv,
-                              result$effArea)
-  }else{
-#     predict for point transects when esw=TRUE returns the effective area    
-    result$effArea <- ifelse(result$myCount==0,
-                              predict(detfnobj, 
-                                          newdata=data.frame(obs=result$obs, bare=result$bare,
-                                                             herb=result$herb, shrub=result$shrub,
-                                                             height=result$height),
-                                          esw = TRUE)$fitted / areaconv,
-                              result$effArea)
-    
-  }
-  return(result)
-}
-
-sitesadj <- effAreafn(woo.o, newsparrow, 10000, dettrunc, pointflag = FALSE)
+```{r transect_effarea}
+sparrowSiteData$effArea <- 2*predict(winner,newdata=data.frame(obs=sparrowSiteData$obs, 
+                                                               bare=sparrowSiteData$bare,
+                                                               herb=sparrowSiteData$herb, 
+                                                               shrub=sparrowSiteData$shrub,
+                                                               height=sparrowSiteData$height, 
+                                                               shrubclass=sparrowSiteData$shrubclass),
+                            esw=TRUE)$fitted*transect.length/meterstohectares
+sitesadj <- sparrowSiteData
 ```
+
+## Digression for computing Effective Area
+
+I could not convince `predict.ds()` to behave, so I reverted to first principles. In the function below, I "manually" compute the detection function in the presence of a covariate, demonstrated in the code as `shrub` as if `shrub` was the covariate in the detection function. Effective strip width is computed for each transect (below) by integrating this function at the specified level of the covariate for each transect.
+
+```{r detectionfunction}
+gz<-function(z,
+             beta, sigintercept, sigcoef, DistWin,
+             key="HR", w=max(z), predictor){
+#this is a generic detection function that returns the probability of detecting an animal
+#    z               generic distance (perpendicular) - can be scalar or vector
+#    beta            shape coefficient
+#    sigintercept  intercept coefficient for sigma
+#    sigcoef         coefficient for specific factor level
+#    key             the detection function key, works for hazard rate and half normal
+#    w               truncation distance, by default the max of the distances
+#    predictor     the covariate within the detection function influencing sigma
+#
+#RETURNS: a probability
+  
+  if(key != "HN" & key != "HR") {
+    stop("Argument 'key' must be either HN or HR")
+  }
+  sigma <- exp(sigintercept + sigcoef*predictor)
+  exponent <- exp(beta)
+  if(key=="HR") {
+    scale.dist <- z/sigma
+    inside <- -(scale.dist)^(-exponent)
+    gx <- 1 - exp(inside)
+  } else {
+    scale.dist <- z  # debatably don't scale for half normal
+    inside <- -(scale.dist^2/(2*sigma^2))
+    gx <- exp(inside)
+  }
+  return(gx)
+}
+```
+
 
 ## Estimate relationship of density and covariate
 
@@ -246,9 +262,7 @@ Fit a GLM to the observed counts, using as an offset the estimated effective are
 To generalise the code, and recognising the same call to `glm()` will need to be made elsewhere in this analysis, we specify the GLM model we wish to fit as an object of type `formula`. This was specified in the [Analysis parameters specification](#analysis-parameters-specification) section above.
 
 
-```{r}
-#| label: "tbl-basicglmline"
-#| tbl-cap: "GLM model output"
+```{r tbl-basicglmline}
 univarpredictor <- all.vars(myglmmodel)[2]
 glmmodel <- glm(formula=myglmmodel, family="poisson", data=sitesadj)
 modelsum <- summary(glmmodel)
@@ -266,49 +280,53 @@ where $EA_i$ is the effective area for the $i^{th}$ transect, describes this adj
 
 We plot the estimated density against the continuous univariate predictor.
 
-```{r}
-#| label = "estDensity",
-#| echo = -3,
-#| fig.show = "hide",
-#| eval = TRUE
+```{r estDensity, eval=TRUE}
 sitesadj$density <- sitesadj$myCount / sitesadj$effArea 
-# plot(sitesadj[, univarpredictor], sitesadj$density, pch=20,
-#      xlab=univarpredictor, ylab="Density of sparrows per ha")
-# firstplot <- recordPlot()
 ```
 
-<!-- Next we superimpose the shape of the relationship derived from the estimated coefficients of the GLM.  We are effectively creating our own version of `predict` on the scale of the response by exponentiating the predicted value of density over the observed range of the continuous univariate predictor. -->
 
 ## Incorporate uncertainty
 
 We resample our transects with replacement to assess the uncertainty in our point estimates of the relationship between the habitat covariate and the response variable. Specify the number of bootstrap resamples required and allocate storage for the replicate estimates of the GLM parameters: intercept and slope.
 
-```{r}
-#| label = "bootsetup"
+```{r bootsetup}
 intercept.est <- vector("numeric", length=nboot)
 slope.est <- vector("numeric", length=nboot)
 ```
 
-Specify the original site data frame `sparrowSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Brewer's sparrow density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in @tbl-basicglmline because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in @tbl-basicglmline.
+Specify the original site data frame `sparrowSiteData` in the following code.  The code will harvest the estimated slope and intercept coefficients from each replicate.  It is uncertainty in the slope coefficient ($\widehat{\beta_1}$) that determines our inference about the effect of shrub cover upon Brewer's sparrow density.  The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in  @tbl-basicglmline because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in @tbl-basicglmline.
 
-```{r}
-#| label = "bootstrapline"
+```{r bootstrapline}
+num.transects <- dim(sparrowSiteData)[1]
 for (theboot in 1:nboot) {
   newdetects <- data.frame() 
   bob <- sample(sparrowSiteData$siteID, replace=TRUE, size=length(unique(sparrowSiteData$siteID)))
+#  print(unique(bob))
   for (bootsite in 1:length(bob)) { 
     thissite <- bob[bootsite] 
     glob <- newsparrow[newsparrow$siteID==thissite, ]
     glob$siteID <- sprintf("rep%02d", bootsite)
     newdetects <- rbind(newdetects, glob)  
-    }
+  }
   newdetects <- newdetects[order(newdetects$siteID), ]
 # Refit the detection function model, using observer as a covariate, to the bootstrap replicate
-  detfnmod <- ds(data=newdetects, truncation=dettrunc, formula=~obs, quiet=TRUE)
+  detectcovar <- as.formula(winner$ddf$ds$aux$ddfobj$scale$formula)
+  detfnmod <- ds(data=newdetects, truncation=dettrunc, formula=detectcovar, quiet=TRUE, optimizer = "R")
 #  Compute effective area offset for each transect
-  bootsitesadj <- effAreafn(detfnmod, newdetects, 10000, dettrunc, pointflag = FALSE)
+#  09Mar24 simplify to just transect-level data
+  newtransects <- newdetects[!duplicated(newdetects$siteID), ]
+  esw <- vector(mode="numeric", length=num.transects)
+  hold <- detfnmod$ddf$par
+  for (transect in 1:num.transects) { 
+    esw[transect] <- integrate(gz, lower=0, upper=dettrunc, key="HN", 
+                               beta=0, sigintercept = hold[1], 
+                               sigcoef = hold[2], DistWin=FALSE, 
+                               predictor=newtransects[transect, substr(winner$ddf$ds$aux$ddfobj$scale$formula, 2,10)])$value
+  }
+#   If point transects, use effArea =  2 * esw * pi * truncation^2  
+  newtransects$effArea <- 2 * esw * transect.length/meterstohectares
 #   refit the GLM for this bootstrap replicate
-  glmresult <- glm(formula= myglmmodel, family="poisson", data=bootsitesadj)
+  glmresult <- glm(formula= myglmmodel, family="poisson", data=newtransects)
   intercept.est[theboot] <- coef(glmresult)[1]
   slope.est[theboot] <- coef(glmresult)[2] 
 }
@@ -321,13 +339,9 @@ Code below creates a comprehensive figure of the findings.  Steps include
 - plot the estimated relationship, all bootstrap replicate relationships and the confidence intervals,
 - insets sampling distribution of ($\widehat{\beta_1}$) and places a confidence interval on the point estimate of ($\widehat{\beta_1}$).
 
-```{r}
-#| label = "grandplot",
-#| column = "body-outset",
-#| fig.cap = "Relationship between univariate predictor and Brewer's sparrow density as modelled by GLM.  Offset is  estimated covered area. Confidence intervals incorporate  uncertainty from imperfect detectability. Inset is sampling  distribution of the parameter of interest for Brewer's sparrow.",
-#| fig.height = 5.5
+```{r grandplot, fig.cap="Relationship between univariate predictor and Brewer's sparrow density as modelled by GLM.  Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Brewer's sparrow.", fig.width=11, fig.height=7}
 predData <- data.frame(predictor=seq(min(sparrowSiteData[ , univarpredictor]),
-                                 max(sparrowSiteData[, univarpredictor]), length.out=50)) 
+                                 max(sparrowSiteData[, univarpredictor]), length.out=100)) 
 orig.fit <- data.frame(x=predData$predictor, 
                        y=exp(coef(glmmodel)[1] + (coef(glmmodel)[2]*predData$predictor)))
 # long form data frame of all replicate predicted values
@@ -339,7 +353,6 @@ for (i in 1:nboot) {
 big.df <- data.frame(predict=longform)
 big.df$shrub <- predData$predictor
 big.df$group <- rep(1:nboot, each=length(predData$predictor))
-alpha <- 0.05
 # point-wise confidence intervals
 quants <- big.df %>% 
   group_by(shrub) %>% 
@@ -352,20 +365,21 @@ b1label <- bquote(~widehat(beta[1]) == .(round(coef(glmmodel)[2],4)))
 fig1 <- ggplot(dat=sitesadj, aes(shrub, density)) +
   geom_point() +
   geom_line(aes(y=predict, group=group), big.df, alpha=0.1) + 
-  geom_line(aes(y=y, x=x), orig.fit, colour="red", linewidth=2) +
-  geom_line(aes(y=value, group=stat), quants, col='blue', linewidth=1) +
+  geom_line(aes(y=y, x=x), orig.fit, colour="red", size=2) +
+  geom_line(aes(y=value, group=stat), quants, col='blue', size=1) +
   annotate(geom="text", x=20, y=0.6, label= b0label, size=5) +
   annotate(geom="text", x=20, y=0.3, label= b1label, size=5) +
   labs(x="Percent shrub cover", y="Estimate bird density (per ha)",
-       title="Brewer's sparrow density as function of shrub cover") +
+       title="Brewer's sparrow density as function of shrub cover",
+       subtitle=paste0("Detection function model includes ", as.character(detectcovar)[2])) +
   theme_bw()
 # inset histogram for sampling distribution
 bounds <- quantile(slope.est, probs = c(alpha/2, 1-alpha/2))
-fig2 <- ggplot() + aes(x=slope.est) + geom_histogram(binwidth = .005) +
+fig2 <- ggplot() + aes(x=slope.est) + geom_histogram() +
   geom_vline(xintercept=bounds, size=1) +
   labs(x="Estimate of slope", y="Frequency") +
-  annotate(geom="text", x=.025, y=11, label=round(bounds[1],3)) +
-  annotate(geom="text", x=.13, y=11, label=round(bounds[2],3)) 
+  annotate(geom="text", x=bounds[1]-.01, y=11, label=round(bounds[1],3)) +
+  annotate(geom="text", x=bounds[2]+.01, y=11, label=round(bounds[2],3)) 
 complete <- fig1 + inset_element(fig2, right=.5, bottom=.4, left=.01, top=.99)
 complete
 ```
@@ -374,9 +388,7 @@ complete
 
 To assess the effect of the transect-level environmental covariate upon bird density, we focus our attention on $\hat{\beta_1}$.  The greater in magnitude the slope of the covariate, the greater the effect of the covariate upon animal density.  If the estimated slope ($\hat{\beta_1}$) is indistinguishable from zero, we infer the habitat covariate has no influence upon animal density. For the habitat characteristic `shrub`, there is a positive response of Brewer's sparrow to increasing shrub cover.
 
-```{r}
-#| label = "slope",
-#| fig.cap = "Sampling distribution of the parameter of interest for Brewer's sparrow."
+```{r slope, fig.cap="Sampling distribution of the parameter of interest for Brewer's sparrow.", eval=FALSE, echo=FALSE}
 xlabel <- paste("Estimated slope of", univarpredictor, "and count relationship.")
 hist.slope <- hist(slope.est, main="Sampling distribution of slope parameter",
                    xlab=xlabel) 
