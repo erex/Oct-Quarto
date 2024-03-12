@@ -42,6 +42,7 @@ Moving the `encounter rate` slider shows that as encounter rate increases, the n
 Awards are not given for conducting a survey resulting in a density estimate with a give level of precision, say a CV=0.18.  A more telling measure of a survey's potential value is the probability that it can detect change (given the change has occurred).  In statistical parlance, this is called power (probability of rejecting an hypothesis given it is false).  We will focus upon detection of temporal change for the remainder of this document.
 
 Tim @gerrodette1987 first investigated this question in the context of animal populations.  I won't describe the details of his investigations other than to say I have code a portion of his work into the Shiny application below.  The scenario I have included has
+
 - a linear (rather than exponential) change in population size over time and
 - relationship between abundance and precision remaining the same as abundance changes (distance sampling is consistent with this assumption).
 
