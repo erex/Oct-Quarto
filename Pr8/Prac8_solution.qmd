@@ -343,12 +343,9 @@ hessian <- Savannah_sparrow_1981.hn.region$ddf$hessian
 temp <- round(diag(diag(sqrt(diag(solve(hessian))))),3)
 pasture.sigma <- vector(mode="numeric", length=4)
 pasture.sigma[1] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1])
-pasture.sigma[2] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
-                        Savannah_sparrow_1981.hn.region$ddf$par[2])
-pasture.sigma[3] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
-                        Savannah_sparrow_1981.hn.region$ddf$par[3])
-pasture.sigma[4] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
-                        Savannah_sparrow_1981.hn.region$ddf$par[4])
+for( i in c(2,3,4) ) {
+  pasture.sigma[i] <- exp(pasture.sigma[1] + Savannah_sparrow_1981.hn.region$ddf$par[i])
+}
 parms <- data.frame(est=round(Savannah_sparrow_1981.hn.region$ddf$par,3),
                     se=temp, sigma=round(pasture.sigma,0))
 rownames(parms) <- c("b0", "b1", "b2", "b3")
