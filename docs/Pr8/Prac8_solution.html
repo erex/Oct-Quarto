@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-12-14">
+<meta name="dcterms.date" content="2024-03-13">
 
 <title>Distance sampling workshop - Covariates in the detection function solution</title>
 <style>
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,48 +49,20 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -129,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -138,15 +116,44 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
-
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -155,106 +162,116 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Distance sampling workshop</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html"> 
+<span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html"> 
+<span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html"> 
+<span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html"> 
+<span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html"> 
+<span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link" href="../Pr6/design.html"> 
+<span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html"> 
+<span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link active" href="../Pr8/covariates.html" aria-current="page"> 
+<span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link" href="../Pr9/multipliers.html"> 
+<span class="menu-text">Multipliers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html"> 
+<span class="menu-text">Extras</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Covariates in the detection function <strong>solution</strong></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pr8/Prac8_solution.html">Covariates in the detection function <strong>solution</strong></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr8/covariates.html" class="sidebar-item-text sidebar-link">Covariates practical 8</a>
+  <a href="../Pr8/covariates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Covariates practical 8</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr8/Pr8-instructions.html" class="sidebar-item-text sidebar-link">Covariates in detection function model</a>
+  <a href="../Pr8/Group-size-covariate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Size bias—how large is the problem?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr8/Group-size-covariate.html" class="sidebar-item-text sidebar-link">Size bias—how large is the problem?</a>
+  <a href="../Pr8/Pr8-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Covariates in detection function model</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">Other model selection metrics</a>
+  <a href="../Pr8/alternative-selection-metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Other model selection metrics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr8/Prac8_solution.html" class="sidebar-item-text sidebar-link active">Covariates in the detection function <strong>solution</strong></a>
+  <a href="../Pr8/Prac8_solution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Covariates in the detection function <strong>solution</strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -276,7 +293,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Covariates in the detection function <strong>solution</strong></h1>
+<h1 class="title">Covariates in the detection function <strong>solution</strong></h1>
 </div>
 
 
@@ -293,7 +310,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 14, 2022</p>
+      <p class="date">March 13, 2024</p>
     </div>
   </div>
   
@@ -301,14 +318,16 @@ div.csl-indent {
   </div>
   
 
+
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 </div>
@@ -325,53 +344,55 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(amakihi<span class="sc">$</span>distance, <span class="at">xlab=</span><span class="st">"Radial distances (m)"</span>, <span class="at">main=</span><span class="st">"Amakihi point transect data."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>A truncation distance of 82.5 m was chosen by <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
 <p>Plots of the covariates were generated. Not surprisingly, <code>MAS</code> and <code>HAS</code> are correlated and so we need to be cautious of including them in the same model.</p>
-<div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>OBs, <span class="at">xlab=</span><span class="st">"Observer"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(amakihi<span class="sc">$</span>distance<span class="sc">~</span>amakihi<span class="sc">$</span>HAS, <span class="at">xlab=</span><span class="st">"Hour"</span>, <span class="at">ylab=</span><span class="st">"Distance (m)"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>amakihi<span class="sc">$</span>MAS, <span class="at">y=</span>amakihi<span class="sc">$</span>distance, <span class="at">xlab=</span><span class="st">"Minutes after sunrise"</span>,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Distance (m)"</span>, <span class="at">pch=</span><span class="dv">20</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>amakihi<span class="sc">$</span>HAS, <span class="at">y=</span>amakihi<span class="sc">$</span>MAS, <span class="at">xlab=</span><span class="st">"Hours after sunrise"</span>,</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Minutes after sunrise"</span>, <span class="at">pch=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Observer as possible covariate</figcaption><p></p>
+<figcaption>Observer as possible covariate</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Hour since sunrise as possible covariate</figcaption><p></p>
+<figcaption>Hour since sunrise as possible covariate</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Minutes since sunrise as possible covariate</figcaption><p></p>
+<figcaption>Minutes since sunrise as possible covariate</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Minutes and hours after sunrise plotted together</figcaption><p></p>
+<figcaption>Minutes and hours after sunrise plotted together</figcaption>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -412,15 +433,19 @@ Solution
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">"Covariate combination: observer and minutes"</span>,</span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">times=</span><span class="dv">3</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span>), <span class="at">each=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default callout-captioned">
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Cautionary tale
 </div>
 </div>
@@ -438,99 +463,103 @@ Cautionary tale
 </div>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Distribution of $P_a(z_i)$ from preferred model when w=82.5</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> p </th>
-   <th style="text-align:right;"> count </th>
-   <th style="text-align:right;"> proportion </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">p</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">proportion</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 0 - 0.1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0.000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;"> 0.1 - 0.2 </td>
-   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 167 </td>
-   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0.134 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.2 - 0.3 </td>
-   <td style="text-align:right;"> 106 </td>
-   <td style="text-align:right;"> 0.085 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.3 - 0.4 </td>
-   <td style="text-align:right;"> 515 </td>
-   <td style="text-align:right;"> 0.414 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.4 - 0.5 </td>
-   <td style="text-align:right;"> 455 </td>
-   <td style="text-align:right;"> 0.366 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.5 - 0.6 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0.000 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">0 - 0.1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold; color: white !important; background-color: blue !important;">0.1 - 0.2</td>
+<td style="text-align: right; font-weight: bold; color: white !important; background-color: blue !important;">167</td>
+<td style="text-align: right; font-weight: bold; color: white !important; background-color: blue !important;">0.134</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.2 - 0.3</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">0.085</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.3 - 0.4</td>
+<td style="text-align: right;">515</td>
+<td style="text-align: right;">0.414</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.4 - 0.5</td>
+<td style="text-align: right;">455</td>
+<td style="text-align: right;">0.366</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.5 - 0.6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000</td>
+</tr>
 </tbody>
 </table>
 
+
+</div>
 </div>
 </div>
 <p>This suggests redoing the analysis with stronger truncation. I’ll repeat the model fitting (without showing the code) using 70m as the truncation distance. What do we see when examining the distribution of the <span class="math inline">\(\widehat{P_a(z_i)}\)</span> with the more stringent truncation?</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div>
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Distribution of $P_a(z_i)$ from preferred model when w=70</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> p </th>
-   <th style="text-align:right;"> count </th>
-   <th style="text-align:right;"> proportion </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">p</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">count</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">proportion</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 0 - 0.1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0.000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;font-weight: bold;color: white !important;background-color: blue !important;"> 0.1 - 0.2 </td>
-   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0 </td>
-   <td style="text-align:right;font-weight: bold;color: white !important;background-color: blue !important;"> 0.000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.2 - 0.3 </td>
-   <td style="text-align:right;"> 207 </td>
-   <td style="text-align:right;"> 0.184 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.3 - 0.4 </td>
-   <td style="text-align:right;"> 48 </td>
-   <td style="text-align:right;"> 0.043 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.4 - 0.5 </td>
-   <td style="text-align:right;"> 678 </td>
-   <td style="text-align:right;"> 0.603 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.5 - 0.6 </td>
-   <td style="text-align:right;"> 191 </td>
-   <td style="text-align:right;"> 0.170 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">0 - 0.1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold; color: white !important; background-color: blue !important;">0.1 - 0.2</td>
+<td style="text-align: right; font-weight: bold; color: white !important; background-color: blue !important;">0</td>
+<td style="text-align: right; font-weight: bold; color: white !important; background-color: blue !important;">0.000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.2 - 0.3</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">0.184</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.3 - 0.4</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">0.043</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0.4 - 0.5</td>
+<td style="text-align: right;">678</td>
+<td style="text-align: right;">0.603</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0.5 - 0.6</td>
+<td style="text-align: right;">191</td>
+<td style="text-align: right;">0.170</td>
+</tr>
 </tbody>
 </table>
 
+
+</div>
 </div>
 </div>
 <p><em>Should this much truncation cause concern for point estimates and precision?</em></p>
@@ -541,7 +570,7 @@ Cautionary tale
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="estimate-comparisons.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<p></p><figcaption class="figure-caption">Density estimates for amakihi data set under a variety ofdetection function models and truncation distances.</figcaption><p></p>
+<figcaption>Density estimates for amakihi data set under a variety ofdetection function models and truncation distances.</figcaption>
 </figure>
 </div>
 </div>
@@ -579,52 +608,54 @@ Cautionary tale
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ETP_Dolphin<span class="sc">$</span>distance, <span class="at">nclass=</span><span class="dv">50</span>, <span class="at">xlab=</span><span class="st">"Distance (nm)"</span>,</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Tropical Pacific dolphin survey perpendicular distances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The spikes in the histogram suggest that distances have been rounded to zero and possibly other values. To mitigate these problems, the distances could be binned although we do not do so in the analysis below. The distances have already been truncated at 5 nm and so we will not truncate distances further.</p>
-<div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Search.method, <span class="at">xlab=</span><span class="st">"Search method"</span>, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Cue.type, <span class="at">xlab=</span><span class="st">"Cue"</span>, <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Beauf.class, <span class="at">xlab=</span><span class="st">"Beaufort class"</span>, </span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ETP_Dolphin<span class="sc">$</span>distance<span class="sc">~</span>ETP_Dolphin<span class="sc">$</span>Month, <span class="at">xlab=</span><span class="st">"Month"</span>, <span class="at">ylab=</span><span class="st">"Distance (nm)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Search method as possible covariate</figcaption><p></p>
+<figcaption>Search method as possible covariate</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Cue type as possible covariate</figcaption><p></p>
+<figcaption>Cue type as possible covariate</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Sea state as possible covariate</figcaption><p></p>
+<figcaption>Sea state as possible covariate</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Survey month as possible covariate</figcaption><p></p>
+<figcaption>Survey month as possible covariate</figcaption>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -633,32 +664,35 @@ Cautionary tale
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>etp.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>etp.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">as.data.frame</span>(<span class="fu">AIC</span>(etp.hn, etp.hr))) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">as.data.frame</span>(<span class="fu">AIC</span>(etp.hn, etp.hr)),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">table.attr =</span> <span class="st">'data-quarto-disable-processing="true"'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> AIC </th>
-  </tr>
- </thead>
+<div>
+<table class="table table-condensed table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">df</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">AIC</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> etp.hn </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 3377.489 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> etp.hr </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 3365.915 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">etp.hn</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3377.489</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">etp.hr</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3365.915</td>
+</tr>
 </tbody>
 </table>
 
+
+</div>
 </div>
 </div>
 <p>The AIC values suggest that hazard rate key function is preferable to the half normal and so this will be used as the key function in the MCDS models. Each covariate is introduced in turn.</p>
@@ -669,66 +703,69 @@ Cautionary tale
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>etp.hr.month <span class="ot">&lt;-</span> <span class="fu">ds</span>(ETP_Dolphin, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">formula=</span><span class="sc">~</span><span class="fu">factor</span>(Month))</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(etp.hr, etp.hr.search, etp.hr.cue, etp.hr.bf, etp.hr.month,</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">output=</span><span class="st">"latex"</span>)[,<span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">caption=</span><span class="st">"ETP dolphin model selection."</span>, <span class="at">digits=</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>       <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">table.attr =</span> <span class="st">'data-quarto-disable-processing="true"'</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">caption=</span><span class="st">"ETP dolphin model selection."</span>, <span class="at">digits=</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>       <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="st">"condensed"</span>, <span class="at">full_width =</span> F)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table class="table table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<div>
+<table class="table table-condensed table-sm table-striped small" data-quarto-postprocess="true">
 <caption>ETP dolphin model selection.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Key function </th>
-   <th style="text-align:left;"> Formula </th>
-   <th style="text-align:right;"> C-vM p-value </th>
-   <th style="text-align:right;"> $\hat{P_a}$ </th>
-   <th style="text-align:right;"> se($\hat{P_a}$) </th>
-   <th style="text-align:right;"> $\Delta$AIC </th>
-  </tr>
- </thead>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Key function</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Formula</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">C-vM p-value</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">$\hat{P_a}$</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">se($\hat{P_a}$)</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">$\Delta$AIC</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Hazard-rate </td>
-   <td style="text-align:left;"> ~factor(Search.method) </td>
-   <td style="text-align:right;"> 0.388 </td>
-   <td style="text-align:right;"> 0.584 </td>
-   <td style="text-align:right;"> 0.036 </td>
-   <td style="text-align:right;"> 0.000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hazard-rate </td>
-   <td style="text-align:left;"> ~factor(Cue.type) </td>
-   <td style="text-align:right;"> 0.449 </td>
-   <td style="text-align:right;"> 0.587 </td>
-   <td style="text-align:right;"> 0.039 </td>
-   <td style="text-align:right;"> 23.314 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hazard-rate </td>
-   <td style="text-align:left;"> ~factor(Month) </td>
-   <td style="text-align:right;"> 0.494 </td>
-   <td style="text-align:right;"> 0.593 </td>
-   <td style="text-align:right;"> 0.039 </td>
-   <td style="text-align:right;"> 24.264 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hazard-rate </td>
-   <td style="text-align:left;"> ~1 </td>
-   <td style="text-align:right;"> 0.461 </td>
-   <td style="text-align:right;"> 0.601 </td>
-   <td style="text-align:right;"> 0.038 </td>
-   <td style="text-align:right;"> 26.140 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Hazard-rate </td>
-   <td style="text-align:left;"> ~factor(Beauf.class) </td>
-   <td style="text-align:right;"> 0.474 </td>
-   <td style="text-align:right;"> 0.601 </td>
-   <td style="text-align:right;"> 0.039 </td>
-   <td style="text-align:right;"> 27.993 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~factor(Search.method)</td>
+<td style="text-align: right;">0.388</td>
+<td style="text-align: right;">0.584</td>
+<td style="text-align: right;">0.036</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~factor(Cue.type)</td>
+<td style="text-align: right;">0.449</td>
+<td style="text-align: right;">0.587</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">23.314</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~factor(Month)</td>
+<td style="text-align: right;">0.494</td>
+<td style="text-align: right;">0.593</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">24.264</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~1</td>
+<td style="text-align: right;">0.461</td>
+<td style="text-align: right;">0.601</td>
+<td style="text-align: right;">0.038</td>
+<td style="text-align: right;">26.140</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~factor(Beauf.class)</td>
+<td style="text-align: right;">0.474</td>
+<td style="text-align: right;">0.601</td>
+<td style="text-align: right;">0.039</td>
+<td style="text-align: right;">27.993</td>
+</tr>
 </tbody>
 </table>
 
+
+</div>
 </div>
 </div>
 <p>Based on the AIC, it seems as though the model including search method was preferable and we could continue the model selection process by looking at models with two covariates. However, before going on it is worth looking at the search method model in more detail. If we look at the detection function parameters for this model:</p>
@@ -742,6 +779,7 @@ Summary for ds object
 Number of observations :  1090 
 Distance range         :  0  -  5 
 AIC                    :  3339.775 
+Optimisation           :  mrds (nlminb) 
 
 Detection function:
  Hazard-rate key function 
@@ -749,18 +787,18 @@ Detection function:
 Detection function parameters 
 Scale coefficient(s): 
                         estimate         se
-(Intercept)            0.3355216  0.2072092
-factor(Search.method)2 0.3208291  0.2112991
-factor(Search.method)3 3.1275291 78.6499662
-factor(Search.method)5 0.2430596  0.5378506
+(Intercept)            0.3355272  0.2072090
+factor(Search.method)2 0.3208247  0.2112992
+factor(Search.method)3 3.1274315 78.5965032
+factor(Search.method)5 0.2430573  0.5378512
 
 Shape coefficient(s):  
-             estimate        se
-(Intercept) 0.0782788 0.1387477
+              estimate        se
+(Intercept) 0.07827832 0.1387482
 
                         Estimate           SE         CV
-Average p              0.5837961   0.03602487 0.06170796
-N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
+Average p              0.5837971   0.03602487 0.06170786
+N in covered region 1867.0869397 121.18692980 0.06490696</code></pre>
 </div>
 </div>
 <p>we see that the estimated scale coefficient for search method 3 is substantially larger than the estimated scale coefficients for other methods. The effect this has on the detection function is clearly seen in the detection function plot.</p>
@@ -768,7 +806,11 @@ N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot search method detection function</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(etp.hr.search, <span class="at">pch=</span><span class="st">"."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Search method 3 indicated that the detection was from a helicopter and this detection function suggests that all dolphin schools out to 5 nm were being detected and so detection does not decrease as distance increases. One assumption of MCDS is that the perpendicular distance distributions of the covariate factor levels have the same shape and so it may be worth refitting the models but excluding the observations made by the helicopter.</p>
@@ -787,7 +829,7 @@ N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/colourful-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Detection function with cue type as covariate.</figcaption><p></p>
+<figcaption>Detection function with cue type as covariate.</figcaption>
 </figure>
 </div>
 </div>
@@ -809,7 +851,11 @@ N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Savannah_sparrow_1980<span class="sc">$</span>distance, <span class="at">nclass=</span><span class="dv">20</span>, <span class="at">xlab=</span><span class="st">"Distance (m)"</span>,</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Savannah sparrow radial distances '80"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -829,7 +875,7 @@ N in covered region 1867.0902445 121.18734259 0.06490706</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                df      AIC
 Savannah_sparrow_1980.hn         2 2126.228
-Savannah_sparrow_1980.hr         2 2129.961
+Savannah_sparrow_1980.hr         3 2127.883
 Savannah_sparrow_1980.hn.region  3 2125.033
 Savannah_sparrow_1980.hr.region  4 2130.447</code></pre>
 </div>
@@ -841,7 +887,7 @@ Savannah_sparrow_1980.hr.region  4 2130.447</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Note different PDF shapes caused by the pasture covariate.</figcaption><p></p>
+<figcaption>Note different PDF shapes caused by the pasture covariate.</figcaption>
 </figure>
 </div>
 </div>
@@ -854,8 +900,9 @@ Summary for distance analysis
 Number of observations :  271 
 Distance range         :  0  -  55 
 
-Model : Half-normal key function 
-AIC   : 2125.033 
+Model       : Half-normal key function 
+AIC         :  2125.033 
+Optimisation:  mrds (nlminb) 
 
 Detection function parameters
 Scale coefficient(s):  
@@ -932,17 +979,27 @@ Savannah_sparrow_1981.hr.region  5 1260.638</code></pre>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="fl">0.038</span>, <span class="at">cex=</span><span class="fl">0.9</span>, <span class="at">pos=</span><span class="dv">4</span>,</span>
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">expression</span>(<span class="fu">widehat</span>(sigma[p])<span class="sc">==</span><span class="fu">plain</span>(exp)(<span class="fu">widehat</span>(beta[<span class="dv">0</span>]) <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">1</span>]) <span class="sc">*</span> p[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">2</span>]) <span class="sc">*</span> p[<span class="dv">2</span>] <span class="sc">+</span> <span class="fu">widehat</span>(beta[<span class="dv">3</span>]) <span class="sc">*</span> p[<span class="dv">3</span>])))</span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>parms <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">est=</span><span class="fu">c</span>(<span class="fl">2.944</span>, <span class="fl">0.736</span>, <span class="fl">0.166</span>, <span class="fl">0.271</span>),</span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se=</span><span class="fu">c</span>(<span class="fl">0.111</span>, <span class="fl">0.373</span>, <span class="fl">0.153</span>, <span class="fl">0.179</span>))</span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(parms) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"b0"</span>, <span class="st">"b1"</span>, <span class="st">"b2"</span>, <span class="st">"b3"</span>)</span>
-<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="fu">addtable2plot</span>(<span class="dv">2</span>, <span class="fl">0.027</span>, parms, <span class="at">bty=</span><span class="st">"o"</span>,</span>
-<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">display.rownames=</span><span class="cn">TRUE</span>,<span class="at">hlines=</span><span class="cn">TRUE</span>, <span class="at">cex=</span><span class="fl">0.8</span>,</span>
-<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>              <span class="at">xpad=</span><span class="fl">0.4</span>, <span class="at">vlines=</span><span class="cn">FALSE</span>,<span class="at">title=</span><span class="st">"Parameter estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>hessian <span class="ot">&lt;-</span> Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>hessian</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">diag</span>(<span class="fu">diag</span>(<span class="fu">sqrt</span>(<span class="fu">diag</span>(<span class="fu">solve</span>(hessian))))),<span class="dv">3</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>pasture.sigma <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="at">mode=</span><span class="st">"numeric"</span>, <span class="at">length=</span><span class="dv">4</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>pasture.sigma[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">1</span>])</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>pasture.sigma[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">1</span>] <span class="sc">+</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>                        Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">2</span>])</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>pasture.sigma[<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">1</span>] <span class="sc">+</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>                        Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">3</span>])</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>pasture.sigma[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">1</span>] <span class="sc">+</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>                        Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par[<span class="dv">4</span>])</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>parms <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">est=</span><span class="fu">round</span>(Savannah_sparrow_1981.hn.region<span class="sc">$</span>ddf<span class="sc">$</span>par,<span class="dv">3</span>),</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>                    <span class="at">se=</span>temp, <span class="at">sigma=</span><span class="fu">round</span>(pasture.sigma,<span class="dv">0</span>))</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(parms) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"b0"</span>, <span class="st">"b1"</span>, <span class="st">"b2"</span>, <span class="st">"b3"</span>)</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="fu">addtable2plot</span>(<span class="dv">0</span>, <span class="fl">0.027</span>, parms, <span class="at">bty=</span><span class="st">"o"</span>,</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>              <span class="at">display.rownames=</span><span class="cn">TRUE</span>,<span class="at">hlines=</span><span class="cn">TRUE</span>, <span class="at">cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>              <span class="at">xpad=</span><span class="fl">0.4</span>, <span class="at">vlines=</span><span class="cn">FALSE</span>,<span class="at">title=</span><span class="st">"Parameter estimates"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac8_solution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
-<p></p><figcaption class="figure-caption">Stronger influence of pasture covariate seen here.</figcaption><p></p>
+<figcaption>Stronger influence of pasture covariate seen here.</figcaption>
 </figure>
 </div>
 </div>
@@ -955,8 +1012,9 @@ Summary for distance analysis
 Number of observations :  162 
 Distance range         :  0  -  55 
 
-Model : Half-normal key function 
-AIC   : 1261.684 
+Model       : Half-normal key function 
+AIC         :  1261.684 
+Optimisation:  mrds (nlminb) 
 
 Detection function parameters
 Scale coefficient(s):  
@@ -968,7 +1026,7 @@ Region.LabelPASTURE 3 0.2703034 0.1790810
 
                        Estimate          SE        CV
 Average p             0.3435487  0.03715842 0.1081606
-N in covered region 471.5489315 59.62606187 0.1264472
+N in covered region 471.5489313 59.62606186 0.1264472
 
 Summary statistics:
      Region Area CoveredArea Effort   n   k    ER      se.ER      cv.ER
@@ -1004,14 +1062,14 @@ Density:
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-knopf1988" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-knopf1988" class="csl-entry" role="listitem">
 Knopf, F. L., Sedgwick, J. A., &amp; Cannon, R. W. (1988). Guild structure of a riparian avifauna relative to seasonal cattle grazing. <em>The Journal of Wildlife Management</em>, <em>52</em>(2), 280–290. <a href="https://doi.org/10.2307/3801235">https://doi.org/10.2307/3801235</a>
 </div>
-<div id="ref-FMARBUC03" class="csl-entry" role="doc-biblioentry">
+<div id="ref-FMARBUC03" class="csl-entry" role="listitem">
 Marques, F. F. C., &amp; Buckland, S. T. (2003). Incorporating covariates into standard line transect analyses. <em>Biometrics</em>, <em>59</em>, 924–935. <a href="https://doi.org/10.1111/j.0006-341x.2003.00107.x">https://doi.org/10.1111/j.0006-341x.2003.00107.x</a>
 </div>
-<div id="ref-Marques2007" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Marques2007" class="csl-entry" role="listitem">
 Marques, T. A., Thomas, L., Fancy, S. G., &amp; Buckland, S. T. (2007). Improving estimates of bird density using multiple covariate distance sampling. <em>The Auk</em>, <em>127</em>, 1229–1243. <a href="https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2">https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2</a>
 </div>
 </div></section></div></main> <!-- /main -->
@@ -1042,9 +1100,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1080,10 +1152,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1093,8 +1164,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1109,6 +1189,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1149,6 +1461,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

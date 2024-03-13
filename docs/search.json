@@ -731,14 +731,22 @@
     "href": "Pr8/Prac8_solution.html",
     "title": "Covariates in the detection function solution",
     "section": "",
-    "text": "Solution\n\n\n\nCovariates in the detection function"
+    "text": "Solution\n\n\n\nCovariates in the detection function",
+    "crumbs": [
+      "Covariates",
+      "Covariates in the detection function **solution**"
+    ]
   },
   {
     "objectID": "Pr8/Prac8_solution.html#colourful-plot-noting-effect-of-cue-type",
     "href": "Pr8/Prac8_solution.html#colourful-plot-noting-effect-of-cue-type",
     "title": "Covariates in the detection function solution",
     "section": "Colourful plot noting effect of cue type",
-    "text": "Colourful plot noting effect of cue type\nJust an example of using the function add_df_covar_line to visually explore consequences of covariates on the detection function. A regular call to plot() is first used to produce the histogram and average detection function line; subsequent calls to the new function with different values of the covariate of interest completes the plot.\n\nplot(etp.hr.cue, main=\"ETP dolphin survey\", showpoints=FALSE)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=1), col='red', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=2), col='blue', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=3), col='green', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=4), col='purple', lwd=2, lty=1)\nlegend(\"topright\", legend=c(\"Birds\",\"Splashes\",\"Unspecified\",\"Floating objects\"),\n       col=c(\"red\", \"blue\", \"green\", \"purple\"), lwd=2, title = \"Cue type\")\n\n\n\n\nDetection function with cue type as covariate."
+    "text": "Colourful plot noting effect of cue type\nJust an example of using the function add_df_covar_line to visually explore consequences of covariates on the detection function. A regular call to plot() is first used to produce the histogram and average detection function line; subsequent calls to the new function with different values of the covariate of interest completes the plot.\n\nplot(etp.hr.cue, main=\"ETP dolphin survey\", showpoints=FALSE)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=1), col='red', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=2), col='blue', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=3), col='green', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=4), col='purple', lwd=2, lty=1)\nlegend(\"topright\", legend=c(\"Birds\",\"Splashes\",\"Unspecified\",\"Floating objects\"),\n       col=c(\"red\", \"blue\", \"green\", \"purple\"), lwd=2, title = \"Cue type\")\n\n\n\n\nDetection function with cue type as covariate.",
+    "crumbs": [
+      "Covariates",
+      "Covariates in the detection function **solution**"
+    ]
   },
   {
     "objectID": "Pr9/countmodel-lines.html",

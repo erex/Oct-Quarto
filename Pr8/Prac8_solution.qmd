@@ -117,6 +117,7 @@ p_dist_table(amak.hr.obs.mas, proportion = TRUE)
 #| echo = FALSE
 kable(p_dist_table(amak.hr.obs.mas, bins=seq(0, 0.6, 0.1), proportion = TRUE),
       digits = 3,
+      table.attr = 'data-quarto-disable-processing="true"',
       caption="Distribution of $P_a(z_i)$ from preferred model when w=82.5") %>%
   kable_styling(full_width=FALSE) %>%
   row_spec(2, bold=TRUE, color="white", background="blue")
@@ -132,6 +133,7 @@ amak.hr.obs.mas.70 <- ds(amakihi, transect="point", key="hr", formula=~OBs+MAS, 
                       truncation=70)
 kable(p_dist_table(amak.hr.obs.mas.70, bins=seq(0, 0.6, 0.1), proportion = TRUE),
       digits = 3,
+      table.attr = 'data-quarto-disable-processing="true"',
       caption="Distribution of $P_a(z_i)$ from preferred model when w=70") %>%
   kable_styling(full_width=FALSE) %>%
   row_spec(2, bold=TRUE, color="white", background="blue")
@@ -198,7 +200,8 @@ To decide whether to fit a half normal or a hazard rate key function, each of th
 #| message = FALSE
 etp.hn <- ds(ETP_Dolphin, key="hn", adjustment=NULL)
 etp.hr <- ds(ETP_Dolphin, key="hr", adjustment=NULL)
-knitr::kable(as.data.frame(AIC(etp.hn, etp.hr))) %>%
+knitr::kable(as.data.frame(AIC(etp.hn, etp.hr)),
+             table.attr = 'data-quarto-disable-processing="true"') %>%
     kable_styling(bootstrap_options = "condensed", full_width = F)  
 ```
 
@@ -212,7 +215,8 @@ etp.hr.bf <- ds(ETP_Dolphin, key="hr", formula=~factor(Beauf.class))
 etp.hr.month <- ds(ETP_Dolphin, key="hr", formula=~factor(Month))
 knitr::kable(summarize_ds_models(etp.hr, etp.hr.search, etp.hr.cue, etp.hr.bf, etp.hr.month,
                                  output="latex")[,2:7], row.names = FALSE,
-               caption="ETP dolphin model selection.", digits=3) %>%
+             table.attr = 'data-quarto-disable-processing="true"',
+            caption="ETP dolphin model selection.", digits=3) %>%
        kable_styling(bootstrap_options = "condensed", full_width = F)  
 ```
 
@@ -335,10 +339,20 @@ legend("topright", legend=tolower(as.character(pastures)),
 text(-2,0.038, cex=0.9, pos=4,
      expression(widehat(sigma[p])==plain(exp)(widehat(beta[0]) + widehat(beta[1]) * p[1] + widehat(beta[2]) * p[2] + widehat(beta[3]) * p[3])))
 library(plotrix)
-parms <- data.frame(est=c(2.944, 0.736, 0.166, 0.271),
-                    se=c(0.111, 0.373, 0.153, 0.179))
+hessian <- Savannah_sparrow_1981.hn.region$ddf$hessian
+temp <- round(diag(diag(sqrt(diag(solve(hessian))))),3)
+pasture.sigma <- vector(mode="numeric", length=4)
+pasture.sigma[1] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1])
+pasture.sigma[2] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
+                        Savannah_sparrow_1981.hn.region$ddf$par[2])
+pasture.sigma[3] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
+                        Savannah_sparrow_1981.hn.region$ddf$par[3])
+pasture.sigma[4] <- exp(Savannah_sparrow_1981.hn.region$ddf$par[1] +
+                        Savannah_sparrow_1981.hn.region$ddf$par[4])
+parms <- data.frame(est=round(Savannah_sparrow_1981.hn.region$ddf$par,3),
+                    se=temp, sigma=round(pasture.sigma,0))
 rownames(parms) <- c("b0", "b1", "b2", "b3")
-addtable2plot(2, 0.027, parms, bty="o",
+addtable2plot(0, 0.027, parms, bty="o",
               display.rownames=TRUE,hlines=TRUE, cex=0.8,
               xpad=0.4, vlines=FALSE,title="Parameter estimates")
 ```
