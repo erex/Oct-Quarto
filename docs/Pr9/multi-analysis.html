@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-03-12">
+<meta name="dcterms.date" content="2024-03-14">
 
 <title>Distance sampling workshop - Multispecies and multisession distance sampling analysis</title>
 <style>
@@ -309,7 +309,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 12, 2024</p>
+      <p class="date">March 14, 2024</p>
     </div>
   </div>
   
@@ -352,204 +352,204 @@ window.Quarto = {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(detects) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Transect"</span>, <span class="st">"Visit"</span>, <span class="st">"Detections"</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>detects<span class="sc">$</span>Detections <span class="ot">&lt;-</span> <span class="fu">cell_spec</span>(detects<span class="sc">$</span>Detections, </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">background =</span> <span class="fu">ifelse</span>(detects<span class="sc">$</span>Detections<span class="sc">==</span><span class="dv">0</span>, <span class="st">"red"</span>, <span class="st">"white"</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(detects, <span class="at">escape=</span><span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>(<span class="at">full_width=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(detects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<table class="lightable-paper table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 4%">
+<col style="width: 89%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Transect</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Visit</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Detections</th>
+<th style="text-align: left;">Transect</th>
+<th style="text-align: left;">Visit</th>
+<th style="text-align: left;">Detections</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;4&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">4</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;5&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">5</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;4&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">4</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;2&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">2</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;" &gt;0&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;">0</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;" &gt;0&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;">0</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">13</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">15</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">16</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;2&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">2</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">17</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">18</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">19</td>
 <td style="text-align: left;">1</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;" &gt;0&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;">0</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">2</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;4&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">4</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">4</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;2&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">2</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">5</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;4&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">4</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;3&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">3</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">8</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">9</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;" &gt;0&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: red !important;">0</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">10</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;2&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">2</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">11</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">13</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">15</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">16</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">17</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">18</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;4&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">4</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">19</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">&lt;span style=" border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;" &gt;1&lt;/span&gt;</td>
+<td style="text-align: left;"><span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: white !important;">1</span></td>
 </tr>
 </tbody>
 </table>
-
-
-</div>
 </div>
 </div>
 <p>However, there is a problem hidden within the table above. Transect 12 does not appear in the table because there were no detections of chaffinches on <em>either</em> visit. Consequently, there were 4 transects without chaffinches on the first visit and 2 transects without chaffinches on the second visit, rather than the 3 transects and 1 transect you might mistakenly conclude do not have chaffinch detections if you relied completely upon the table.</p>

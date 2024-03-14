@@ -55,9 +55,7 @@ detects <- as.data.frame(detects)
 names(detects) <- c("Transect", "Visit", "Detections")
 detects$Detections <- cell_spec(detects$Detections, 
                           background = ifelse(detects$Detections==0, "red", "white"))
-knitr::kable(detects, escape=FALSE) %>%
-  kable_paper(full_width=FALSE)
-  
+knitr::kable(detects)
 ```
 
 However, there is a problem hidden within the table above.  Transect 12 does not appear in the table because there were no detections of chaffinches on *either* visit.  Consequently, there were 4 transects without chaffinches on the first visit and 2 transects without chaffinches on the second visit, rather than the 3 transects and 1 transect you might mistakenly conclude do not have chaffinch detections if you relied completely upon the table.
