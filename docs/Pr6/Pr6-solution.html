@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2023-09-11">
+<meta name="dcterms.date" content="2024-03-22">
 
 <title>Distance sampling workshop - Distance sampling survey design solution</title>
 <style>
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -110,7 +81,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -119,10 +96,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "lk4dxekwqr");
+</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -132,106 +118,116 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Distance sampling workshop</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">
- <span class="menu-text">Sampling</span></a>
+    <a class="nav-link" href="../Pr1/sampling.html"> 
+<span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">
- <span class="menu-text">Detection functions</span></a>
+    <a class="nav-link" href="../Pr2/detnfns.html"> 
+<span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">
- <span class="menu-text">Criticism</span></a>
+    <a class="nav-link" href="../Pr3/criticism.html"> 
+<span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">
- <span class="menu-text">Precision</span></a>
+    <a class="nav-link" href="../Pr4/precision.html"> 
+<span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">
- <span class="menu-text">Points</span></a>
+    <a class="nav-link" href="../Pr5/points.html"> 
+<span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr6/design.html" aria-current="page">
- <span class="menu-text">Design</span></a>
+    <a class="nav-link active" href="../Pr6/design.html" aria-current="page"> 
+<span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">
- <span class="menu-text">Strata</span></a>
+    <a class="nav-link" href="../Pr7/strata.html"> 
+<span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">
- <span class="menu-text">Covariates</span></a>
+    <a class="nav-link" href="../Pr8/covariates.html"> 
+<span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr9/multipliers.html">
- <span class="menu-text">Multipliers</span></a>
+    <a class="nav-link" href="../Pr9/multipliers.html"> 
+<span class="menu-text">Multipliers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">
- <span class="menu-text">Extras</span></a>
+    <a class="nav-link" href="../extras/extras.html"> 
+<span class="menu-text">Extras</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Distance sampling survey design <strong>solution</strong></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pr6/Pr6-solution.html">Distance sampling survey design <strong>solution</strong></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/design.html" class="sidebar-item-text sidebar-link">Survey design practical 6</a>
+  <a href="../Pr6/design.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survey design practical 6</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/Pr6-instructions.html" class="sidebar-item-text sidebar-link">Distance sampling survey design</a>
+  <a href="../Pr6/Pr6-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distance sampling survey design</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/leaflet-demo.html" class="sidebar-item-text sidebar-link">Distance sampling survey design supplement</a>
+  <a href="../Pr6/leaflet-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distance sampling survey design supplement</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link">Effort and power calculations for line transect surveys</a>
+  <a href="../Pr6/effort-and-power.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Effort and power calculations for line transect surveys</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Pr6/Pr6-solution.html" class="sidebar-item-text sidebar-link active">Distance sampling survey design <strong>solution</strong></a>
+  <a href="../Pr6/Pr6-solution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Distance sampling survey design <strong>solution</strong></span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -255,7 +251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Distance sampling survey design <strong>solution</strong></h1>
+<h1 class="title">Distance sampling survey design <strong>solution</strong></h1>
 </div>
 
 
@@ -272,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 11, 2023</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
   
@@ -280,14 +276,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
 
-<div class="callout-tip callout callout-style-default callout-captioned">
+
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Solution
 </div>
 </div>
@@ -299,22 +297,19 @@ Solution
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dssd)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'sf' was built under R version 4.3.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.11.2, GDAL 3.6.2, PROJ 9.2.0; sf_use_s2() is TRUE</code></pre>
+<pre><code>Linking to GEOS 3.11.2, GDAL 3.7.2, PROJ 9.3.0; sf_use_s2() is TRUE</code></pre>
 </div>
 </div>
 <section id="systematic-parallel-line-aerial-survey-of-marine-mammals-in-st-andrews-bay" class="level1">
 <h1>Systematic parallel line aerial survey of marine mammals in St Andrews bay</h1>
 <section id="systematic-parallel-line-design" class="level2">
 <h2 class="anchored" data-anchor-id="systematic-parallel-line-design">Systematic Parallel Line Design</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -329,34 +324,34 @@ Answers
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"StAndrew.shp"</span>, <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>region.sab <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"St Andrews Bay"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">units =</span> <span class="st">"m"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">shape =</span> shapefile.name)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>cover.sabay <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.sab, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">5000</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">90</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"StAndrew.shp"</span>, <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>region.sab <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"St Andrews Bay"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">units =</span> <span class="st">"m"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">shape =</span> shapefile.name)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cover.sabay <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.sab, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">5000</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">90</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.spacing5km, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>design.spacing5km <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.spacing5km, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Pr6-solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Coverage grid plot for parallel design of St Andrews Bay.</figcaption><p></p>
+<figcaption>Coverage grid plot for parallel design of St Andrews Bay.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(design.spacing5km)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata St Andrews Bay:
@@ -384,67 +379,67 @@ sd                 0.3   0.3
     Covered area:
     
         St Andrews Bay     Total
-Minimum      725916779 725916779
-Mean         760768771 760768771
-Median       767000577 767000577
-Maximum      778652930 778652930
-sd            16272834  16272834
+Minimum      725990559 725990559
+Mean         760713280 760713280
+Median       767206502 767206502
+Maximum      778652343 778652343
+sd            16385156  16385156
 
     % of region covered:
     
         St Andrews Bay Total
-Minimum          73.51 73.51
-Mean             77.04 77.04
-Median           77.67 77.67
+Minimum          73.52 73.52
+Mean             77.03 77.03
+Median           77.69 77.69
 Maximum          78.85 78.85
-sd                1.65  1.65
+sd                1.66  1.66
 
     Line length:
     
         St Andrews Bay     Total
-Minimum      184437.19 184437.19
-Mean         197295.04 197295.04
-Median       198869.38 198869.38
-Maximum      205763.76 205763.76
-sd             6098.03   6098.03
+Minimum      184425.21 184425.21
+Mean         197172.18 197172.18
+Median       198755.26 198755.26
+Maximum      205749.44 205749.44
+sd             6181.74   6181.74
 
     Trackline length:
     
         St Andrews Bay     Total
-Minimum      220530.15 220530.15
-Mean         242100.27 242100.27
-Median       246257.92 246257.92
-Maximum      248791.14 248791.14
-sd             8596.52   8596.52
+Minimum      220526.73 220526.73
+Mean         241877.59 241877.59
+Median       246238.14 246238.14
+Maximum      248792.49 248792.49
+sd             8989.88   8989.88
 
     Cyclic trackline length:
     
         St Andrews Bay     Total
-Minimum      251942.48 251942.48
-Mean         278831.03 278831.03
-Median       283763.05 283763.05
-Maximum      285977.54 285977.54
-sd            10027.67  10027.67
+Minimum      251933.80 251933.80
+Mean         278479.80 278479.80
+Median       283662.11 283662.11
+Maximum      285978.86 285978.86
+sd            10626.29  10626.29
 
     Coverage Score Summary:
     
-        St Andrews Bay     Total
-Minimum      0.3640000 0.3640000
-Mean         0.7703113 0.7703113
-Median       0.7960000 0.7960000
-Maximum      0.8360000 0.8360000
-sd           0.0864654 0.0864654</code></pre>
+        St Andrews Bay      Total
+Minimum     0.36800000 0.36800000
+Mean        0.77049700 0.77049700
+Median      0.79200000 0.79200000
+Maximum     0.83600000 0.83600000
+sd          0.08631906 0.08631906</code></pre>
 </div>
 </div>
 </section>
 <section id="equal-spaced-zigzag-design" class="level2">
 <h2 class="anchored" data-anchor-id="equal-spaced-zigzag-design">Equal Spaced Zigzag Design</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -456,35 +451,35 @@ Answers
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"eszigzag"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">4500</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bounding.shape =</span> <span class="st">"convex.hull"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.sab,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">transect.type =</span> <span class="st">"line"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design =</span> <span class="st">"eszigzag"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">spacing =</span> <span class="dv">4500</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">bounding.shape =</span> <span class="st">"convex.hull"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">truncation =</span> <span class="dv">2000</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                      <span class="at">coverage.grid =</span> cover.sabay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.zz<span class="fl">.4500</span>, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coverage</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.zz<span class="fl">.4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>design.zz<span class="fl">.4500</span> <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.zz<span class="fl">.4500</span>, <span class="at">reps =</span> <span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot coverage</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(design.zz<span class="fl">.4500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Pr6-solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Coverage grid plot for zigzag design of St Andrews Bay.</figcaption><p></p>
+<figcaption>Coverage grid plot for zigzag design of St Andrews Bay.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -499,12 +494,12 @@ Answers
 </section>
 <section id="point-transect-bird-survey-in-tentsmuir-forest" class="level1">
 <h1>Point Transect Bird Survey in Tentsmuir Forest</h1>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -519,10 +514,10 @@ Answers
 <h2 class="anchored" data-anchor-id="coverage">Coverage</h2>
 <p>Organise the study area shape file.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"TentsmuirUnproj.shp"</span>, </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sf.shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(shapefile.name)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shapefile.name <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"TentsmuirUnproj.shp"</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">package =</span> <span class="st">"dssd"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sf.shape <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(shapefile.name)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(sf.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Coordinate Reference System:
   User input: WGS 84 
@@ -542,65 +537,65 @@ GEOGCRS["WGS 84",
             ANGLEUNIT["degree",0.0174532925199433]],
     ID["EPSG",4326]]</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>proj4string <span class="ot">&lt;-</span> <span class="st">"+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 </span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">                +y_0=0 +ellps=intl +units=m"</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>projected.shape <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf.shape, <span class="at">crs =</span> proj4string)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>region.tm <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"Tentsmuir"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata.name =</span> <span class="fu">c</span>(<span class="st">"Main Area"</span>, <span class="st">"Morton Lochs"</span>),</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">shape =</span> projected.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>proj4string <span class="ot">&lt;-</span> <span class="st">"+proj=aea +lat_1=56 +lat_2=62 +lat_0=50 +lon_0=-3 +x_0=0 </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">                +y_0=0 +ellps=intl +units=m"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>projected.shape <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(sf.shape, <span class="at">crs =</span> proj4string)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>region.tm <span class="ot">&lt;-</span> <span class="fu">make.region</span>(<span class="at">region.name =</span> <span class="st">"Tentsmuir"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">strata.name =</span> <span class="fu">c</span>(<span class="st">"Main Area"</span>, <span class="st">"Morton Lochs"</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">shape =</span> projected.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Create the coverage grid.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cover.tm <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.tm, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>design.tm <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.tm,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">transect.type =</span> <span class="st">"point"</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">samplers =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">truncation =</span> <span class="dv">100</span>,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">coverage.grid =</span> cover.tm)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>survey.tentsmuir <span class="ot">&lt;-</span> <span class="fu">generate.transects</span>(design.tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cover.tm <span class="ot">&lt;-</span> <span class="fu">make.coverage</span>(region.tm, <span class="at">n.grid.points =</span> <span class="dv">5000</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>design.tm <span class="ot">&lt;-</span> <span class="fu">make.design</span>(<span class="at">region =</span> region.tm,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">transect.type =</span> <span class="st">"point"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design =</span> <span class="st">"systematic"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">samplers =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">15</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">design.angle =</span> <span class="dv">0</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                         <span class="at">edge.protocol =</span> <span class="st">"minus"</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">truncation =</span> <span class="dv">100</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">coverage.grid =</span> cover.tm)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>survey.tentsmuir <span class="ot">&lt;-</span> <span class="fu">generate.transects</span>(design.tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata Main Area:
    __________________
 Design:  systematically spaced transects
 Spacing:  751.2295
-Number of samplers:  25
+Number of samplers:  26
 Design angle:  0
 Edge protocol:  minus
-Covered area:  764615.7
-Strata coverage: 5.42%
+Covered area:  780806.3
+Strata coverage: 5.53%
 Strata area:  14108643
 
    Strata Morton Lochs:
    _____________________
 Design:  systematically spaced transects
 Spacing:  218.3674
-Number of samplers:  16
+Number of samplers:  15
 Design angle:  0
 Edge protocol:  minus
-Covered area:  424678.9
-Strata coverage: 59.37%
+Covered area:  410834.1
+Strata coverage: 57.44%
 Strata area:  715264.9
 
    Study Area Totals:
    _________________
 Number of samplers:  41
-Covered area:  1189295
-Average coverage: 8.02%</code></pre>
+Covered area:  1191640
+Average coverage: 8.04%</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -612,8 +607,8 @@ Answers
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>coverage.tentsmuir <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.tm, <span class="at">reps=</span><span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>coverage.tentsmuir <span class="ot">&lt;-</span> <span class="fu">run.coverage</span>(design.tm, <span class="at">reps=</span><span class="dv">250</span>, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(coverage.tentsmuir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    Strata Main Area:
@@ -639,46 +634,46 @@ Coverage Simulation repetitions:  250
     Number of samplers:
     
         Main Area Morton Lochs Total
-Minimum        22         13.0  37.0
-Mean           25         15.0  40.0
-Median         25         15.0  40.0
-Maximum        27         18.0  44.0
-sd              1          1.2   1.5
+Minimum      22.0         13.0  36.0
+Mean         25.2         15.1  40.3
+Median       25.0         15.0  40.0
+Maximum      27.0         18.0  44.0
+sd            1.0          1.1   1.5
 
     Covered area:
     
         Main Area Morton Lochs      Total
-Minimum 675512.36    358567.90 1081912.57
-Mean    765201.51    416096.43 1181297.95
-Median  769126.17    416511.10 1178822.49
-Maximum 821365.27    467506.18 1263964.64
-sd       28183.37     25837.28   37407.98
+Minimum  688168.5    363656.01 1058271.76
+Mean     768204.3    418494.51 1186698.78
+Median   771172.7    414339.88 1190435.32
+Maximum  821754.3    469049.10 1271881.86
+sd        29213.1     24961.23   37868.69
 
     % of region covered:
     
         Main Area Morton Lochs Total
-Minimum      4.79        50.13  7.30
-Mean         5.42        58.17  7.97
-Median       5.45        58.23  7.95
-Maximum      5.82        65.36  8.53
-sd           0.20         3.61  0.25
+Minimum      4.88        50.84  7.14
+Mean         5.44        58.51  8.01
+Median       5.47        57.93  8.03
+Maximum      5.82        65.58  8.58
+sd           0.21         3.49  0.26
 
     Coverage Score Summary:
     
          Main Area Morton Lochs      Total
-Minimum 0.00400000     0.216000 0.00400000
-Mean    0.05415301     0.584400 0.07961505
-Median  0.05200000     0.634000 0.05600000
-Maximum 0.10000000     0.728000 0.72800000
-sd      0.01521609     0.112922 0.11698597</code></pre>
+Minimum 0.00800000    0.1880000 0.00800000
+Mean    0.05449601    0.5867333 0.08005362
+Median  0.05600000    0.6320000 0.05600000
+Maximum 0.10400000    0.7240000 0.72400000
+sd      0.01442073    0.1078390 0.11707390</code></pre>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -689,36 +684,34 @@ Answers
 </blockquote>
 </div>
 </div>
-<div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">1</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coverage.tentsmuir, <span class="at">strata=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Pr6-solution_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Coverage scores main stratum Tentsmuir Forest.</figcaption><p></p>
+<figcaption>Coverage scores main stratum Tentsmuir Forest.</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Pr6-solution_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Coverage scores Morton Lochs stratum Tentsmuir Forest.</figcaption><p></p>
+<figcaption>Coverage scores Morton Lochs stratum Tentsmuir Forest.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Answers
 </div>
 </div>
@@ -762,9 +755,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -800,10 +807,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -813,8 +819,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -829,6 +844,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -869,6 +1116,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

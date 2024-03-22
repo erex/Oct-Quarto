@@ -1,262 +1,92 @@
 <?xml version="1.0"?>
-<gpx version="1.1" creator="GDAL 3.6.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ogr="http://osgeo.org/gdal" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
-<metadata><bounds minlat="56.392667108309169" minlon="-2.874146934509556" maxlat="56.439875729971874" maxlon="-2.817371065936013"/></metadata>                  
+<gpx version="1.1" creator="GDAL 3.7.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata>
+<bounds minlat="56.392667108309169" minlon="-2.874146934509556" maxlat="56.439875729971874" maxlon="-2.817371065936013"/>                                       
+</metadata>
 <wpt lat="56.392667108309169" lon="-2.841937631928153">
-  <extensions>
-    <ogr:transect>1</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.399411320456586" lon="-2.841908894651308">
-  <extensions>
-    <ogr:transect>2</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.399394778383986" lon="-2.829739585695515">
-  <extensions>
-    <ogr:transect>3</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.39937701015544" lon="-2.817570287995526">
-  <extensions>
-    <ogr:transect>4</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.40617080997059" lon="-2.854051679218674">
-  <extensions>
-    <ogr:transect>5</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.406155491364125" lon="-2.841880146923148">
-  <extensions>
-    <ogr:transect>6</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.406138946384587" lon="-2.829708625084639">
-  <extensions>
-    <ogr:transect>7</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.406121175033498" lon="-2.817537114508074">
-  <extensions>
-    <ogr:transect>8</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.412914942407127" lon="-2.85402513472685">
-  <extensions>
-    <ogr:transect>9</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.412899621108011" lon="-2.841851388737973">
-  <extensions>
-    <ogr:transect>10</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.412883073220286" lon="-2.829677653211819">
-  <extensions>
-    <ogr:transect>11</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.412865298745359" lon="-2.817503928953755">
-  <extensions>
-    <ogr:transect>12</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.419659033757426" lon="-2.853998580577675">
-  <extensions>
-    <ogr:transect>13</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.419643709764436" lon="-2.841822620090074">
-  <extensions>
-    <ogr:transect>14</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.419627158967195" lon="-2.829646670070908">
-  <extensions>
-    <ogr:transect>15</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.419609381367216" lon="-2.817470731325981">
-  <extensions>
-    <ogr:transect>16</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.426387757409742" lon="-2.841793840973742">
-  <extensions>
-    <ogr:transect>17</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.42637120370177" lon="-2.829615675655755">
-  <extensions>
-    <ogr:transect>18</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.426353422975325" lon="-2.817437521618164">
-  <extensions>
-    <ogr:transect>19</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.433147093504161" lon="-2.853945443286181">
-  <extensions>
-    <ogr:transect>20</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.433131764120112" lon="-2.84176505138326">
-  <extensions>
-    <ogr:transect>21</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.433115207500101" lon="-2.829584669960207">
-  <extensions>
-    <ogr:transect>22</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.433097423645869" lon="-2.817404299823707">
-  <extensions>
-    <ogr:transect>23</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.439875729971874" lon="-2.841736251312911">
-  <extensions>
-    <ogr:transect>24</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.439859170438666" lon="-2.829553652978103">
-  <extensions>
-    <ogr:transect>25</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.43984138345526" lon="-2.817371065936013">
-  <extensions>
-    <ogr:transect>26</ogr:transect>
-    <ogr:strata>Main Area</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.424385192992474" lon="-2.870613826505226">
-  <extensions>
-    <ogr:transect>27</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.424373358168161" lon="-2.85999454003948">
-  <extensions>
-    <ogr:transect>28</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.426349288534858" lon="-2.874146934509556">
-  <extensions>
-    <ogr:transect>29</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.426345550745729" lon="-2.870606983674324">
-  <extensions>
-    <ogr:transect>30</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.426341709279612" lon="-2.867067033562921">
-  <extensions>
-    <ogr:transect>31</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.42633776413642" lon="-2.863527084195149">
-  <extensions>
-    <ogr:transect>32</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.42633371531641" lon="-2.859987135590812">
-  <extensions>
-    <ogr:transect>33</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.428309643020619" lon="-2.874140278180783">
-  <extensions>
-    <ogr:transect>34</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.428305905040347" lon="-2.870600140119592">
-  <extensions>
-    <ogr:transect>35</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.428302063377828" lon="-2.867060002782346">
-  <extensions>
-    <ogr:transect>36</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.428298118032998" lon="-2.863519866188849">
-  <extensions>
-    <ogr:transect>37</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.430269994049596" lon="-2.874133621147872">
-  <extensions>
-    <ogr:transect>38</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.430266255878216" lon="-2.870593295840917">
-  <extensions>
-    <ogr:transect>39</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.430262414019239" lon="-2.867052971258022">
-  <extensions>
-    <ogr:transect>40</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.43025846847268" lon="-2.863512647418994">
-  <extensions>
-    <ogr:transect>41</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.432226603261149" lon="-2.870586450838183">
-  <extensions>
-    <ogr:transect>42</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 <wpt lat="56.4322227612058" lon="-2.86704593898983">
-  <extensions>
-    <ogr:transect>43</ogr:transect>
-    <ogr:strata>Morton Lochs</ogr:strata>
-  </extensions>
 </wpt>
 </gpx>

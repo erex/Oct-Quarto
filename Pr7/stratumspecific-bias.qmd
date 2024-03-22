@@ -157,7 +157,7 @@ curve(hn(sigma.south,x),from=0,to=0.8, lwd=2, col='blue', add=TRUE)
 #| label = "loopsigma"
 equalcover <- list()
 whichmodel <- list()
-num.sims <- 500
+num.sims <- 10
 for (i in seq_along(delta.multiplier)) {
   sigma.strata <- c(sigma.south, sigma.south*delta.multiplier[i])
   detect <- make.detectability(key.function = "hn",

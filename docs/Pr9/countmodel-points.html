@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2022-12-01">
+<meta name="dcterms.date" content="2024-03-22">
 
-<title>Distance sampling lab book - Effect of habitat covariate upon estimated density–points</title>
+<title>Distance sampling workshop - Effect of habitat covariate upon estimated density–points</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -48,48 +49,20 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -129,7 +101,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -138,115 +116,120 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "lk4dxekwqr");
+</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Distance sampling lab book</span>
+    <span class="navbar-title">Distance sampling workshop</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../Pr1/sampling.html">Sampling</a>
+    <a class="nav-link" href="../Pr1/sampling.html"> 
+<span class="menu-text">Sampling</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr2/detnfns.html">Detection functions</a>
+    <a class="nav-link" href="../Pr2/detnfns.html"> 
+<span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html">Criticism</a>
+    <a class="nav-link" href="../Pr3/criticism.html"> 
+<span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr4/precision.html">Precision</a>
+    <a class="nav-link" href="../Pr4/precision.html"> 
+<span class="menu-text">Precision</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr5/points.html">Points</a>
+    <a class="nav-link" href="../Pr5/points.html"> 
+<span class="menu-text">Points</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr6/design.html">Design</a>
+    <a class="nav-link" href="../Pr6/design.html"> 
+<span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html">Strata</a>
+    <a class="nav-link" href="../Pr7/strata.html"> 
+<span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr8/covariates.html">Covariates</a>
+    <a class="nav-link" href="../Pr8/covariates.html"> 
+<span class="menu-text">Covariates</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page">Multipliers</a>
+    <a class="nav-link" href="../Pr9/multipliers.html"> 
+<span class="menu-text">Multipliers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../extras/extras.html">Extras</a>
+    <a class="nav-link" href="../extras/extras.html"> 
+<span class="menu-text">Extras</span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Effect of habitat covariate upon estimated density–points</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/multipliers.html" class="sidebar-item-text sidebar-link">Multipliers practical 9</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/Pr9-instructions.html" class="sidebar-item-text sidebar-link">Analyses using multipliers</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/multi-analysis.html" class="sidebar-item-text sidebar-link">Multispecies and multisession distance sampling analysis</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/countmodel-lines.html" class="sidebar-item-text sidebar-link">Effect of habitat covariate upon estimated density—lines</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/countmodel-points.html" class="sidebar-item-text sidebar-link active">Effect of habitat covariate upon estimated density–points</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../Pr9/Prac9_solution.html" class="sidebar-item-text sidebar-link">Analysis with multipliers <strong>solution</strong></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -279,7 +262,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Effect of habitat covariate upon estimated density–points</h1>
+<h1 class="title">Effect of habitat covariate upon estimated density–points</h1>
 </div>
 
 
@@ -296,14 +279,17 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 1, 2022</p>
+      <p class="date">March 22, 2024</p>
     </div>
   </div>
+  
     
   </div>
   
 
+
 </header>
+
 
 <p>Investigators often wish to make inferences from their surveys beyond simply reporting “What is the animal density?” Ecological curiosity desires answers to questions such as</p>
 <blockquote class="blockquote">
@@ -331,12 +317,12 @@ n &amp;= \text{Eff Area} \cdot e^{\text{linear predictor}} \\
 <section id="programming-matters" class="level1">
 <h1>Programming matters</h1>
 <p>Before walking through the code, we provide some guidance regarding adaptation of this approach for your data. The code is not sufficiently modularised so that you can merely slot your data into a function. There are matters to consider regarding data organisation, naming of data frame columns, choice of detection functions to fit and specification of count model used for inference. These points are summarised in the box below.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Important
 </div>
 </div>
@@ -387,18 +373,19 @@ Important
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>newthrasher <span class="ot">&lt;-</span> <span class="fu">merge</span>(thrasherDetectionData, thrasherSiteData, <span class="at">by=</span><span class="st">"siteID"</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newthrasher) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"observer"</span>, <span class="st">"obs"</span>, <span class="fu">names</span>(newthrasher))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newthrasher) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"dist"</span>, <span class="st">"distance"</span>, <span class="fu">names</span>(newthrasher))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(newthrasher) <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"dist"</span>, <span class="st">"distance"</span>, <span class="fu">names</span>(newthrasher))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>newthrasher<span class="sc">$</span>distance <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(newthrasher<span class="sc">$</span>distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="analysis-parameters-specification" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-parameters-specification">Analysis parameters specification</h2>
 <p>Specification of run-specific parameters to analyse the Sage thrasher data set. Particularly note the logical value assigned to <code>pointtransect</code>. Candidate transect-level predictors for the detection function are <strong>observer, bare, herb, shrub, height</strong>. The same predictors, with the exception of <strong>observer</strong> could be used to model the thrasher counts.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Warning
 </div>
 </div>
@@ -407,7 +394,7 @@ Warning
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pointtransect <span class="ot">&lt;-</span> <span class="cn">TRUE</span>        <span class="co"># survey conducted using lines or points</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dettrunc <span class="ot">&lt;-</span> <span class="dv">170</span>  <span class="co"># truncation for detection function</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>myglmmodel <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(myCount <span class="sc">~</span> shrub <span class="sc">+</span> <span class="fu">offset</span>(<span class="fu">log</span>(effArea)))  <span class="co"># habitat model to fit to animal density</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nboot <span class="ot">&lt;-</span> <span class="dv">100</span>      <span class="co"># number of bootstrap replicates</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>nboot <span class="ot">&lt;-</span> <span class="dv">10</span>      <span class="co"># number of bootstrap replicates</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7079</span>)   <span class="co"># random number seed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -418,31 +405,31 @@ Warning
 <p>We fit a series of detection function models using the transect-level covariates available in the Sage thrasher data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>surveytype <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(pointtransect, <span class="st">"point"</span>, <span class="st">"line"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>woo.o <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>woo.o <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span>obs,</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>woo.shrub <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(shrub), </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>woo.shrub <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(shrub),</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>woo.herb <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(herb), </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>woo.herb <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(herb),</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>woo.height <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(height), </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>woo.height <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="fu">scale</span>(height),</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>woo <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>woo <span class="ot">&lt;-</span> <span class="fu">ds</span>(<span class="at">data=</span>newthrasher, <span class="at">truncation=</span>dettrunc, <span class="at">formula=</span><span class="sc">~</span><span class="dv">1</span>,</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">transect=</span>surveytype, <span class="at">quiet=</span><span class="cn">TRUE</span>)</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(woo, woo.o, woo.shrub, woo.herb, woo.height),</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">digits=</span><span class="dv">3</span>, </span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>             <span class="at">caption=</span><span class="st">"Halfnormal detection function model selection of covariates."</span>,</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Halfnormal detection function model selection of covariates.</caption>
 <colgroup>
-<col style="width: 19%">
-<col style="width: 12%">
 <col style="width: 14%">
-<col style="width: 12%">
+<col style="width: 36%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 8%">
 <col style="width: 11%">
-<col style="width: 15%">
-<col style="width: 11%">
+<col style="width: 8%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -467,12 +454,12 @@ Warning
 </tr>
 <tr class="even">
 <td style="text-align: left;"></td>
-<td style="text-align: left;">Half-normal</td>
+<td style="text-align: left;">Half-normal with cosine adjustment term of order 2</td>
 <td style="text-align: left;">~1</td>
-<td style="text-align: right;">0.037</td>
-<td style="text-align: right;">0.333</td>
-<td style="text-align: right;">0.034</td>
-<td style="text-align: right;">17.170</td>
+<td style="text-align: right;">0.096</td>
+<td style="text-align: right;">0.394</td>
+<td style="text-align: right;">0.124</td>
+<td style="text-align: right;">12.868</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"></td>
@@ -520,11 +507,12 @@ Warning
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">title=</span><span class="st">"Observer"</span>, <span class="at">legend=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"dark green"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"coral"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="countmodel-points_files/figure-html/detfnplotopt-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="countmodel-points_files/figure-html/detfnplotopt-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-
 </div>
 </section>
 </section>
@@ -601,10 +589,15 @@ Warning
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>tablecaption <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"GLM coefficients from counts as function of"</span>, </span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                      univarpredictor, <span class="st">"with log(effective area) offset."</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(modelsum<span class="sc">$</span>coef, <span class="at">digits=</span><span class="dv">4</span>, <span class="at">caption=</span>tablecaption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-basicglmpt" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-basicglmpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: GLM model output
+</figcaption>
+<div aria-describedby="tbl-basicglmpt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-basicglmpt" class="anchored">
-<table class="table table-sm table-striped">
-<caption>Table&nbsp;1: GLM model output</caption>
+<table class="do-not-create-environment cell table table-sm table-striped small">
+<caption>GLM coefficients from counts as function of shrub with log(effective area) offset.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -633,6 +626,8 @@ Warning
 </table>
 </div>
 </div>
+</figure>
+</div>
 </div>
 </section>
 <section id="visualise" class="level2 page-columns page-full">
@@ -640,9 +635,6 @@ Warning
 <p>Even though we have computed the effective area for each transect based upon the fitted detection function, we have not used that effective area to adjust the observed counts. The simple formula</p>
 <p><span class="math display">\[\hat{D}_i = \frac{n_i}{EA_i}, i = 1, \ldots , n_{transects}\]</span> where <span class="math inline">\(EA_i\)</span> is the effective area for the <span class="math inline">\(i^{th}\)</span> transect, describes this adjustment.</p>
 <!-- We plot the estimated density against the continuous univariate predictor. -->
-<div class="cell">
-
-</div>
 <!-- The basic background plot onto which our bootstrap replicates will be superimposed. -->
 <div class="cell column-body-outset">
 
@@ -655,7 +647,7 @@ Warning
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>intercept.est <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="at">length=</span>nboot)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>slope.est <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="at">length=</span>nboot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Specify the original site data frame <code>thrasherSiteData</code> in the following code. The code will harvest the estimated slope and intercept coefficients from each replicate. It is uncertainty in the slope coefficient (<span class="math inline">\(\widehat{\beta_1}\)</span>) that determines our inference about the effect of shrub cover upon Sage thrasher density. The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in <a href="#tbl-basicglmpt">Table&nbsp;1</a> because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in <a href="#tbl-basicglmpt">Table&nbsp;1</a>.</p>
+<p>Specify the original site data frame <code>thrasherSiteData</code> in the following code. The code will harvest the estimated slope and intercept coefficients from each replicate. It is uncertainty in the slope coefficient (<span class="math inline">\(\widehat{\beta_1}\)</span>) that determines our inference about the effect of shrub cover upon Sage thrasher density. The uncertainty in the slope coefficient as calculated by the code below differs from the uncertainty reported in <a href="#tbl-basicglmpt" class="quarto-xref">Table&nbsp;1</a> because below we are incorporating uncertainty in the relationship induced by uncertainty in the detection function, which is not recognised in <a href="#tbl-basicglmpt" class="quarto-xref">Table&nbsp;1</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (theboot <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nboot) {</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  newdetects <span class="ot">&lt;-</span> <span class="fu">data.frame</span>() </span>
@@ -727,11 +719,11 @@ Warning
 <span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom=</span><span class="st">"text"</span>, <span class="at">x=</span>.<span class="dv">18</span>, <span class="at">y=</span><span class="dv">11</span>, <span class="at">label=</span><span class="fu">round</span>(bounds[<span class="dv">2</span>],<span class="dv">3</span>)) </span>
 <span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>complete <span class="ot">&lt;-</span> fig1 <span class="sc">+</span> <span class="fu">inset_element</span>(fig2, <span class="at">right=</span>.<span class="dv">5</span>, <span class="at">bottom=</span>.<span class="dv">4</span>, <span class="at">left=</span>.<span class="dv">01</span>, <span class="at">top=</span>.<span class="dv">99</span>)</span>
 <span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>complete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display column-body-outset">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="countmodel-points_files/figure-html/grandplot-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Relationship between univariate predictor and Sage Thrasher density as modelled by GLM. Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Sage Thrasher.</figcaption><p></p>
+<div class="cell-output-display page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="countmodel-points_files/figure-html/grandplot-1.png" class="img-fluid figure-img column-body-outset" width="672"></p>
+<figcaption>Relationship between univariate predictor and Sage Thrasher density as modelled by GLM. Offset is estimated covered area. Confidence intervals incorporate uncertainty from imperfect detectability. Inset is sampling distribution of the parameter of interest for Sage Thrasher.</figcaption>
 </figure>
 </div>
 </div>
@@ -743,9 +735,6 @@ Warning
 <section id="inference-regarding-the-habitat-covariate" class="level2">
 <h2 class="anchored" data-anchor-id="inference-regarding-the-habitat-covariate">Inference regarding the habitat covariate</h2>
 <p>To assess the effect of the transect-level environmental covariate upon bird density, we focus our attention on <span class="math inline">\(\hat{\beta_1}\)</span>. The greater in magnitude the slope of the covariate, the greater the effect of the covariate upon animal density. If the estimated slope (<span class="math inline">\(\hat{\beta_1}\)</span>) is indistinguishable from zero, we infer the habitat covariate has no influence upon animal density. In the case of the Sage Thrasher, the species appears to exhibit little response to the presence of shrub cover during this study. Note that the range of shrub cover is not extensive (~16% to ~26%). We can make no inference regarding the density:habitat relationship outside this range in shrub cover.</p>
-<div class="cell">
-
-</div>
 </section>
 </section>
 <section id="summary" class="level1">
@@ -762,20 +751,20 @@ Warning
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Buckland2009a" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Buckland2009a" class="csl-entry" role="listitem">
 Buckland, S. T., Russell, R. E., Dickson, B. G., Saab, V. A., Gorman, D. N., &amp; Block, W. M. (2009). Analysing designed experiments in distance sampling. <em>Journal of Agricultural, Biological, and Environmental Statistics</em>, <em>14</em>, 432–442. <a href="https://doi.org/10.1198/jabes.2009.08030">https://doi.org/10.1198/jabes.2009.08030</a>
 </div>
-<div id="ref-carlisle_nontarget_2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-carlisle_nontarget_2018" class="csl-entry" role="listitem">
 Carlisle, J. D., Chalfoun, A. D., Smith, K. T., &amp; Beck, J. L. (2018). Nontarget effects on songbirds from habitat manipulation for <span>Greater Sage</span>-<span>Grouse</span>: <span>Implications</span> for the umbrella species concept. <em>The Condor</em>, <em>120</em>(2), 439–455. <a href="https://doi.org/10.1650/CONDOR-17-200.1">https://doi.org/10.1650/CONDOR-17-200.1</a>
 </div>
-<div id="ref-McDonald2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-McDonald2019" class="csl-entry" role="listitem">
 McDonald, T., Carlisle, J., &amp; McDonald, A. (2019). <em>Rdistance: Distance sampling analysis for density and abundance estimation</em>.
 </div>
-<div id="ref-Miller2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Miller2019" class="csl-entry" role="listitem">
 Miller, D. L., Rexstad, E., Thomas, L., Marshall, L., &amp; Laake, J. L. (2019). Distance sampling in <span>R</span>. <em>Journal of Statistical Software</em>, <em>89</em>(1), 1–28. <a href="https://doi.org/10.18637/jss.v089.i01">https://doi.org/10.18637/jss.v089.i01</a>
 </div>
-<div id="ref-rodriguezTortoiseAbundances2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-rodriguezTortoiseAbundances2017" class="csl-entry" role="listitem">
 Rodríguez-Caro, R. C., Oedekoven, C. S., Graciá, E., Anadón, J. D., Buckland, S. T., Esteve-Selma, M. A., … Giménez, A. (2017). Low tortoise abundances in pine forest plantations in forest-shrubland transition areas. <em>PLOS ONE</em>, <em>12</em>(3), e0173485. <a href="https://doi.org/10.1371/journal.pone.0173485">https://doi.org/10.1371/journal.pone.0173485</a>
 </div>
 </div></section></div></main> <!-- /main -->
@@ -806,9 +795,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -820,17 +823,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -840,8 +859,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -856,28 +884,279 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

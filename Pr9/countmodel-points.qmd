@@ -110,6 +110,7 @@ Note there is no `Effort` field for these point count data.
 newthrasher <- merge(thrasherDetectionData, thrasherSiteData, by="siteID", all=TRUE)
 names(newthrasher) <- sub("observer", "obs", names(newthrasher))
 names(newthrasher) <- sub("dist", "distance", names(newthrasher))
+newthrasher$distance <- as.numeric(newthrasher$distance)
 ```
 
 ## Analysis parameters specification
@@ -123,7 +124,7 @@ Specification of run-specific parameters to analyse the Sage thrasher data set. 
 pointtransect <- TRUE        # survey conducted using lines or points
 dettrunc <- 170  # truncation for detection function
 myglmmodel <- as.formula(myCount ~ shrub + offset(log(effArea)))  # habitat model to fit to animal density
-nboot <- 100      # number of bootstrap replicates
+nboot <- 10      # number of bootstrap replicates
 set.seed(7079)   # random number seed
 ```
 
@@ -136,15 +137,15 @@ We fit a series of detection function models using the transect-level covariates
 ```{r}
 #| label = "detfnpt"
 surveytype <- ifelse(pointtransect, "point", "line")
-woo.o <- ds(data=newthrasher, truncation=dettrunc, formula=~obs, 
+woo.o <- ds(data=newthrasher, truncation=dettrunc, formula=~obs,
             transect=surveytype, quiet=TRUE)
-woo.shrub <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(shrub), 
+woo.shrub <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(shrub),
            transect=surveytype, quiet=TRUE)
-woo.herb <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(herb), 
+woo.herb <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(herb),
            transect=surveytype, quiet=TRUE)
-woo.height <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(height), 
+woo.height <- ds(data=newthrasher, truncation=dettrunc, formula=~scale(height),
            transect=surveytype, quiet=TRUE)
-woo <- ds(data=newthrasher, truncation=dettrunc, formula=~1, 
+woo <- ds(data=newthrasher, truncation=dettrunc, formula=~1,
           transect=surveytype, quiet=TRUE)
 knitr::kable(summarize_ds_models(woo, woo.o, woo.shrub, woo.herb, woo.height),
              digits=3, 
