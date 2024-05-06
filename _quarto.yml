@@ -1,117 +1,108 @@
-project: 
+project:
   type: website
   output-dir: docs
-  
 website:
-  title: "Distance sampling workshop"
+  title: Distance sampling workshop
   navbar:
     background: primary
     search: true
     left:
-      - text: "Sampling"
-        file: Pr1/sampling.qmd
-      - text: "Detection functions"
-        file: Pr2/detnfns.qmd
-      - text: "Criticism"
-        file: Pr3/criticism.qmd
-      - text: "Precision"
-        file: Pr4/precision.qmd
-      - text: "Points"
-        file: Pr5/points.qmd
-      - text: "Design"
-        file: Pr6/design.qmd
-      - text: "Strata"
-        file: Pr7/strata.qmd
-      - text: "Covariates"
-        file: Pr8/covariates.qmd
-      - text: "Multipliers"
-        file: Pr9/multipliers.qmd
-      - text: "Extras"
-        file: extras/extras.qmd
-
+    - text: Sampling
+      file: Pr1/sampling.qmd
+    - text: Detection functions
+      file: Pr2/detnfns.qmd
+    - text: Criticism
+      file: Pr3/criticism.qmd
+    - text: Precision
+      file: Pr4/precision.qmd
+    - text: Points
+      file: Pr5/points.qmd
+    - text: Design
+      file: Pr6/design.qmd
+    - text: Strata
+      file: Pr7/strata.qmd
+    - text: Covariates
+      file: Pr8/covariates.qmd
+    - text: Multipliers
+      file: Pr9/multipliers.qmd
+    - text: Extras
+      file: extras/extras.qmd
   sidebar:
-    - title: "Sampling"
-      style: "docked"
-      background: light
-      contents:
-        - Pr1/sampling.qmd
-        - Pr1/Pr1-instructions.qmd
-        - Pr1/Prac1_solution.qmd
-
-    - title: "Detection models"
-      contents:
-        - Pr2/detnfns.qmd
-        - Pr2/Pr2-instructions.qmd
-        - Pr2/truncation-decisions.qmd
-        - Pr2/Prac2_solution.qmd
-
-    - title: "Criticism"
-      contents:
-        - Pr3/criticism.qmd
-        - Pr3/Pr3-instructions.qmd
-        - Pr3/modelsel-demo.qmd
-        - Pr3/Prac3_solution.qmd
-
-    - title: "Precision"
-      contents:
-        - Pr4/precision.qmd
-        - Pr4/Pr4-instructions.qmd
-        - Pr4/left-truncation.qmd
-        - Pr4/Prac4_solution.qmd
-
-    - title: "Points"
-      contents:
-        - Pr5/points.qmd
-        - Pr5/Pr5-instructions.qmd
-        - Pr5/animal_distribution.qmd
-        - Pr5/Prac5_solution.qmd
-        
-    - title: "Design"
-      contents: 
-        - Pr6/design.qmd
-        - Pr6/Pr6-instructions.qmd
-        - Pr6/leaflet-demo.qmd
-        - Pr6/effort-and-power.qmd
-        - Pr6/Pr6-solution.qmd
-        
-    - title: "Strata"
-      contents: 
-        - Pr7/strata.qmd
-        - Pr7/Pr7-instructions.qmd
-        - Pr7/detecting-differences.qmd
-        - Pr7/stratumspecific-bias.qmd
-        - Pr7/Prac7_solution.qmd
-        
-    - title: "Covariates"
-      contents: 
-        - Pr8/covariates.qmd
-        - Pr8/Group-size-covariate.qmd
-        - Pr8/Pr8-instructions.qmd
-        - Pr8/alternative-selection-metrics.qmd
-        - Pr8/Prac8_solution.qmd
-        
-    - title: "Multipliers"
-      contents: 
-        - Pr9/multipliers.qmd
-        - Pr9/Pr9-instructions.qmd
-        - Pr9/multi-analysis.qmd
-        - Pr9/countmodel-lines.qmd
-        - Pr9/Prac9_solution.qmd
-        
-    - title: "Extras"
-      contents: 
-        - extras/extras.qmd
-        - extras/critique.qmd
-        - extras/mystery.qmd
-        - announce.qmd
-        
+  - title: Sampling
+    style: docked
+    background: light
+    contents:
+    - Pr1/sampling.qmd
+    - Pr1/Pr1-instructions.qmd
+    - Pr1/Prac1_solution.qmd
+  - title: Detection models
+    contents:
+    - Pr2/detnfns.qmd
+    - Pr2/Pr2-instructions.qmd
+    - Pr2/truncation-decisions.qmd
+    - Pr2/Prac2_solution.qmd
+  - title: Criticism
+    contents:
+    - Pr3/criticism.qmd
+    - Pr3/Pr3-instructions.qmd
+    - Pr3/modelsel-demo.qmd
+    - Pr3/Prac3_solution.qmd
+  - title: Precision
+    contents:
+    - Pr4/precision.qmd
+    - Pr4/Pr4-instructions.qmd
+    - Pr4/left-truncation.qmd
+    - Pr4/Prac4_solution.qmd
+  - title: Points
+    contents:
+    - Pr5/points.qmd
+    - Pr5/Pr5-instructions.qmd
+    - Pr5/animal_distribution.qmd
+    - Pr5/Prac5_solution.qmd
+  - title: Design
+    contents:
+    - Pr6/design.qmd
+    - Pr6/Pr6-instructions.qmd
+    - Pr6/leaflet-demo.qmd
+    - Pr6/effort-and-power.qmd
+    - Pr6/Pr6-solution.qmd
+  - title: Strata
+    contents:
+    - Pr7/strata.qmd
+    - Pr7/Pr7-instructions.qmd
+    - Pr7/detecting-differences.qmd
+    - Pr7/stratumspecific-bias.qmd
+    - Pr7/Prac7_solution.qmd
+  - title: Covariates
+    contents:
+    - Pr8/covariates.qmd
+    - Pr8/Group-size-covariate.qmd
+    - Pr8/Pr8-instructions.qmd
+    - Pr8/alternative-selection-metrics.qmd
+    - Pr8/Prac8_solution.qmd
+  - title: Multipliers
+    contents:
+    - Pr9/multipliers.qmd
+    - Pr9/Pr9-instructions.qmd
+    - Pr9/multi-analysis.qmd
+    - Pr9/countmodel-lines.qmd
+    - Pr9/Prac9_solution.qmd
+  - title: Extras
+    contents:
+    - extras/extras.qmd
+    - extras/critique.qmd
+    - extras/mystery.qmd
+    - announce.qmd
 format:
   html:
     theme: sandstone
     mainfont: Verdana
-    fontsize: "15px"
-    css: styles.css
-    toc: true   
+    fontsize: 15px
+    css:
+    - styles.css
+    - include/webex.css
+    toc: true
     code-copy: true
-    include-in-header: 
-      - file: clarity.txt
+    include-in-header:
+    - file: clarity.txt
+    include-after-body: include/webex.js

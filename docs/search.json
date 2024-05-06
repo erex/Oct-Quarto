@@ -1515,5 +1515,68 @@
       "Multipliers",
       "Analyses using multipliers"
     ]
+  },
+  {
+    "objectID": "Pr3/prac3.html",
+    "href": "Pr3/prac3.html",
+    "title": "Assessing line transect detection functions",
+    "section": "",
+    "text": "In Exercise 2, we fitted different detection functions and compared them in terms of goodness of fit and AIC. Here, we continue to fit and assess different models and look at additional arguments in the ds package."
+  },
+  {
+    "objectID": "Pr3/prac3.html#accessing-the-data",
+    "href": "Pr3/prac3.html#accessing-the-data",
+    "title": "Assessing line transect detection functions",
+    "section": "Accessing the data",
+    "text": "Accessing the data\nLoad the Distance package to access both the data and analytical functions.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nData format: no detections on a transect\nBefore fitting models, it is worth investigating the data a bit further: let’s start by summarising the perpendicular distances:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe summary indicates that the minimum distance is 0 and the maximum is 35.8 metres and there is one missing value (indicated by the NA). If we print a few rows of the data, we can see that this missing value occurred on transect ‘Line 11’.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe NA indicates that there were no detections on this transect, but the transect information needs to be included otherwise the number of transects and the total line length will be incorrect."
+  },
+  {
+    "objectID": "Pr3/prac3.html#truncation",
+    "href": "Pr3/prac3.html#truncation",
+    "title": "Assessing line transect detection functions",
+    "section": "Truncation",
+    "text": "Truncation\nLet’s start by fitting a basic model, i.e. no adjustment terms (by default a half normal model is fitted).\nFor this project, perpendicular distances are in metres and the transect lines are recorded in kilometres.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nLooking at a summary of the model object.\n\n\n\n\n\n\nQuestions:\n\n\n\n\n\n\nHow many objects were detected? \nWhat is the maximum observed perpendicular distance? \n\n\n\n\nPlot the detection function and specify many histogram bins:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe histogram indicates that there is a large gap in detections therefore, to avoid a long right hand tail in the detection function, truncation is necessary. There are several ways to truncate: excluding distances beyond some specified distance or excluding a specified percentage of the largest distances. Note that here we only consider excluding large perpendicular distances, which is referred to as right truncation.\n\nTruncation at a fixed distance\nThe following command truncates the perpendicular distances at 20 metres i.e. objects detected beyond 20m are excluded.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nGenerate a summary and plot of the detection function to see what effect this truncation has had on the number of objects.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nTruncating a percentage of distances\nAn alternative way to truncate distances is to specify a percentage of detected objects that should be excluded. In the command below, 10% of the largest distances are excluded.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nGenerate a summary and plot to see what effect truncation has had.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nQuestions:\n\n\n\n\n\nContrast the truncation distances and number of detections in the analysis from the different forms of truncation. Previously, you noted there were 105 detections at a maximum of 35.8 meters in the untruncated data.\n\nUntruncated data\n\nWhat is the estimated proportion of objects detected (to 3 decimals) to 35.8m in the untruncated data? \n\n\n\nTruncation at 20m\n\nHow many objects were included in the analysis? \n\nIn other words, how many objects were removed from the analysis? \n\nWhat is the estimated proportion of objects detected (to 3 decimals) to 20m? \n\n\n\nTruncation of 10% of the detections\n\nHow many objects were included in the analysis? \n\nIn other words, how many objects were removed from the analysis? \n\nWhat is the maximum observed perpendicular distance (to 2 decimals)? \nWhat is the estimated proportion of objects detected (to 3 decimals) with 10% truncation? \n\n\n\nDensity estimate differences because of truncation\n\nWhat is the estimated density (to 1 decimal) with no truncation? \nWhat is the estimated density (to 1 decimal) with truncation at 20m? \nWhat is the estimated density (to 1 decimal) with 10% truncation? \nFor this data set (and most good data sets), truncation has a dramaticconsiderablesmallno effect on estimated abundance."
+  },
+  {
+    "objectID": "Pr3/prac3.html#exploring-different-models",
+    "href": "Pr3/prac3.html#exploring-different-models",
+    "title": "Assessing line transect detection functions",
+    "section": "Exploring different models",
+    "text": "Exploring different models\nDecide on a suitable truncation distance (but don’t spend too long on this) and then fit different key detection functions and adjustment terms to assess whether these data can be satisfactorily analysed with the ‘wrong’ model. By default, the ds function fits a half normal function and cosine adjustment terms (adjustment=\"cos\") of up to order 5: AIC is used to determine how many, if any, adjustment terms are required. This model is specified in the command below:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nChange the key and adjustment terms: possible options are listed in Exercise 2 or use the help(ds) for options. See how the bias and precision compare between the models: the true density was 79.8 animals per km\\(^2\\)."
+  },
+  {
+    "objectID": "Pr3/prac3.html#converting-exact-distances-to-binned-distances",
+    "href": "Pr3/prac3.html#converting-exact-distances-to-binned-distances",
+    "title": "Assessing line transect detection functions",
+    "section": "Converting exact distances to binned distances",
+    "text": "Converting exact distances to binned distances\nSometimes we wish to convert exact distances to binned distances, if for example, there is evidence of rounding to favoured values. To do this in ds we need to specify the cutpoints of the bins, including zero and the maximum distance. In the example below, cutpoints at 0, 10, 20, …, 80 are specified.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe could be more intelligent in our choice of cutpoints for our binned analysis of we recognise the rounding in the original data. Given the rounding is to distances ending in 0, we do not want our cutpoints to also end in 0. Rather, we want the 0 values in the data to land in the approximate centre of our manufactured bins. We accomplish this by creating this series of cutpoints:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCompare density estimate produced by binning the distances with density estimates produced by different key function models fitted to exact distances.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nQuestion:\n\n\n\n\n\n\nFor this data set (and most good data sets), binning of exact distances has a dramaticconsiderablesmallno effect on estimated abundance."
+  },
+  {
+    "objectID": "webexercises.html",
+    "href": "webexercises.html",
+    "title": "Webexercises",
+    "section": "",
+    "text": "This is a Web Exercise template created by the psychology teaching team at the University of Glasgow, based on ideas from Software Carpentry. This template shows how instructors can easily create interactive web documents that students can use in self-guided learning.\nThe {webexercises} package provides a number of functions that you use in inline R code or through code chunk options to create HTML widgets (text boxes, pull down menus, buttons that reveal hidden content). Examples are given below. Render this file to HTML to see how it works.\nNOTE: To use the widgets in the compiled HTML file, you need to have a JavaScript-enabled browser."
+  },
+  {
+    "objectID": "webexercises.html#example-questions",
+    "href": "webexercises.html#example-questions",
+    "title": "Webexercises",
+    "section": "Example Questions",
+    "text": "Example Questions\n\nFill-In-The-Blanks (fitb())\nCreate fill-in-the-blank questions using fitb(), providing the answer as the first argument.\n\n2 + 2 is \n\nYou can also create these questions dynamically, using variables from your R session.\n\nThe square root of 64 is: \n\nThe blanks are case-sensitive; if you don’t care about case, use the argument ignore_case = TRUE.\n\nWhat is the letter after D? \n\nIf you want to ignore differences in whitespace use, use the argument ignore_ws = TRUE (which is the default) and include spaces in your answer anywhere they could be acceptable.\n\nHow do you load the tidyverse package? \n\nYou can set more than one possible correct answer by setting the answers as a vector.\n\nType a vowel: \n\nYou can use regular expressions to test answers against more complex rules.\n\nType any 3 letters: \n\n\n\nMultiple Choice (mcq())\n\n“Never gonna give you up, never gonna: let you goturn you downrun awaylet you down”\n“I bless the rainsguess it rainssense the rain down in Africa” -Toto\n\n\n\nTrue or False (torf())\n\nTrue or False? You can permute values in a vector using sample(). TRUEFALSE\n\n\n\nLonger MCQs (longmcq())\nWhen your answers are very long, sometimes a drop-down select box gets formatted oddly. You can use longmcq() to deal with this. Since the answers are long, It’s probably best to set up the options inside an R chunk with echo=FALSE.\nWhat is a p-value?\n\n the probability that the null hypothesis is true the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true the probability of making an error in your conclusion\n\nWhat is true about a 95% confidence interval of the mean?\n\n there is a 95% probability that the true mean lies within this range 95% of the data fall within this range if you repeated the process many times, 95% of intervals calculated in this way contain the true mean"
+  },
+  {
+    "objectID": "webexercises.html#checked-sections",
+    "href": "webexercises.html#checked-sections",
+    "title": "Webexercises",
+    "section": "Checked sections",
+    "text": "Checked sections\nCreate sections with the class webex-check to add a button that hides feedback until it is pressed. Add the class webex-box to draw a box around the section (or use your own styles).\n\nI am going to learn a lot: TRUEFALSE\nWhat is a p-value?\n\n the probability that the null hypothesis is true the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true the probability of making an error in your conclusion"
+  },
+  {
+    "objectID": "webexercises.html#hidden-solutions-and-hints",
+    "href": "webexercises.html#hidden-solutions-and-hints",
+    "title": "Webexercises",
+    "section": "Hidden solutions and hints",
+    "text": "Hidden solutions and hints\nYou can fence off a solution area that will be hidden behind a button using hide() before the solution and unhide() after, each as inline R code. Pass the text you want to appear on the button to the hide() function.\nIf the solution is a code chunk, instead of using hide() and unhide(), simply set the webex.hide chunk option to TRUE, or set it to the string you wish to display on the button.\nRecreate the scatterplot below, using the built-in cars dataset.\n\n\n\n\n\n\n\n\n\n\n\nI need a hint\n\nSee the documentation for plot() (?plot)\n\n\n\n\n\nClick here to see the solution\n\nplot(cars$speed, cars$dist)"
   }
 ]
