@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-05-06">
+<meta name="dcterms.date" content="2024-05-23">
 
 <title>Distance sampling workshop - Assessing line transect detection functions</title>
 <style>
@@ -300,7 +300,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"label":"unnamed-chunk-1","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"library(Distance)\ndata(\"LTExercise\")\nhead(LTExercise, n=3)"},{"id":2,"options":{"label":"unnamed-chunk-2","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"summary(LTExercise$distance)"},{"id":3,"options":{"label":"unnamed-chunk-3","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"LTExercise[100:102, ]"},{"id":4,"options":{"label":"unnamed-chunk-4","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"conversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nlt.hn <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, convert_units=conversion.factor)"},{"id":5,"options":{"label":"unnamed-chunk-5","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"summary(lt.hn)"},{"id":6,"options":{"label":"unnamed-chunk-6","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"plot(lt.hn, nc=30)"},{"id":7,"options":{"label":"unnamed-chunk-7","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"lt.hn.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=20,\n                 convert_units=conversion.factor)"},{"id":8,"options":{"label":"unnamed-chunk-8","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"summary(lt.hn.t20m)\nplot(lt.hn.t20m)"},{"id":9,"options":{"label":"unnamed-chunk-9","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"lt.hn.t10per <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=\"10%\",\n                   convert_units=conversion.factor)"},{"id":10,"options":{"label":"unnamed-chunk-10","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"summary(lt.hn.t10per)\nplot(lt.hn.t10per)"},{"id":11,"options":{"label":"unnamed-chunk-11","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"lt.hn.cos <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)"},{"id":12,"options":{"label":"unnamed-chunk-12","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"data(capercaillie)\nbins <- seq(from=0, to=80, by=10)\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\ncaper.bin <- ds(data=capercaillie, key=\"hn\", cutpoints=bins, convert_units=conversion.factor)\nplot(caper.bin)"},{"id":13,"options":{"label":"unnamed-chunk-13","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"nicebins <- c(0, seq(from=7.5, to=67.5, by=10), 80)\ncaper.hn.bin <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", cutpoints=nicebins,\n                   convert_units=conversion.factor)\nplot(caper.hn.bin, main=\"Capercaillie, nicely binned distances\")"},{"id":14,"options":{"label":"unnamed-chunk-14","fig-cap":"","message":"true","results":"markup","out-width":"700px","context":"interactive","fig-height":5,"dpi":72,"editor-font-scale":1,"out-height":"","read-only":"false","autorun":"false","output":"true","editor-max-height":"","classes":"","warning":"true","comment":"","editor-quick-suggestions":"false","fig-width":7},"code":"caper.hn.cos <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.hr.cos <- ds(data=capercaillie, key=\"hr\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.uf.cos <- ds(data=capercaillie, key=\"unif\", adjustment=\"cos\", convert_units=conversion.factor)\nresults.table <- rbind(caper.hn.cos$dht$individuals$D, caper.hr.cos$dht$individuals$D,\n                       caper.uf.cos$dht$individuals$D, caper.hn.bin$dht$individuals$D)\nresults.table[,1] <- c(\"Halfnorm\", \"Hazard\", \"Uniformcos\", \"Binned HN\")\nprint(results.table)"}];
+globalThis.qwebrCellDetails = [{"code":"library(Distance)\ndata(\"LTExercise\")\nhead(LTExercise, n=3)","id":1,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-1","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"summary(LTExercise$distance)","id":2,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-2","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"LTExercise[100:102, ]","id":3,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-3","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"conversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nlt.hn <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, convert_units=conversion.factor)","id":4,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-4","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"summary(lt.hn)","id":5,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-5","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"plot(lt.hn, nc=30)","id":6,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-6","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"lt.hn.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=20,\n                 convert_units=conversion.factor)","id":7,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-7","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"summary(lt.hn.t20m)\nplot(lt.hn.t20m)","id":8,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-8","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"lt.hn.t10per <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=\"10%\",\n                   convert_units=conversion.factor)","id":9,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-9","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"summary(lt.hn.t10per)\nplot(lt.hn.t10per)","id":10,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-10","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"lt.hn.cos <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)","id":11,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-11","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"data(capercaillie)\nbins <- seq(from=0, to=80, by=10)\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\ncaper.bin <- ds(data=capercaillie, key=\"hn\", cutpoints=bins, convert_units=conversion.factor)\nplot(caper.bin)","id":12,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-12","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"nicebins <- c(0, seq(from=7.5, to=67.5, by=10), 80)\ncaper.hn.bin <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", cutpoints=nicebins,\n                   convert_units=conversion.factor)\nplot(caper.hn.bin, main=\"Capercaillie, nicely binned distances\")","id":13,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-13","fig-width":7,"out-height":"","editor-font-scale":1}},{"code":"caper.hn.cos <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.hr.cos <- ds(data=capercaillie, key=\"hr\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.uf.cos <- ds(data=capercaillie, key=\"unif\", adjustment=\"cos\", convert_units=conversion.factor)\nresults.table <- rbind(caper.hn.cos$dht$individuals$D, caper.hr.cos$dht$individuals$D,\n                       caper.uf.cos$dht$individuals$D, caper.hn.bin$dht$individuals$D)\nresults.table[,1] <- c(\"Halfnorm\", \"Hazard\", \"Uniformcos\", \"Binned HN\")\nprint(results.table)","id":14,"options":{"fig-height":5,"out-width":"700px","editor-max-height":"","output":"true","read-only":"false","autorun":"false","dpi":72,"editor-quick-suggestions":"false","classes":"","results":"markup","comment":"","message":"true","warning":"true","fig-cap":"","context":"interactive","label":"unnamed-chunk-14","fig-width":7,"out-height":"","editor-font-scale":1}}];
 
 </script>
 <script type="module">
@@ -1256,6 +1256,7 @@ window.Quarto = {
   <li><a href="#truncation-at-a-fixed-distance" id="toc-truncation-at-a-fixed-distance" class="nav-link" data-scroll-target="#truncation-at-a-fixed-distance">Truncation at a fixed distance</a></li>
   <li><a href="#truncating-a-percentage-of-distances" id="toc-truncating-a-percentage-of-distances" class="nav-link" data-scroll-target="#truncating-a-percentage-of-distances">Truncating a percentage of distances</a></li>
   </ul></li>
+  <li><a href="#questions-1" id="toc-questions-1" class="nav-link" data-scroll-target="#questions-1">Questions:</a></li>
   <li><a href="#exploring-different-models" id="toc-exploring-different-models" class="nav-link" data-scroll-target="#exploring-different-models">Exploring different models</a></li>
   </ul></li>
   <li><a href="#fitting-models-to-real-data-optional-question" id="toc-fitting-models-to-real-data-optional-question" class="nav-link" data-scroll-target="#fitting-models-to-real-data-optional-question">Fitting models to real data (optional question)</a>
@@ -1515,7 +1516,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 6, 2024</p>
+      <p class="date">May 23, 2024</p>
     </div>
   </div>
   
@@ -1616,18 +1617,10 @@ Questions:
 <p>Generate a summary and plot to see what effect truncation has had.</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Questions:
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
+</section>
+</section>
+<section id="questions-1" class="level2 webex-check webex-box">
+<h2 class="anchored" data-anchor-id="questions-1">Questions:</h2>
 <p>Contrast the truncation distances and number of detections in the analysis from the different forms of truncation. Previously, you noted there were 105 detections at a maximum of 35.8 meters in the untruncated data.</p>
 <section id="untruncated-data" class="level4">
 <h4 class="anchored" data-anchor-id="untruncated-data">Untruncated data</h4>
@@ -1665,10 +1658,6 @@ Questions:
 <li>For this data set (and most good data sets), truncation has a <select class="webex-select"><option value="blank"></option><option value="">dramatic</option><option value="">considerable</option><option value="answer">small</option><option value="">no</option></select> effect on estimated abundance.</li>
 </ul>
 </section>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="exploring-different-models" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-different-models">Exploring different models</h2>
@@ -1681,7 +1670,7 @@ Questions:
 <section id="fitting-models-to-real-data-optional-question" class="level1">
 <h1>Fitting models to real data (optional question)</h1>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1690,7 +1679,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>The objective of this portion of the exercise is to give you more practice with a line transect data set and also familiarise you with converting from exact distances to binned distances.</li>
@@ -1727,7 +1716,7 @@ Tip
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1736,11 +1725,17 @@ Question:
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li>For this data set (and most good data sets), binning of exact distances has a <select class="webex-select"><option value="blank"></option><option value="">dramatic</option><option value="">considerable</option><option value="answer">small</option><option value="">no</option></select> effect on estimated abundance.</li>
 </ul>
+<div class="webex-solution">
+<button>
+Click here for a hint
+</button>
+<p>This text will only appear <strong>after you ask for help</strong></p>
+</div>
 </div>
 </div>
 </div>

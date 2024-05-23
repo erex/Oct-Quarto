@@ -141,7 +141,7 @@ summary(lt.hn.t10per)
 plot(lt.hn.t10per)
 ```
 
-:::{.callout-caution collapse=false appearance='default' icon=true}
+::: {.webex-check .webex-box}
 ## Questions:
 Contrast the truncation distances and number of detections in the analysis from the different forms of truncation. Previously, you noted there were 105 detections at a maximum of 35.8 meters in the untruncated data.
 
@@ -238,5 +238,13 @@ print(results.table)
 ## Question:
 - For this data set (and most good data sets), binning of exact distances has a `r mcq(c("dramatic", "considerable", answer = "small", "no"))` effect on estimated abundance.
 
+`r hide("Click here for a hint")`
+
+This text will only appear **after you ask for help**
+
+`r unhide()`
+
 :::
+
+
 # References
