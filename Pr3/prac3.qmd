@@ -157,7 +157,7 @@ Contrast the truncation distances and number of detections in the analysis from 
 - How many objects were included in the analysis? `r fitb(94)`
   - In other words, how many objects were removed from the analysis? `r fitb(11)`
 - What is the maximum observed perpendicular distance (to 2 decimals)? `r fitb(16.04)`
-- What is the estimated proportion of objects detected (to 3 decimals) with 10% truncation? `r fitb(0.694)`
+- What is the estimated proportion of objects detected (to 3 decimals) with 10% truncation? `r fitb(0.695)`
 
 #### Density estimate differences because of truncation
 - What is the estimated density (to 1 decimal) with no truncation? `r fitb(87.5)`
