@@ -1,0 +1,117 @@
+---
+title: Tutorial--assessing precision
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+bibliography: references.bib
+csl: apa.csl
+webr:
+    packages: ['Distance']
+filters: 
+  - webr
+---
+
+```{r}
+#| label = "setup",
+#| include = FALSE,
+#| message = FALSE
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+<img src=https://images.unsplash.com/photo-1519599189038-58e6fc7a060d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHVuY2VydGFpbnR5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60 width=320 height=400 style="float:right">
+
+<p style="text-align:right font-size:70%">Photo by Michael Shannon from Unsplash</p>
+
+## Practical 4 -- Poor precision in an abnormal situation
+
+Remember that the "usual" estimator for encounter rate variance is based upon the idea that transects are distributed *randomly* rather than *systematically* with a random start. Under rare circumstances, this can over-estimate encounter rate variance and consequently, variance of density and abundance estimates.  Revisit the output from Practical 4 and answer these questions.
+
+
+```{r}
+#| label: poor
+#| echo: false
+poor_choices <- c("too few replicate transects",
+                    answer="ignorance of animal gradient",
+                    "truncation too narrow leading to too few detections",
+                    "inadequate survey effort")
+```
+
+### Questions
+
+Before getting absorbed in the analysis, what difficulties were caused because of the *survey design*.
+
+- Identify the design flaws of the survey that produced such poor precision: `r longmcq(poor_choices)`
+
+```{webr-r}
+#| label: var2
+#| context: output
+#| message: false
+
+data("Systematic_variance_2")
+conversion.factor <- convert_units("metre", "kilometre", "square kilometre")
+sysvar2.hn <- ds(data=Systematic_variance_2, key="hn", adjustment="cos",
+                 convert_units=conversion.factor)
+dens <- sysvar2.hn$dht$individuals$D
+abun <- sysvar2.hn$dht$individuals$N
+combo <- rbind(dens, abun)
+combo$Label <- c("Density", "Abundance")
+print(combo)
+```
+
+```{r}
+#| label: ests
+#| echo: false
+est_choices <- c(answer="$\\hat{N} = \\hat{D} \\times A$, where A=1/2",
+                 "that is characteristic of the half normal detection function",
+                 "inadequate survey effort",
+                "because of convert_units, square kilometers are twice as large as kilometers" )
+```
+
+- Why is the estimate of abundance exactly half the estimate of density in this analysis? `r longmcq(est_choices)`
+
+Here is the summary output from the *standard* analysis of this data set. Alarm bells should ring in your head as you examine this output; specifically the variance components constituting the uncertainty in your abundance or density estimates. 
+
+```{webr-r}
+#| label: summary
+#| context: output
+summary(sysvar2.hn)
+```
+
+```{webr-r}
+#| label: blanks
+
+cv.abundance <- ___
+cv.p <- ___
+cv.enc.rate <- ___
+er.component <- round(cv.enc.rate^2 / cv.abundance^2 * 100,1)
+detfn.component <- round(cv.p^2 / cv.abundance^2 * 100,1)
+answer <- paste("Detection component = ", detfn.component,
+                " Encounter rate comp = ", er.component)
+print(answer)
+```
+
+In *normal* circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? `r fitb(95)`
+
+### Does bootstrapping resolve the issue?
+
+```{webr-r}
+#| label: boot
+#| context: output
+#| message: false
+
+est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,
+                    summary_fun=bootdht_Nhat_summarize, 
+                    convert_units=conversion.factor, nboot=100,
+                    progress_bar = "none")
+summary(est.boot)
+```
+
+```{r}
+#| label: bootquest
+#| echo: false
+
+boot_choice <- c("bootstrap only improves precision of estimated detection function",
+                 "bootstrap does not perform well with half normal detection function",
+                 answer="resampling transects does not alter variability in encounter rate between transects",
+                 "bootstrapping is over-rated, never works well")
+```
+
+- Why does the use of the bootstrap not resolve the poor precision problem? `r longmcq(boot_choice)`
