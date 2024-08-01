@@ -9,7 +9,7 @@
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
 <meta name="dcterms.date" content="2024-08-01">
 
-<title>Assessing line transect detection functions – Distance sampling workshop</title>
+<title>Tutorial–ducknest analysis in R – Distance sampling workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +22,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -391,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-1","fig-width":7},"id":1,"code":"library(Distance)\ndata(\"LTExercise\")\nhead(LTExercise, n=3)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-2","fig-width":7},"id":2,"code":"summary(LTExercise$distance)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-3","fig-width":7},"id":3,"code":"LTExercise[100:102, ]"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-4","fig-width":7},"id":4,"code":"conversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nlt.hn <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, convert_units=conversion.factor)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-5","fig-width":7},"id":5,"code":"summary(lt.hn)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-6","fig-width":7},"id":6,"code":"plot(lt.hn, nc=30)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-7","fig-width":7},"id":7,"code":"lt.hn.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=20,\n                 convert_units=conversion.factor)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-8","fig-width":7},"id":8,"code":"summary(lt.hn.t20m)\nplot(lt.hn.t20m)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-9","fig-width":7},"id":9,"code":"lt.hn.t10per <- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=\"10%\",\n                   convert_units=conversion.factor)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-10","fig-width":7},"id":10,"code":"summary(lt.hn.t10per)\nplot(lt.hn.t10per)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-11","fig-width":7},"id":11,"code":"lt.hn.cos <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-12","fig-width":7},"id":12,"code":"data(capercaillie)\nbins <- seq(from=0, to=80, by=10)\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\ncaper.bin <- ds(data=capercaillie, key=\"hn\", cutpoints=bins, convert_units=conversion.factor)\nplot(caper.bin)"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-13","fig-width":7},"id":13,"code":"nicebins <- c(0, seq(from=7.5, to=67.5, by=10), 80)\ncaper.hn.bin <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", cutpoints=nicebins,\n                   convert_units=conversion.factor)\nplot(caper.hn.bin, main=\"Capercaillie, nicely binned distances\")"},{"options":{"message":"true","warning":"true","fig-height":5,"autorun":"false","editor-font-scale":"1","editor-quick-suggestions":"false","context":"interactive","results":"markup","fig-cap":"","out-height":"","dpi":72,"classes":"","editor-max-height":"","comment":"","out-width":"700px","read-only":"false","output":"true","editor-word-wrap":"true","label":"unnamed-chunk-14","fig-width":7},"id":14,"code":"caper.hn.cos <- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.hr.cos <- ds(data=capercaillie, key=\"hr\", adjustment=\"cos\", convert_units=conversion.factor)\ncaper.uf.cos <- ds(data=capercaillie, key=\"unif\", adjustment=\"cos\", convert_units=conversion.factor)\nresults.table <- rbind(caper.hn.cos$dht$individuals$D, caper.hr.cos$dht$individuals$D,\n                       caper.uf.cos$dht$individuals$D, caper.hn.bin$dht$individuals$D)\nresults.table[,1] <- c(\"Halfnorm\", \"Hazard\", \"Uniformcos\", \"Binned HN\")\nprint(results.table)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"data(\"ducknest\")\nduckunits <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nhalfnorm <- ds(data=ducknest, key=\"hn\", convert_units = duckunits)\nsummary(halfnorm)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"makeoutput","autorun":"true","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"output","message":"FALSE","editor-max-height":""}},{"id":2,"code":"refuge_area <- _____\nnest_density <- _____\nnest_abundance <- refuge_area * nest_density\nprint(nest_abundance)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-2","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}},{"id":3,"code":"gof_ds(halfnorm)","options":{"classes":"","read-only":"false","output":"true","results":"markup","echo":"false","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"gof","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}},{"id":4,"code":"nest.hn <- ds(ducknest, key=\"hn\", adjustment=NULL,\n              convert_units=duckunits)\nnest.uf.cos <- ds(ducknest, key=\"unif\", adjustment=\"cos\",\n                  convert_units=duckunits)\nnest.hr.poly <- ds(ducknest, key=\"hr\", adjustment=\"poly\", \n                  convert_units=duckunits)\nhn.est <- nest.hn$dht$individuals$D$Estimate\nuncos.est <- nest.uf.cos$dht$individuals$D$Estimate\nhr.est <- nest.hr.poly$dht$individuals$D$Estimate\nestimates <- data.frame(Density_estimates=round(c(hn.est, uncos.est, hr.est),2))\nrow.names(estimates) <- c(\"Half normal\", \"Uniform cosine\", \"Hazard rate\")\nprint(estimates)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"3models","autorun":"true","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"output","message":"false","editor-max-height":""}},{"id":5,"code":"smallest_est <- ___\nlargest_est <- ___\ndifference <- largest_est - smallest_est\nrelative_difference <- difference / smallest_est\nprint(round(relative_difference,3))","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"difference","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}}];
 
 </script>
 <script type="module">
@@ -1696,24 +1676,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#fitting-models-to-simulated-data" id="toc-fitting-models-to-simulated-data" class="nav-link" data-scroll-target="#fitting-models-to-simulated-data">Fitting models to simulated data</a>
+  <li><a href="#practical-2-duck-nest-analysis" id="toc-practical-2-duck-nest-analysis" class="nav-link active" data-scroll-target="#practical-2-duck-nest-analysis">Practical 2 – Duck nest analysis</a>
   <ul class="collapse">
-  <li><a href="#accessing-the-data" id="toc-accessing-the-data" class="nav-link" data-scroll-target="#accessing-the-data">Accessing the data</a>
-  <ul class="collapse">
-  <li><a href="#data-format-no-detections-on-a-transect" id="toc-data-format-no-detections-on-a-transect" class="nav-link" data-scroll-target="#data-format-no-detections-on-a-transect">Data format: no detections on a transect</a></li>
-  </ul></li>
-  <li><a href="#truncation" id="toc-truncation" class="nav-link" data-scroll-target="#truncation">Truncation</a>
-  <ul class="collapse">
-  <li><a href="#truncation-at-a-fixed-distance" id="toc-truncation-at-a-fixed-distance" class="nav-link" data-scroll-target="#truncation-at-a-fixed-distance">Truncation at a fixed distance</a></li>
-  <li><a href="#truncating-a-percentage-of-distances" id="toc-truncating-a-percentage-of-distances" class="nav-link" data-scroll-target="#truncating-a-percentage-of-distances">Truncating a percentage of distances</a></li>
-  </ul></li>
-  <li><a href="#questions-1" id="toc-questions-1" class="nav-link" data-scroll-target="#questions-1">Questions:</a></li>
-  <li><a href="#exploring-different-models" id="toc-exploring-different-models" class="nav-link" data-scroll-target="#exploring-different-models">Exploring different models</a></li>
-  </ul></li>
-  <li><a href="#fitting-models-to-real-data-optional-question" id="toc-fitting-models-to-real-data-optional-question" class="nav-link" data-scroll-target="#fitting-models-to-real-data-optional-question">Fitting models to real data (optional question)</a>
-  <ul class="collapse">
-  <li><a href="#converting-exact-distances-to-binned-distances" id="toc-converting-exact-distances-to-binned-distances" class="nav-link" data-scroll-target="#converting-exact-distances-to-binned-distances">Converting exact distances to binned distances</a></li>
+  <li><a href="#density-converted-to-abundance" id="toc-density-converted-to-abundance" class="nav-link" data-scroll-target="#density-converted-to-abundance">Density converted to abundance</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -2008,7 +1973,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assessing line transect detection functions</h1>
+<h1 class="title">Tutorial–ducknest analysis in R</h1>
 </div>
 
 
@@ -2037,231 +2002,63 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>In Exercise 2, we fitted different detection functions and compared them in terms of goodness of fit and AIC. Here, we continue to fit and assess different models and look at additional arguments in the <code>ds</code> package.</p>
-<section id="objectives" class="level1">
-<h1>Objectives</h1>
-<p>The aim of this exercise is to practise fitting and assessing different line transect detection functions and in particular to:</p>
-<ol type="1">
-<li>Understand the data format when there are no detections on a line,</li>
-<li>Explore different truncation options,</li>
-<li>Determine whether adjustment terms are required,</li>
-<li>Practice model selection,</li>
-</ol>
-</section>
-<section id="fitting-models-to-simulated-data" class="level1">
-<h1>Fitting models to simulated data</h1>
-<p>The data used for this practical were generated from a half-normal distribution and therefore the true density is known. There are 12 transects.</p>
-<p>The data are stored in a data set <code>LTExercise</code> which contains the following columns:</p>
-<ul>
-<li>Study.Area - Name of study called (not very imaginatively) ‘LTExercise’</li>
-<li>Region.Label - identifier of regions (in this case there is only one region and it is set to ‘Default’)</li>
-<li>Area - size of the study region (km<span class="math inline">\(^2\)</span>)</li>
-<li>Sample.Label - line transect identifier (Line 1 - Line 12)</li>
-<li>Effort - length of the line transects (km)</li>
-<li>object - unique identifier to each detected object</li>
-<li>distance - perpendicular distances (metres).</li>
-</ul>
-<section id="accessing-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="accessing-the-data">Accessing the data</h2>
-<p>Load the <code>Distance</code> package to access both the data and analytical functions.</p>
+<p><img src="https://images.unsplash.com/photo-1593594820228-a05cc04bc433?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1350&amp;q=80" width="400" height="200" style="float:right"></p>
+<section id="practical-2-duck-nest-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="practical-2-duck-nest-analysis">Practical 2 – Duck nest analysis</h2>
+<p>This has been your first experience using the <code>Distance</code> package. There are only a handful of functions you need to successfully complete a distance sampling analysis. This practical gave you experience with these functions. The data are familiar to you because they the same data you used when trying to fit a detection function by hand in Exercise 1. This exercise lets the computer do the work. Compare the estimate of duck nest density produced by <code>Distance</code> with the estimate you manually produced.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="data-format-no-detections-on-a-transect" class="level3">
-<h3 class="anchored" data-anchor-id="data-format-no-detections-on-a-transect">Data format: no detections on a transect</h3>
-<p>Before fitting models, it is worth investigating the data a bit further: let’s start by summarising the perpendicular distances:</p>
+<ul>
+<li>What is the estimate value of <span class="math inline">\(\hat{P}_a\)</span>?
+<div id="radio_EFOIPDSQEV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value="answer"> <span>0.869</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>0.039</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>614.25</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>0.933</span></label>
+</div></li>
+<li>Given your estimate of <span class="math inline">\(\hat{P}_a\)</span>, what is its meaning?
+<div id="radio_BZXVLSCVRE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>distance to which nests were detected</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>area under the curve</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value="answer"> <span>proportion of nests detected within 2.4m of transects</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>number of iterations to estimate detection function parameters</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value="answer"> <span>probability of detecting a nest within 2.4m of transect</span></label>
+</div></li>
+</ul>
+<section id="density-converted-to-abundance" class="level3">
+<h3 class="anchored" data-anchor-id="density-converted-to-abundance">Density converted to abundance</h3>
+<p>In the <code>ducknest</code> data frame, I failed to specify the size of the study area in the <code>Area</code> field. As a consequence, the <code>ds</code> function is only able to provide a density estimate. Given the size of the Monte Vista refuge is 47.7 <span class="math inline">\(km^2\)</span>, and the estimate of nest density from the output provided, complete the code fragment to provide an estimate of the abundance of nests.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The summary indicates that the minimum distance is 0 and the maximum is 35.8 metres and there is one missing value (indicated by the <code>NA</code>). If we print a few rows of the data, we can see that this missing value occurred on transect ‘Line 11’.</p>
+<ul>
+<li>What is the estimated number of nests on the refuge? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;2371&quot;]"></li>
+<li>What assumption does our estimated abundance of nests on the refuge rest?
+<div id="radio_YXCHWKITTM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Nests are uniformly distributed over refuge</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Ducks like water</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value="answer"> <span>Transects representatively sample the refuge</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Detection function model fits the data</span></label>
+</div></li>
+</ul>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The <code>NA</code> indicates that there were no detections on this transect, but the transect information needs to be included otherwise the number of transects and the total line length will be incorrect.</p>
-</section>
-</section>
-<section id="truncation" class="level2">
-<h2 class="anchored" data-anchor-id="truncation">Truncation</h2>
-<p>Let’s start by fitting a basic model, i.e.&nbsp;no adjustment terms (by default a half normal model is fitted).</p>
-<p>For this project, perpendicular distances are in metres and the transect lines are recorded in kilometres.</p>
+<ul>
+<li>How should the plot be interpreted?
+<div id="radio_PXMFEXNVTW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value="answer"> <span>model that fits has all points near the 45° line</span></label><label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value=""> <span>this plot has nothing to do with model fit</span></label><label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value=""> <span>a rapid rise in the graphed points implies good model fit</span></label>
+</div></li>
+<li>The numerical output from <code>gof_ds</code> is from the Cramer-von Mises test. Interpret the output.
+<div id="radio_CQEREAZKTQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>P-value is &lt;1, therefore the model fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>The test statistic is smaller than the P-value, therefore the fit is adequate</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>The test statistic is close to 0, therefore the fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value="answer"> <span>P-value is close to one, indicating there is support for proposition the model fits the data</span></label>
+</div></li>
+</ul>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>To reinforce the idea that similar results are produced <em>(for good data)</em> from the different key functions, write a few lines of code to explore this, using <strong>R</strong> as a calculator. Value entered to one decimal place.</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Looking at a summary of the model object.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Questions:
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
 <ul>
-<li>How many objects were detected? <input class="webex-solveme nospaces" size="3" data-answer="[&quot;105&quot;]"></li>
-<li>What is the maximum observed perpendicular distance? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;35.8&quot;]"></li>
+<li>What is the <strong>percentage</strong> difference between smallest and greatest density estimates using these three models? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;5&quot;]"></li>
 </ul>
-</div>
-</div>
-</div>
-<p>Plot the detection function and specify many histogram bins:</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The histogram indicates that there is a large gap in detections therefore, to avoid a long right hand tail in the detection function, truncation is necessary. There are several ways to truncate: excluding distances beyond some specified distance or excluding a specified percentage of the largest distances. Note that here we only consider excluding large perpendicular distances, which is referred to as right truncation.</p>
-<section id="truncation-at-a-fixed-distance" class="level3">
-<h3 class="anchored" data-anchor-id="truncation-at-a-fixed-distance">Truncation at a fixed distance</h3>
-<p>The following command truncates the perpendicular distances at 20 metres i.e.&nbsp;objects detected beyond 20m are excluded.</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Generate a summary and plot of the detection function to see what effect this truncation has had on the number of objects.</p>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="truncating-a-percentage-of-distances" class="level3">
-<h3 class="anchored" data-anchor-id="truncating-a-percentage-of-distances">Truncating a percentage of distances</h3>
-<p>An alternative way to truncate distances is to specify a percentage of detected objects that should be excluded. In the command below, 10% of the largest distances are excluded.</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Generate a summary and plot to see what effect truncation has had.</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-</section>
-<section id="questions-1" class="level2 webex-check webex-box">
-<h2 class="anchored" data-anchor-id="questions-1">Questions:</h2>
-<p>Contrast the truncation distances and number of detections in the analysis from the different forms of truncation. Previously, you noted there were 105 detections at a maximum of 35.8 meters in the untruncated data.</p>
-<section id="untruncated-data" class="level4">
-<h4 class="anchored" data-anchor-id="untruncated-data">Untruncated data</h4>
-<ul>
-<li>What is the estimated proportion of objects detected (to 3 decimals) to 35.8m in the untruncated data? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;0.349&quot;,&quot;.349&quot;]"></li>
-</ul>
-</section>
-<section id="truncation-at-20m" class="level4">
-<h4 class="anchored" data-anchor-id="truncation-at-20m">Truncation at 20m</h4>
-<ul>
-<li>How many objects were included in the analysis? <input class="webex-solveme nospaces" size="3" data-answer="[&quot;103&quot;]">
-<ul>
-<li>In other words, how many objects were removed from the analysis? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></li>
-</ul></li>
-<li>What is the estimated proportion of objects detected (to 3 decimals) to 20m? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;0.638&quot;,&quot;.638&quot;]"></li>
-</ul>
-</section>
-<section id="truncation-of-10-of-the-detections" class="level4">
-<h4 class="anchored" data-anchor-id="truncation-of-10-of-the-detections">Truncation of 10% of the detections</h4>
-<ul>
-<li>How many objects were included in the analysis? <input class="webex-solveme nospaces" size="2" data-answer="[&quot;94&quot;]">
-<ul>
-<li>In other words, how many objects were removed from the analysis? <input class="webex-solveme nospaces" size="2" data-answer="[&quot;11&quot;]"></li>
-</ul></li>
-<li>What is the maximum observed perpendicular distance (to 2 decimals)? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;16.04&quot;]"></li>
-<li>What is the estimated proportion of objects detected (to 3 decimals) with 10% truncation? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;0.695&quot;,&quot;.695&quot;]"></li>
-</ul>
-</section>
-<section id="density-estimate-differences-because-of-truncation" class="level4">
-<h4 class="anchored" data-anchor-id="density-estimate-differences-because-of-truncation">Density estimate differences because of truncation</h4>
-<ul>
-<li>What is the estimated density (to 1 decimal) with no truncation? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;87.5&quot;]"></li>
-<li>What is the estimated density (to 1 decimal) with truncation at 20m? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;84.1&quot;]"></li>
-<li>What is the estimated density (to 1 decimal) with 10% truncation? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;87.9&quot;]"></li>
-<li>For this data set (and most good data sets), truncation has a <select class="webex-select"><option value="blank"></option><option value="">dramatic</option><option value="">considerable</option><option value="answer">small</option><option value="">no</option></select> effect on estimated abundance.</li>
-</ul>
-</section>
-</section>
-<section id="exploring-different-models" class="level2">
-<h2 class="anchored" data-anchor-id="exploring-different-models">Exploring different models</h2>
-<p>Decide on a suitable truncation distance (but don’t spend too long on this) and then fit different key detection functions and adjustment terms to assess whether these data can be satisfactorily analysed with the ‘wrong’ model. By default, the <code>ds</code> function fits a half normal function and cosine adjustment terms (<code>adjustment="cos"</code>) of up to order 5: AIC is used to determine how many, if any, adjustment terms are required. This model is specified in the command below:</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Change the key and adjustment terms: possible options are listed in Exercise 2 or use the <code>help(ds)</code> for options. See how the bias and precision compare between the models: the true density was 79.8 animals per km<span class="math inline">\(^2\)</span>.</p>
-</section>
-</section>
-<section id="fitting-models-to-real-data-optional-question" class="level1">
-<h1>Fitting models to real data (optional question)</h1>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li>The objective of this portion of the exercise is to give you more practice with a line transect data set and also familiarise you with converting from exact distances to binned distances.</li>
-</ul>
-</div>
-</div>
-</div>
-<p>The data stored in a data set <code>capercaillie</code> were collected during a line transect survey of capercaillie (a species of large grouse) in Scotland. For a paper demonstrating a distance sampling survey of this species, consult <span class="citation" data-cites="catt1998a">(<a href="#ref-catt1998a" role="doc-biblioref">Catt et al., 1998</a>)</span>. The data consist of:</p>
-<ul>
-<li>Region.Label - name of the region</li>
-<li>Area - size of region in hectares <em>(1 hectare = 100m</em> <span class="math inline">\(\times\)</span> 100m)</li>
-<li>Sample.Label - line transect identifier (one transect)</li>
-<li>Effort - length of line (km)</li>
-<li>object - unique identifier for each group detected</li>
-<li>distance - perpendicular distance to each group (metres)</li>
-<li>size - group size (in this case only single birds were detected)</li>
-</ul>
-<p>Access these data and:</p>
-<ol type="1">
-<li>Decide on a suitable truncation distance, if any,</li>
-<li>Fit a few different key detection functions and adjustment terms</li>
-<li>Compare the AIC values and qq plots and choose a model</li>
-<li>Calculate density for your chosen model. To obtain density in birds per hectare, the conversion units should be specified as <code>conversion.factor&lt;-convert_units("meter", "kilometer", "hectare")</code>.</li>
-</ol>
-<section id="converting-exact-distances-to-binned-distances" class="level2">
-<h2 class="anchored" data-anchor-id="converting-exact-distances-to-binned-distances">Converting exact distances to binned distances</h2>
-<p>Sometimes we wish to convert exact distances to binned distances, if for example, there is evidence of rounding to favoured values. To do this in <code>ds</code> we need to specify the cutpoints of the bins, including zero and the maximum distance. In the example below, cutpoints at 0, 10, 20, …, 80 are specified.</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We could be more intelligent in our choice of cutpoints for our binned analysis of we recognise the rounding in the original data. Given the rounding is to distances ending in <code>0</code>, we do not want our cutpoints to also end in <code>0</code>. Rather, we want the <code>0</code> values in the data to land in the approximate centre of our manufactured bins. We accomplish this by creating this series of cutpoints:</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Compare density estimate produced by binning the distances with density estimates produced by different key function models fitted to exact distances.</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Question:
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li>For this data set (and most good data sets), binning of exact distances has a <select class="webex-select"><option value="blank"></option><option value="">dramatic</option><option value="">considerable</option><option value="answer">small</option><option value="">no</option></select> effect on estimated abundance.</li>
-</ul>
-<div class="webex-solution">
-<button>
-Click here for a hint
-</button>
-<p>This text will only appear <strong>after you ask for help</strong></p>
-</div>
-</div>
-</div>
-</div>
 </section>
 </section>
 <section id="references" class="level1">
-
-
+<h1>References</h1>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-catt1998a" class="csl-entry" role="listitem">
-Catt, D. C., Baines, D., Picozzi, N., Moss, R., &amp; Summers, R. W. (1998). Abundance and distribution of capercaillie <em><span>T</span>etrao urogallus</em> in <span>S</span>cotland 1992–1994. <em>Biological Conservation</em>, <em>85</em>(3), 257–267. <a href="https://doi.org/10.1016/s0006-3207(97)00171-7">https://doi.org/10.1016/s0006-3207(97)00171-7</a>
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */
