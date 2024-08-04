@@ -1718,5 +1718,26 @@
     "title": "Tutorial–covariates in detection function",
     "section": "Savannah sparrows with pasture covariate",
     "text": "Savannah sparrows with pasture covariate\nCheck that the image of the probability density function by pasture, created for the 1981 data set is correct. Checking this involves converting the table of \\(\\hat{\\beta}\\) coefficients into estimates of \\(\\hat{\\sigma}\\) which are more easily interpreted. Below is the output from the 1981 data set with a half-normal key function and pasture as a covariate.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom the output provide \\(\\hat{\\beta}\\) estimates to the code below to convert them into pasture-specific \\(\\hat{\\sigma}\\) estimates.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the strength of the pasture effect for each pasture by examining the relative magnitude of the standard error to the point estimates of the \\(\\hat{\\beta}\\) coefficients.\n\nEstimated detection probabilities are most similar for which pair of pastures?\n\n pasture 0 and pasture 1 pasture 0 and pasture 2 pasture 0 and pasture 3"
+  },
+  {
+    "objectID": "Pr3/prac3-tutorial.html#practical-3-model-criticism",
+    "href": "Pr3/prac3-tutorial.html#practical-3-model-criticism",
+    "title": "Tutorial–model criticism",
+    "section": "Practical 3 – Model criticism",
+    "text": "Practical 3 – Model criticism"
+  },
+  {
+    "objectID": "Pr3/prac3-tutorial.html#line-transect-analysis",
+    "href": "Pr3/prac3-tutorial.html#line-transect-analysis",
+    "title": "Tutorial–model criticism",
+    "section": "Line transect analysis",
+    "text": "Line transect analysis\nThis data set was simulated so we know both the true population density and the true underlying detection function. Our interest lies in the robustness of the density estimates in the face of model uncertainty. With actual data, we will not know the shape of the underlying process that gives rise to the detection process. It would be reassuring if density estimates were relatively insensitive to choice of detection function model. Let’s find out how sensitive our estimates are for this data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nExamine the sensitivity of the density estimates from the three models fitted to data truncated at 20m:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nTo the nearest percent, what is the relative percentage difference between smallest and largest estimates presented above? \n\n\nWhat effect did adjustment terms have upon model fit for the half normal and hazard rate key functions with 20m truncation?\n\n caused the hazard rate model to outperform the half normal improved performance of the hazard rate model, but not the half normal adjustment terms did not appear in the final key function models\n\n\n\nModel fit\nOne oversight of the analysis of LTExercise simulated data is the failure to assess model fit. Using the gof_ds function, below is code to perform Cramer-von Mises goodness of fit tests upon all three key function models with 20m truncation. We use the argument plot=FALSE to skip production of the Q-Q plot in this instance.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nAll of the three fitted models are admissable to use for inference? TRUEFALSE"
+  },
+  {
+    "objectID": "Pr3/prac3-tutorial.html#capercaillie-data",
+    "href": "Pr3/prac3-tutorial.html#capercaillie-data",
+    "title": "Tutorial–model criticism",
+    "section": "Capercaillie data",
+    "text": "Capercaillie data\nWatch out for danger signs in output of functions. Examine the output of this simple half normal fitted to the exact capercaillie distances. Consider the following output:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhat strikes you as strange about the variability associated with encounter rate (se.ER and cv.ER)\n\n they are vanishingly small they are incredibly large\n\nThis is an actual data set, so we do not know the true density of capercaillie in this study area. However we can compare the point estimates of density derived from distances treated as exact and from binned distances.\n\n With binned distances, the estimate of \\(\\hat{D}\\) is an order of magnitude larger than with exact distances \\(\\hat{D}\\) from the half normal with binned distances is between the estimates of \\(\\hat{D}\\) with the half normal and hazard rate keys using exact distances We are not sure whether the detection function fitted to the exact distances fit the data"
   }
 ]
