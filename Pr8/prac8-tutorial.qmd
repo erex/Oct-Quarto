@@ -1,0 +1,173 @@
+---
+title: Tutorial--covariates in detection function
+author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
+date: "`r Sys.Date()`"
+webr:
+    packages: ['Distance']
+filters: 
+  - webr
+---
+
+```{r}
+#| label = "setup",
+#| include = FALSE,
+#| message = FALSE
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+<img src=https://images.unsplash.com/photo-1521293806442-3c2f0adbf297?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHN0b3JtJTIwYXQlMjBzZWF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60 width=450 height=225 style="float:right">
+
+<p style="text-align:right font-size:70%">Photo by Barth Bailey from Unsplash</p>
+
+
+## Exercise 8 -- Covariates in detection function
+
+Use of covariates in detection function models require more vigilance in assessing possible covariates prior to analysis and in the interpretation of the analysis. This set of questions asks that you take a more critical look at the results of the analyses presented in the covariate practical.
+
+### Amakihi songbird data 
+
+Before using the `ds()` function, exploratory data analysis screens candidate covariates for potential utility in the detection function as well as possible difficulties that might arise if multiple covariates are included.  I alerted you to the problems *colinearity* in predictors cause.
+
+```{webr-r}
+#| label: box
+#| context: output
+#| message: false
+data(amakihi)
+par(mfrow=c(2,2))
+boxplot(amakihi$distance~amakihi$OBs, xlab="Observer", ylab="Distance (m)")
+boxplot(amakihi$distance~amakihi$HAS, xlab="Hour", ylab="Distance (m)")
+plot(x=amakihi$MAS, y=amakihi$distance, xlab="Minutes after sunrise",
+     ylab="Distance (m)", pch=20)
+plot(x=amakihi$HAS, y=amakihi$MAS, xlab="Hours after sunrise",
+     ylab="Minutes after sunrise", pch=20)
+par(mfrow=c(1,1))
+```
+
+### Answer these questions by examining at the output above
+
+```{r}
+#| label: col_choices
+#| echo: false
+
+col_ch1 <- c("top left", "top right", "bottom left", answer="bottom right")
+col_ch2 <- c("Do not include observer as covariate in your model",
+             answer="Do not include hour and minutes together in your model",
+             "Do not include observer and hour together in your model",
+             "Certainly include minutes in your model")
+```
+
+- Which of these diagnostic plots indicate a colinearity problem? `r longmcq(col_ch1)`
+- What should you do about this? `r longmcq(col_ch2)`
+
+### Influence of small values of $\widehat{P_a(z_i)}$ 
+
+If a "large" proportion of detections are produced by very small detection probabilities $\widehat{P_a(z_i)}$ the result can be improbably large abundance estimates. The function `p_dist_table()` helps you detect this potential problem. Two tables below show results of two calls to `p_dist_table()` for the amakihi data set.
+
+```{webr-r}
+#| label: pazed
+#| context: output
+
+conv <- convert_units("meter", NULL, "hectare")
+amak.hr.obs.mas <- ds(amakihi, transect="point", key="hr", formula=~OBs+MAS, convert_units = conv,
+                      truncation=82.5)
+kable(p_dist_table(amak.hr.obs.mas, bins=seq(0, 0.6, 0.1), proportion = TRUE),
+      digits = 3,
+      caption="Distribution of $P_a(z_i)$ from preferred model when w=82.5") %>%
+  kable_styling(full_width=FALSE) %>%
+  row_spec(2, bold=TRUE, color="white", background="blue")
+amak.hr.obs.mas.70 <- ds(amakihi, transect="point", key="hr", formula=~OBs+MAS, convert_units = conv,
+                      truncation=70)
+kable(p_dist_table(amak.hr.obs.mas.70, bins=seq(0, 0.6, 0.1), proportion = TRUE),
+      digits = 3,
+      caption="Distribution of $P_a(z_i)$ from preferred model when w=70") %>%
+  kable_styling(full_width=FALSE) %>%
+  row_spec(2, bold=TRUE, color="white", background="blue")
+```
+
+```{r}
+#| label: zed-ans
+#| echo: false
+
+zed_ans <- c(answer="detections at large distances have low probability of occurence because of the distance effect",
+             "detections made by poor observer are removed",
+             "detections made late in the day are removed")
+```
+
+- Why does more severe truncation cause the distribution of $\\widehat{P_a(z_i)}$ estimates to shift to larger values? `r longmcq(zed_ans)`
+
+## Eastern Tropical Pacific dolphin analysis
+
+AIC indicates that `search.method` is the preferred single covariate in a candidate detection function. That's fine, however, examine the details of the fitted model
+
+```{webr-r}
+#| label: etp
+#| context: output
+
+data(ETP_Dolphin)
+etp.hr.search <- ds(ETP_Dolphin, key="hr", formula=~factor(Search.method))
+print(etp.hr.search$ddf)
+```
+
+```{r}
+#| label: etp-ans
+#| echo: false
+
+etp_choices <- c("number of observations is incorrect",
+                 "point estimate of $\\beta(Search_3)$ is much larger than other $\\beta$ values",
+                 answer="standard error of $\\beta(Search_3)$ is 26X larger than its point estimate",
+                 "standard error of shape coefficient exceeds point estimate of shape coefficient")
+```
+
+- Within this output is a diagnostic that should cause you to question the veracity of this model. What is that diagnostic? `r longmcq(etp_choices)`
+
+## Savannah sparrows with pasture covariate
+
+Check that the image of the probability density function by pasture, created for the 1981 data set is correct. Checking this involves converting the table of $\hat{\beta}$ coefficients into estimates of $\hat{\sigma}$ which are more easily interpreted. Below is the output from the 1981 data set with a half-normal key function and pasture as a covariate.
+
+```{webr-r}
+#| label: sparrow
+#| context: output
+
+data(Savannah_sparrow_1981)
+conversion.factor <- convert_units("meter", NULL, "hectare")
+Savannah_sparrow_1981.hn.region <- ds(data=Savannah_sparrow_1981, key="hn", truncation=55,
+                        transect="point", convert_units=conversion.factor,
+                        formula=~Region.Label)
+print(Savannah_sparrow_1981.hn.region$ddf)
+```
+
+From the output provide $\hat{\beta}$ estimates to the code below to convert them into pasture-specific  $\hat{\sigma}$ estimates.
+
+```{r}
+#| label: spar-choices
+#| echo: false
+
+spar_choices <- c("pasture 0 and pasture 1",
+                  answer="pasture 0 and pasture 2",
+                  "pasture 0 and pasture 3",
+                  "pasture 1 and pasture 2",
+                  "pasture 2 and pasture 3")
+```
+
+::: {.webex-check .webex-box}
+
+```{webr-r}
+#| label: spar-soln
+#| context: output
+
+intercept <- ___
+beta_hat_1 <- ___
+beta_hat_2 <- ___
+beta_hat_3 <- ___
+sigma_0 <- round(exp(intercept))
+sigma_1 <- round(exp(intercept + beta_hat_1))
+sigma_2 <- round(exp(intercept + beta_hat_2))
+sigma_3 <- round(exp(intercept + beta_hat_3))
+output <- data.frame(pasture=c(0,1,2,3), sigma=c(sigma_0, sigma_1, sigma_2, sigma_3))
+print(output)
+```
+
+Interpret the strength of the pasture effect for each pasture by examining the relative magnitude of the standard error to the point estimates of the $\hat{\beta}$ coefficients.
+
+- Estimated detection probabilities are most similar for which pair of pastures? `r longmcq(spar_choices)`
+
+:::
