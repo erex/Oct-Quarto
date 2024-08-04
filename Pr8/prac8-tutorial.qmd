@@ -2,6 +2,7 @@
 title: Tutorial--covariates in detection function
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
+df-print: kable
 webr:
     packages: ['Distance']
 filters: 
@@ -65,22 +66,29 @@ If a "large" proportion of detections are produced by very small detection proba
 ```{webr-r}
 #| label: pazed
 #| context: output
+#| message: false
 
 conv <- convert_units("meter", NULL, "hectare")
 amak.hr.obs.mas <- ds(amakihi, transect="point", key="hr", formula=~OBs+MAS, convert_units = conv,
                       truncation=82.5)
-kable(p_dist_table(amak.hr.obs.mas, bins=seq(0, 0.6, 0.1), proportion = TRUE),
-      digits = 3,
-      caption="Distribution of $P_a(z_i)$ from preferred model when w=82.5") %>%
-  kable_styling(full_width=FALSE) %>%
-  row_spec(2, bold=TRUE, color="white", background="blue")
+out1 <- p_dist_table(amak.hr.obs.mas, bins=seq(0, 0.6, 0.1), proportion = TRUE)
+# kable(p_dist_table(amak.hr.obs.mas, bins=seq(0, 0.6, 0.1), proportion = TRUE),
+#       digits = 3,
+#       caption="Distribution of $P_a(z_i)$ from preferred model when w=82.5") %>%
+#   kable_styling(full_width=FALSE) %>%
+#   row_spec(2, bold=TRUE, color="white", background="blue")
+print("Results when truncation = 82.5m")
+print(out1)
 amak.hr.obs.mas.70 <- ds(amakihi, transect="point", key="hr", formula=~OBs+MAS, convert_units = conv,
                       truncation=70)
-kable(p_dist_table(amak.hr.obs.mas.70, bins=seq(0, 0.6, 0.1), proportion = TRUE),
-      digits = 3,
-      caption="Distribution of $P_a(z_i)$ from preferred model when w=70") %>%
-  kable_styling(full_width=FALSE) %>%
-  row_spec(2, bold=TRUE, color="white", background="blue")
+out2 <- p_dist_table(amak.hr.obs.mas.70, bins=seq(0, 0.6, 0.1), proportion = TRUE)
+print("Results when truncation = 70m")
+print(out2)
+# kable(p_dist_table(amak.hr.obs.mas.70, bins=seq(0, 0.6, 0.1), proportion = TRUE),
+#       digits = 3,
+#       caption="Distribution of $P_a(z_i)$ from preferred model when w=70") %>%
+#   kable_styling(full_width=FALSE) %>%
+#   row_spec(2, bold=TRUE, color="white", background="blue")
 ```
 
 ```{r}
@@ -92,7 +100,7 @@ zed_ans <- c(answer="detections at large distances have low probability of occur
              "detections made late in the day are removed")
 ```
 
-- Why does more severe truncation cause the distribution of $\\widehat{P_a(z_i)}$ estimates to shift to larger values? `r longmcq(zed_ans)`
+- Why does more severe truncation cause the distribution of $\widehat{P_a(z_i)}$ estimates to shift to larger values? `r longmcq(zed_ans)`
 
 ## Eastern Tropical Pacific dolphin analysis
 
@@ -101,7 +109,7 @@ AIC indicates that `search.method` is the preferred single covariate in a candid
 ```{webr-r}
 #| label: etp
 #| context: output
-
+#| message: false
 data(ETP_Dolphin)
 etp.hr.search <- ds(ETP_Dolphin, key="hr", formula=~factor(Search.method))
 print(etp.hr.search$ddf)
@@ -126,7 +134,7 @@ Check that the image of the probability density function by pasture, created for
 ```{webr-r}
 #| label: sparrow
 #| context: output
-
+#| message: false
 data(Savannah_sparrow_1981)
 conversion.factor <- convert_units("meter", NULL, "hectare")
 Savannah_sparrow_1981.hn.region <- ds(data=Savannah_sparrow_1981, key="hn", truncation=55,
@@ -143,21 +151,17 @@ From the output provide $\hat{\beta}$ estimates to the code below to convert the
 
 spar_choices <- c("pasture 0 and pasture 1",
                   answer="pasture 0 and pasture 2",
-                  "pasture 0 and pasture 3",
-                  "pasture 1 and pasture 2",
-                  "pasture 2 and pasture 3")
+                  "pasture 0 and pasture 3")
 ```
 
 ::: {.webex-check .webex-box}
 
 ```{webr-r}
 #| label: spar-soln
-#| context: output
-
-intercept <- ___
-beta_hat_1 <- ___
-beta_hat_2 <- ___
-beta_hat_3 <- ___
+intercept <- ______
+beta_hat_1 <- ______
+beta_hat_2 <- ______
+beta_hat_3 <- ______
 sigma_0 <- round(exp(intercept))
 sigma_1 <- round(exp(intercept + beta_hat_1))
 sigma_2 <- round(exp(intercept + beta_hat_2))
