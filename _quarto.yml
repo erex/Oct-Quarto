@@ -41,28 +41,28 @@ website:
     - Pr2/Pr2-instructions.qmd
     - Pr2/truncation-decisions.qmd
     - Pr2/Prac2_solution.qmd
-    - Pr2/prac2_tutorial.qmd
+    - Pr2/prac2-tutorial.qmd
   - title: Criticism
     contents:
     - Pr3/criticism.qmd
     - Pr3/Pr3-instructions.qmd
     - Pr3/modelsel-demo.qmd
     - Pr3/Prac3_solution.qmd
-    - Pr3/prac3_tutorial.qmd
+    - Pr3/prac3-tutorial.qmd
   - title: Precision
     contents:
     - Pr4/precision.qmd
     - Pr4/Pr4-instructions.qmd
     - Pr4/left-truncation.qmd
     - Pr4/Prac4_solution.qmd
-    - Pr4/prac4_tutorial.qmd
+    - Pr4/prac4-tutorial.qmd
   - title: Points
     contents:
     - Pr5/points.qmd
     - Pr5/Pr5-instructions.qmd
     - Pr5/animal_distribution.qmd
     - Pr5/Prac5_solution.qmd
-    - Pr5/prac5_tutorial.qmd
+    - Pr5/prac5-tutorial.qmd
   - title: Design
     contents:
     - Pr6/design.qmd
