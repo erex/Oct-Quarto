@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-01">
+<meta name="dcterms.date" content="2024-08-05">
 
 <title>Tutorial–ducknest analysis in R – Distance sampling workshop</title>
 <style>
@@ -371,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"data(\"ducknest\")\nduckunits <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nhalfnorm <- ds(data=ducknest, key=\"hn\", convert_units = duckunits)\nsummary(halfnorm)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"makeoutput","autorun":"true","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"output","message":"FALSE","editor-max-height":""}},{"id":2,"code":"refuge_area <- _____\nnest_density <- _____\nnest_abundance <- refuge_area * nest_density\nprint(nest_abundance)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"unnamed-chunk-2","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}},{"id":3,"code":"gof_ds(halfnorm)","options":{"classes":"","read-only":"false","output":"true","results":"markup","echo":"false","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"gof","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}},{"id":4,"code":"nest.hn <- ds(ducknest, key=\"hn\", adjustment=NULL,\n              convert_units=duckunits)\nnest.uf.cos <- ds(ducknest, key=\"unif\", adjustment=\"cos\",\n                  convert_units=duckunits)\nnest.hr.poly <- ds(ducknest, key=\"hr\", adjustment=\"poly\", \n                  convert_units=duckunits)\nhn.est <- nest.hn$dht$individuals$D$Estimate\nuncos.est <- nest.uf.cos$dht$individuals$D$Estimate\nhr.est <- nest.hr.poly$dht$individuals$D$Estimate\nestimates <- data.frame(Density_estimates=round(c(hn.est, uncos.est, hr.est),2))\nrow.names(estimates) <- c(\"Half normal\", \"Uniform cosine\", \"Hazard rate\")\nprint(estimates)","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"3models","autorun":"true","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"output","message":"false","editor-max-height":""}},{"id":5,"code":"smallest_est <- ___\nlargest_est <- ___\ndifference <- largest_est - smallest_est\nrelative_difference <- difference / smallest_est\nprint(round(relative_difference,3))","options":{"classes":"","read-only":"false","output":"true","results":"markup","warning":"true","editor-quick-suggestions":"false","out-width":"700px","label":"difference","autorun":"false","comment":"","editor-font-scale":"1","dpi":72,"editor-word-wrap":"true","fig-cap":"","out-height":"","fig-height":5,"fig-width":7,"context":"interactive","message":"true","editor-max-height":""}}];
+globalThis.qwebrCellDetails = [{"code":"data(\"ducknest\")\nduckunits <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nhalfnorm <- ds(data=ducknest, key=\"hn\", convert_units = duckunits)\nsummary(halfnorm)","options":{"label":"makeoutput","output":"true","editor-max-height":"","editor-word-wrap":"true","message":"FALSE","editor-font-scale":"1","read-only":"false","fig-height":5,"dpi":72,"classes":"","comment":"","fig-width":7,"autorun":"true","out-height":"","results":"markup","fig-cap":"","out-width":"700px","context":"output","editor-quick-suggestions":"false","warning":"true"},"id":1},{"code":"refuge_area <- _____\nnest_density <- _____\nnest_abundance <- refuge_area * nest_density\nprint(nest_abundance)","options":{"label":"unnamed-chunk-2","output":"true","editor-max-height":"","editor-word-wrap":"true","message":"true","editor-font-scale":"1","read-only":"false","fig-height":5,"dpi":72,"classes":"","comment":"","fig-width":7,"autorun":"false","out-height":"","results":"markup","fig-cap":"","out-width":"700px","context":"interactive","editor-quick-suggestions":"false","warning":"true"},"id":2},{"code":"gof_ds(halfnorm)","options":{"label":"gof","output":"true","editor-max-height":"","editor-word-wrap":"true","message":"true","echo":"false","editor-font-scale":"1","read-only":"false","fig-height":5,"dpi":72,"classes":"","comment":"","fig-width":7,"autorun":"false","out-height":"","results":"markup","fig-cap":"","out-width":"700px","context":"interactive","editor-quick-suggestions":"false","warning":"true"},"id":3},{"code":"nest.hn <- ds(ducknest, key=\"hn\", adjustment=NULL,\n              convert_units=duckunits)\nnest.uf.cos <- ds(ducknest, key=\"unif\", adjustment=\"cos\",\n                  convert_units=duckunits)\nnest.hr.poly <- ds(ducknest, key=\"hr\", adjustment=\"poly\", \n                  convert_units=duckunits)\nhn.est <- nest.hn$dht$individuals$D$Estimate\nuncos.est <- nest.uf.cos$dht$individuals$D$Estimate\nhr.est <- nest.hr.poly$dht$individuals$D$Estimate\nestimates <- data.frame(Density_estimates=round(c(hn.est, uncos.est, hr.est),2))\nrow.names(estimates) <- c(\"Half normal\", \"Uniform cosine\", \"Hazard rate\")\nprint(estimates)","options":{"label":"3models","output":"true","editor-max-height":"","editor-word-wrap":"true","message":"false","editor-font-scale":"1","read-only":"false","fig-height":5,"dpi":72,"classes":"","comment":"","fig-width":7,"autorun":"true","out-height":"","results":"markup","fig-cap":"","out-width":"700px","context":"output","editor-quick-suggestions":"false","warning":"true"},"id":4},{"code":"smallest_est <- ___\nlargest_est <- ___\ndifference <- largest_est - smallest_est\nrelative_difference <- difference / smallest_est\nprint(round(relative_difference,3))","options":{"label":"difference","output":"true","editor-max-height":"","editor-word-wrap":"true","message":"true","editor-font-scale":"1","read-only":"false","fig-height":5,"dpi":72,"classes":"","comment":"","fig-width":7,"autorun":"false","out-height":"","results":"markup","fig-cap":"","out-width":"700px","context":"interactive","editor-quick-suggestions":"false","warning":"true"},"id":5}];
 
 </script>
 <script type="module">
@@ -1990,7 +1990,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 1, 2024</p>
+      <p class="date">August 5, 2024</p>
     </div>
   </div>
   
@@ -2010,12 +2010,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>What is the estimate value of <span class="math inline">\(\hat{P}_a\)</span>?
-<div id="radio_EFOIPDSQEV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value="answer"> <span>0.869</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>0.039</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>614.25</span></label><label><input type="radio" autocomplete="off" name="radio_EFOIPDSQEV" value=""> <span>0.933</span></label>
+<div id="radio_AVEPZWUIGZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AVEPZWUIGZ" value="answer"> <span>0.869</span></label><label><input type="radio" autocomplete="off" name="radio_AVEPZWUIGZ" value=""> <span>0.039</span></label><label><input type="radio" autocomplete="off" name="radio_AVEPZWUIGZ" value=""> <span>614.25</span></label><label><input type="radio" autocomplete="off" name="radio_AVEPZWUIGZ" value=""> <span>0.933</span></label>
 </div></li>
 <li>Given your estimate of <span class="math inline">\(\hat{P}_a\)</span>, what is its meaning?
-<div id="radio_BZXVLSCVRE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>distance to which nests were detected</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>area under the curve</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value="answer"> <span>proportion of nests detected within 2.4m of transects</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value=""> <span>number of iterations to estimate detection function parameters</span></label><label><input type="radio" autocomplete="off" name="radio_BZXVLSCVRE" value="answer"> <span>probability of detecting a nest within 2.4m of transect</span></label>
+<div id="radio_MWZWTVSNHO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MWZWTVSNHO" value=""> <span>distance to which nests were detected</span></label><label><input type="radio" autocomplete="off" name="radio_MWZWTVSNHO" value=""> <span>area under the curve</span></label><label><input type="radio" autocomplete="off" name="radio_MWZWTVSNHO" value="answer"> <span>proportion of nests detected within 2.4m of transects</span></label><label><input type="radio" autocomplete="off" name="radio_MWZWTVSNHO" value=""> <span>number of iterations to estimate detection function parameters</span></label><label><input type="radio" autocomplete="off" name="radio_MWZWTVSNHO" value="answer"> <span>probability of detecting a nest within 2.4m of transect</span></label>
 </div></li>
 </ul>
 <section id="density-converted-to-abundance" class="level3">
@@ -2026,20 +2026,20 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <ul>
 <li>What is the estimated number of nests on the refuge? <input class="webex-solveme nospaces" size="4" data-answer="[&quot;2371&quot;]"></li>
 <li>What assumption does our estimated abundance of nests on the refuge rest?
-<div id="radio_YXCHWKITTM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Nests are uniformly distributed over refuge</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Ducks like water</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value="answer"> <span>Transects representatively sample the refuge</span></label><label><input type="radio" autocomplete="off" name="radio_YXCHWKITTM" value=""> <span>Detection function model fits the data</span></label>
+<div id="radio_LPQTLUXJFO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LPQTLUXJFO" value=""> <span>Nests are uniformly distributed over refuge</span></label><label><input type="radio" autocomplete="off" name="radio_LPQTLUXJFO" value=""> <span>Ducks like water</span></label><label><input type="radio" autocomplete="off" name="radio_LPQTLUXJFO" value="answer"> <span>Transects representatively sample the refuge</span></label><label><input type="radio" autocomplete="off" name="radio_LPQTLUXJFO" value=""> <span>Detection function model fits the data</span></label>
 </div></li>
 </ul>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>How should the plot be interpreted?
-<div id="radio_PXMFEXNVTW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value="answer"> <span>model that fits has all points near the 45° line</span></label><label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value=""> <span>this plot has nothing to do with model fit</span></label><label><input type="radio" autocomplete="off" name="radio_PXMFEXNVTW" value=""> <span>a rapid rise in the graphed points implies good model fit</span></label>
+<div id="radio_ANKJFNJCYP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ANKJFNJCYP" value="answer"> <span>model that fits has all points near the 45° line</span></label><label><input type="radio" autocomplete="off" name="radio_ANKJFNJCYP" value=""> <span>this plot has nothing to do with model fit</span></label><label><input type="radio" autocomplete="off" name="radio_ANKJFNJCYP" value=""> <span>a rapid rise in the graphed points implies good model fit</span></label>
 </div></li>
 <li>The numerical output from <code>gof_ds</code> is from the Cramer-von Mises test. Interpret the output.
-<div id="radio_CQEREAZKTQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>P-value is &lt;1, therefore the model fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>The test statistic is smaller than the P-value, therefore the fit is adequate</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value=""> <span>The test statistic is close to 0, therefore the fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_CQEREAZKTQ" value="answer"> <span>P-value is close to one, indicating there is support for proposition the model fits the data</span></label>
+<div id="radio_BHYJILDIVL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BHYJILDIVL" value=""> <span>P-value is &lt;1, therefore the model fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_BHYJILDIVL" value=""> <span>The test statistic is smaller than the P-value, therefore the fit is adequate</span></label><label><input type="radio" autocomplete="off" name="radio_BHYJILDIVL" value=""> <span>The test statistic is close to 0, therefore the fit is poor</span></label><label><input type="radio" autocomplete="off" name="radio_BHYJILDIVL" value="answer"> <span>P-value is close to one, indicating there is support for proposition the model fits the data</span></label>
 </div></li>
 </ul>
 <div id="qwebr-insertion-location-4"></div>
@@ -2061,210 +2061,416 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </main> <!-- /main -->
 <script>
 
+
+
 /* update total correct if #webex-total_correct exists */
+
 update_total_correct = function() {
+
   console.log("webex: update total_correct");
 
+
+
   var t = document.getElementsByClassName("webex-total_correct");
+
   for (var i = 0; i < t.length; i++) {
+
     p = t[i].parentElement;
+
     var correct = p.getElementsByClassName("webex-correct").length;
+
     var solvemes = p.getElementsByClassName("webex-solveme").length;
+
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
     var selects = p.getElementsByClassName("webex-select").length;
 
+
+
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
   }
+
 }
+
+
 
 /* webex-solution button toggling function */
+
 b_func = function() {
+
   console.log("webex: toggle hide");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('open')) {
+
     cl.remove("open");
+
   } else {
+
     cl.add("open");
+
   }
+
 }
+
+
 
 /* check answers */
+
 check_func = function() {
+
   console.log("webex: check answers");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('unchecked')) {
+
     cl.remove("unchecked");
+
     this.innerHTML = "Hide Answers";
+
   } else {
+
     cl.add("unchecked");
+
     this.innerHTML = "Show Answers";
+
   }
+
 }
+
+
 
 /* function for checking solveme answers */
+
 solveme_func = function(e) {
+
   console.log("webex: check solveme");
 
+
+
   var real_answers = JSON.parse(this.dataset.answer);
+
   var my_answer = this.value;
+
   var cl = this.classList;
+
   if (cl.contains("ignorecase")) {
+
     my_answer = my_answer.toLowerCase();
+
   }
+
   if (cl.contains("nospaces")) {
+
     my_answer = my_answer.replace(/ /g, "")
+
   }
+
+
 
   if (my_answer == "") {
+
     cl.remove("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else if (real_answers.includes(my_answer)) {
+
     cl.add("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else {
+
     cl.add("webex-incorrect");
+
     cl.remove("webex-correct");
+
   }
+
+
 
   // match numeric answers within a specified tolerance
+
   if(this.dataset.tol > 0){
+
     var tol = JSON.parse(this.dataset.tol);
+
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
     if (matches.reduce((a, b) => a + b, 0) > 0) {
+
       cl.add("webex-correct");
+
     } else {
+
       cl.remove("webex-correct");
+
     }
+
   }
+
+
 
   // added regex bit
+
   if (cl.contains("regex")){
+
     answer_regex = RegExp(real_answers.join("|"))
+
     if (answer_regex.test(my_answer)) {
+
       cl.add("webex-correct");
+
     }
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 /* function for checking select answers */
+
 select_func = function(e) {
+
   console.log("webex: check select");
+
+
 
   var cl = this.classList
 
+
+
   /* add style */
+
   cl.remove("webex-incorrect");
+
   cl.remove("webex-correct");
+
   if (this.value == "answer") {
+
     cl.add("webex-correct");
+
   } else if (this.value != "blank") {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 /* function for checking radiogroups answers */
+
 radiogroups_func = function(e) {
+
   console.log("webex: check radiogroups");
 
+
+
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
   var cl = checked_button.parentElement.classList;
+
   var labels = checked_button.parentElement.parentElement.children;
 
+
+
   /* get rid of styles */
+
   for (i = 0; i < labels.length; i++) {
+
     labels[i].classList.remove("webex-incorrect");
+
     labels[i].classList.remove("webex-correct");
+
   }
+
+
 
   /* add style */
+
   if (checked_button.value == "answer") {
+
     cl.add("webex-correct");
+
   } else {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 window.onload = function() {
+
   console.log("webex onload");
+
   /* set up solution buttons */
+
   var buttons = document.getElementsByTagName("button");
 
+
+
   for (var i = 0; i < buttons.length; i++) {
+
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
       buttons[i].onclick = b_func;
+
     }
+
   }
+
+
 
   var check_sections = document.getElementsByClassName("webex-check");
+
   console.log("check:", check_sections.length);
+
   for (var i = 0; i < check_sections.length; i++) {
+
     check_sections[i].classList.add("unchecked");
 
+
+
     let btn = document.createElement("button");
+
     btn.innerHTML = "Show Answers";
+
     btn.classList.add("webex-check-button");
+
     btn.onclick = check_func;
+
     check_sections[i].appendChild(btn);
 
+
+
     let spn = document.createElement("span");
+
     spn.classList.add("webex-total_correct");
+
     check_sections[i].appendChild(spn);
+
   }
+
+
 
   /* set up webex-solveme inputs */
+
   var solveme = document.getElementsByClassName("webex-solveme");
 
+
+
   for (var i = 0; i < solveme.length; i++) {
+
     /* make sure input boxes don't auto-anything */
+
     solveme[i].setAttribute("autocomplete","off");
+
     solveme[i].setAttribute("autocorrect", "off");
+
     solveme[i].setAttribute("autocapitalize", "off");
+
     solveme[i].setAttribute("spellcheck", "false");
+
     solveme[i].value = "";
 
+
+
     /* adjust answer for ignorecase or nospaces */
+
     var cl = solveme[i].classList;
+
     var real_answer = solveme[i].dataset.answer;
+
     if (cl.contains("ignorecase")) {
+
       real_answer = real_answer.toLowerCase();
+
     }
+
     if (cl.contains("nospaces")) {
+
       real_answer = real_answer.replace(/ /g, "");
+
     }
+
     solveme[i].dataset.answer = real_answer;
 
+
+
     /* attach checking function */
+
     solveme[i].onkeyup = solveme_func;
+
     solveme[i].onchange = solveme_func;
 
+
+
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
+
+
 
   /* set up radiogroups */
+
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
   for (var i = 0; i < radiogroups.length; i++) {
+
     radiogroups[i].onchange = radiogroups_func;
+
   }
+
+
 
   /* set up selects */
+
   var selects = document.getElementsByClassName("webex-select");
+
   for (var i = 0; i < selects.length; i++) {
+
     selects[i].onchange = select_func;
+
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
