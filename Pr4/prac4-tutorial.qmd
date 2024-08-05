@@ -1,5 +1,5 @@
 ---
-title: Tutorial--assessing precision
+title: Tutorial--assessing precision 🪡
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: references.bib

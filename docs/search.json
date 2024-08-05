@@ -1624,16 +1624,24 @@
   {
     "objectID": "Pr4/prac4-tutorial.html",
     "href": "Pr4/prac4-tutorial.html",
-    "title": "Tutorial–assessing precision",
+    "title": "Tutorial–assessing precision 🪡",
     "section": "",
-    "text": "Photo by Michael Shannon from Unsplash"
+    "text": "Photo by Michael Shannon from Unsplash",
+    "crumbs": [
+      "Precision",
+      "Tutorial--assessing precision 🪡"
+    ]
   },
   {
     "objectID": "Pr4/prac4-tutorial.html#practical-4-poor-precision-in-an-abnormal-situation",
     "href": "Pr4/prac4-tutorial.html#practical-4-poor-precision-in-an-abnormal-situation",
-    "title": "Tutorial–assessing precision",
+    "title": "Tutorial–assessing precision 🪡",
     "section": "Practical 4 – Poor precision in an abnormal situation",
-    "text": "Practical 4 – Poor precision in an abnormal situation\nRemember that the “usual” estimator for encounter rate variance is based upon the idea that transects are distributed randomly rather than systematically with a random start. Under rare circumstances, this can over-estimate encounter rate variance and consequently, variance of density and abundance estimates. Revisit the output from Practical 4 and answer these questions.\n\nQuestions\nBefore getting absorbed in the analysis, what difficulties were caused because of the survey design.\n\nIdentify the design flaws of the survey that produced such poor precision:\n\n too few replicate transects ignorance of animal gradient truncation too narrow leading to too few detections inadequate survey effort\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy is the estimate of abundance exactly half the estimate of density in this analysis?\n\n \\(\\hat{N} = \\hat{D} \\times A\\), where A=1/2 that is characteristic of the half normal detection function inadequate survey effort because of convert_units, square kilometers are twice as large as kilometers\n\n\nHere is the summary output from the standard analysis of this data set. Alarm bells should ring in your head as you examine this output; specifically the variance components constituting the uncertainty in your abundance or density estimates.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn normal circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? \n\n\nDoes bootstrapping resolve the issue?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy does the use of the bootstrap not resolve the poor precision problem?\n\n bootstrap only improves precision of estimated detection function bootstrap does not perform well with half normal detection function resampling transects does not alter variability in encounter rate between transects bootstrapping is over-rated, never works well"
+    "text": "Practical 4 – Poor precision in an abnormal situation\nRemember that the “usual” estimator for encounter rate variance is based upon the idea that transects are distributed randomly rather than systematically with a random start. Under rare circumstances, this can over-estimate encounter rate variance and consequently, variance of density and abundance estimates. Revisit the output from Practical 4 and answer these questions.\n\nQuestions\nBefore getting absorbed in the analysis, what difficulties were caused because of the survey design.\n\nIdentify the design flaws of the survey that produced such poor precision:\n\n too few replicate transects ignorance of animal gradient truncation too narrow leading to too few detections inadequate survey effort\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy is the estimate of abundance exactly half the estimate of density in this analysis?\n\n \\(\\hat{N} = \\hat{D} \\times A\\), where A=1/2 that is characteristic of the half normal detection function inadequate survey effort because of convert_units, square kilometers are twice as large as kilometers\n\n\nHere is the summary output from the standard analysis of this data set. Alarm bells should ring in your head as you examine this output; specifically the variance components constituting the uncertainty in your abundance or density estimates.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn normal circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? \n\n\nDoes bootstrapping resolve the issue?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy does the use of the bootstrap not resolve the poor precision problem?\n\n bootstrap only improves precision of estimated detection function bootstrap does not perform well with half normal detection function resampling transects does not alter variability in encounter rate between transects bootstrapping is over-rated, never works well",
+    "crumbs": [
+      "Precision",
+      "Tutorial--assessing precision 🪡"
+    ]
   },
   {
     "objectID": "Pr5/prac5-tutorial.html#practical-5-point-transects",
