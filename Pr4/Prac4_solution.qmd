@@ -1,5 +1,5 @@
 ---
-title: Variance estimation for systematic survey designs **solution**
+title: Variance estimation for systematic survey designs **solution** 💡
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: references.bib
