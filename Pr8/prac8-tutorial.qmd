@@ -1,5 +1,5 @@
 ---
-title: Tutorial--covariates in detection function
+title: Tutorial--covariates in detection function ✏️
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 df-print: kable

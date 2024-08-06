@@ -98,23 +98,23 @@
   {
     "objectID": "Pr8/Prac8_solution.html",
     "href": "Pr8/Prac8_solution.html",
-    "title": "Covariates in the detection function solution",
+    "title": "Covariates in the detection function solution 💡",
     "section": "",
     "text": "Solution\n\n\n\nCovariates in the detection function",
     "crumbs": [
       "Covariates",
-      "Covariates in the detection function **solution**"
+      "Covariates in the detection function **solution** 💡"
     ]
   },
   {
     "objectID": "Pr8/Prac8_solution.html#colourful-plot-noting-effect-of-cue-type",
     "href": "Pr8/Prac8_solution.html#colourful-plot-noting-effect-of-cue-type",
-    "title": "Covariates in the detection function solution",
+    "title": "Covariates in the detection function solution 💡",
     "section": "Colourful plot noting effect of cue type",
     "text": "Colourful plot noting effect of cue type\nJust an example of using the function add_df_covar_line to visually explore consequences of covariates on the detection function. A regular call to plot() is first used to produce the histogram and average detection function line; subsequent calls to the new function with different values of the covariate of interest completes the plot.\n\nplot(etp.hr.cue, main=\"ETP dolphin survey\", showpoints=FALSE)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=1), col='red', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=2), col='blue', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=3), col='green', lwd=2, lty=1)\nadd_df_covar_line(etp.hr.cue, data = data.frame(Cue.type=4), col='purple', lwd=2, lty=1)\nlegend(\"topright\", legend=c(\"Birds\",\"Splashes\",\"Unspecified\",\"Floating objects\"),\n       col=c(\"red\", \"blue\", \"green\", \"purple\"), lwd=2, title = \"Cue type\")\n\n\n\n\nDetection function with cue type as covariate.",
     "crumbs": [
       "Covariates",
-      "Covariates in the detection function **solution**"
+      "Covariates in the detection function **solution** 💡"
     ]
   },
   {
@@ -1279,7 +1279,7 @@
     "href": "Pr8/covariates.html",
     "title": "Covariates practical 8",
     "section": "",
-    "text": "Lecture slides for 13 March 2024\n\n\n\n\n\n\n\n\nIt is not just distance from the transect that influences the detectability of animals. In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.\n\n\n\n\n\nPhoto by Roman Mager on Unsplash\nThere are some situations in which covariates in addition to distance can be added to models of the detection function. One example of this is animal group size. It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population. By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size. The use of group size as a covariate is the recommended way to remove that bias.\nThis exercise presents three sets of data: Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning. Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes. Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata–we examine whether the geographic stratum effect can be modelled as a covariate.",
+    "text": "Lecture slides for 16 October 2024\n\n\n\n\n\n\n\n\nIt is not just distance from the transect that influences the detectability of animals. In most situations, inference regarding animal density is not hindered if additional causes of variation in detectability are unaccounted.\n\n\n\n\n\nPhoto by Roman Mager on Unsplash\nThere are some situations in which covariates in addition to distance can be added to models of the detection function. One example of this is animal group size. It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population. By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size. The use of group size as a covariate is the recommended way to remove that bias.\nThis exercise presents three sets of data: Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning. Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes. Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata–we examine whether the geographic stratum effect can be modelled as a covariate.",
     "crumbs": [
       "Covariates",
       "Covariates practical 8"
@@ -1299,56 +1299,56 @@
   {
     "objectID": "Pr8/Pr8-instructions.html",
     "href": "Pr8/Pr8-instructions.html",
-    "title": "Covariates in detection function model",
+    "title": "Covariates in detection function model 💻",
     "section": "",
     "text": "This exercise consists of three data sets of increasing difficulty. The first problem, MCDS with point transects, is complicated and (using the functionality available in R) also includes some basic exploratory analysis of the covariates. Section 2 and 3 are optional but will take you deeper into the heart of understanding multiple covariates.",
     "crumbs": [
       "Covariates",
-      "Covariates in detection function model"
+      "Covariates in detection function model 💻"
     ]
   },
   {
     "objectID": "Pr8/Pr8-instructions.html#exploratory-data-analysis",
     "href": "Pr8/Pr8-instructions.html#exploratory-data-analysis",
-    "title": "Covariates in detection function model",
+    "title": "Covariates in detection function model 💻",
     "section": "Exploratory data analysis",
     "text": "Exploratory data analysis\nIt is important to gain an understanding of the data prior to fitting detection functions (Buckland et al., 2015). With this in mind, preliminary analysis of distance sampling data involves:\n\nassessing the shape of the collected data,\nconsidering the level of truncation of distances, and\nexploring patterns in potential covariates.\n\nWe begin by assessing the distribution of distances to decide on a truncation distance.\n\nhist(amakihi$distance)\n\nTo see if there are differences in the distribution of distances recorded by the different observers and in each hour after sunrise, boxplots can be used. Note how the ~ symbol is used to define the discrete groupings (i.e. observer and hour).\n\n# Boxplots by obs\nboxplot(amakihi$distance~amakihi$OBs, xlab=\"Observer\", ylab=\"Distance (m)\")\n# Boxplots by hour after sunrise\nboxplot(amakihi$distance~amakihi$HAS, xlab=\"Hour\", ylab=\"Distance (m)\")\n\nThe components of the boxplot are:\n\nthe thick black line indicates the median\nthe lower limit of the box is the first quartile (25th percentile) and the upper limit is the third quartile (75th percentile)\nthe height of the box is the interquartile range (75th - 25th quartiles)\nthe whiskers extend to the most extreme points which are no more than 1.5 times the interquartile range.\ndots indicate ‘outliers’ if there are any, i.e. points beyond the range of the whiskers.\n\nFor minutes after sunrise (a continuous variable), we create a scatterplot of MAS (on the \\(x\\)-axis) against distances (on the \\(y\\)-axis). The plotting symbol (or character) is selected with the argument pch:\n\n# Plot of MAS vs distance (using dots)\nplot(x=amakihi$MAS, y=amakihi$distance, xlab=\"Minutes after sunrise\",\n     ylab=\"Distance (m)\", pch=20)\n\nYou may also want to think about potential collinerity (linear relationship) between the covariates - if collinear variables are included in the detection function, they will be explaining some of the same variation in the distances and this will reduce their importance as a potential covariate. How might you investigate the relationship between HAS and MAS?\nFrom these plots can you tell if any of the covariates will be useful in explaining the distribution of distances?",
     "crumbs": [
       "Covariates",
-      "Covariates in detection function model"
+      "Covariates in detection function model 💻"
     ]
   },
   {
     "objectID": "Pr8/Pr8-instructions.html#adjusting-the-raw-covariates",
     "href": "Pr8/Pr8-instructions.html#adjusting-the-raw-covariates",
-    "title": "Covariates in detection function model",
+    "title": "Covariates in detection function model 💻",
     "section": "Adjusting the raw covariates",
     "text": "Adjusting the raw covariates\nWe would like to treat OBs and HAS as factor variables as in the original analysis; OBs is, by default, treated as a factor variable because it consists of characters rather than numbers. HAS, on the other hand, consists of numbers and so by default would be treated as a continuous variable (i.e. non-factor). That is fine if we want the effect of HAS to be monotonic (i.e. detectability either increases or decreases as a function of HAS). If we want HAS to have a non-linear effect on detectability, then we need to indicate to R to treat it as a factor as shown below.\n\n# Convert HAS to a factor\namakihi$HAS &lt;- factor(amakihi$HAS)\n\nThe next adjustment is to change the reference level of the observer and hour factor covariates - the only reason to do this is to get the estimated parameters in the detection function to match the parameters estimated in T. A. Marques et al. (2007). You would not carry out this step on your own data. By default R uses the first factor level but by using the relevel function, this can be changed:\n\n# Set the reference level \namakihi$OBs &lt;- relevel(amakihi$OBs, ref=\"TKP\")\namakihi$HAS &lt;- relevel(amakihi$HAS, ref=\"5\")",
     "crumbs": [
       "Covariates",
-      "Covariates in detection function model"
+      "Covariates in detection function model 💻"
     ]
   },
   {
     "objectID": "Pr8/Pr8-instructions.html#candidate-models",
     "href": "Pr8/Pr8-instructions.html#candidate-models",
-    "title": "Covariates in detection function model",
+    "title": "Covariates in detection function model 💻",
     "section": "Candidate models",
     "text": "Candidate models\nWith three potential covariates, there are 8 possible models for the detection function:\n\nNo covariates\nOBs\nHAS\nMAS\nOBs + HAS\nOBs + MAS\nHAS + MAS\nOBs + HAS + MAS\n\nEven without considering covariates there are also several possible key function/adjustment term combinations available: if all key function/covariate combinations are considered the number of potential models is large. Note that covariates are not allowed if a uniform key function is chosen and if covariate terms are included, adjustment terms are not allowed. Even with these restrictions, it is not best practice to take a scatter gun approach to detection function model fitting. Buckland et al. (2015) considered 13 combinations of key function/covariates. Here, we look at a subset of these.\nFit a hazard rate model with no covariates or adjustment terms and make a note of the AIC. Note, that 10% of the largest distances are truncated - you may have decided on a different truncation distance.\n\nconversion.factor &lt;- convert_units(\"meter\", NULL, \"hectare\")\namak.hr &lt;- ds(amakihi, transect=\"point\", key=\"hr\", truncation=\"10%\",\n              adjustment=NULL, convert_units = conversion.factor)\n\nMake a note of the AIC for this model.\nNow fit a hazard rate model with OBs as a covariate in the detection function and make a note of the AIC. Has the AIC reduced by including a covariate?\n\nconversion.factor &lt;- convert_units(\"meter\", NULL, \"hectare\")\namak.hr.obs &lt;- ds(amakihi, transect=\"point\", key=\"hr\", formula=~OBs,\n                  truncation=\"10%\", convert_units = conversion.factor)\n\nFit a hazard rate model with OBs and HAS in the detection function:\n\namak.hr.obs.has &lt;- ds(amakihi, transect=\"point\", key=\"hr\", formula=~OBs+HAS,\n                      truncation=\"10%\", convert_units = conversion.factor)\n\nTry fitting other possible formula and decide which model is best in terms of AIC. To quickly compare AIC values from different models, use the AIC command as follows (note only models with the same truncation distance can be compared):\n\n# AIC values\nAIC(amak.hr, amak.hr.obs, amak.hr.obs.has)\n\nAnother useful function is summarize_ds_models - this has the advantage of ordering the models by AIC (smallest to largest).\n\n# Compare models\nsummarize_ds_models(amak.hr, amak.hr.obs, amak.hr.obs.has)\n\nOnce you have decided on a model, plot your selected detection function.",
     "crumbs": [
       "Covariates",
-      "Covariates in detection function model"
+      "Covariates in detection function model 💻"
     ]
   },
   {
     "objectID": "Pr8/Pr8-instructions.html#analysis",
     "href": "Pr8/Pr8-instructions.html#analysis",
-    "title": "Covariates in detection function model",
+    "title": "Covariates in detection function model 💻",
     "section": "Analysis",
     "text": "Analysis\nThe data are available in the Distance package:\n\ndata(ETP_Dolphin)\nhead(ETP_Dolphin, n=3)\n\nStart by running a set of conventional distance analyses. Are there any problems in the data and if so how might you mitigate them? (Hint - try dividing the histogram of distances into a large number of intervals.)\nAs there are a number of potential covariates to be used in this example (i.e. search method, cue, Beaufort class and month), try fitting models with different covariates and combinations of the covariates. All of the covariates in this example are factor covariates except group size and because they have numeric codes, use the factor function to let R know to treat them as factors.\nNote that both distances and transect lengths were recorded in nautical miles and area in nautical miles squared and so the argument convert_units does not need to be specified.\nKeep in mind that this is a large dataset (&gt; 1000 observations), and hence estimation may take a while. You will likely end up with quite a few models as there are several potential covariates and no ‘right’ answers. Discuss your choice of final model (or models) with your colleagues - did you make the same choices?",
     "crumbs": [
       "Covariates",
-      "Covariates in detection function model"
+      "Covariates in detection function model 💻"
     ]
   },
   {
@@ -1738,30 +1738,46 @@
   {
     "objectID": "Pr8/prac8-tutorial.html",
     "href": "Pr8/prac8-tutorial.html",
-    "title": "Tutorial–covariates in detection function",
+    "title": "Tutorial–covariates in detection function ✏️",
     "section": "",
-    "text": "Photo by Barth Bailey from Unsplash"
+    "text": "Photo by Barth Bailey from Unsplash",
+    "crumbs": [
+      "Covariates",
+      "Tutorial--covariates in detection function ✏️"
+    ]
   },
   {
     "objectID": "Pr8/prac8-tutorial.html#exercise-8-covariates-in-detection-function",
     "href": "Pr8/prac8-tutorial.html#exercise-8-covariates-in-detection-function",
-    "title": "Tutorial–covariates in detection function",
+    "title": "Tutorial–covariates in detection function ✏️",
     "section": "Exercise 8 – Covariates in detection function",
-    "text": "Exercise 8 – Covariates in detection function\nUse of covariates in detection function models require more vigilance in assessing possible covariates prior to analysis and in the interpretation of the analysis. This set of questions asks that you take a more critical look at the results of the analyses presented in the covariate practical.\n\nAmakihi songbird data\nBefore using the ds() function, exploratory data analysis screens candidate covariates for potential utility in the detection function as well as possible difficulties that might arise if multiple covariates are included. I alerted you to the problems colinearity in predictors cause.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nAnswer these questions by examining at the output above\n\nWhich of these diagnostic plots indicate a colinearity problem?\n\n top left top right bottom left bottom right\n\nWhat should you do about this?\n\n Do not include observer as covariate in your model Do not include hour and minutes together in your model Do not include observer and hour together in your model Certainly include minutes in your model\n\n\n\n\nInfluence of small values of \\(\\widehat{P_a(z_i)}\\)\nIf a “large” proportion of detections are produced by very small detection probabilities \\(\\widehat{P_a(z_i)}\\) the result can be improbably large abundance estimates. The function p_dist_table() helps you detect this potential problem. Two tables below show results of two calls to p_dist_table() for the amakihi data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy does more severe truncation cause the distribution of \\(\\widehat{P_a(z_i)}\\) estimates to shift to larger values?\n\n detections at large distances have low probability of occurence because of the distance effect detections made by poor observer are removed detections made late in the day are removed"
+    "text": "Exercise 8 – Covariates in detection function\nUse of covariates in detection function models require more vigilance in assessing possible covariates prior to analysis and in the interpretation of the analysis. This set of questions asks that you take a more critical look at the results of the analyses presented in the covariate practical.\n\nAmakihi songbird data\nBefore using the ds() function, exploratory data analysis screens candidate covariates for potential utility in the detection function as well as possible difficulties that might arise if multiple covariates are included. I alerted you to the problems colinearity in predictors cause.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nAnswer these questions by examining at the output above\n\nWhich of these diagnostic plots indicate a colinearity problem?\n\n top left top right bottom left bottom right\n\nWhat should you do about this?\n\n Do not include observer as covariate in your model Do not include hour and minutes together in your model Do not include observer and hour together in your model Certainly include minutes in your model\n\n\n\n\nInfluence of small values of \\(\\widehat{P_a(z_i)}\\)\nIf a “large” proportion of detections are produced by very small detection probabilities \\(\\widehat{P_a(z_i)}\\) the result can be improbably large abundance estimates. The function p_dist_table() helps you detect this potential problem. Two tables below show results of two calls to p_dist_table() for the amakihi data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhy does more severe truncation cause the distribution of \\(\\widehat{P_a(z_i)}\\) estimates to shift to larger values?\n\n detections at large distances have low probability of occurence because of the distance effect detections made by poor observer are removed detections made late in the day are removed",
+    "crumbs": [
+      "Covariates",
+      "Tutorial--covariates in detection function ✏️"
+    ]
   },
   {
     "objectID": "Pr8/prac8-tutorial.html#eastern-tropical-pacific-dolphin-analysis",
     "href": "Pr8/prac8-tutorial.html#eastern-tropical-pacific-dolphin-analysis",
-    "title": "Tutorial–covariates in detection function",
+    "title": "Tutorial–covariates in detection function ✏️",
     "section": "Eastern Tropical Pacific dolphin analysis",
-    "text": "Eastern Tropical Pacific dolphin analysis\nAIC indicates that search.method is the preferred single covariate in a candidate detection function. That’s fine, however, examine the details of the fitted model\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWithin this output is a diagnostic that should cause you to question the veracity of this model. What is that diagnostic?\n\n number of observations is incorrect point estimate of \\(\\beta(Search_3)\\) is much larger than other \\(\\beta\\) values standard error of \\(\\beta(Search_3)\\) is 26X larger than its point estimate standard error of shape coefficient exceeds point estimate of shape coefficient"
+    "text": "Eastern Tropical Pacific dolphin analysis\nAIC indicates that search.method is the preferred single covariate in a candidate detection function. That’s fine, however, examine the details of the fitted model\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWithin this output is a diagnostic that should cause you to question the veracity of this model. What is that diagnostic?\n\n number of observations is incorrect point estimate of \\(\\beta(Search_3)\\) is much larger than other \\(\\beta\\) values standard error of \\(\\beta(Search_3)\\) is 26X larger than its point estimate standard error of shape coefficient exceeds point estimate of shape coefficient",
+    "crumbs": [
+      "Covariates",
+      "Tutorial--covariates in detection function ✏️"
+    ]
   },
   {
     "objectID": "Pr8/prac8-tutorial.html#savannah-sparrows-with-pasture-covariate",
     "href": "Pr8/prac8-tutorial.html#savannah-sparrows-with-pasture-covariate",
-    "title": "Tutorial–covariates in detection function",
+    "title": "Tutorial–covariates in detection function ✏️",
     "section": "Savannah sparrows with pasture covariate",
-    "text": "Savannah sparrows with pasture covariate\nCheck that the image of the probability density function by pasture, created for the 1981 data set is correct. Checking this involves converting the table of \\(\\hat{\\beta}\\) coefficients into estimates of \\(\\hat{\\sigma}\\) which are more easily interpreted. Below is the output from the 1981 data set with a half-normal key function and pasture as a covariate.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom the output provide \\(\\hat{\\beta}\\) estimates to the code below to convert them into pasture-specific \\(\\hat{\\sigma}\\) estimates.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the strength of the pasture effect for each pasture by examining the relative magnitude of the standard error to the point estimates of the \\(\\hat{\\beta}\\) coefficients.\n\nEstimated detection probabilities are most similar for which pair of pastures?\n\n pasture 0 and pasture 1 pasture 0 and pasture 2 pasture 0 and pasture 3"
+    "text": "Savannah sparrows with pasture covariate\nCheck that the image of the probability density function by pasture, created for the 1981 data set is correct. Checking this involves converting the table of \\(\\hat{\\beta}\\) coefficients into estimates of \\(\\hat{\\sigma}\\) which are more easily interpreted. Below is the output from the 1981 data set with a half-normal key function and pasture as a covariate.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom the output provide \\(\\hat{\\beta}\\) estimates to the code below to convert them into pasture-specific \\(\\hat{\\sigma}\\) estimates.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the strength of the pasture effect for each pasture by examining the relative magnitude of the standard error to the point estimates of the \\(\\hat{\\beta}\\) coefficients.\n\nEstimated detection probabilities are most similar for which pair of pastures?\n\n pasture 0 and pasture 1 pasture 0 and pasture 2 pasture 0 and pasture 3",
+    "crumbs": [
+      "Covariates",
+      "Tutorial--covariates in detection function ✏️"
+    ]
   },
   {
     "objectID": "Pr3/prac3-tutorial.html#practical-3-model-criticism",

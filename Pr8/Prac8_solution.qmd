@@ -1,5 +1,5 @@
 ---
-title: Covariates in the detection function **solution**
+title: Covariates in the detection function **solution** 💡
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: references.bib
