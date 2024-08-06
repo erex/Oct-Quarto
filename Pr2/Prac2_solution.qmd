@@ -1,5 +1,5 @@
 ---
-title: Line transect estimation using R **solution**
+title: Line transect estimation using R **solution** 💡
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 ---

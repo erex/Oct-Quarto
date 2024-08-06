@@ -6,7 +6,7 @@ title: Detection functions practical 2
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 05 March 2024
+## Lecture slides for 08 October 2024
 
 ### [Detection functions](../lectures/BlockB-22.pdf)
 :::
