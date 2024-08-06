@@ -318,34 +318,34 @@
   {
     "objectID": "Pr5/Pr5-instructions.html",
     "href": "Pr5/Pr5-instructions.html",
-    "title": "Point transect sampling",
+    "title": "Point transect sampling 💻",
     "section": "",
     "text": "The purpose of this exercise is to analyse point transect survey data: it can sometimes be more difficult than line transect data. In the first problem, the data are simulated and so the true density is known. In the second problem, two different data collection methods were used to survey song birds.",
     "crumbs": [
       "Points",
-      "Point transect sampling"
+      "Point transect sampling 💻"
     ]
   },
   {
     "objectID": "Pr5/Pr5-instructions.html#probability-density-function",
     "href": "Pr5/Pr5-instructions.html#probability-density-function",
-    "title": "Point transect sampling",
+    "title": "Point transect sampling 💻",
     "section": "Probability density function",
     "text": "Probability density function\nTo plot the more informative probability density function (pdf), an additional argument is required in the plot() function:\n\nplot(ptdat.hn, pdf=TRUE)",
     "crumbs": [
       "Points",
-      "Point transect sampling"
+      "Point transect sampling 💻"
     ]
   },
   {
     "objectID": "Pr5/Pr5-instructions.html#analyse-both-conventional-and-snapshot-data-sets",
     "href": "Pr5/Pr5-instructions.html#analyse-both-conventional-and-snapshot-data-sets",
-    "title": "Point transect sampling",
+    "title": "Point transect sampling 💻",
     "section": "Analyse both conventional and snapshot data sets",
     "text": "Analyse both conventional and snapshot data sets\nWhat to do:\n\nSelect a simple model for exploratory data analysis. Experiment with different truncation distances, \\(w\\), and select a suitable value for each method. Are there any potential problems with any of the data sets?\nTry other models and model options. Use plots, AIC values and goodness-of-fit test statistics to determine an adequate model.\nRecord your estimates of density and corresponding confidence interval for each method.",
     "crumbs": [
       "Points",
-      "Point transect sampling"
+      "Point transect sampling 💻"
     ]
   },
   {
@@ -938,7 +938,7 @@
     "href": "Pr5/points.html",
     "title": "Point transects practical 5",
     "section": "",
-    "text": "Lecture slides for 08 March 2024\n\n\n\n\n\n\n\n\nHaving mastered analysis of line transect data, we move on to analysis of point transect data. These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.\n\n\n\n\n\nPhoto by Vincent van Zalinge on Unsplash\nAssessing fit to point transect data also represents a challenge. Consequently, we use plots of the probability density function to gain perspective regarding the influence of regions of the probability density function upon lack of fit.\nTwo data sets are to be analysed: the first is a simulated data set in which both the true shape of the detection function as well as true animal density is known. Fit various detection functions to these data, also examining the effect of truncation (truncation for points is often more severe than for lines) upon estimates. Look for congruence in density estimates–as you did with a similar exercise performed on simulated line transect data in Practical 3.\nFinally, there are two optional data sets of winter wrens collected by Prof. Buckland. Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the “snapshot” method.",
+    "text": "Lecture slides for 11 October 2024\n\n\n\n\n\n\n\n\nHaving mastered analysis of line transect data, we move on to analysis of point transect data. These data are more difficult to model because the region of the curve where we wish to be most precise is the region where data are most scarce.\n\n\n\n\n\nPhoto by Vincent van Zalinge on Unsplash\nAssessing fit to point transect data also represents a challenge. Consequently, we use plots of the probability density function to gain perspective regarding the influence of regions of the probability density function upon lack of fit.\nTwo data sets are to be analysed: the first is a simulated data set in which both the true shape of the detection function as well as true animal density is known. Fit various detection functions to these data, also examining the effect of truncation (truncation for points is often more severe than for lines) upon estimates. Look for congruence in density estimates–as you did with a similar exercise performed on simulated line transect data in Practical 3.\nFinally, there are two optional data sets of winter wrens collected by Prof. Buckland. Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the “snapshot” method.",
     "crumbs": [
       "Points",
       "Point transects practical 5"
@@ -958,45 +958,45 @@
   {
     "objectID": "Pr5/Prac5_solution.html",
     "href": "Pr5/Prac5_solution.html",
-    "title": "Point transect sampling solution",
+    "title": "Point transect sampling solution 💡",
     "section": "",
     "text": "Solution\n\n\n\nPoint transect analysis exercise",
     "crumbs": [
       "Points",
-      "Point transect sampling **solution**"
+      "Point transect sampling **solution** 💡"
     ]
   },
   {
     "objectID": "Pr5/Prac5_solution.html#truncation-of-20m",
     "href": "Pr5/Prac5_solution.html#truncation-of-20m",
-    "title": "Point transect sampling solution",
+    "title": "Point transect sampling solution 💡",
     "section": "Truncation of 20m",
     "text": "Truncation of 20m\n\nPTExercise.hn.t20m &lt;- ds(data=PTExercise, transect=\"point\", key=\"hn\", truncation=20,\n                    convert_units=conversion.factor)\nPTExercise.hr.t20m &lt;- ds(data=PTExercise, transect=\"point\", key=\"hr\", truncation=20,\n                    convert_units=conversion.factor)\nPTExercise.uf.cos.t20m &lt;- ds(data=PTExercise, transect=\"point\", key=\"unif\", \n                        adjustment=\"cos\", truncation=20,convert_units=conversion.factor)\n\n\n\n\nResults from simulated point transect data.\n\n\n\n\n\n\n\n\n\n\n\n\nDetectionFunction\nAdjustments\nTruncation\nAIC\nDensity\nD.CV\nLower.CI\nUpper.CI\n\n\n\n\nHalf-normal\nNone\n34.2\n919.140\n79.630\n0.126\n62.121\n102.074\n\n\nHalf-normal\nNone\n20.0\n764.305\n70.826\n0.157\n51.978\n96.507\n\n\nHazard rate\nNone\n20.0\n767.211\n62.364\n0.187\n43.207\n90.015\n\n\nUniform\nCosine\n20.0\n765.503\n75.044\n0.144\n56.515\n99.648",
     "crumbs": [
       "Points",
-      "Point transect sampling **solution**"
+      "Point transect sampling **solution** 💡"
     ]
   },
   {
     "objectID": "Pr5/Prac5_solution.html#plots-of-probability-density-functions-to-inspect-fit",
     "href": "Pr5/Prac5_solution.html#plots-of-probability-density-functions-to-inspect-fit",
-    "title": "Point transect sampling solution",
+    "title": "Point transect sampling solution 💡",
     "section": "Plots of probability density functions to inspect fit",
     "text": "Plots of probability density functions to inspect fit\nplot(PTExercise.hn, main=\"Half normal, no truncation\", pdf=TRUE)\nplot(PTExercise.hn.t20m, main=\"Half normal, truncation 20m\", pdf=TRUE)\nplot(PTExercise.hr.t20m, main=\"Hazard rate, truncation 20m\", pdf=TRUE)\nplot(PTExercise.uf.cos.t20m, main=\"Uniform with cosine, truncation 20m\", pdf=TRUE)\n\n\n\n\n\n\nHalf normal without truncation\n\n\n\n\n\n\n\nHalf normal 20m truncation\n\n\n\n\n\n\n\n\n\nHazard rate 20m truncation\n\n\n\n\n\n\n\nUniform cosine 20m truncation\n\n\n\n\n\nWe see a fair degree of variability between analyses - reliable analysis of point transect data is more difficult than for line transect data. We see greater loss in precision from truncating data relative to line transect sampling, but if we do not truncate data, different models can give widely differing estimates.",
     "crumbs": [
       "Points",
-      "Point transect sampling **solution**"
+      "Point transect sampling **solution** 💡"
     ]
   },
   {
     "objectID": "Pr5/Prac5_solution.html#probability-density-functions-for-bucklands-winter-wren-point-transects",
     "href": "Pr5/Prac5_solution.html#probability-density-functions-for-bucklands-winter-wren-point-transects",
-    "title": "Point transect sampling solution",
+    "title": "Point transect sampling solution 💡",
     "section": "Probability density functions for Buckland’s winter wren point transects",
     "text": "Probability density functions for Buckland’s winter wren point transects\nplot(wren5min.uf.cos.t110, main=\"5 minute count\")\nplot(wrensnap.hr.cos.t110, main=\"Snapshot moment\")\n\n\n\n\n\n\nDetection function 5 minute count\n\n\n\n\n\n\n\nDetection function snapshot\n\n\n\n\n\nAs the detection distance histograms indicate, winter wren showed evidence of observer avoidance, more than other species in the Montrave study. We show the detection function graph rather than the PDF to emphasise the evasive movement aspect of the data. If you conduct the goodness of fit test, using gof_ds(), you will find that the models still suitably fit the data.",
     "crumbs": [
       "Points",
-      "Point transect sampling **solution**"
+      "Point transect sampling **solution** 💡"
     ]
   },
   {
@@ -1650,16 +1650,24 @@
   {
     "objectID": "Pr5/prac5-tutorial.html#practical-5-point-transects",
     "href": "Pr5/prac5-tutorial.html#practical-5-point-transects",
-    "title": "Tutorial–point transect surveys",
+    "title": "Tutorial–point transect surveys ✏️",
     "section": "Practical 5 – Point transects",
-    "text": "Practical 5 – Point transects\nThis data set was simulated so we know both the true population density and the true underlying detection function. We remain interested in the robustness of density estimates across the range of key function models. Examine the largest and smallest density estimates to discover the ranges of density estimates.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nRepeat the calculations that you made at the conclusion of Exercise 3; this time looking at the relative difference between the most extreme density estimates for this data set (remember true density is 79.8 per \\(km^2\\), just as it was for the simulated line transect data). Use the three key functions (uniform with cosine adjustment, half normal and hazard rate) with a 20m truncation distance suggested in the exercise.\nDetermine the magnitude (in percent) of the range in density estimates produced by these three models fitted to the simulated data. Reflect on the magnitude of this range vis-a-vis the range in estimates among models for the line transect data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nTo the nearest 5%, what is the relative percentage difference between smallest and largest estimates?"
+    "text": "Practical 5 – Point transects\nThis data set was simulated so we know both the true population density and the true underlying detection function. We remain interested in the robustness of density estimates across the range of key function models. Examine the largest and smallest density estimates to discover the ranges of density estimates.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nRepeat the calculations that you made at the conclusion of Exercise 3; this time looking at the relative difference between the most extreme density estimates for this data set (remember true density is 79.8 per \\(km^2\\), just as it was for the simulated line transect data). Use the three key functions (uniform with cosine adjustment, half normal and hazard rate) with a 20m truncation distance suggested in the exercise.\nDetermine the magnitude (in percent) of the range in density estimates produced by these three models fitted to the simulated data. Reflect on the magnitude of this range vis-a-vis the range in estimates among models for the line transect data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nTo the nearest 5%, what is the relative percentage difference between smallest and largest estimates?",
+    "crumbs": [
+      "Points",
+      "Tutorial--point transect surveys ✏️"
+    ]
   },
   {
     "objectID": "Pr5/prac5-tutorial.html#wren-data-from-buckland-montrave-study",
     "href": "Pr5/prac5-tutorial.html#wren-data-from-buckland-montrave-study",
-    "title": "Tutorial–point transect surveys",
+    "title": "Tutorial–point transect surveys ✏️",
     "section": "Wren data from Buckland Montrave study",
-    "text": "Wren data from Buckland Montrave study\nThe analysis you were asked to do for these data sets was not as exhaustive as the previous analysis. There is not a suite of models fitted to the two data sets; only a single model for each type of point transect. The model selection was carried out in Buckland (2006). Emphasis here is upon recognising differences in estimated density arising from the two methods of data collection.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nContrast the point estimates and precision derived from the two survey methods for winter wrens.\n\n\nHow much larger (percent) is 5-minute density estimate than snapshot density estimate? \nWhich data collection method produces the more precise estimate (by a considerable amount)? 5 minutesnapshot\nThere is evidence of evasive movement if you look at the distribution of radial distances. Evasive movement was sufficient to make inference suspect for either the 5-minute or snapshot data. TRUEFALSE"
+    "text": "Wren data from Buckland Montrave study\nThe analysis you were asked to do for these data sets was not as exhaustive as the previous analysis. There is not a suite of models fitted to the two data sets; only a single model for each type of point transect. The model selection was carried out in Buckland (2006). Emphasis here is upon recognising differences in estimated density arising from the two methods of data collection.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nContrast the point estimates and precision derived from the two survey methods for winter wrens.\n\n\nHow much larger (percent) is 5-minute density estimate than snapshot density estimate? \nWhich data collection method produces the more precise estimate (by a considerable amount)? 5 minutesnapshot\nThere is evidence of evasive movement if you look at the distribution of radial distances. Evasive movement was sufficient to make inference suspect for either the 5-minute or snapshot data. TRUEFALSE",
+    "crumbs": [
+      "Points",
+      "Tutorial--point transect surveys ✏️"
+    ]
   },
   {
     "objectID": "Pr6/prac6-tutorial.html#exercise-6-survey-design",

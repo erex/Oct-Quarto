@@ -1,5 +1,5 @@
 ---
-title: Tutorial--point transect surveys
+title: Tutorial--point transect surveys ✏️
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 bibliography: references.bib

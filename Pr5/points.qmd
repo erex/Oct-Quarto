@@ -6,7 +6,7 @@ title: Point transects practical 5
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 08 March 2024
+## Lecture slides for 11 October 2024
 
 ### [Point transect analysis and detailed example](../lectures/BlockE-22.pdf)
 :::
