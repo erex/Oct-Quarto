@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.55">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-05">
+<meta name="dcterms.date" content="2024-08-06">
 
-<title>Tutorial–model criticism – Distance sampling workshop</title>
+<title>Tutorial–model criticism ✏️ – Distance sampling workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -371,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"data(\"LTExercise\")\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nlt.hn.cos.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\", truncation=20, \n                     convert_units=conversion.factor)\nlt.uf.cos.t20m <- ds(data=LTExercise, key=\"unif\", adjustment=\"cos\", \n                     truncation=20, convert_units=conversion.factor)\nlt.hr.t20m <- ds(data=LTExercise, key=\"hr\", truncation=20,\n                 convert_units=conversion.factor)\nnest.tab <- data.frame(\n                       DetectionFunction=c(\"Half-normal 20m trunc\",\n                                           \"Uniform, cosine adjustments 20m trunc\",\n                                           \"Hazard rate 20m trunc\"),\n                       Density=rep(NA,3), LowerCI=rep(NA,3), UpperCI=rep(NA,3))\nget.results.f <- function(fit.model) {   \n  return(c(D=round(fit.model$dht$individuals$D$Estimate,2),\n         lCL=round(fit.model$dht$individuals$D$lcl,2),\n         uCL=round(fit.model$dht$individuals$D$ucl,2)))\n}\nnest.tab[1,2:4] <- get.results.f(lt.hn.cos.t20m)\nnest.tab[2,2:4] <- get.results.f(lt.uf.cos.t20m)\nnest.tab[3,2:4] <- get.results.f(lt.hr.t20m)\nprint(nest.tab)","id":1,"options":{"fig-height":5,"results":"markup","editor-max-height":"","fig-cap":"","out-height":"","editor-font-scale":"1","comment":"","message":"FALSE","label":"makeoutput","classes":"","warning":"true","context":"output","read-only":"false","editor-quick-suggestions":"false","output":"true","dpi":72,"editor-word-wrap":"true","out-width":"700px","autorun":"true","fig-width":7}},{"code":"dhat.low <- ___\ndhat.hi <- ___\ndhat.diff <- dhat.hi - dhat.low\nrel.diff <- dhat.diff / dhat.hi\nprint(rel.diff)","id":2,"options":{"fig-height":5,"results":"markup","editor-max-height":"","fig-cap":"","out-height":"","editor-font-scale":"1","comment":"","message":"true","label":"sensitiv","classes":"","warning":"true","context":"interactive","read-only":"false","editor-quick-suggestions":"false","output":"true","dpi":72,"editor-word-wrap":"true","out-width":"700px","autorun":"false","fig-width":7}},{"code":"gof_ds(lt.hn.cos.t20m, plot=FALSE)\ngof_ds(lt.uf.cos.t20m, plot=FALSE)\ngof_ds(lt.hr.t20m, plot=FALSE)","id":3,"options":{"fig-height":5,"results":"markup","editor-max-height":"","fig-cap":"","out-height":"","editor-font-scale":"1","comment":"","message":"true","label":"gof","classes":"","warning":"true","context":"interactive","read-only":"false","editor-quick-suggestions":"false","output":"true","dpi":72,"editor-word-wrap":"true","out-width":"700px","autorun":"false","fig-width":7}},{"code":"data(\"capercaillie\")\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\ncaper.hn <- ds(data=capercaillie, key=\"hn\", adjustment=NULL, \n               convert_units=conversion.factor)\nsummary(caper.hn)","id":4,"options":{"fig-height":5,"results":"markup","editor-max-height":"","fig-cap":"","out-height":"","editor-font-scale":"1","comment":"","message":"true","label":"cap","classes":"","warning":"true","context":"output","read-only":"false","editor-quick-suggestions":"false","output":"true","dpi":72,"editor-word-wrap":"true","out-width":"700px","autorun":"true","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"code":"data(\"LTExercise\")\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nlt.hn.cos.t20m <- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\", truncation=20, \n                     convert_units=conversion.factor)\nlt.uf.cos.t20m <- ds(data=LTExercise, key=\"unif\", adjustment=\"cos\", \n                     truncation=20, convert_units=conversion.factor)\nlt.hr.t20m <- ds(data=LTExercise, key=\"hr\", truncation=20,\n                 convert_units=conversion.factor)\nnest.tab <- data.frame(\n                       DetectionFunction=c(\"Half-normal 20m trunc\",\n                                           \"Uniform, cosine adjustments 20m trunc\",\n                                           \"Hazard rate 20m trunc\"),\n                       Density=rep(NA,3), LowerCI=rep(NA,3), UpperCI=rep(NA,3))\nget.results.f <- function(fit.model) {   \n  return(c(D=round(fit.model$dht$individuals$D$Estimate,2),\n         lCL=round(fit.model$dht$individuals$D$lcl,2),\n         uCL=round(fit.model$dht$individuals$D$ucl,2)))\n}\nnest.tab[1,2:4] <- get.results.f(lt.hn.cos.t20m)\nnest.tab[2,2:4] <- get.results.f(lt.uf.cos.t20m)\nnest.tab[3,2:4] <- get.results.f(lt.hr.t20m)\nprint(nest.tab)","options":{"label":"makeoutput","context":"output","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","message":"FALSE","output":"true","editor-font-scale":"1","read-only":"false","editor-word-wrap":"true","out-height":"","editor-max-height":"","classes":"","dpi":72,"fig-height":5,"results":"markup","out-width":"700px","warning":"true","autorun":"true","comment":""},"id":1},{"code":"dhat.low <- ___\ndhat.hi <- ___\ndhat.diff <- dhat.hi - dhat.low\nrel.diff <- dhat.diff / dhat.hi\nprint(rel.diff)","options":{"label":"sensitiv","context":"interactive","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","message":"true","output":"true","editor-font-scale":"1","read-only":"false","editor-word-wrap":"true","out-height":"","editor-max-height":"","classes":"","dpi":72,"fig-height":5,"results":"markup","out-width":"700px","warning":"true","autorun":"false","comment":""},"id":2},{"code":"gof_ds(lt.hn.cos.t20m, plot=FALSE)\ngof_ds(lt.uf.cos.t20m, plot=FALSE)\ngof_ds(lt.hr.t20m, plot=FALSE)","options":{"label":"gof","context":"interactive","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","message":"true","output":"true","editor-font-scale":"1","read-only":"false","editor-word-wrap":"true","out-height":"","editor-max-height":"","classes":"","dpi":72,"fig-height":5,"results":"markup","out-width":"700px","warning":"true","autorun":"false","comment":""},"id":3},{"code":"data(\"capercaillie\")\nconversion.factor <- convert_units(\"meter\", \"kilometer\", \"hectare\")\ncaper.hn <- ds(data=capercaillie, key=\"hn\", adjustment=NULL, \n               convert_units=conversion.factor)\nsummary(caper.hn)","options":{"label":"cap","context":"output","editor-quick-suggestions":"false","fig-width":7,"fig-cap":"","message":"true","output":"true","editor-font-scale":"1","read-only":"false","editor-word-wrap":"true","out-height":"","editor-max-height":"","classes":"","dpi":72,"fig-height":5,"results":"markup","out-width":"700px","warning":"true","autorun":"true","comment":""},"id":4}];
 
 </script>
 <script type="module">
@@ -1603,7 +1603,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -1629,7 +1629,7 @@ window.Quarto = {
 <span class="menu-text">Detection functions</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr3/criticism.html"> 
+    <a class="nav-link active" href="../Pr3/criticism.html" aria-current="page"> 
 <span class="menu-text">Criticism</span></a>
   </li>  
   <li class="nav-item">
@@ -1666,10 +1666,57 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pr3/prac3-tutorial.html">Tutorial–model criticism ✏️</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr3/criticism.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model criticism practical 3</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr3/Pr3-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessing line transect detection functions 💻</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr3/modelsel-demo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Demonstration two stages of model selection</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr3/Prac3_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessing line transect detection functions <strong>solution</strong> 💡</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr3/prac3-tutorial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tutorial–model criticism ✏️</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1974,7 +2021,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial–model criticism</h1>
+<h1 class="title">Tutorial–model criticism ✏️</h1>
 </div>
 
 
@@ -1991,7 +2038,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 5, 2024</p>
+      <p class="date">August 6, 2024</p>
     </div>
   </div>
   
@@ -2020,8 +2067,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </ul>
 <ul>
 <li>What effect did adjustment terms have upon model fit for the half normal and hazard rate key functions with 20m truncation?
-<div id="radio_GPKIWOOGEV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GPKIWOOGEV" value=""> <span>caused the hazard rate model to outperform the half normal</span></label><label><input type="radio" autocomplete="off" name="radio_GPKIWOOGEV" value=""> <span>improved performance of the hazard rate model, but not the half normal</span></label><label><input type="radio" autocomplete="off" name="radio_GPKIWOOGEV" value="answer"> <span>adjustment terms did not appear in the final key function models</span></label>
+<div id="radio_QDXREDEFFP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QDXREDEFFP" value=""> <span>caused the hazard rate model to outperform the half normal</span></label><label><input type="radio" autocomplete="off" name="radio_QDXREDEFFP" value=""> <span>improved performance of the hazard rate model, but not the half normal</span></label><label><input type="radio" autocomplete="off" name="radio_QDXREDEFFP" value="answer"> <span>adjustment terms did not appear in the final key function models</span></label>
 </div></li>
 </ul>
 <section id="model-fit" class="level3">
@@ -2041,12 +2088,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>What strikes you as strange about the variability associated with encounter rate (<code>se.ER</code> and <code>cv.ER</code>)
-<div id="radio_NOGKFZBFTC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NOGKFZBFTC" value="answer"> <span>they are vanishingly small</span></label><label><input type="radio" autocomplete="off" name="radio_NOGKFZBFTC" value=""> <span>they are incredibly large</span></label>
+<div id="radio_SXHAMMIXLH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SXHAMMIXLH" value="answer"> <span>they are vanishingly small</span></label><label><input type="radio" autocomplete="off" name="radio_SXHAMMIXLH" value=""> <span>they are incredibly large</span></label>
 </div></li>
 <li>This is an actual data set, so we do not know the true density of capercaillie in this study area. However we can compare the point estimates of density derived from distances treated as exact and from binned distances.
-<div id="radio_GXAYEOQMGT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GXAYEOQMGT" value=""> <span>With binned distances, the estimate of <span class="math inline">\(\hat{D}\)</span> is an order of magnitude larger than with exact distances</span></label><label><input type="radio" autocomplete="off" name="radio_GXAYEOQMGT" value="answer"> <span><span class="math inline">\(\hat{D}\)</span> from the half normal with binned distances is between the estimates of <span class="math inline">\(\hat{D}\)</span> with the half normal and hazard rate keys using exact distances</span></label><label><input type="radio" autocomplete="off" name="radio_GXAYEOQMGT" value=""> <span>We are not sure whether the detection function fitted to the exact distances fit the data</span></label>
+<div id="radio_URBEXSUILS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_URBEXSUILS" value=""> <span>With binned distances, the estimate of <span class="math inline">\(\hat{D}\)</span> is an order of magnitude larger than with exact distances</span></label><label><input type="radio" autocomplete="off" name="radio_URBEXSUILS" value="answer"> <span><span class="math inline">\(\hat{D}\)</span> from the half normal with binned distances is between the estimates of <span class="math inline">\(\hat{D}\)</span> with the half normal and hazard rate keys using exact distances</span></label><label><input type="radio" autocomplete="off" name="radio_URBEXSUILS" value=""> <span>We are not sure whether the detection function fitted to the exact distances fit the data</span></label>
 </div></li>
 </ul>
 
@@ -2056,416 +2103,210 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </main> <!-- /main -->
 <script>
 
-
-
 /* update total correct if #webex-total_correct exists */
-
 update_total_correct = function() {
-
   console.log("webex: update total_correct");
 
-
-
   var t = document.getElementsByClassName("webex-total_correct");
-
   for (var i = 0; i < t.length; i++) {
-
     p = t[i].parentElement;
-
     var correct = p.getElementsByClassName("webex-correct").length;
-
     var solvemes = p.getElementsByClassName("webex-solveme").length;
-
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
-
     var selects = p.getElementsByClassName("webex-select").length;
 
-
-
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
-
   }
-
 }
-
-
 
 /* webex-solution button toggling function */
-
 b_func = function() {
-
   console.log("webex: toggle hide");
 
-
-
   var cl = this.parentElement.classList;
-
   if (cl.contains('open')) {
-
     cl.remove("open");
-
   } else {
-
     cl.add("open");
-
   }
-
 }
-
-
 
 /* check answers */
-
 check_func = function() {
-
   console.log("webex: check answers");
 
-
-
   var cl = this.parentElement.classList;
-
   if (cl.contains('unchecked')) {
-
     cl.remove("unchecked");
-
     this.innerHTML = "Hide Answers";
-
   } else {
-
     cl.add("unchecked");
-
     this.innerHTML = "Show Answers";
-
   }
-
 }
-
-
 
 /* function for checking solveme answers */
-
 solveme_func = function(e) {
-
   console.log("webex: check solveme");
 
-
-
   var real_answers = JSON.parse(this.dataset.answer);
-
   var my_answer = this.value;
-
   var cl = this.classList;
-
   if (cl.contains("ignorecase")) {
-
     my_answer = my_answer.toLowerCase();
-
   }
-
   if (cl.contains("nospaces")) {
-
     my_answer = my_answer.replace(/ /g, "")
-
   }
-
-
 
   if (my_answer == "") {
-
     cl.remove("webex-correct");
-
     cl.remove("webex-incorrect");
-
   } else if (real_answers.includes(my_answer)) {
-
     cl.add("webex-correct");
-
     cl.remove("webex-incorrect");
-
   } else {
-
     cl.add("webex-incorrect");
-
     cl.remove("webex-correct");
-
   }
-
-
 
   // match numeric answers within a specified tolerance
-
   if(this.dataset.tol > 0){
-
     var tol = JSON.parse(this.dataset.tol);
-
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
-
     if (matches.reduce((a, b) => a + b, 0) > 0) {
-
       cl.add("webex-correct");
-
     } else {
-
       cl.remove("webex-correct");
-
     }
-
   }
-
-
 
   // added regex bit
-
   if (cl.contains("regex")){
-
     answer_regex = RegExp(real_answers.join("|"))
-
     if (answer_regex.test(my_answer)) {
-
       cl.add("webex-correct");
-
     }
-
   }
 
-
-
   update_total_correct();
-
 }
 
-
-
 /* function for checking select answers */
-
 select_func = function(e) {
-
   console.log("webex: check select");
-
-
 
   var cl = this.classList
 
-
-
   /* add style */
-
   cl.remove("webex-incorrect");
-
   cl.remove("webex-correct");
-
   if (this.value == "answer") {
-
     cl.add("webex-correct");
-
   } else if (this.value != "blank") {
-
     cl.add("webex-incorrect");
-
   }
 
-
-
   update_total_correct();
-
 }
-
-
 
 /* function for checking radiogroups answers */
-
 radiogroups_func = function(e) {
-
   console.log("webex: check radiogroups");
 
-
-
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
-
   var cl = checked_button.parentElement.classList;
-
   var labels = checked_button.parentElement.parentElement.children;
 
-
-
   /* get rid of styles */
-
   for (i = 0; i < labels.length; i++) {
-
     labels[i].classList.remove("webex-incorrect");
-
     labels[i].classList.remove("webex-correct");
-
   }
-
-
 
   /* add style */
-
   if (checked_button.value == "answer") {
-
     cl.add("webex-correct");
-
   } else {
-
     cl.add("webex-incorrect");
-
   }
 
-
-
   update_total_correct();
-
 }
-
-
 
 window.onload = function() {
-
   console.log("webex onload");
-
   /* set up solution buttons */
-
   var buttons = document.getElementsByTagName("button");
 
-
-
   for (var i = 0; i < buttons.length; i++) {
-
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
-
       buttons[i].onclick = b_func;
-
     }
-
   }
-
-
 
   var check_sections = document.getElementsByClassName("webex-check");
-
   console.log("check:", check_sections.length);
-
   for (var i = 0; i < check_sections.length; i++) {
-
     check_sections[i].classList.add("unchecked");
 
-
-
     let btn = document.createElement("button");
-
     btn.innerHTML = "Show Answers";
-
     btn.classList.add("webex-check-button");
-
     btn.onclick = check_func;
-
     check_sections[i].appendChild(btn);
 
-
-
     let spn = document.createElement("span");
-
     spn.classList.add("webex-total_correct");
-
     check_sections[i].appendChild(spn);
-
   }
-
-
 
   /* set up webex-solveme inputs */
-
   var solveme = document.getElementsByClassName("webex-solveme");
 
-
-
   for (var i = 0; i < solveme.length; i++) {
-
     /* make sure input boxes don't auto-anything */
-
     solveme[i].setAttribute("autocomplete","off");
-
     solveme[i].setAttribute("autocorrect", "off");
-
     solveme[i].setAttribute("autocapitalize", "off");
-
     solveme[i].setAttribute("spellcheck", "false");
-
     solveme[i].value = "";
 
-
-
     /* adjust answer for ignorecase or nospaces */
-
     var cl = solveme[i].classList;
-
     var real_answer = solveme[i].dataset.answer;
-
     if (cl.contains("ignorecase")) {
-
       real_answer = real_answer.toLowerCase();
-
     }
-
     if (cl.contains("nospaces")) {
-
       real_answer = real_answer.replace(/ /g, "");
-
     }
-
     solveme[i].dataset.answer = real_answer;
 
-
-
     /* attach checking function */
-
     solveme[i].onkeyup = solveme_func;
-
     solveme[i].onchange = solveme_func;
 
-
-
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-
   }
-
-
 
   /* set up radiogroups */
-
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
-
   for (var i = 0; i < radiogroups.length; i++) {
-
     radiogroups[i].onchange = radiogroups_func;
-
   }
-
-
 
   /* set up selects */
-
   var selects = document.getElementsByClassName("webex-select");
-
   for (var i = 0; i < selects.length; i++) {
-
     selects[i].onchange = select_func;
-
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
-
   }
 
-
-
   update_total_correct();
-
 }
 
-
-
 </script>
-
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

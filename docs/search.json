@@ -461,56 +461,56 @@
   {
     "objectID": "Pr3/Pr3-instructions.html",
     "href": "Pr3/Pr3-instructions.html",
-    "title": "Assessing line transect detection functions",
+    "title": "Assessing line transect detection functions 💻",
     "section": "",
     "text": "In Exercise 2, we fitted different detection functions and compared them in terms of goodness of fit and AIC. Here, we continue to fit and assess different models and look at additional arguments in the ds package.",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions"
+      "Assessing line transect detection functions 💻"
     ]
   },
   {
     "objectID": "Pr3/Pr3-instructions.html#accessing-the-data",
     "href": "Pr3/Pr3-instructions.html#accessing-the-data",
-    "title": "Assessing line transect detection functions",
+    "title": "Assessing line transect detection functions 💻",
     "section": "Accessing the data",
     "text": "Accessing the data\nLoad the Distance package to access both the data and analytical functions.\n\n# Load library (if not already loaded)\nlibrary(Distance)\n# Access data\ndata(\"LTExercise\")\n# Check that it has been imported correctly\nhead(LTExercise, n=3)\n\n\nData format: no detections on a transect\nBefore fitting models, it is worth investigating the data a bit further: let’s start by summarising the perpendicular distances:\n\n# Summary of perpendicular distances\nsummary(LTExercise$distance)\n\nThe summary indicates that the minimum distance is min(hndat$distance) and the maximum is max(hndat$distance) metres and there is one missing value (indicated by the NA). If we print a few rows of the data, we can see that this missing value occurred on transect ‘Line 11’.\n\n# Print out a few lines of data\nLTExercise[100:102, ]\n\nThe NA indicates that there were no detections on this transect, but the transect information needs to be included otherwise the number of transects and the total line length will be incorrect.",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions"
+      "Assessing line transect detection functions 💻"
     ]
   },
   {
     "objectID": "Pr3/Pr3-instructions.html#truncation",
     "href": "Pr3/Pr3-instructions.html#truncation",
-    "title": "Assessing line transect detection functions",
+    "title": "Assessing line transect detection functions 💻",
     "section": "Truncation",
     "text": "Truncation\nLet’s start by fitting a basic model, i.e. no adjustment terms (by default a half normal model is fitted).\nFor this project, perpendicular distances are in metres and the transect lines are recorded in kilometres.\n\nconversion.factor &lt;- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\n# Fit half normal, no adjustments\nlt.hn &lt;- ds(data=LTExercise, key=\"hn\", adjustment=NULL,\n            convert_units=conversion.factor)\n\nLooking at a summary of the model object, how many objects are there in total? What is the maximum observed perpendicular distance?\n\n# Print a summary of the fitted detection function\nsummary(lt.hn)\n\nPlot the detection function and specify many histogram bins:\n\nplot(lt.hn, nc=30)\n\nThe histogram indicates that there is a large gap in detections therefore, to avoid a long right hand tail in the detection function, truncation is necessary. There are several ways to truncate: excluding distances beyond some specified distance or excluding a specified percentage of the largest distances. Note that here we only consider excluding large perpendicular distances, which is frequently referred to as right truncation.\n\nTruncation at a fixed distance\nThe following command truncates the perpendicular distances at 20 metres i.e. objects detected beyond 20m are excluded.\n\n# Truncate at 20metres\nlt.hn.t20m &lt;- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=20,\n                 convert_units=conversion.factor)\n\nGenerate a summary and plot of the detection function to see what effect this truncation has had on the number of objects.\n\n\nTruncating a percentage of distances\nAn alternative way to truncate distances is to specify a percentage of detected objects that should be excluded. In the command below, 10% of the largest distances are excluded.\n\n# Truncate largest 10% of distances\nlt.hn.t10per &lt;- ds(data=LTExercise, key=\"hn\", adjustment=NULL, truncation=\"10%\",\n                   convert_units=conversion.factor)\n\nGenerate a summary and plot to see what effect truncation has had.\n\nsummary(lt.hn.t10per)\nplot(lt.hn.t10per)",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions"
+      "Assessing line transect detection functions 💻"
     ]
   },
   {
     "objectID": "Pr3/Pr3-instructions.html#exploring-different-models",
     "href": "Pr3/Pr3-instructions.html#exploring-different-models",
-    "title": "Assessing line transect detection functions",
+    "title": "Assessing line transect detection functions 💻",
     "section": "Exploring different models",
     "text": "Exploring different models\nDecide on a suitable truncation distance (but don’t spend too long on this) and then fit different key detection functions and adjustment terms to assess whether these data can be satisfactorily analysed with the ‘wrong’ model. By default, the ds function fits a half normal function and cosine adjustment terms (adjustment=\"cos\") of up to order 5: AIC is used to determine how many, if any, adjustment terms are required. This model is specified in the command below:\n\n# Half normal detection, cosine adjustments, no truncation\nlt.hn.cos &lt;- ds(data=LTExercise, key=\"hn\", adjustment=\"cos\",\n                convert_units=conversion.factor)\n\nChange the key and adjustment terms: possible options are listed in Exercise 2 or use the help(ds) for options. See how the bias and precision compare between the models: the true density was 79.8 animals per km\\(^2\\).",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions"
+      "Assessing line transect detection functions 💻"
     ]
   },
   {
     "objectID": "Pr3/Pr3-instructions.html#converting-exact-distances-to-binned-distances",
     "href": "Pr3/Pr3-instructions.html#converting-exact-distances-to-binned-distances",
-    "title": "Assessing line transect detection functions",
+    "title": "Assessing line transect detection functions 💻",
     "section": "Converting exact distances to binned distances",
     "text": "Converting exact distances to binned distances\nSometimes we wish to convert exact distances to binned distances, if for example, there is evidence of rounding to favoured values. To do this in ds we need to specify the cutpoints of the bins, including zero and the maximum distance. In the example below, cutpoints at 0, 10, 20, …, 80 are specified.\n\ndata(capercaillie)\n# Specify cutpoint for bins\nbins &lt;- seq(from=0, to=80, by=10)\nconversion.factor &lt;- convert_units(\"meter\", \"kilometer\", \"hectare\")\n# Fit model with binned distances\ncaper.bin &lt;- ds(data=capercaillie, key=\"hn\", cutpoints=bins, \n                convert_units=conversion.factor)\nplot(caper.bin)",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions"
+      "Assessing line transect detection functions 💻"
     ]
   },
   {
@@ -518,7 +518,7 @@
     "href": "Pr3/criticism.html",
     "title": "Model criticism practical 3",
     "section": "",
-    "text": "Lecture slides for 06 March 2024\n\n\n\n\n\n\n\n\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash",
+    "text": "Lecture slides for 09 October 2024\n\n\n\n\n\n\n\n\nThis practical continues the theme of fitting detection functions to line transect distance sampling data. Follow along with the Quarto (.qmd) file found in the project.\nYou will proceed to fit a number of key function/adjustment term combinations to the data. You will also experiment with setting truncation distances.\nThe data you are analysing are simulated, where the true density and the true detection function is known. You will see how well your analyses perform in producing confidence intervals that include the true density. Also examine how much variability there is between different detection functions in their density estimates.\nAfter completing that main task, you also have the opportunity to analyse another line transect data set of capercaillie, a native Scottish bird.\n\n\n\n\n\nPhoto by Blake Cheek on Unsplash",
     "crumbs": [
       "Criticism",
       "Model criticism practical 3"
@@ -870,34 +870,34 @@
   {
     "objectID": "Pr3/Prac3_solution.html",
     "href": "Pr3/Prac3_solution.html",
-    "title": "Assessing line transect detection functions solution",
+    "title": "Assessing line transect detection functions solution 💡",
     "section": "",
     "text": "Solution\n\n\n\nAssessing line transect detection functions",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions **solution**"
+      "Assessing line transect detection functions **solution** 💡"
     ]
   },
   {
     "objectID": "Pr3/Prac3_solution.html#fitting-multiple-models-to-exact-distance-data",
     "href": "Pr3/Prac3_solution.html#fitting-multiple-models-to-exact-distance-data",
-    "title": "Assessing line transect detection functions solution",
+    "title": "Assessing line transect detection functions solution 💡",
     "section": "Fitting multiple models to exact distance data",
     "text": "Fitting multiple models to exact distance data\n\n# Half normal model \ncaper.hn.cos &lt;- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\",\n                   convert_units=conversion.factor)\n# Hazard rate model  \ncaper.hr.cos &lt;- ds(data=capercaillie, key=\"hr\", adjustment=\"cos\",\n                   convert_units=conversion.factor)\n# Uniform model  \ncaper.uf.cos &lt;- ds(data=capercaillie, key=\"unif\", adjustment=\"cos\",\n                   convert_units=conversion.factor)\n\nThe detection functions and QQ plots are shown below:\nplot(caper.hn.cos, main=\"Half normal\")\nx &lt;- gof_ds(caper.hn.cos)\ntext(.5, .1, paste(\"P-value=\", round(x$dsgof$CvM$p,3)))\nplot(caper.hr.cos, main=\"Hazard rate\")\nx &lt;- gof_ds(caper.hr.cos)\ntext(.5, .1, paste(\"P-value=\", round(x$dsgof$CvM$p,3)))\nplot(caper.uf.cos, main=\"Uniform\")\nx &lt;- gof_ds(caper.uf.cos)\ntext(.5, .1, paste(\"P-value=\", round(x$dsgof$CvM$p,3)))\n\n\n\n\n\n\nHalf normal\n\n\n\n\n\n\n\nQQ plot half normal\n\n\n\n\n\n\n\n\n\nHazard rate\n\n\n\n\n\n\n\nQQ plot hazard rate\n\n\n\n\n\n\n\n\n\nUniform with adjustment\n\n\n\n\n\n\n\nQQ plot uniform adj\n\n\n\n\n\nSummarise the goodness of fit statistics (in a pretty format). This table indicates that the hazard rate detection function had the lowest AIC but the difference in AIC between all three models was small.\n\nknitr::kable(summarize_ds_models(caper.hn.cos, caper.hr.cos, caper.uf.cos, output=\"plain\"),\n               caption=\"Summary of results of Capercaillie analysis.\", digits = 3)\n\n\nSummary of results of Capercaillie analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel\nKey function\nFormula\nC-vM \\(p\\)-value\nAverage detectability\nse(Average detectability)\nDelta AIC\n\n\n\n\n2\ncaper.hr.cos\nHazard-rate\n~1\n0.663\n0.703\n0.052\n0.000\n\n\n1\ncaper.hn.cos\nHalf-normal\n~1\n0.332\n0.613\n0.053\n0.031\n\n\n3\ncaper.uf.cos\nUniform with cosine adjustment terms of order 1,2\nNA\n0.614\n0.682\n0.098\n0.279\n\n\n\n\n\nThe results for the three different models are shown below: density is in birds per ha.\n\n\n\nCapercaillie point estimates of density and associated measures of precision.\n\n\nDetectionFunction\nAIC\nPa\nDensity\nD.CV\nLower.CI\nUpper.CI\n\n\n\n\nHalf-normal\n957.905\n0.613\n0.048\n0.148\n0.027\n0.083\n\n\nHazard rate\n957.874\n0.703\n0.042\n0.148\n0.020\n0.084\n\n\nUniform\n958.153\n0.682\n0.043\n0.191\n0.026\n0.069\n\n\n\n\n\nThese capercaillie data are reasonably well-behaved and different models that fit the data well should give similar results.",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions **solution**"
+      "Assessing line transect detection functions **solution** 💡"
     ]
   },
   {
     "objectID": "Pr3/Prac3_solution.html#converting-exact-distances-to-binned-distances",
     "href": "Pr3/Prac3_solution.html#converting-exact-distances-to-binned-distances",
-    "title": "Assessing line transect detection functions solution",
+    "title": "Assessing line transect detection functions solution 💡",
     "section": "Converting exact distances to binned distances",
     "text": "Converting exact distances to binned distances\nTo deal with rounding in the distance data, the exact distances can be converted into binned distances. The cutpoints need to be chosen with care so that the distance bins are sufficiently wide enough to ensure that the ‘correct’ perpendicular distance is in the band containing the rounded recorded value. The bin widths do not have to be equal, as shown in example here: the cutpoints are 0, 7.5, 17.5, 27.5, …, 67.5, 80.0 m. Note, that any distances beyond the largest bin will be excluded.\n\n# Specify (uneven) cutpoint for bins\nbins &lt;- c(0, seq(from=7.5, to=67.5, by=10), 80)\nprint(bins)\n\n[1]  0.0  7.5 17.5 27.5 37.5 47.5 57.5 67.5 80.0\n\ncaper.hn.bin &lt;- ds(data=capercaillie, key=\"hn\", adjustment=\"cos\", cutpoints=bins,\n                   convert_units=conversion.factor)\nplot(caper.hn.bin, main=\"Capercaillie, binned distances\")\n\n\n\n\n\n\n\n# See a portion of the results\nknitr::kable(caper.hn.bin$dht$individuals$summary, row.names = FALSE)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRegion\nArea\nCoveredArea\nEffort\nn\nk\nER\nse.ER\ncv.ER\nmean.size\nse.mean\n\n\n\n\nMonaughty Forest\n1472\n3840\n240\n112\n1\n0.4666667\n0\n0\n1\n0\n\n\n\n\nknitr::kable(caper.hn.bin$dht$individuals$D[1:6], row.names = FALSE, digits=3)\n\n\n\n\nLabel\nEstimate\nse\ncv\nlcl\nucl\n\n\n\n\nTotal\n0.045\n0.007\n0.152\n0.026\n0.079\n\n\n\n\n\nNote that the binning of the data results in virtually identical estimates of density (0.045 birds per ha) and essentially no change in the precision of the density estimate compared with the estimates with analysis of exact distance data.",
     "crumbs": [
       "Criticism",
-      "Assessing line transect detection functions **solution**"
+      "Assessing line transect detection functions **solution** 💡"
     ]
   },
   {
@@ -1734,22 +1734,34 @@
   {
     "objectID": "Pr3/prac3-tutorial.html#practical-3-model-criticism",
     "href": "Pr3/prac3-tutorial.html#practical-3-model-criticism",
-    "title": "Tutorial–model criticism",
+    "title": "Tutorial–model criticism ✏️",
     "section": "Practical 3 – Model criticism",
-    "text": "Practical 3 – Model criticism"
+    "text": "Practical 3 – Model criticism",
+    "crumbs": [
+      "Criticism",
+      "Tutorial--model criticism ✏️"
+    ]
   },
   {
     "objectID": "Pr3/prac3-tutorial.html#line-transect-analysis",
     "href": "Pr3/prac3-tutorial.html#line-transect-analysis",
-    "title": "Tutorial–model criticism",
+    "title": "Tutorial–model criticism ✏️",
     "section": "Line transect analysis",
-    "text": "Line transect analysis\nThis data set was simulated so we know both the true population density and the true underlying detection function. Our interest lies in the robustness of the density estimates in the face of model uncertainty. With actual data, we will not know the shape of the underlying process that gives rise to the detection process. It would be reassuring if density estimates were relatively insensitive to choice of detection function model. Let’s find out how sensitive our estimates are for this data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nExamine the sensitivity of the density estimates from the three models fitted to data truncated at 20m:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nTo the nearest percent, what is the relative percentage difference between smallest and largest estimates presented above? \n\n\nWhat effect did adjustment terms have upon model fit for the half normal and hazard rate key functions with 20m truncation?\n\n caused the hazard rate model to outperform the half normal improved performance of the hazard rate model, but not the half normal adjustment terms did not appear in the final key function models\n\n\n\nModel fit\nOne oversight of the analysis of LTExercise simulated data is the failure to assess model fit. Using the gof_ds function, below is code to perform Cramer-von Mises goodness of fit tests upon all three key function models with 20m truncation. We use the argument plot=FALSE to skip production of the Q-Q plot in this instance.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nAll of the three fitted models are admissable to use for inference? TRUEFALSE"
+    "text": "Line transect analysis\nThis data set was simulated so we know both the true population density and the true underlying detection function. Our interest lies in the robustness of the density estimates in the face of model uncertainty. With actual data, we will not know the shape of the underlying process that gives rise to the detection process. It would be reassuring if density estimates were relatively insensitive to choice of detection function model. Let’s find out how sensitive our estimates are for this data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nExamine the sensitivity of the density estimates from the three models fitted to data truncated at 20m:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nTo the nearest percent, what is the relative percentage difference between smallest and largest estimates presented above? \n\n\nWhat effect did adjustment terms have upon model fit for the half normal and hazard rate key functions with 20m truncation?\n\n caused the hazard rate model to outperform the half normal improved performance of the hazard rate model, but not the half normal adjustment terms did not appear in the final key function models\n\n\n\nModel fit\nOne oversight of the analysis of LTExercise simulated data is the failure to assess model fit. Using the gof_ds function, below is code to perform Cramer-von Mises goodness of fit tests upon all three key function models with 20m truncation. We use the argument plot=FALSE to skip production of the Q-Q plot in this instance.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nAll of the three fitted models are admissable to use for inference? TRUEFALSE",
+    "crumbs": [
+      "Criticism",
+      "Tutorial--model criticism ✏️"
+    ]
   },
   {
     "objectID": "Pr3/prac3-tutorial.html#capercaillie-data",
     "href": "Pr3/prac3-tutorial.html#capercaillie-data",
-    "title": "Tutorial–model criticism",
+    "title": "Tutorial–model criticism ✏️",
     "section": "Capercaillie data",
-    "text": "Capercaillie data\nWatch out for danger signs in output of functions. Examine the output of this simple half normal fitted to the exact capercaillie distances. Consider the following output:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhat strikes you as strange about the variability associated with encounter rate (se.ER and cv.ER)\n\n they are vanishingly small they are incredibly large\n\nThis is an actual data set, so we do not know the true density of capercaillie in this study area. However we can compare the point estimates of density derived from distances treated as exact and from binned distances.\n\n With binned distances, the estimate of \\(\\hat{D}\\) is an order of magnitude larger than with exact distances \\(\\hat{D}\\) from the half normal with binned distances is between the estimates of \\(\\hat{D}\\) with the half normal and hazard rate keys using exact distances We are not sure whether the detection function fitted to the exact distances fit the data"
+    "text": "Capercaillie data\nWatch out for danger signs in output of functions. Examine the output of this simple half normal fitted to the exact capercaillie distances. Consider the following output:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nWhat strikes you as strange about the variability associated with encounter rate (se.ER and cv.ER)\n\n they are vanishingly small they are incredibly large\n\nThis is an actual data set, so we do not know the true density of capercaillie in this study area. However we can compare the point estimates of density derived from distances treated as exact and from binned distances.\n\n With binned distances, the estimate of \\(\\hat{D}\\) is an order of magnitude larger than with exact distances \\(\\hat{D}\\) from the half normal with binned distances is between the estimates of \\(\\hat{D}\\) with the half normal and hazard rate keys using exact distances We are not sure whether the detection function fitted to the exact distances fit the data",
+    "crumbs": [
+      "Criticism",
+      "Tutorial--model criticism ✏️"
+    ]
   }
 ]

@@ -7,7 +7,7 @@ title: Model criticism practical 3
 ::: {.column width='60%'}
 
 ::: {.callout-tip}
-## Lecture slides for 06 March 2024
+## Lecture slides for 09 October 2024
 
 ### [Model criticism (selection and fit assessment)](../lectures/BlockC-22.pdf)
 :::

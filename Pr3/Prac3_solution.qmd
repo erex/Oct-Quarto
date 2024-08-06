@@ -1,5 +1,5 @@
 ---
-title: Assessing line transect detection functions **solution**
+title: Assessing line transect detection functions **solution** 💡
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 ---
