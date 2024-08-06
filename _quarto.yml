@@ -70,6 +70,7 @@ website:
     - Pr6/leaflet-demo.qmd
     - Pr6/effort-and-power.qmd
     - Pr6/Pr6-solution.qmd
+    - Pr6/prac6-tutorial.qmd
   - title: Strata
     contents:
     - Pr7/strata.qmd
@@ -77,6 +78,7 @@ website:
     - Pr7/detecting-differences.qmd
     - Pr7/stratumspecific-bias.qmd
     - Pr7/Prac7_solution.qmd
+    - Pr7/prac7-tutorial.qmd
   - title: Covariates
     contents:
     - Pr8/covariates.qmd
@@ -84,6 +86,7 @@ website:
     - Pr8/Pr8-instructions.qmd
     - Pr8/alternative-selection-metrics.qmd
     - Pr8/Prac8_solution.qmd
+    - Pr8/prac8-tutorial.qmd
   - title: Multipliers
     contents:
     - Pr9/multipliers.qmd

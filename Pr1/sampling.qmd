@@ -9,7 +9,7 @@ title: Sampling practical 1
 
 ::: {.callout-tip}
 
-## Lecture slides for 04 March 2024
+## Lecture slides for 07 October 2024
 
 ### [Fundamental principles](../lectures/BlockA-22.pdf)
 :::

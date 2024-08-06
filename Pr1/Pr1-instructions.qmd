@@ -1,5 +1,5 @@
 ---
-title: Line transect detection function fitting
+title: Detection function fitting for lines 💻
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 ---
