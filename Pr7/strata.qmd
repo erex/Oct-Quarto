@@ -6,7 +6,7 @@ title: Stratification practical 7
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 12 March 2024
+## Lecture slides for 15 October 2024
 
 ### [Analysis of stratified surveys](../lectures/BlockG-22.pdf)
 :::

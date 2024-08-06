@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-04">
+<meta name="dcterms.date" content="2024-08-06">
 
-<title>Tutorial–analysis of stratified surveys – Distance sampling workshop</title>
+<title>Tutorial–analysis of stratified surveys ✏️ – Distance sampling workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -371,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"data(minke)\nminke.trunc <- 1.5\nminke.S <- minke[minke$Region.Label==\"South\", ]\nminke.df.S.strat <- ds(minke.S, truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.S.strat)\nminke.df.N.strat <- ds(minke[minke$Region.Label==\"North\", ],\n                       truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.N.strat)","id":1,"options":{"editor-max-height":"","editor-quick-suggestions":"false","read-only":"false","fig-height":5,"editor-word-wrap":"true","editor-font-scale":"1","fig-cap":"","warning":"true","comment":"","context":"output","label":"complete-strat","results":"markup","out-height":"","autorun":"true","message":"false","classes":"","output":"true","dpi":72,"out-width":"700px","fig-width":7}},{"code":"scale.intercept.south <- ___\nscale.intercept.north <- ___\nest.sigma.south <- exp(scale.intercept.south)\nest.sigma.north <- exp(scale.intercept.north)\nprint(paste(\"South sigma=\", est.sigma.south, \"North sigma=\", est.sigma.north))","id":2,"options":{"editor-max-height":"","editor-quick-suggestions":"false","read-only":"false","fig-height":5,"editor-word-wrap":"true","editor-font-scale":"1","fig-cap":"","warning":"true","comment":"","context":"interactive","label":"sigma","results":"markup","out-height":"","autorun":"false","message":"true","classes":"","output":"true","dpi":72,"out-width":"700px","fig-width":7}}];
+globalThis.qwebrCellDetails = [{"options":{"warning":"true","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-cap":"","fig-width":7,"editor-font-scale":"1","context":"output","comment":"","out-width":"700px","message":"false","classes":"","fig-height":5,"dpi":72,"editor-word-wrap":"true","label":"complete-strat","results":"markup","output":"true","autorun":"true","editor-max-height":""},"id":1,"code":"data(minke)\nminke.trunc <- 1.5\nminke.S <- minke[minke$Region.Label==\"South\", ]\nminke.df.S.strat <- ds(minke.S, truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.S.strat)\nminke.df.N.strat <- ds(minke[minke$Region.Label==\"North\", ],\n                       truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.N.strat)"},{"options":{"warning":"true","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-cap":"","fig-width":7,"editor-font-scale":"1","context":"interactive","comment":"","out-width":"700px","message":"true","classes":"","fig-height":5,"dpi":72,"editor-word-wrap":"true","label":"sigma","results":"markup","output":"true","autorun":"false","editor-max-height":""},"id":2,"code":"scale.intercept.south <- ___\nscale.intercept.north <- ___\nest.sigma.south <- exp(scale.intercept.south)\nest.sigma.north <- exp(scale.intercept.north)\nprint(paste(\"South sigma=\", est.sigma.south, \"North sigma=\", est.sigma.north))"}];
 
 </script>
 <script type="module">
@@ -1603,7 +1603,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -1645,7 +1645,7 @@ window.Quarto = {
 <span class="menu-text">Design</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Pr7/strata.html"> 
+    <a class="nav-link active" href="../Pr7/strata.html" aria-current="page"> 
 <span class="menu-text">Strata</span></a>
   </li>  
   <li class="nav-item">
@@ -1666,10 +1666,63 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pr7/prac7-tutorial.html">Tutorial–analysis of stratified surveys ✏️</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/strata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Stratification practical 7</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/Pr7-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of stratified survey data 💻</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/detecting-differences.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detecting differences in density estimates</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/stratumspecific-bias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bias in stratum-specific abundance estimates</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/Prac7_solution.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analysis of data from stratified surveys <strong>solution</strong> 💡</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr7/prac7-tutorial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tutorial–analysis of stratified surveys ✏️</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1974,7 +2027,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial–analysis of stratified surveys</h1>
+<h1 class="title">Tutorial–analysis of stratified surveys ✏️</h1>
 </div>
 
 
@@ -1991,7 +2044,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 4, 2024</p>
+      <p class="date">August 6, 2024</p>
     </div>
   </div>
   
@@ -2021,8 +2074,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>How many times larger (geographically) is the northern stratum compared to the southern stratum? (to the nearest 0.5) <input class="webex-solveme nospaces" size="3" data-answer="[&quot;7.5&quot;]"></li>
 <li>How many times larger is the estimated abundance in the northern stratum, compared to the south? (to the nearest 0.5) <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></li>
 <li>Explain the paradox how can the southern stratum have a higher density but lower abundance of minke whales?
-<div id="radio_COZUGVHRGS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_COZUGVHRGS" value=""> <span>detectability differs between strata</span></label><label><input type="radio" autocomplete="off" name="radio_COZUGVHRGS" value=""> <span>whales from the southern stratum vacation in the northern stratum</span></label><label><input type="radio" autocomplete="off" name="radio_COZUGVHRGS" value="answer"> <span>the greater area of the northern stratum compensates for the low whale density</span></label><label><input type="radio" autocomplete="off" name="radio_COZUGVHRGS" value=""> <span>density is actually the reciprocal of abundance, a mathematical paradox</span></label>
+<div id="radio_LOPGOTBKTX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>detectability differs between strata</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>whales from the southern stratum vacation in the northern stratum</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value="answer"> <span>the greater area of the northern stratum compensates for the low whale density</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>density is actually the reciprocal of abundance, a mathematical paradox</span></label>
 </div></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2056,8 +2109,8 @@ Comments about minke stratified analysis
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>With your knowledge of <span class="math inline">\(\hat{\sigma}\)</span> for each stratum, describe the visibility in the northern vs southern strata.
-<div id="radio_OIRGVKOXUD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OIRGVKOXUD" value="answer"> <span>larger estimate of sigma in the north implies better visibility in the north</span></label><label><input type="radio" autocomplete="off" name="radio_OIRGVKOXUD" value=""> <span>larger estimate of sigma in the south suggests better visibility in the south</span></label><label><input type="radio" autocomplete="off" name="radio_OIRGVKOXUD" value=""> <span>smaller estimate of sigma in the south implies better visibility in the south</span></label>
+<div id="radio_EGSLQMSJOR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value="answer"> <span>larger estimate of sigma in the north implies better visibility in the north</span></label><label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value=""> <span>larger estimate of sigma in the south suggests better visibility in the south</span></label><label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value=""> <span>smaller estimate of sigma in the south implies better visibility in the south</span></label>
 </div></li>
 </ul>
 <div class="webex-solution">
@@ -2096,20 +2149,20 @@ Click here for a hint
 <div class="webex-check webex-box">
 <ul>
 <li>Why does the CV(detection function) increase when separate detection functions are fitted to each stratum?
-<div id="radio_NSWJIXHZPD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NSWJIXHZPD" value=""> <span>estimated difference in density is larger when separate detection functions are fitted </span></label><label><input type="radio" autocomplete="off" name="radio_NSWJIXHZPD" value="answer"> <span>number of detections is larger (perhaps sufficient) only when the two strata are combined</span></label>
+<div id="radio_RLYTSBATLS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RLYTSBATLS" value=""> <span>estimated difference in density is larger when separate detection functions are fitted </span></label><label><input type="radio" autocomplete="off" name="radio_RLYTSBATLS" value="answer"> <span>number of detections is larger (perhaps sufficient) only when the two strata are combined</span></label>
 </div></li>
 <li>Why does the CV(encounter rate) <strong>not</strong> increase when separate detection functions are fitted to each stratum?
-<div id="radio_QQNOVWESSK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QQNOVWESSK" value=""> <span>pooled detection functions reduce encounter rate variability</span></label><label><input type="radio" autocomplete="off" name="radio_QQNOVWESSK" value=""> <span>encounter rate variability depends upon weather conditions</span></label><label><input type="radio" autocomplete="off" name="radio_QQNOVWESSK" value="answer"> <span>encounter rate variability is always computed stratum-by-stratum</span></label>
+<div id="radio_THUCJXZSIQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value=""> <span>pooled detection functions reduce encounter rate variability</span></label><label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value=""> <span>encounter rate variability depends upon weather conditions</span></label><label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value="answer"> <span>encounter rate variability is always computed stratum-by-stratum</span></label>
 </div></li>
 <li>What is the relative magnitude of CV(detection function) to CV(encounter rate) for either pooled or separate analyses?
-<div id="radio_MBQNNFVTYW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MBQNNFVTYW" value=""> <span>cv(encounter rate) is half cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_MBQNNFVTYW" value=""> <span>cv(encounter rate) roughly equal cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_MBQNNFVTYW" value="answer"> <span>cv(encounter rate) is double cv(detection function)</span></label>
+<div id="radio_YZDSYMEICW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value=""> <span>cv(encounter rate) is half cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value=""> <span>cv(encounter rate) roughly equal cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value="answer"> <span>cv(encounter rate) is double cv(detection function)</span></label>
 </div></li>
 <li>What are contributing factors causing the significance value of the independent differences to be smaller (0.058) than the significance of the pooled analysis (0.234)?
-<div id="radio_EWTXQICJSI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EWTXQICJSI" value=""> <span>greater variability in encounter rate</span></label><label><input type="radio" autocomplete="off" name="radio_EWTXQICJSI" value=""> <span>greater uncertainty in detection function</span></label><label><input type="radio" autocomplete="off" name="radio_EWTXQICJSI" value=""> <span>improved precision in density estimate from pooled analysis</span></label><label><input type="radio" autocomplete="off" name="radio_EWTXQICJSI" value="answer"> <span>expanded difference in the stratum-specific density estimates</span></label><label><input type="radio" autocomplete="off" name="radio_EWTXQICJSI" value=""> <span>loss of degrees of freedom in the test statistic</span></label>
+<div id="radio_TZRYCGGRRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>greater variability in encounter rate</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>greater uncertainty in detection function</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>improved precision in density estimate from pooled analysis</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value="answer"> <span>expanded difference in the stratum-specific density estimates</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>loss of degrees of freedom in the test statistic</span></label>
 </div></li>
 </ul>
 </div>
