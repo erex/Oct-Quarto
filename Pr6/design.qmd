@@ -7,7 +7,7 @@ title: Survey design practical 6
 ::: {.column width='60%'}
 
 ::: {.callout-tip}
-## Lecture slides for 11 March 2024
+## Lecture slides for 14 October 2024
 
 ### [Design of distance sampling surveys](../lectures/BlockF-22.pdf)
 :::

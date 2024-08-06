@@ -1,5 +1,5 @@
 ---
-title: Distance sampling survey design
+title: Distance sampling survey design 💻
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
 ---
@@ -376,7 +376,8 @@ survey.tm
 If this survey is to be conducted in the field, you will want the coordinates that you can load into a handheld GPS.  The function `write.transects()` can write waypoints of the survey (in this case the point transect stations) to text, comma-separated value or GPX files.
 
 ```{r}
-#| warning = FALSE
+#| warning: false
+#| eval: false
 write.transects(survey.tm,
                 dsn = "tentsmuir-points.gpx",
                 layer = "points",
