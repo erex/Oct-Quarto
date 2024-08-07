@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-06">
+<meta name="dcterms.date" content="2024-08-07">
 
 <title>Tutorial–assessing precision ✏️ – Distance sampling workshop</title>
 <style>
@@ -371,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"data(\"Systematic_variance_2\")\nconversion.factor <- convert_units(\"metre\", \"kilometre\", \"square kilometre\")\nsysvar2.hn <- ds(data=Systematic_variance_2, key=\"hn\", adjustment=\"cos\",\n                 convert_units=conversion.factor)\ndens <- sysvar2.hn$dht$individuals$D\nabun <- sysvar2.hn$dht$individuals$N\ncombo <- rbind(dens, abun)\ncombo$Label <- c(\"Density\", \"Abundance\")\nprint(combo)","options":{"results":"markup","dpi":72,"output":"true","fig-width":7,"fig-height":5,"label":"var2","autorun":"true","comment":"","editor-quick-suggestions":"false","warning":"true","context":"output","editor-max-height":"","fig-cap":"","editor-font-scale":"1","message":"false","out-width":"700px","classes":"","read-only":"false","editor-word-wrap":"true","out-height":""}},{"id":2,"code":"summary(sysvar2.hn)","options":{"results":"markup","dpi":72,"output":"true","fig-width":7,"fig-height":5,"label":"summary","autorun":"true","comment":"","editor-quick-suggestions":"false","warning":"true","context":"output","editor-max-height":"","fig-cap":"","editor-font-scale":"1","message":"true","out-width":"700px","classes":"","read-only":"false","editor-word-wrap":"true","out-height":""}},{"id":3,"code":"cv.abundance <- ___\ncv.p <- ___\ncv.enc.rate <- ___\ner.component <- round(cv.enc.rate^2 / cv.abundance^2 * 100,1)\ndetfn.component <- round(cv.p^2 / cv.abundance^2 * 100,1)\nanswer <- paste(\"Detection component = \", detfn.component,\n                \" Encounter rate comp = \", er.component)\nprint(answer)","options":{"results":"markup","dpi":72,"output":"true","fig-width":7,"fig-height":5,"label":"blanks","autorun":"false","comment":"","editor-quick-suggestions":"false","warning":"true","context":"interactive","editor-max-height":"","fig-cap":"","editor-font-scale":"1","message":"true","out-width":"700px","classes":"","read-only":"false","editor-word-wrap":"true","out-height":""}},{"id":4,"code":"est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,\n                    summary_fun=bootdht_Nhat_summarize, \n                    convert_units=conversion.factor, nboot=100,\n                    progress_bar = \"none\")\nsummary(est.boot)","options":{"results":"markup","dpi":72,"output":"true","fig-width":7,"fig-height":5,"label":"boot","autorun":"true","comment":"","editor-quick-suggestions":"false","warning":"true","context":"output","editor-max-height":"","fig-cap":"","editor-font-scale":"1","message":"false","out-width":"700px","classes":"","read-only":"false","editor-word-wrap":"true","out-height":""}}];
+globalThis.qwebrCellDetails = [{"code":"data(\"Systematic_variance_2\")\nconversion.factor <- convert_units(\"metre\", \"kilometre\", \"square kilometre\")\nsysvar2.hn <- ds(data=Systematic_variance_2, key=\"hn\", adjustment=\"cos\",\n                 convert_units=conversion.factor)\ndens <- sysvar2.hn$dht$individuals$D\nabun <- sysvar2.hn$dht$individuals$N\ncombo <- rbind(dens, abun)\ncombo$Label <- c(\"Density\", \"Abundance\")\nprint(combo)","id":1,"options":{"output":"true","comment":"","dpi":72,"autorun":"true","message":"false","editor-word-wrap":"true","out-height":"","warning":"true","out-width":"700px","read-only":"false","editor-max-height":"","fig-cap":"","fig-width":7,"fig-height":5,"classes":"","context":"output","label":"var2","editor-font-scale":"1","editor-quick-suggestions":"false","results":"markup"}},{"code":"summary(sysvar2.hn)","id":2,"options":{"output":"true","comment":"","dpi":72,"autorun":"true","message":"true","editor-word-wrap":"true","out-height":"","warning":"true","out-width":"700px","read-only":"false","editor-max-height":"","fig-cap":"","fig-width":7,"fig-height":5,"classes":"","context":"output","label":"summary","editor-font-scale":"1","editor-quick-suggestions":"false","results":"markup"}},{"code":"cv.abundance <- ___\ncv.p <- ___\ncv.enc.rate <- ___\ner.component <- round(cv.enc.rate^2 / cv.abundance^2 * 100,1)\ndetfn.component <- round(cv.p^2 / cv.abundance^2 * 100,1)\nanswer <- paste(\"Detection component = \", detfn.component,\n                \" Encounter rate comp = \", er.component)\nprint(answer)","id":3,"options":{"output":"true","comment":"","dpi":72,"autorun":"false","message":"true","editor-word-wrap":"true","out-height":"","warning":"true","out-width":"700px","read-only":"false","editor-max-height":"","fig-cap":"","fig-width":7,"fig-height":5,"classes":"","context":"interactive","label":"blanks","editor-font-scale":"1","editor-quick-suggestions":"false","results":"markup"}},{"code":"est.boot <- bootdht(model=sysvar2.hn, flatfile=Systematic_variance_2,\n                    summary_fun=bootdht_Nhat_summarize, \n                    convert_units=conversion.factor, nboot=100,\n                    progress_bar = \"none\")\nsummary(est.boot)","id":4,"options":{"output":"true","comment":"","dpi":72,"autorun":"true","message":"false","editor-word-wrap":"true","out-height":"","warning":"true","out-width":"700px","read-only":"false","editor-max-height":"","fig-cap":"","fig-width":7,"fig-height":5,"classes":"","context":"output","label":"boot","editor-font-scale":"1","editor-quick-suggestions":"false","results":"markup"}}];
 
 </script>
 <script type="module">
@@ -2037,7 +2037,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 6, 2024</p>
+      <p class="date">August 7, 2024</p>
     </div>
   </div>
   
@@ -2061,16 +2061,16 @@ Photo by Michael Shannon from Unsplash
 <p>Before getting absorbed in the analysis, what difficulties were caused because of the <em>survey design</em>.</p>
 <ul>
 <li>Identify the design flaws of the survey that produced such poor precision:
-<div id="radio_JCWYRMGOVR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JCWYRMGOVR" value=""> <span>too few replicate transects</span></label><label><input type="radio" autocomplete="off" name="radio_JCWYRMGOVR" value="answer"> <span>ignorance of animal gradient</span></label><label><input type="radio" autocomplete="off" name="radio_JCWYRMGOVR" value=""> <span>truncation too narrow leading to too few detections</span></label><label><input type="radio" autocomplete="off" name="radio_JCWYRMGOVR" value=""> <span>inadequate survey effort</span></label>
+<div id="radio_GRZPJNBLML" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GRZPJNBLML" value=""> <span>too few replicate transects</span></label><label><input type="radio" autocomplete="off" name="radio_GRZPJNBLML" value="answer"> <span>ignorance of animal gradient</span></label><label><input type="radio" autocomplete="off" name="radio_GRZPJNBLML" value=""> <span>truncation too narrow leading to too few detections</span></label><label><input type="radio" autocomplete="off" name="radio_GRZPJNBLML" value=""> <span>inadequate survey effort</span></label>
 </div></li>
 </ul>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>Why is the estimate of abundance exactly half the estimate of density in this analysis?
-<div id="radio_UEYZEFMYGR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UEYZEFMYGR" value="answer"> <span><span class="math inline">\(\hat{N} = \hat{D} \times A\)</span>, where A=1/2</span></label><label><input type="radio" autocomplete="off" name="radio_UEYZEFMYGR" value=""> <span>that is characteristic of the half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_UEYZEFMYGR" value=""> <span>inadequate survey effort</span></label><label><input type="radio" autocomplete="off" name="radio_UEYZEFMYGR" value=""> <span>because of convert_units, square kilometers are twice as large as kilometers</span></label>
+<div id="radio_VOQDSPYEIY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VOQDSPYEIY" value="answer"> <span><span class="math inline">\(\hat{N} = \hat{D} \times A\)</span>, where A=1/2</span></label><label><input type="radio" autocomplete="off" name="radio_VOQDSPYEIY" value=""> <span>that is characteristic of the half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_VOQDSPYEIY" value=""> <span>inadequate survey effort</span></label><label><input type="radio" autocomplete="off" name="radio_VOQDSPYEIY" value=""> <span>because of convert_units, square kilometers are twice as large as kilometers</span></label>
 </div></li>
 </ul>
 <p>Here is the summary output from the <em>standard</em> analysis of this data set. Alarm bells should ring in your head as you examine this output; specifically the variance components constituting the uncertainty in your abundance or density estimates.</p>
@@ -2086,8 +2086,8 @@ Photo by Michael Shannon from Unsplash
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>Why does the use of the bootstrap not resolve the poor precision problem?
-<div id="radio_CWYLACFBKP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CWYLACFBKP" value=""> <span>bootstrap only improves precision of estimated detection function</span></label><label><input type="radio" autocomplete="off" name="radio_CWYLACFBKP" value=""> <span>bootstrap does not perform well with half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_CWYLACFBKP" value="answer"> <span>resampling transects does not alter variability in encounter rate between transects</span></label><label><input type="radio" autocomplete="off" name="radio_CWYLACFBKP" value=""> <span>bootstrapping is over-rated, never works well</span></label>
+<div id="radio_NNSERLXNBL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NNSERLXNBL" value=""> <span>bootstrap only improves precision of estimated detection function</span></label><label><input type="radio" autocomplete="off" name="radio_NNSERLXNBL" value=""> <span>bootstrap does not perform well with half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_NNSERLXNBL" value="answer"> <span>resampling transects does not alter variability in encounter rate between transects</span></label><label><input type="radio" autocomplete="off" name="radio_NNSERLXNBL" value=""> <span>bootstrapping is over-rated, never works well</span></label>
 </div></li>
 </ul>
 
