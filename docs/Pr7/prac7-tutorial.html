@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-06">
+<meta name="dcterms.date" content="2024-08-07">
 
 <title>Tutorial–analysis of stratified surveys ✏️ – Distance sampling workshop</title>
 <style>
@@ -371,7 +371,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"warning":"true","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-cap":"","fig-width":7,"editor-font-scale":"1","context":"output","comment":"","out-width":"700px","message":"false","classes":"","fig-height":5,"dpi":72,"editor-word-wrap":"true","label":"complete-strat","results":"markup","output":"true","autorun":"true","editor-max-height":""},"id":1,"code":"data(minke)\nminke.trunc <- 1.5\nminke.S <- minke[minke$Region.Label==\"South\", ]\nminke.df.S.strat <- ds(minke.S, truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.S.strat)\nminke.df.N.strat <- ds(minke[minke$Region.Label==\"North\", ],\n                       truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.N.strat)"},{"options":{"warning":"true","editor-quick-suggestions":"false","read-only":"false","out-height":"","fig-cap":"","fig-width":7,"editor-font-scale":"1","context":"interactive","comment":"","out-width":"700px","message":"true","classes":"","fig-height":5,"dpi":72,"editor-word-wrap":"true","label":"sigma","results":"markup","output":"true","autorun":"false","editor-max-height":""},"id":2,"code":"scale.intercept.south <- ___\nscale.intercept.north <- ___\nest.sigma.south <- exp(scale.intercept.south)\nest.sigma.north <- exp(scale.intercept.north)\nprint(paste(\"South sigma=\", est.sigma.south, \"North sigma=\", est.sigma.north))"}];
+globalThis.qwebrCellDetails = [{"code":"data(minke)\nminke.trunc <- 1.5\nminke.S <- minke[minke$Region.Label==\"South\", ]\nminke.df.S.strat <- ds(minke.S, truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.S.strat)\nminke.df.N.strat <- ds(minke[minke$Region.Label==\"North\", ],\n                       truncation=minke.trunc, key=\"hr\", adjustment=NULL)\nsummary(minke.df.N.strat)","id":1,"options":{"classes":"","fig-width":7,"context":"output","editor-word-wrap":"true","comment":"","autorun":"true","fig-cap":"","out-width":"700px","fig-height":5,"editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true","results":"markup","output":"true","label":"complete-strat","editor-font-scale":"1","message":"false","out-height":"","dpi":72}},{"code":"scale.intercept.south <- ___\nscale.intercept.north <- ___\nest.sigma.south <- exp(scale.intercept.south)\nest.sigma.north <- exp(scale.intercept.north)\nprint(paste(\"South sigma=\", est.sigma.south, \"North sigma=\", est.sigma.north))","id":2,"options":{"classes":"","fig-width":7,"context":"interactive","editor-word-wrap":"true","comment":"","autorun":"false","fig-cap":"","out-width":"700px","fig-height":5,"editor-quick-suggestions":"false","editor-max-height":"","read-only":"false","warning":"true","results":"markup","output":"true","label":"sigma","editor-font-scale":"1","message":"true","out-height":"","dpi":72}}];
 
 </script>
 <script type="module">
@@ -2044,7 +2044,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 6, 2024</p>
+      <p class="date">August 7, 2024</p>
     </div>
   </div>
   
@@ -2074,8 +2074,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>How many times larger (geographically) is the northern stratum compared to the southern stratum? (to the nearest 0.5) <input class="webex-solveme nospaces" size="3" data-answer="[&quot;7.5&quot;]"></li>
 <li>How many times larger is the estimated abundance in the northern stratum, compared to the south? (to the nearest 0.5) <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></li>
 <li>Explain the paradox how can the southern stratum have a higher density but lower abundance of minke whales?
-<div id="radio_LOPGOTBKTX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>detectability differs between strata</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>whales from the southern stratum vacation in the northern stratum</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value="answer"> <span>the greater area of the northern stratum compensates for the low whale density</span></label><label><input type="radio" autocomplete="off" name="radio_LOPGOTBKTX" value=""> <span>density is actually the reciprocal of abundance, a mathematical paradox</span></label>
+<div id="radio_VZLVHKIRBL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VZLVHKIRBL" value=""> <span>detectability differs between strata</span></label><label><input type="radio" autocomplete="off" name="radio_VZLVHKIRBL" value=""> <span>whales from the southern stratum vacation in the northern stratum</span></label><label><input type="radio" autocomplete="off" name="radio_VZLVHKIRBL" value="answer"> <span>the greater area of the northern stratum compensates for the low whale density</span></label><label><input type="radio" autocomplete="off" name="radio_VZLVHKIRBL" value=""> <span>density is actually the reciprocal of abundance, a mathematical paradox</span></label>
 </div></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -2109,8 +2109,8 @@ Comments about minke stratified analysis
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>With your knowledge of <span class="math inline">\(\hat{\sigma}\)</span> for each stratum, describe the visibility in the northern vs southern strata.
-<div id="radio_EGSLQMSJOR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value="answer"> <span>larger estimate of sigma in the north implies better visibility in the north</span></label><label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value=""> <span>larger estimate of sigma in the south suggests better visibility in the south</span></label><label><input type="radio" autocomplete="off" name="radio_EGSLQMSJOR" value=""> <span>smaller estimate of sigma in the south implies better visibility in the south</span></label>
+<div id="radio_KJXGBRSMRC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KJXGBRSMRC" value="answer"> <span>larger estimate of sigma in the north implies better visibility in the north</span></label><label><input type="radio" autocomplete="off" name="radio_KJXGBRSMRC" value=""> <span>larger estimate of sigma in the south suggests better visibility in the south</span></label><label><input type="radio" autocomplete="off" name="radio_KJXGBRSMRC" value=""> <span>smaller estimate of sigma in the south implies better visibility in the south</span></label>
 </div></li>
 </ul>
 <div class="webex-solution">
@@ -2149,20 +2149,20 @@ Click here for a hint
 <div class="webex-check webex-box">
 <ul>
 <li>Why does the CV(detection function) increase when separate detection functions are fitted to each stratum?
-<div id="radio_RLYTSBATLS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RLYTSBATLS" value=""> <span>estimated difference in density is larger when separate detection functions are fitted </span></label><label><input type="radio" autocomplete="off" name="radio_RLYTSBATLS" value="answer"> <span>number of detections is larger (perhaps sufficient) only when the two strata are combined</span></label>
+<div id="radio_HHDQMALUOP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HHDQMALUOP" value=""> <span>estimated difference in density is larger when separate detection functions are fitted </span></label><label><input type="radio" autocomplete="off" name="radio_HHDQMALUOP" value="answer"> <span>number of detections is larger (perhaps sufficient) only when the two strata are combined</span></label>
 </div></li>
 <li>Why does the CV(encounter rate) <strong>not</strong> increase when separate detection functions are fitted to each stratum?
-<div id="radio_THUCJXZSIQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value=""> <span>pooled detection functions reduce encounter rate variability</span></label><label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value=""> <span>encounter rate variability depends upon weather conditions</span></label><label><input type="radio" autocomplete="off" name="radio_THUCJXZSIQ" value="answer"> <span>encounter rate variability is always computed stratum-by-stratum</span></label>
+<div id="radio_ROMLJWPITO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ROMLJWPITO" value=""> <span>pooled detection functions reduce encounter rate variability</span></label><label><input type="radio" autocomplete="off" name="radio_ROMLJWPITO" value=""> <span>encounter rate variability depends upon weather conditions</span></label><label><input type="radio" autocomplete="off" name="radio_ROMLJWPITO" value="answer"> <span>encounter rate variability is always computed stratum-by-stratum</span></label>
 </div></li>
 <li>What is the relative magnitude of CV(detection function) to CV(encounter rate) for either pooled or separate analyses?
-<div id="radio_YZDSYMEICW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value=""> <span>cv(encounter rate) is half cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value=""> <span>cv(encounter rate) roughly equal cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_YZDSYMEICW" value="answer"> <span>cv(encounter rate) is double cv(detection function)</span></label>
+<div id="radio_VYDOTGFFAK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VYDOTGFFAK" value=""> <span>cv(encounter rate) is half cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_VYDOTGFFAK" value=""> <span>cv(encounter rate) roughly equal cv(detection function)</span></label><label><input type="radio" autocomplete="off" name="radio_VYDOTGFFAK" value="answer"> <span>cv(encounter rate) is double cv(detection function)</span></label>
 </div></li>
 <li>What are contributing factors causing the significance value of the independent differences to be smaller (0.058) than the significance of the pooled analysis (0.234)?
-<div id="radio_TZRYCGGRRM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>greater variability in encounter rate</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>greater uncertainty in detection function</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>improved precision in density estimate from pooled analysis</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value="answer"> <span>expanded difference in the stratum-specific density estimates</span></label><label><input type="radio" autocomplete="off" name="radio_TZRYCGGRRM" value=""> <span>loss of degrees of freedom in the test statistic</span></label>
+<div id="radio_UHPRGRSPHE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UHPRGRSPHE" value=""> <span>greater variability in encounter rate</span></label><label><input type="radio" autocomplete="off" name="radio_UHPRGRSPHE" value=""> <span>greater uncertainty in detection function</span></label><label><input type="radio" autocomplete="off" name="radio_UHPRGRSPHE" value=""> <span>improved precision in density estimate from pooled analysis</span></label><label><input type="radio" autocomplete="off" name="radio_UHPRGRSPHE" value="answer"> <span>expanded difference in the stratum-specific density estimates</span></label><label><input type="radio" autocomplete="off" name="radio_UHPRGRSPHE" value=""> <span>loss of degrees of freedom in the test statistic</span></label>
 </div></li>
 </ul>
 </div>
