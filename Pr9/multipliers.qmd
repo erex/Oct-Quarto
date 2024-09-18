@@ -28,6 +28,4 @@ This exercise presents data on a Sika deer dung study in southern Scotland, wher
 
 ::::
 
-
-
-<div style="position: relative; padding-bottom: 91.52542372881356%; height: 0;"><iframe src="https://www.loom.com/embed/48f5138c184040b8be50bdda24ad24db?sid=ffc54a97-80db-4fce-b7e7-867d65b157ee" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 101.12359550561798%; height: 0;"><iframe src="https://www.loom.com/embed/278054149c9046e1aa440f345a7714b7?sid=6e71e532-7177-412f-9fa4-2013e273f4e2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>

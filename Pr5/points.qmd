@@ -32,6 +32,6 @@ Two data sets are to be analysed: the first is a simulated data set in which bot
 
 Finally, there are two optional data sets of winter wrens collected by Prof. Buckland.  Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the "snapshot" method.
 
-<div style="position: relative; padding-bottom: 92.94320137693632%; height: 0;"><iframe src="https://www.loom.com/embed/ecf8b994215a4e27b626062d305071c5?sid=f2ca7a34-a572-46fa-8664-f4e38a0b2f57" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 97.82608695652175%; height: 0;"><iframe src="https://www.loom.com/embed/16d555a9d8404a9a836175d055b5d46c?sid=aace0c04-5c96-4fa2-9ac9-5d1cbb64d50d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
   
