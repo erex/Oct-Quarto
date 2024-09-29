@@ -1,6 +1,5 @@
 ---
 title: Announcements
-theme: morph
 listing: 
   contents: announce
   type: grid
