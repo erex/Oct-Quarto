@@ -602,7 +602,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Build your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nOct 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nOct 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\nNo matching items",
+    "text": "Is this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nOct 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nOct 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBuild your own detection function\n\n\nSee the effect of adding adjustment terms with this interactive app.\n\n\n\nOct 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nOct 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nSep 30, 2024\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Extras",
       "Announcements"
@@ -1776,5 +1776,12 @@
     "title": "Annotated ds output",
     "section": "",
     "text": "Below is output produced from fitting a hazard rate key function (without adjustment terms) to the ducknest data set. It is important to study model output, not just focus upon the estimated density. There may be clues in the output to indicate that data have not been analysed as you intended (misspecification of truncation distances, mistyping of the key function, etc.)\nFirst four lines are R code to fit the model, remainder of lines is output produced by the summary() function.\n\nI have not labelled everything to prevent the image from becoming too cluttered. I have not labelled the different measures of precision associated with estimates and summary statistics. I have not fitted a model that included adjustment terms; had I done so, the output would also have contained estimates of the adjustment term coefficients (\\(\\alpha_i\\)) and their measures of precision.\nThe ducknest data are objects that appear singly (not in groups). Has this been a model fitted to objects that were detected as clusters, there would have been additional output. Likewise, if the survey had been a stratified survey, there would have been density (and abundance) estimates for each stratum.\nThe labelled output should assist you in navigating the model objects created by the ds() function."
+  },
+  {
+    "objectID": "announce/2022-12-31-modelsel/index.html",
+    "href": "announce/2022-12-31-modelsel/index.html",
+    "title": "Is this analysis sound?",
+    "section": "",
+    "text": "Received this email\nA former workshop participant recently wrote more than a year after attending this workshop. She had been working on her own data and was concluding her analysis. She sent this table (produced by the summarize_ds_models() function) asking\n\nIs it fine for me to use the model with the smallest AIC for inference for this survey?\n\n\nHow would you respond?\n\n\n\nPostscript\nThe email also included a table of stratum-specific estimates. I hide this table so as not to spoil the answer to the question above. If you are curious, simply click on the arrow on the top right.\n\n\n\n\n\n\nEstimates from the preferred model\n\n\n\n\n\n The warning signs are more obvious in this output than from the model selection table. However, you are discouraged from looking at estimates produced by models until your model selection process in complete. This prevents subconscious bias to use models that produce results the analyst “likes.”"
   }
 ]
