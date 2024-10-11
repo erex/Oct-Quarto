@@ -61,7 +61,7 @@ rel.diff <- dhat.diff / dhat.hi
 print(rel.diff)
 ```
 
-- To the nearest 5%, what is the relative percentage difference between smallest and largest estimates? `r fitb(20)`
+- To the nearest 5%, what is the relative percentage difference between smallest and largest estimates? `r fitb(15)`
 
 ## Wren data from Buckland Montrave study
 
@@ -96,8 +96,8 @@ Contrast the point estimates and precision derived from the two survey methods f
 
 ::: {.webex-check .webex-box}
 
-- How much larger (percent) is 5-minute density estimate than snapshot density estimate? `r fitb(26)`
-- Which data collection method produces the more precise estimate (by a considerable amount)? `r mcq(c(answer="5 minute", "snapshot"))`
+- How much larger (nearest 5%) is 5-minute density estimate than snapshot density estimate? `r fitb(25)`
+- Which data collection method produces the more precise estimate (by a considerable amount)? `r mcq(c("5 minute", answer="snapshot"))`
 - There is evidence of evasive movement if you look at the distribution of radial distances.  Evasive movement was sufficient to make inference suspect for either the 5-minute or snapshot data. `r torf(FALSE)`
 
 :::
