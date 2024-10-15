@@ -38,11 +38,9 @@ This uses the package `leaflet` to  give you a better image of the portion of th
 #| fig.cap = "St Andrews Bay, north and east of St Andrews",
 #| message = FALSE,
 #| warning = FALSE
-library(rgdal)
+library(sf)
 library(leaflet)
-starea <- readOGR("nicerarea.shp", layer="nicerarea", 
-               GDAL1_integer64_policy = TRUE, verbose=FALSE)
-
+starea <- st_read("nicerarea.shp")
 sab <- leaflet() %>% addProviderTiles(providers$Esri.NatGeoWorldMap)#OceanBasemap)
 sab <- sab %>% 
   setView(-2.5, 56.41, zoom=10) %>%
