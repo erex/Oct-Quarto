@@ -133,7 +133,7 @@
     "href": "Pr8/Group-size-covariate.html#analysis-including-group-size-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis including group size covariate",
-    "text": "Analysis including group size covariate\n\n\n\n\n\n\n\n\n\nThe distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2030.42, a bias of 1.5%.",
+    "text": "Analysis including group size covariate\n\n\n\n\n\n\n\n\n\nThe distribution of computed average group size centred on the true size of 10 and there was no problem with fitting a detection function. The average over the simulations estimated number of individuals was 2003.05, a bias of 0.2%.",
     "crumbs": [
       "Covariates",
       "Size bias---how large is the problem?"
@@ -144,7 +144,7 @@
     "href": "Pr8/Group-size-covariate.html#analysis-without-group-size-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis without group size covariate",
-    "text": "Analysis without group size covariate\nAs a comparison, what happens if we don’t include size as a covariate in our detection function?\n\n\n\n\n\n\n\n\n\nThe distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average \\(\\hat{N}_{indiv}\\) across all simulations is 2023.89, a bias of 1.2%.",
+    "text": "Analysis without group size covariate\nAs a comparison, what happens if we don’t include size as a covariate in our detection function?\n\n\n\n\n\n\n\n\n\nThe distribution of computed average groups sizes is shown above. We would expect an overestimate of mean group size because small groups at large distances are missing from our sample; but that effect is small in this instance. As a consequence, the average \\(\\hat{N}_{indiv}\\) across all simulations is 2002.71, a bias of 0.1%.",
     "crumbs": [
       "Covariates",
       "Size bias---how large is the problem?"
@@ -155,7 +155,7 @@
     "href": "Pr8/Group-size-covariate.html#analysis-with-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis with covariate",
-    "text": "Analysis with covariate\n\n\n\n\n\n\n\n\n\nWhen including size as a covariate, estimates of average group size are not affected (figure above). Likewise, mean \\(\\hat{N}_{indiv}\\) is effectively unbiased: 4467.13, a bias of 10.1%. .",
+    "text": "Analysis with covariate\n\n\n\n\n\n\n\n\n\nWhen including size as a covariate, estimates of average group size are not affected (figure above). Likewise, mean \\(\\hat{N}_{indiv}\\) is effectively unbiased: 4440.5, a bias of -1.2%. .",
     "crumbs": [
       "Covariates",
       "Size bias---how large is the problem?"
@@ -166,7 +166,7 @@
     "href": "Pr8/Group-size-covariate.html#analysis-without-the-covariate",
     "title": "Size bias—how large is the problem?",
     "section": "Analysis without the covariate",
-    "text": "Analysis without the covariate\n\n\n\n\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5201.08, a bias of 28.2%.",
+    "text": "Analysis without the covariate\n\n\n\n\n\n\n\n\n\nNow mean \\(\\hat{N}_{indiv}\\) is considerably biased: 5357.69, a bias of 19.3%.",
     "crumbs": [
       "Covariates",
       "Size bias---how large is the problem?"

@@ -46,7 +46,7 @@ a.covariate <- ds(my.data, transect="line", key="hn", formula=~size)
 #| label: ex1para
 numgroup1 <- 200
 meangroup1 <- 10
-nsim1 <- 100
+nsim1 <- 500
 ```
 
 # Example 1: Perhaps a terrestrial ungulate
