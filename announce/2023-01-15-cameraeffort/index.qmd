@@ -3,7 +3,7 @@ title: Effort computation for camera traps
 description: A question about effort calculation for camera traps. This deals with only the basics of the calculation. Based on the duiker data found in Distance package.
 author: 
   - name: Eric Rexstad
-date: 10-11-2024
+date: 12-13-2024
 image: https://images.unsplash.com/photo-1565087918595-8c2af193ecbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjB8fGNhbWVyYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
 bibliography: howeetal18.bib
 csl: apa.csl
