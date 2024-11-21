@@ -10,7 +10,7 @@ draft: true
 
 # Database of papers related to these lectures
 
-Examine the [bibliography associated with St Andrews workshops](https://workshops.distancesampling.org/standrews-2019/intro/bibliography.html).  This is a subset of a much [larger searchable data base](http://distancesampling.org/dbib.html) of publications dealing with distance sampling compiled by Tiago Marques.
+Examine the [bibliography associated with St Andrews workshops](https://workshops.distancesampling.org/standrews-2019/intro/bibliography.html).  This is a subset of a much [larger searchable data base](https://distancesampling.org/resources/bibliography/dbib.html) of publications dealing with distance sampling compiled by Tiago Marques.
 
 
 I encourage you to keep [this paper](https://www.jstatsoft.org/index.php/jss/article/view/v089i01/v89i01.pdf) as a reference for the coding done during the workshop:
@@ -24,9 +24,9 @@ The standard reference for distance sampling is [Buckland *et al.* (2001)](https
 # Websites
 
 - News and general information about distance sampling can be found at our home website [distancesampling.org](http://distancesampling.org).  
-- Our workshop materials reside on their own website [workshops.distancesampling.org](https://workshops.distancesampling.org).
-- If you wish to watch narrated lecture videos and narrated exercises, visit [workshops.distancesampling.org/online-course](https://workshops.distancesampling.org/online-course).
+- Our workshop materials reside on their own website [https://distancesampling.org/training/training.html](https://distancesampling.org/training/training.html).
+- If you wish to watch narrated lecture videos and narrated exercises, visit [distancesampling.org/online-course](https://distancesampling.org/online-course).
 
 # Email list for assistance
 
-We operate a forum where you can ask questions and see if others have asked questions similar to yours.  Joining instructions to access the Google list can be [found following this link](http://distancesampling.org/distancelist.html).
+We operate a forum where you can ask questions and see if others have asked questions similar to yours.  Joining instructions to access the Google list can be [found following this link](http://distancesampling.org/resources/distancelist.html).
