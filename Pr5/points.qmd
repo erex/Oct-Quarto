@@ -6,7 +6,7 @@ title: Point transects practical 5
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 11 October 2024
+## Lecture slides for 13 December 2024
 
 ### [Point transect analysis and detailed example](../lectures/BlockE-22.pdf)
 :::
@@ -32,6 +32,6 @@ Two data sets are to be analysed: the first is a simulated data set in which bot
 
 Finally, there are two optional data sets of winter wrens collected by Prof. Buckland.  Same species and study area, but two different field protocols: one protocol used traditional 5-minute counts while the other protocol employed the "snapshot" method.
 
-<div style="position: relative; padding-bottom: 97.82608695652175%; height: 0;"><iframe src="https://www.loom.com/embed/16d555a9d8404a9a836175d055b5d46c?sid=aace0c04-5c96-4fa2-9ac9-5d1cbb64d50d" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 97.64918625678118%; height: 0;"><iframe src="https://www.loom.com/embed/e97c6495aa134b7e941021fb40bc0004?sid=5d861d7b-0452-46f7-b328-c6c3f925d851" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
   

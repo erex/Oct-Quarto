@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.6.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,10 +34,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b663525e4b92bb903b2199e2d401bf36.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e798695fe2896f0ad3ee63af8c0a1e37.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -202,43 +202,43 @@ a:visited {
 <tbody>
 <tr class="odd">
 <td><a href=".\lectures/BlockA-22.pdf">Fundamental principles</a></td>
-<td style="text-align: center;">07 October</td>
+<td style="text-align: center;">09 December</td>
 </tr>
 <tr class="even">
 <td><a href=".\lectures/BlockB-22.pdf">Detection functions</a></td>
-<td style="text-align: center;">08 October</td>
+<td style="text-align: center;">10 December</td>
 </tr>
 <tr class="odd">
 <td><a href=".\lectures/BlockC-22.pdf">Model criticism (selection and fit assessment)</a></td>
-<td style="text-align: center;">09 October</td>
+<td style="text-align: center;">11 December</td>
 </tr>
 <tr class="even">
 <td><a href=".\lectures/BlockD-22.pdf">Measuring precision and controlling variance</a></td>
-<td style="text-align: center;">10 October</td>
+<td style="text-align: center;">12 December</td>
 </tr>
 <tr class="odd">
 <td><a href=".\lectures/BlockE-22.pdf">Point transect analysis and detailed example</a></td>
-<td style="text-align: center;">11 October</td>
+<td style="text-align: center;">13 December</td>
 </tr>
 <tr class="even">
 <td><a href=".\lectures/BlockF-22.pdf">Design of distance sampling surveys</a></td>
-<td style="text-align: center;">14 October</td>
+<td style="text-align: center;">16 December</td>
 </tr>
 <tr class="odd">
 <td><a href=".\lectures/BlockG-22.pdf">Analysis of stratified surveys</a></td>
-<td style="text-align: center;">15 October</td>
+<td style="text-align: center;">17 December</td>
 </tr>
 <tr class="even">
 <td><a href=".\lectures/BlockH-22.pdf">Covariates in the detection function</a></td>
-<td style="text-align: center;">16 October</td>
+<td style="text-align: center;">18 December</td>
 </tr>
 <tr class="odd">
 <td><a href=".\lectures/BlockI-22.pdf">Including multipliers in distance sampling analysis</a></td>
-<td style="text-align: center;">17 October</td>
+<td style="text-align: center;">19 December</td>
 </tr>
 <tr class="even">
 <td><a href=".\lectures/BlockJ-22.pdf">Field methods and summary</a></td>
-<td style="text-align: center;">18 October</td>
+<td style="text-align: center;">20 December</td>
 </tr>
 </tbody>
 </table>
@@ -528,8 +528,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -640,7 +638,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

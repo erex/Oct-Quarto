@@ -9,7 +9,7 @@ title: Sampling practical 1
 
 ::: {.callout-tip}
 
-## Lecture slides for 07 October 2024
+## Lecture slides for 09 December 2024
 
 ### [Fundamental principles](../lectures/BlockA-22.pdf)
 :::
@@ -36,4 +36,4 @@ Rather than using a computer, use your eye to fit a smooth function to the distr
 
 Subsequent calculations produce an estimate of the density of nests in the sampled region.
 
-<div style="position: relative; padding-bottom: 97.47292418772562%; height: 0;"><iframe src="https://www.loom.com/embed/e2b7151bf9a243f586cc1a407e9a4ed8?sid=961e375b-c32a-4a6d-a2cb-f275ab71f4d8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 106.50887573964498%; height: 0;"><iframe src="https://www.loom.com/embed/baa35a3258114c639703afb5366877df?sid=2f5273f7-2d59-44fa-8191-b33ead972808" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>

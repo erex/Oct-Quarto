@@ -7,7 +7,7 @@ title: Model criticism practical 3
 ::: {.column width='60%'}
 
 ::: {.callout-tip}
-## Lecture slides for 09 October 2024
+## Lecture slides for 11 December 2024
 
 ### [Model criticism (selection and fit assessment)](../lectures/BlockC-22.pdf)
 :::
@@ -34,4 +34,4 @@ After completing that main task, you also have the opportunity to analyse anothe
 ::::
 
 
-<div style="position: relative; padding-bottom: 98.00362976406534%; height: 0;"><iframe src="https://www.loom.com/embed/a3d1bca8aa044c79a331344ecbd9891d?sid=47a1b8d2-2368-425e-82bf-59a4d5330ac5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 106.71936758893281%; height: 0;"><iframe src="https://www.loom.com/embed/7ec98ff637824e24a4c1927451f0c4f3?sid=f026be16-d5e4-4be6-ac71-3c9cf55993de" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
