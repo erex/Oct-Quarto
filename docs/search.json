@@ -667,7 +667,7 @@
     "href": "Pr1/sampling.html",
     "title": "Sampling practical 1",
     "section": "",
-    "text": "Lecture slides for 07 October 2024\n\n\n\n\n\n\n\n\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\n\n\n\n\n\nPhoto by Shelby Cohron on Unsplash\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.",
+    "text": "Lecture slides for 09 December 2024\n\n\n\n\n\n\n\n\nThis exercise is to familiarise you with distribution of perpendicular distances measured in a distance sampling survey. You will complete a histogram from tablular data provided.\n\n\n\n\n\nPhoto by Shelby Cohron on Unsplash\nRather than using a computer, use your eye to fit a smooth function to the distribution depicted in the histogram. This forms the basis for estimating \\(\\widehat{P_a}\\); computed as the ratio of the area under the fitted detection function to the area of the rectangle.\nSubsequent calculations produce an estimate of the density of nests in the sampled region.",
     "crumbs": [
       "Sampling",
       "Sampling practical 1"
