@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.6.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b663525e4b92bb903b2199e2d401bf36.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fd5e3b3a1784fb96fdc73af194a4e8cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -239,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lecture slides for 14 October 2024
+Lecture slides for 16 December 2024
 </div>
 </div>
 <section id="design-of-distance-sampling-surveys" class="level3 callout-body-container callout-body">
@@ -260,8 +260,8 @@ Photo by <a href="https://unsplash.com/@ray30?utm_source=unsplash&amp;utm_medium
 </div>
 <p>It is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.</p>
 <p>You have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.</p>
-<div style="position: relative; padding-bottom: 91.06239460370995%; height: 0;">
-<iframe src="https://www.loom.com/embed/dfb09d543f284446bd0263e5a909c33e?sid=d2c6a710-ae62-4fe2-9c59-c961223f002b" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+<div style="position: relative; padding-bottom: 96.77419354838709%; height: 0;">
+<iframe src="https://www.loom.com/embed/a139e64c97bb45e1a40b7a47139b8496?sid=08faf044-4b8f-446a-86c1-5e867c9becbc" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 </iframe>
 </div>
 
@@ -556,8 +556,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -668,7 +666,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

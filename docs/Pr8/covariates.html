@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.6.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b663525e4b92bb903b2199e2d401bf36.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fd5e3b3a1784fb96fdc73af194a4e8cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -239,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Lecture slides for 16 October 2024
+Lecture slides for 18 December 2024
 </div>
 </div>
 <section id="covariates-in-the-detection-function" class="level3 callout-body-container callout-body">
@@ -260,8 +260,8 @@ Photo by <a href="https://unsplash.com/@roman_lazygeek?utm_source=unsplash&amp;u
 </div>
 <p>There are some situations in which covariates in addition to distance can be added to models of the detection function. One example of this is animal group size. It is commonly the case that small groups at large distances are not detected and do not enter our sample that is used to estimate the average group size in the population. By failing to have the small groups in our sample, the sample is biased; we estimate that the average group size in the field is larger than it really is; producing biased estimates of population size. The use of group size as a covariate is the recommended way to remove that bias.</p>
 <p>This exercise presents three sets of data: Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning. Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes. Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata–we examine whether the geographic stratum effect can be modelled as a covariate.</p>
-<div style="position: relative; padding-bottom: 101.12359550561798%; height: 0;">
-<iframe src="https://www.loom.com/embed/b8a2351faa9a451b96da9dcbe859dd87?sid=76f1fae4-54c0-49a6-b384-bd9c9b67792e" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+<div style="position: relative; padding-bottom: 96.77419354838709%; height: 0;">
+<iframe src="https://www.loom.com/embed/8cdd66f892b34b018468207f6cd096d8?sid=b946c68f-59f3-4cd3-b8ae-c4a98d7ee866" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
 </iframe>
 </div>
 
@@ -556,8 +556,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -668,7 +666,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

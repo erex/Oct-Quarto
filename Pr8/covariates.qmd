@@ -6,7 +6,7 @@ title: Covariates practical 8
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 16 October 2024
+## Lecture slides for 18 December 2024
 
 ### [Covariates in the detection function](../lectures/BlockH-22.pdf)
 :::
@@ -31,4 +31,4 @@ There are some situations in which covariates in addition to distance can be add
 
 This exercise presents three sets of data:  Hawaiian amakihi point transect data collected by multiple observers at varying times during the morning.  Eastern Tropical Pacific dolphin surveys where there were different types of vessels, sea state and widely varying dolphin school sizes.  Finally, additional bird point transect data from Colorado where the study area was divided into geographic strata--we examine whether the geographic stratum effect can be modelled as a covariate.
 
-<div style="position: relative; padding-bottom: 101.12359550561798%; height: 0;"><iframe src="https://www.loom.com/embed/b8a2351faa9a451b96da9dcbe859dd87?sid=76f1fae4-54c0-49a6-b384-bd9c9b67792e" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 96.77419354838709%; height: 0;"><iframe src="https://www.loom.com/embed/8cdd66f892b34b018468207f6cd096d8?sid=b946c68f-59f3-4cd3-b8ae-c4a98d7ee866" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
