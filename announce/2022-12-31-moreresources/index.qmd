@@ -10,7 +10,7 @@ draft: true
 
 # Database of papers related to these lectures
 
-Examine the [bibliography associated with St Andrews workshops](https://workshops.distancesampling.org/standrews-2019/intro/bibliography.html).  This is a subset of a much [larger searchable data base](https://distancesampling.org/resources/bibliography/dbib.html) of publications dealing with distance sampling compiled by Tiago Marques.
+Examine the [large searchable data base](https://distancesampling.org/resources/bibliography/dbib.html) of publications dealing with distance sampling compiled by Tiago Marques.
 
 
 I encourage you to keep [this paper](https://www.jstatsoft.org/index.php/jss/article/view/v089i01/v89i01.pdf) as a reference for the coding done during the workshop:
@@ -24,7 +24,7 @@ The standard reference for distance sampling is [Buckland *et al.* (2001)](https
 # Websites
 
 - News and general information about distance sampling can be found at our home website [distancesampling.org](http://distancesampling.org).  
-- Our workshop materials reside on their own website [https://distancesampling.org/training/training.html](https://distancesampling.org/training/training.html).
+- Our workshop materials reside at [https://distancesampling.org/training/training.html](https://distancesampling.org/training/training.html).
 - If you wish to watch narrated lecture videos and narrated exercises, visit [distancesampling.org/online-course](https://distancesampling.org/online-course).
 
 # Email list for assistance
