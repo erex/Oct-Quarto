@@ -2,7 +2,7 @@
 title: Covariates in detection function model 💻
 author: Centre for Research into Ecological and Environmental Modelling <br> **University of St Andrews**
 date: "`r Sys.Date()`"
-bibliography: references.bib
+bibliography: https://api.citedrive.com/bib/e87f6944-6eaa-4728-81b7-5cf37c843f65/references.bib?x=eyJpZCI6ICJlODdmNjk0NC02ZWFhLTQ3MjgtODFiNy01Y2YzN2M4NDNmNjUiLCAidXNlciI6ICIxNTA4OCIsICJzaWduYXR1cmUiOiAiNDQ2MDFkOGQxZWVjYzRmMjNlOGVkODhkMjQxYzUxZTFhYjBkNmJlMDhhODFiNWJkODVlYjE0MDc4ZTFkZjY0MSJ9
 csl: apa.csl
 ---
 

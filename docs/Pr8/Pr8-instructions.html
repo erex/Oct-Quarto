@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-07">
+<meta name="dcterms.date" content="2024-12-09">
 
 <title>Covariates in detection function model 💻 – Distance sampling workshop</title>
 <style>
@@ -334,7 +334,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 7, 2024</p>
+      <p class="date">December 9, 2024</p>
     </div>
   </div>
   
@@ -360,7 +360,7 @@ window.Quarto = {
 </section>
 <section id="covariates-in-point-transect-detection-functions-amakihi" class="level1">
 <h1>Covariates in point transect detection functions: Amakihi</h1>
-<p>In this problem, we illustrate fitting multiple covariate distance sampling (MCDS) models to point transect data using a bird survey from Hawaii: data on an abundant species, the Hawaii amakihi <em>(Hemignathus virens)</em> is used. This practical is based on the case study in <span class="citation" data-cites="buckland2015">Buckland et al. (<a href="#ref-buckland2015" role="doc-biblioref">2015</a>)</span> which duplicates the analysis in <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
+<p>In this problem, we illustrate fitting multiple covariate distance sampling (MCDS) models to point transect data using a bird survey from Hawaii: data on an abundant species, the Hawaii amakihi <em>(Hemignathus virens)</em> is used. This practical is based on the case study in <span class="citation" data-cites="buckland2015">Buckland et al. (<a href="#ref-buckland2015" role="doc-biblioref">2015</a>)</span> which duplicates the analysis in <span class="citation" data-cites="Marques2007">T. A. Marques (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(amakihi)</span>
@@ -422,7 +422,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert HAS to a factor</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>HAS <span class="ot">&lt;-</span> <span class="fu">factor</span>(amakihi<span class="sc">$</span>HAS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The next adjustment is to change the <em>reference</em> level of the <em>observer</em> and <em>hour</em> factor covariates - the only reason to do this is to get the estimated parameters in the detection function to match the parameters estimated in <span class="citation" data-cites="Marques2007">T. A. Marques et al. (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>. You would not carry out this step on your own data. By default R uses the first factor level but by using the <code>relevel</code> function, this can be changed:</p>
+<p>The next adjustment is to change the <em>reference</em> level of the <em>observer</em> and <em>hour</em> factor covariates - the only reason to do this is to get the estimated parameters in the detection function to match the parameters estimated in <span class="citation" data-cites="Marques2007">T. A. Marques (<a href="#ref-Marques2007" role="doc-biblioref">2007</a>)</span>. You would not carry out this step on your own data. By default R uses the first factor level but by using the <code>relevel</code> function, this can be changed:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the reference level </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>amakihi<span class="sc">$</span>OBs <span class="ot">&lt;-</span> <span class="fu">relevel</span>(amakihi<span class="sc">$</span>OBs, <span class="at">ref=</span><span class="st">"TKP"</span>)</span>
@@ -537,16 +537,16 @@ window.Quarto = {
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-buckland2015" class="csl-entry" role="listitem">
-Buckland, S. T., Rexstad, E. A., Marques, T. A., &amp; Oedekoven, C. S. (2015). <em>Distance Sampling: Methods and Applications</em>. <a href="https://doi.org/10.1007/978-3-319-19219-2_1">https://doi.org/10.1007/978-3-319-19219-2_1</a>
+Buckland, S. T., Rexstad, E. A., Marques, T. A., &amp; Oedekoven, C. S. (2015). <em>Distance sampling: Methods and applications</em>. <span>Springer</span>.
 </div>
 <div id="ref-knopf1988" class="csl-entry" role="listitem">
-Knopf, F. L., Sedgwick, J. A., &amp; Cannon, R. W. (1988). Guild structure of a riparian avifauna relative to seasonal cattle grazing. <em>The Journal of Wildlife Management</em>, <em>52</em>(2), 280–290. <a href="https://doi.org/10.2307/3801235">https://doi.org/10.2307/3801235</a>
+Knopf, F. L., Sedgwick, J. A., &amp; Cannon, R. W. (1988). Guild structure of a riparian avifauna relative to seasonal cattle grazing. <em>Journal of Wildlife Management</em>, <em>52</em>, 280–290. <a href="https://doi.org/10.2307/3801235">https://doi.org/10.2307/3801235</a>
 </div>
 <div id="ref-FMARBUC03" class="csl-entry" role="listitem">
-Marques, F. F. C., &amp; Buckland, S. T. (2003). Incorporating covariates into standard line transect analyses. <em>Biometrics</em>, <em>59</em>, 924–935. <a href="https://doi.org/10.1111/j.0006-341x.2003.00107.x">https://doi.org/10.1111/j.0006-341x.2003.00107.x</a>
+Marques, F. F. C., &amp; Buckland, S. T. (2003). Incorporating covariates into standard line transect analyses. <em>Biometrics</em>, <em>59</em>, 924–935. <a href="https://doi.org/10.1111/j.0006-341X.2003.00107.x">https://doi.org/10.1111/j.0006-341X.2003.00107.x</a>
 </div>
 <div id="ref-Marques2007" class="csl-entry" role="listitem">
-Marques, T. A., Thomas, L., Fancy, S. G., &amp; Buckland, S. T. (2007). Improving estimates of bird density using multiple covariate distance sampling. <em>The Auk</em>, <em>127</em>, 1229–1243. <a href="https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2">https://doi.org/10.1642/0004-8038(2007)124[1229:ieobdu]2.0.co;2</a>
+Marques, T. A. (2007). <em>Incorporating measurement error and density gradients in distance sampling surveys</em> (PhD thesis). University of St Andrews.
 </div>
 </div></section></div></main> <!-- /main -->
 <script>
