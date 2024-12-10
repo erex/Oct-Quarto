@@ -23,15 +23,15 @@ Import and check the data.
 
 ```{r}
 #| echo = TRUE,
-#| fig.width = 4,
-#| fig.height = 4
+#| fig.width = 7,
+#| fig.asp = .75,
+#| fig.cap = "Distribution of duck nest perpendicular distances. Should match the bar heights from table in Practical 1."
 library(Distance)
 data(ducknest)
 head(ducknest, n=3)
 nrow(ducknest)
 brks <- seq(from=0, to=2.4, by=0.3)
-hist(ducknest$distance, breaks=brks, xlab="Distance (m)",
-     main="Perpendicular distances duck nests")
+hist(ducknest$distance, breaks=brks, xlab="Distance (m)", main="Perpendicular distances duck nests")
 ```
 
 # Fit detection functions
@@ -52,8 +52,7 @@ The answer is another function `convert_units`.  Arguments to this function are
 #| message = FALSE
 conversion.factor <- convert_units("Meter", "Kilometer", "Square Kilometer")
 # Half-normal with no adjustments
-nest.hn <- ds(ducknest, key="hn", adjustment=NULL,
-              convert_units=conversion.factor)
+nest.hn <- ds(ducknest, key="hn", adjustment=NULL, convert_units=conversion.factor)
 summary(nest.hn)
 ```
 
@@ -61,10 +60,8 @@ In addition to the half normal key function, fit uniform and hazard rate models 
 
 ```{r}
 #| message = FALSE
-nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos",
-                  convert_units=conversion.factor)
-nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm", 
-                  convert_units=conversion.factor)
+nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos", convert_units=conversion.factor)
+nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm",  convert_units=conversion.factor)
 ```
 
 #  Assess absolute model fit
@@ -124,12 +121,12 @@ The detection function plots are shown below.
 #| echo: true
 #| layout-ncol: 3
 #| fig-cap: 
-#|   - "Half normal"
-#|   - "Uniform with cosine"
-#|   - "Hazard rate"
-plot(nest.hn, nc=8, main="Half normal, no adjustments")
-plot(nest.uf.cos, nc=8, main="Uniform, cosine adjustments")
-plot(nest.hr.herm, nc=8, main="Hazard rate, no adjustments")
+#|   - "Half normal, no adjustments"
+#|   - "Uniform with cosine adjustment"
+#|   - "Hazard rate, no adjustments"
+plot(nest.hn, nc=8)
+plot(nest.uf.cos, nc=8)
+plot(nest.hr.herm, nc=8)
 ```
 
 The half-normal detection function with no adjustments has the smallest AIC which provides support for this model. The $\Delta$AIC values for all three models is small. In general, you should get similar density estimates using different detection function models, provided those models fit the data well, as in this example.

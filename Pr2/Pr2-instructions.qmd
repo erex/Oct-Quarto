@@ -128,8 +128,7 @@ conversion.factor <- convert_units("meter", "kilometer", "square kilometer")
 #| eval = answer,
 #| message = FALSE
 # Fit half-normal detection function, no adjustment terms
-nest.hn <- ds(data=ducknest, key="hn", adjustment=NULL,
-              convert_units=conversion.factor)
+nest.hn <- ds(data=ducknest, key="hn", adjustment=NULL, convert_units=conversion.factor)
 ```
 
 Details about the arguments for this function:
@@ -213,8 +212,7 @@ To fit a uniform key function with cosine adjustment terms, use the command:
 #| echo = TRUE,
 #| eval = answer,
 #| message = FALSE
-nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos",
-                  convert_units=conversion.factor)
+nest.uf.cos <- ds(ducknest, key="unif", adjustment="cos", convert_units=conversion.factor)
 ```
 
 By default, AIC selection will be used to fit adjustment terms of up to order 5. Have any adjustment terms been selected?
@@ -225,8 +223,7 @@ To fit a hazard rate key function with Hermite polynomial adjustment terms, then
 #| echo = TRUE,
 #| eval = answer,
 #| message = FALSE
-nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm", 
-                  convert_units=conversion.factor)
+nest.hr.herm <- ds(ducknest, key="hr", adjustment="herm", convert_units=conversion.factor)
 ```
 
 # References

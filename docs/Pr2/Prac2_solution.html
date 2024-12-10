@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.6.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-06">
+<meta name="dcterms.date" content="2024-12-10">
 
 <title>Line transect estimation using R solution 💡 – Distance sampling workshop</title>
 <style>
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b663525e4b92bb903b2199e2d401bf36.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-fd5e3b3a1784fb96fdc73af194a4e8cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -301,7 +301,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 6, 2024</p>
+      <p class="date">December 10, 2024</p>
     </div>
   </div>
   
@@ -344,12 +344,12 @@ Solution
 <pre><code>[1] 534</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>brks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>, <span class="at">to=</span><span class="fl">2.4</span>, <span class="at">by=</span><span class="fl">0.3</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ducknest<span class="sc">$</span>distance, <span class="at">breaks=</span>brks, <span class="at">xlab=</span><span class="st">"Distance (m)"</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Perpendicular distances duck nests"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ducknest<span class="sc">$</span>distance, <span class="at">breaks=</span>brks, <span class="at">xlab=</span><span class="st">"Distance (m)"</span>, <span class="at">main=</span><span class="st">"Perpendicular distances duck nests"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac2_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="384"></p>
+<p><img src="Prac2_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Distribution of duck nest perpendicular distances. Should match the bar heights from table in Practical 1.</figcaption>
 </figure>
 </div>
 </div>
@@ -376,9 +376,8 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"Meter"</span>, <span class="st">"Kilometer"</span>, <span class="st">"Square Kilometer"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Half-normal with no adjustments</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>nest.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nest.hn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>nest.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nest.hn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Summary for distance analysis 
@@ -409,10 +408,8 @@ Density:
 </div>
 <p>In addition to the half normal key function, fit uniform and hazard rate models with possible adjustment terms.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nest.uf.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">convert_units=</span>conversion.factor)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>nest.hr.herm <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"herm"</span>, </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>nest.uf.cos <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"unif"</span>, <span class="at">adjustment=</span><span class="st">"cos"</span>, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>nest.hr.herm <span class="ot">&lt;-</span> <span class="fu">ds</span>(ducknest, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="st">"herm"</span>,  <span class="at">convert_units=</span>conversion.factor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="assess-absolute-model-fit" class="level1">
@@ -538,16 +535,16 @@ Test statistic = 0.0353634 p-value = 0.955416</code></pre>
 <section id="visualise-shape-of-key-functions-with-duck-nest-data" class="level1">
 <h1>Visualise shape of key functions with duck nest data</h1>
 <p>The detection function plots are shown below.</p>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.hn, <span class="at">nc=</span><span class="dv">8</span>, <span class="at">main=</span><span class="st">"Half normal, no adjustments"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.uf.cos, <span class="at">nc=</span><span class="dv">8</span>, <span class="at">main=</span><span class="st">"Uniform, cosine adjustments"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.hr.herm, <span class="at">nc=</span><span class="dv">8</span>, <span class="at">main=</span><span class="st">"Hazard rate, no adjustments"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.hn, <span class="at">nc=</span><span class="dv">8</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.uf.cos, <span class="at">nc=</span><span class="dv">8</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nest.hr.herm, <span class="at">nc=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac2_solution_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Half normal</figcaption>
+<figcaption>Half normal, no adjustments</figcaption>
 </figure>
 </div>
 </div>
@@ -555,7 +552,7 @@ Test statistic = 0.0353634 p-value = 0.955416</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac2_solution_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Uniform with cosine</figcaption>
+<figcaption>Uniform with cosine adjustment</figcaption>
 </figure>
 </div>
 </div>
@@ -563,7 +560,7 @@ Test statistic = 0.0353634 p-value = 0.955416</code></pre>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Prac2_solution_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Hazard rate</figcaption>
+<figcaption>Hazard rate, no adjustments</figcaption>
 </figure>
 </div>
 </div>
@@ -863,8 +860,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -975,7 +970,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
