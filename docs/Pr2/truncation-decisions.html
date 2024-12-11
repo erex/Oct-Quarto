@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-12-10">
+<meta name="dcterms.date" content="2024-12-11">
 
 <title>Effect of truncation upon density estimates – Distance sampling workshop</title>
 <style>
@@ -250,6 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#duck-nest-result" id="toc-duck-nest-result" class="nav-link" data-scroll-target="#duck-nest-result">Duck nest result</a></li>
   <li><a href="#simulated-line-transect-result" id="toc-simulated-line-transect-result" class="nav-link" data-scroll-target="#simulated-line-transect-result">Simulated line transect result</a></li>
   </ul></li>
+  <li><a href="#how-about-point-transects" id="toc-how-about-point-transects" class="nav-link" data-scroll-target="#how-about-point-transects">How about point transects?</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -276,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 10, 2024</p>
+      <p class="date">December 11, 2024</p>
     </div>
   </div>
   
@@ -362,9 +363,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
+<section id="how-about-point-transects" class="level1">
+<h1>How about point transects?</h1>
+<p>This example using simulated point transect data shows greater sensitivity of our density estimates to truncation distance. This is not surprising, as we will see, detection function modelling is more difficult with points than with lines.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(PTExercise)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cu <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>point.trunc <span class="ot">&lt;-</span> <span class="fu">trunc.experiment</span>(<span class="at">mydata=</span>PTExercise, <span class="at">trunc.range=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">cu=</span>cu, <span class="at">type=</span><span class="st">"point"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>trange <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">26</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(trange<span class="dv">-1</span>, point.trunc<span class="sc">$</span>est, <span class="at">type=</span><span class="st">"p"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">c</span>(point.trunc[,<span class="dv">2</span>], point.trunc[,<span class="dv">3</span>])), <span class="at">pch=</span><span class="dv">20</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Point transect data</span><span class="sc">\n</span><span class="st">truncation experiment"</span>, <span class="at">ylab=</span><span class="st">"Density"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Percent data truncated"</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(trange[trange]<span class="sc">-</span><span class="dv">1</span>, point.trunc[trange,<span class="dv">2</span>], trange[trange]<span class="sc">-</span><span class="dv">1</span>, point.trunc[trange,<span class="dv">3</span>])</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fl">79.8</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="truncation-decisions_files/figure-html/points-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Effects of truncation upon density estimates for simulated point transect data.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
-<p>Truncation distance has a small effect upon density estimates for “reasonable” data. If number of detections is small (&lt;50) the effects can be more profound. But under normal circumstances there is little need to worry greatly about the truncation distance decision. Recall truncation is done to reduce the likelihood of fitting overly-complex models with several adjustment terms to fit “noise” resulting from low probability detections made at great distances.</p>
+<p>Truncation distance has a small effect upon density estimates for “reasonable” data. If number of detections is small (&lt;50) the effects can be more profound. But under normal circumstances, with line transect data, there is little need to worry greatly about the truncation distance decision. The story is more complex when dealing with point transect data. Recall truncation is done to reduce the likelihood of fitting overly-complex models with several adjustment terms to fit “noise” resulting from low probability detections made at great distances.</p>
 <p>The examples presented here are for surveys with exact distance measurements. For surveys where distances are binned in the field, truncation can only happen on the cutpoints.</p>
 
 

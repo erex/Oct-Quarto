@@ -84,8 +84,30 @@ segments(trange[trange]-1, sim.trunc[trange,2], trange[trange]-1, sim.trunc[tran
 abline(h=79.8, lwd=2, lty=3)
 ```
 
+
+# How about point transects?
+
+This example using simulated point transect data shows greater sensitivity of our density estimates to truncation distance. This is not surprising, as we will see, detection function modelling is more difficult with points than with lines.
+
+```{r}
+#| label = "points",
+#| message = FALSE,
+#| fig.cap = "Effects of truncation upon density estimates for simulated point transect data."
+data(PTExercise)
+cu <- convert_units("meter", NULL, "hectare")
+point.trunc <- trunc.experiment(mydata=PTExercise, trunc.range=0:25, cu=cu, type="point")
+
+trange <- 1:26
+plot(trange-1, point.trunc$est, type="p", 
+     ylim=range(c(point.trunc[,2], point.trunc[,3])), pch=20,
+     main="Point transect data\ntruncation experiment", ylab="Density",
+     xlab="Percent data truncated")
+segments(trange[trange]-1, point.trunc[trange,2], trange[trange]-1, point.trunc[trange,3])
+abline(h=79.8, lwd=2, lty=3)
+```
+
 # Conclusion
 
-Truncation distance has a small effect upon density estimates for "reasonable" data.  If number of detections is small (<50) the effects can be more profound.  But under normal circumstances there is little need to worry greatly about the truncation distance decision.  Recall truncation is done to reduce the likelihood of fitting overly-complex models with several adjustment terms to fit "noise" resulting from low probability detections made at great distances.
+Truncation distance has a small effect upon density estimates for "reasonable" data.  If number of detections is small (<50) the effects can be more profound.  But under normal circumstances, with line transect data, there is little need to worry greatly about the truncation distance decision.  The story is more complex when dealing with point transect data. Recall truncation is done to reduce the likelihood of fitting overly-complex models with several adjustment terms to fit "noise" resulting from low probability detections made at great distances.
 
 The examples presented here are for surveys with exact distance measurements.  For surveys where distances are binned in the field, truncation can only happen on the cutpoints.
