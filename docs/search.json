@@ -602,7 +602,7 @@
     "href": "announce.html",
     "title": "Announcements",
     "section": "",
-    "text": "Is this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nDec 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nDec 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\nNo matching items",
+    "text": "Is this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs this analysis sound?\n\n\nHow would you respond to this query, if somebody asked your opinion?\n\n\n\nDec 11, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnnotated ds output\n\n\nWhat do all those numbers in the summary mean?\n\n\n\nDec 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with Quarto files\n\n\nQuarto files are provided for all practicals on the Posit/cloud workspace.\n\n\n\nDec 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork to do prior to the workshop beginning\n\n\nA pencil and paper exercise fitting a detection function to a histogram of perpendicular detection distances.\n\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Extras",
       "Announcements"
@@ -1762,5 +1762,12 @@
     "title": "Is this analysis sound?",
     "section": "",
     "text": "Received this email\nA former workshop participant recently wrote more than a year after attending this workshop. She had been working on her own data and was concluding her analysis. She sent this table (produced by the summarize_ds_models() function) asking\n\nIs it fine for me to use the model with the smallest AIC for inference for this survey?\n\n\nHow would you respond?\n\n\n\nPostscript\nThe email also included a table of stratum-specific estimates. I hide this table so as not to spoil the answer to the question above. If you are curious, simply click on the arrow on the top right.\n\n\n\n\n\n\nEstimates from the preferred model\n\n\n\n\n\n The warning signs are more obvious in this output than from the model selection table. However, you are discouraged from looking at estimates produced by models until your model selection process in complete. This prevents subconscious bias to use models that produce results the analyst “likes.”"
+  },
+  {
+    "objectID": "announce/2022-12-31-humpbacks/index.html",
+    "href": "announce/2022-12-31-humpbacks/index.html",
+    "title": "Is this analysis sound?",
+    "section": "",
+    "text": "Received yet another email\nAnother past participant recently wrote this:\n\nI have done many models with covariates that fit the data and they give me very different results regarding abundance (ranging from 600 to 2000 animals). The model with best AIC gives me a very low Pa (0.085) and high abundance. Another model … improved Pa (0.349) and reduced abundance I don’t feel comfortable choosing a model because here my decision is very important.\n\nAsking for further details, this histogram of detection distances was revealed:\n\n\n\nWhat is your diagnosis?\n\n\nFurther investigation\nTo see what happened next, click the arrow at the right of the box below:\n\n\n\n\n\n\nAdditional model fitting\n\n\n\n\n\nModel with the lowest AIC was the hazard rate, trying to fit the spike at small distances. The rapid decline of the fitted hazard rate model resulted in the very low estimate of detection probability. The alternative model described would be the half normal (shown below).\n\nThe issue isn’t so much which model is better, but rather whether the histogram of perpendicular distances is to be believed. What causes the number of detections to fall from ~55 at distances &lt;200m, to ~35 at distances 100-200m.\nThe spike of detections at small distances is very difficult to fit; thinking hard about data collection protocol for the next survey is a reasonable course of action."
   }
 ]
