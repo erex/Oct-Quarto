@@ -88,7 +88,7 @@ answer <- paste("Detection component = ", detfn.component,
 print(answer)
 ```
 
-In *normal* circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? `r fitb(95)`
+In *normal* circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? `r fitb(96)`
 
 ### Does bootstrapping resolve the issue?
 

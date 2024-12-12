@@ -2061,16 +2061,16 @@ Photo by Michael Shannon from Unsplash
 <p>Before getting absorbed in the analysis, what difficulties were caused because of the <em>survey design</em>.</p>
 <ul>
 <li>Identify the design flaws of the survey that produced such poor precision:
-<div id="radio_VWWIOMQXEE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VWWIOMQXEE" value=""> <span>too few replicate transects</span></label><label><input type="radio" autocomplete="off" name="radio_VWWIOMQXEE" value="answer"> <span>ignorance of animal gradient</span></label><label><input type="radio" autocomplete="off" name="radio_VWWIOMQXEE" value=""> <span>truncation too narrow leading to too few detections</span></label><label><input type="radio" autocomplete="off" name="radio_VWWIOMQXEE" value=""> <span>inadequate survey effort</span></label>
+<div id="radio_LQZEIMDKWM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LQZEIMDKWM" value=""> <span>too few replicate transects</span></label><label><input type="radio" autocomplete="off" name="radio_LQZEIMDKWM" value="answer"> <span>ignorance of animal gradient</span></label><label><input type="radio" autocomplete="off" name="radio_LQZEIMDKWM" value=""> <span>truncation too narrow leading to too few detections</span></label><label><input type="radio" autocomplete="off" name="radio_LQZEIMDKWM" value=""> <span>inadequate survey effort</span></label>
 </div></li>
 </ul>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>Why is the estimate of abundance exactly half the estimate of density in this analysis?
-<div id="radio_SHCZRUIJOW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SHCZRUIJOW" value="answer"> <span><span class="math inline">\(\hat{N} = \hat{D} \times A\)</span>, where A=1/2</span></label><label><input type="radio" autocomplete="off" name="radio_SHCZRUIJOW" value=""> <span>that is characteristic of the half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_SHCZRUIJOW" value=""> <span>inadequate survey effort</span></label><label><input type="radio" autocomplete="off" name="radio_SHCZRUIJOW" value=""> <span>because of convert_units, square kilometers are twice as large as kilometers</span></label>
+<div id="radio_QKLKNTTIUX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QKLKNTTIUX" value="answer"> <span><span class="math inline">\(\hat{N} = \hat{D} \times A\)</span>, where A=1/2</span></label><label><input type="radio" autocomplete="off" name="radio_QKLKNTTIUX" value=""> <span>that is characteristic of the half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_QKLKNTTIUX" value=""> <span>inadequate survey effort</span></label><label><input type="radio" autocomplete="off" name="radio_QKLKNTTIUX" value=""> <span>because of convert_units, square kilometers are twice as large as kilometers</span></label>
 </div></li>
 </ul>
 <p>Here is the summary output from the <em>standard</em> analysis of this data set. Alarm bells should ring in your head as you examine this output; specifically the variance components constituting the uncertainty in your abundance or density estimates.</p>
@@ -2078,7 +2078,7 @@ Photo by Michael Shannon from Unsplash
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In <em>normal</em> circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? <input class="webex-solveme nospaces" size="2" data-answer="[&quot;95&quot;]"></p>
+<p>In <em>normal</em> circumstances, approximately 75% of abundance estimate uncertainty in line transects comes from encounter rate variance. What percentage of uncertainty here comes from encounter rate uncertainty? <input class="webex-solveme nospaces" size="2" data-answer="[&quot;96&quot;]"></p>
 </section>
 <section id="does-bootstrapping-resolve-the-issue" class="level3">
 <h3 class="anchored" data-anchor-id="does-bootstrapping-resolve-the-issue">Does bootstrapping resolve the issue?</h3>
@@ -2086,8 +2086,8 @@ Photo by Michael Shannon from Unsplash
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <ul>
 <li>Why does the use of the bootstrap not resolve the poor precision problem?
-<div id="radio_MRSURVUMAE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MRSURVUMAE" value=""> <span>bootstrap only improves precision of estimated detection function</span></label><label><input type="radio" autocomplete="off" name="radio_MRSURVUMAE" value=""> <span>bootstrap does not perform well with half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_MRSURVUMAE" value="answer"> <span>resampling transects does not alter variability in encounter rate between transects</span></label><label><input type="radio" autocomplete="off" name="radio_MRSURVUMAE" value=""> <span>bootstrapping is over-rated, never works well</span></label>
+<div id="radio_MRHBMQAMQG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MRHBMQAMQG" value=""> <span>bootstrap only improves precision of estimated detection function</span></label><label><input type="radio" autocomplete="off" name="radio_MRHBMQAMQG" value=""> <span>bootstrap does not perform well with half normal detection function</span></label><label><input type="radio" autocomplete="off" name="radio_MRHBMQAMQG" value="answer"> <span>resampling transects does not alter variability in encounter rate between transects</span></label><label><input type="radio" autocomplete="off" name="radio_MRHBMQAMQG" value=""> <span>bootstrapping is over-rated, never works well</span></label>
 </div></li>
 </ul>
 
