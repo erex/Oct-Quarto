@@ -35,7 +35,9 @@ More generally, Tiago concludes
 The National Park Service has conducted white-tailed deer surveys in the "postage stamp" parks of the East Coast. For years those surveys were conducted along roads. Recently, @green2022 conducted a simulation study investigating bias in density estimates from distance sampling surveys. They assessed the combined effect of different survey designs (road-based, off-road random and off-road systematic) along with deer distribution (road-loving and road-loathing). 
 
 ```{r}
-#| layout-ncol: 2
+#| layout-ncol: 2,
+#| layout: [2,3]
+#| echo: false
 knitr::include_graphics("deerdistr.png")
 knitr::include_graphics("surveys.png")
 ```
