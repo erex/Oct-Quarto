@@ -1,0 +1,45 @@
+---
+title: Estimation of deer density
+description: Challenges associated with distance sampling of deer populations
+author: 
+  - name: Eric Rexstad
+date: 12-13-2024
+image: deerdistr.png
+bibliography: deer.bib
+csl: ../../Pr2/apa.csl
+draft: false
+---
+
+## Road surveys and left truncation
+
+Thursday (12Dec25), there was a supplemental document describing left truncation. This brought me to argue against the use of left truncation except in unusual circumstances. That brought me to what I considered to be *not* unusual circumstances, where left truncation was applied inappropriately.
+
+A more full discussion of left truncation in conjunction with road surveys of deer can be found in an exchange in the two papers below.
+
+First, researchers from Spain conducting surveys of roe deer. One survey method was carried out by foot ("requiring more days and more observers"), while the second method was carried out at night by car ("decreased sampling costs"). In comparing the two techniques, the authors noted
+
+> However, observations obtained with this technique s
+an imbalance in the detection function in the first few metres. This model was limited by the small number of roe deer observed in or near the line of progression. This is a handicap because functions used by the Distance software assume that the highest probability of detecting specimens is in the line of progression, causing an imbalance in the detection function at zero distance. To compensate for this, data were left-truncated at 20m.
+[@horcajada2015]
+
+This paper, and its conclusions, brought about a response from my colleague and friend, Tiago Marques [@Marques2016]. In his response, Tiago noted
+
+> But in particular, left truncation will not help. By shifting the line 20m, we are effectively assuming that the density at the line is representative of the density elsewhere, when in fact it is likely to be the area of highest density, because the displacement is governed effectively to match the highest number of distances observed. There fore, density will be overestimated. It is therefore unsurprising that left truncation produced density estimates 18% higher than untruncated distances. Further, it led to density estimates 118% higher than those on foot.
+
+More generally, Tiago concludes
+
+> Distance sampling data result from the joint effect of an availability process, i.e. the animals available to be detected, and a detectability process, i.e., how animals are detected given they are available for detection. Left truncation should only be used when there is a reason to believe that something related to the detectability process, not the availability process, might have kept us from detecting all the observations near or close to the line.
+
+## Road surveys for deer in general
+
+The National Park Service has conducted white-tailed deer surveys in the "postage stamp" parks of the East Coast. For years those surveys were conducted along roads. Recently, @green2022 conducted a simulation study investigating bias in density estimates from distance sampling surveys. They assessed the combined effect of different survey designs (road-based, off-road random and off-road systematic) along with deer distribution (road-loving and road-loathing). 
+
+```{r}
+#| layout-ncol: 2
+knitr::include_graphics("deerdistr.png")
+knitr::include_graphics("surveys.png")
+```
+
+Their results showed
+
+> The results of our simulations show that surveying deer from road transects can generate considerable biases and lack of  precision in deer population estimates when transects do not cover the study area uniformly or randomly. However, our  simulations also showed that simply randomizing transect locations may not be sufficient to produce unbiased population  estimates if deer are distributed nonrandomly over the landscape or if the randomly located transects do not adequately  incorporate the study area.
