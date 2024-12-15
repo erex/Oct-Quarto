@@ -1,0 +1,39 @@
+---
+title: Degrees of freedom for confidence intervals
+description: Statistical distribution of combination of independent normal distributions with estimated variances
+author: 
+  - name: Eric Rexstad
+date: 12-15-2024
+image: eqn.png
+bibliography: satt.bib
+csl: ../../Pr2/apa.csl
+draft: false
+---
+
+When computing confidence intervals on estimates of abundance or density, we need not only the standard error of the estimate, but also the appropriate degrees of freedom.
+
+The software can then apply this pair of formulas to produce the asymmetrical confidence seen in the output:
+
+$$
+\Large
+\begin{align}
+C &= e^{t_{df,1-\alpha/2} \cdot \sqrt{ln[1+cv(\hat{D})^2]}} \\
+\hat{D}_L &= \frac{\hat{D}}{C} \\
+\hat{D}_U &= \hat{D} \cdot C
+\end{align}
+$$
+where $df$ is computed using the Satterthwaite approximation defined as
+
+$$
+\Large
+d f=\frac{[\operatorname{cv}(\hat{D})]^4}{\frac{[\operatorname{cv}(n)]^4}{k-1}+\frac{\{\operatorname{cv}[\hat{f}(0)]\}^4}{n-p}}
+$$
+You see the combination of variances of encounters and detection probability elements in the denominator.
+
+> It is used to estimate an “effective degrees of freedom” for a probability distribution formed from several independent normal distributions where only estimates of the variance are known.
+
+> -- https://www.statisticshowto.com/satterthwaite-formula/
+
+As @buckland2001 [p.118] explain
+
+> This (Satterthwaite approximation) lengthens the confidence interval noticeably when the number of replicate lines is small.
