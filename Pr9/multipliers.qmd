@@ -6,7 +6,7 @@ title: Multipliers practical 9
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 19 December 2024
+## Lecture slides for 27 February 2025
 
 ### [Including multipliers in distance sampling analysis](../lectures/BlockI-22.pdf)
 :::
