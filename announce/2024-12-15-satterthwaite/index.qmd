@@ -7,7 +7,7 @@ date: 12-15-2024
 image: eqn.png
 bibliography: satt.bib
 csl: ../../Pr2/apa.csl
-draft: false
+draft: true
 ---
 
 When computing confidence intervals on estimates of abundance or density, we need not only the standard error of the estimate, but also the appropriate degrees of freedom.

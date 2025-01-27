@@ -7,7 +7,7 @@ date: 12-13-2024
 image: deerdistr.png
 bibliography: deer.bib
 csl: ../../Pr2/apa.csl
-draft: false
+draft: true
 ---
 
 ## Road surveys and left truncation
