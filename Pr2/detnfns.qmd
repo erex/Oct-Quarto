@@ -32,5 +32,5 @@ You will do some exploratory analysis of the detection distances, then use the f
 
 The estimated detection functions will be plotted and assessed for goodness of fit.
 
-<div style="position: relative; padding-bottom: 106.71936758893281%; height: 0;"><iframe src="https://www.loom.com/embed/98bedae1f04d42c893a3e39b7cf13585?sid=3982e993-9d5a-4b94-bded-35fcbe9903d2" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 103.84615384615385%; height: 0;"><iframe src="https://www.loom.com/embed/223fe13a459c4ad4a364c26df018651b?sid=252e7e8b-5588-4fd6-9140-aa09dad10b60" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
