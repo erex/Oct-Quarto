@@ -22,9 +22,8 @@ Begin by reading the flat file in a comma delimited format. Note the URL for the
 
 ```{r}
 #| label = "dataread"
-URLpart1 <- "https://raw.githubusercontent.com/distanceexamples/Distance-multispecies/main/montrave-line.csv"
-URLpart2 <- "?token=GHSAT0AAAAAABP6QDHAQ677QTIJEKSK2WYEYWG4EYA"
-birds <- read.csv(file=paste0(URLpart1, URLpart2))
+
+birds <- read.csv(file="https://raw.githubusercontent.com/DistanceDevelopment/Distance/refs/heads/master/vignettes/montrave-line.csv")
 ```
 
 # Survey design
