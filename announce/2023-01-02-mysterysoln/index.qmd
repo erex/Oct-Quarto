@@ -189,7 +189,7 @@ If we wanted to employ the *gold standard* in precision estimation, we would app
 #| label = "booter",
 #| results = "hide"
 bootout <- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,
-                   nboot=500, convert_units = myunits)
+                   nboot=500, cores=10, convert_units = myunits)
 ```
 
 ```{r}
