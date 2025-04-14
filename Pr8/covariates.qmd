@@ -6,7 +6,7 @@ title: Covariates practical 8
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 26 February 2025
+## Lecture slides for 14 May 2025
 
 ### [Covariates in the detection function](../lectures/BlockH-22.pdf)
 :::
