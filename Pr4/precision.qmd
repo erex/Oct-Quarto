@@ -6,7 +6,7 @@ title: Precision practical 4
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 20 February 2025
+## Lecture slides for 08 May 2025
 
 ### [Measuring precision and controlling variance](../lectures/BlockD-22.pdf)
 :::

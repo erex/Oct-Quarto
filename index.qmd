@@ -48,13 +48,13 @@ Each set of exercises is accompanied by a discussion of distance sampling princi
 
 | Topic                                                                              |    Date    |
 |---------------------------------------------------|:-------------------:|
-| [Fundamental principles](/lectures/BlockA-22.pdf)                              | 17 February |
-| [Detection functions](/lectures/BlockB-22.pdf)                                 | 18 February |
-| [Model criticism (selection and fit assessment)](/lectures/BlockC-22.pdf)      | 19 February |
-| [Measuring precision and controlling variance](/lectures/BlockD-22.pdf)        | 20 February |
-| [Point transect analysis and detailed example](/lectures/BlockE-22.pdf)        | 21 February |
-| [Design of distance sampling surveys](/lectures/BlockF-22.pdf)                 | 24 February |
-| [Analysis of stratified surveys](/lectures/BlockG-22.pdf)                      | 25 February |
-| [Covariates in the detection function](/lectures/BlockH-22.pdf)                | 26 February |
-| [Including multipliers in distance sampling analysis](/lectures/BlockI-22.pdf) | 27 February |
-| [Field methods and summary](/lectures/BlockJ-22.pdf)                           | 28 February |
+| [Fundamental principles](/lectures/BlockA-22.pdf)                              | 05 May |
+| [Detection functions](/lectures/BlockB-22.pdf)                                 | 06 May |
+| [Model criticism (selection and fit assessment)](/lectures/BlockC-22.pdf)      | 07 May |
+| [Measuring precision and controlling variance](/lectures/BlockD-22.pdf)        | 08 May |
+| [Point transect analysis and detailed example](/lectures/BlockE-22.pdf)        | 09 May |
+| [Design of distance sampling surveys](/lectures/BlockF-22.pdf)                 | 12 May |
+| [Analysis of stratified surveys](/lectures/BlockG-22.pdf)                      | 13 May |
+| [Covariates in the detection function](/lectures/BlockH-22.pdf)                | 14 May |
+| [Including multipliers in distance sampling analysis](/lectures/BlockI-22.pdf) | 15 May |
+| [Field methods and summary](/lectures/BlockJ-22.pdf)                           | 16 May |
