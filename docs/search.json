@@ -1736,34 +1736,6 @@
     "text": "Don’t worry about selecting incorrect answers\nThere is no “grade” associated with these tutorials. The answers you provide cannot be seen by me or your fellow participants. The tutorials offer you another opportunity to explore distance sampling analyses. You can assess the results of your explorations through using the tutorials.\nUse of the tutorials is completely optional. If they help you learn about distance sampling analyses, by all means use them. If they interfere with your learning, concentrate on other facets of the workshop materials."
   },
   {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html",
-    "href": "announce/2023-01-02-mysterysoln/index.html",
-    "title": "Solution to mystery analysis",
-    "section": "",
-    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set\nI’m reasonably content to stick with this rule of thumb, could slice out one more data point, if I truncated at 50m.\nmyunits &lt;- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nfirst &lt;- ds(mydata, convert_units = myunits)\nplot(first, breaks=seq(0,80,length=17))\n\nSpecified endpoints &gt; 79; values reset.\n\nabline(h=0.15, col=\"red\", lty=3)\ntext(x=50, y=0.2, \"Pr(detect)=0.15\", cex=.8)\n\n\n\n\n\n\n\ntruncate &lt;- 50"
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
-    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
-    "title": "Solution to mystery analysis",
-    "section": "AIC among remaining five competitors",
-    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      2 309.2887\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %&gt;%\n      kable_styling(full_width = F) %&gt;%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\nFive competing models with truncation at 50m\n\n\nModel\nKey function\nFormula\nC-vM $p$-value\nAverage detectability\nse(Average detectability)\nDelta AIC\n\n\n\n\nhn.sex\nHalf-normal\n~sex\n0.727\n0.567\n0.092\n0.000\n\n\nhr.sex\nHazard-rate\n~sex\n0.863\n0.449\n0.198\n1.415\n\n\nhn\nHalf-normal\n~1\n0.683\n0.638\n0.091\n3.157\n\n\nunicos\nUniform with cosine adjustment term of order 1\nNA\n0.706\n0.624\n0.079\n3.610\n\n\nhr\nHazard-rate\n~1\n0.897\n0.515\n0.177\n5.099\n\n\n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
-    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
-    "title": "Solution to mystery analysis",
-    "section": "Best model, Half normal with sex covariate",
-    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout &lt;- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, cores=10, convert_units = myunits)\n\nPerforming 500 bootstraps\n\n\nProgress bars cannot be shown when using cores&gt;1\n\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds &lt;- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\n\n\n\n\nConfidence interval bounds from bootstrap are (123, 391), somewhat wider than the analytical confidence interval bounds specified above."
-  },
-  {
-    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
-    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
-    "title": "Solution to mystery analysis",
-    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
-    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
-  },
-  {
     "objectID": "announce/2023-07-12-labelledoutput/index.html",
     "href": "announce/2023-07-12-labelledoutput/index.html",
     "title": "Annotated ds output",
@@ -1811,5 +1783,33 @@
     "title": "Working with Quarto files",
     "section": "",
     "text": "Learning materials\nThese exist in two places:\n\nthis website you are currently viewing and\nthe Posit/cloud space I created that you all share.\n\nDistance sampling analysis is best learned by performing analyses. Take the opportunity to experiment and play. With Posit/cloud you are free to make mistakes, if things go completely wrong, simply delete your copy of a practical workspace and begin again.\n\n\nPossible workflow\nI envision your workflow to have the instructions for a practical open in one browser window or tab, and be working with Posit/cloud in another window or tab.\n\n\n\nA Quarto file (file with .qmd extension) consists both of R code and “human” language describing the purpose of the code. These files are the “raw material” I used to produce the pages of this website.\nIn performing a practical, you can take either of two approaches, or a hybrid of both.\n\nbuild code in Posix/cloud from scratch, typing all code yourself\nuse copy/paste of code from the instructions to move code from the instructions webpage into your Posit/cloud session\n\nyou will note a small clipboard appear in the upper right corner of code blocks as you hover your mouse above; that lets you copy the content of the block to your clipboard\n\nas the workshop progresses, I expect you will make the transition from using the former to using the latter\nremember to experiment as well. Use the code I provide as a starting point; from which you can investigate alternative analyses.\n\n\n\nAlternative workflow\n\n\n\nYou can also open a .qmd file in Posit/cloud. Pressing the Render arrow in the editor should recreate the document, for example a solution to a practical. To take a more studied approach to working with the code, use the green triangle at the top right of each chunk of R code to execute each bit of code individually.\nWhatever way you interact with the code within these files, pay special attention to the output produced and experiment with additional analyses."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html",
+    "href": "announce/2023-01-02-mysterysoln/index.html",
+    "title": "Solution to mystery analysis",
+    "section": "",
+    "text": "Demonstration\n\n\n\nStart-to-finish analysis of mystery data set\nI’m reasonably content to stick with this rule of thumb, could slice out one more data point, if I truncated at 50m.\nmyunits &lt;- convert_units(\"meter\", \"kilometer\", \"square kilometer\")\nfirst &lt;- ds(mydata, convert_units = myunits)\nplot(first, breaks=seq(0,80,length=17))\n\nSpecified endpoints &gt; 79; values reset.\n\nabline(h=0.15, col=\"red\", lty=3)\ntext(x=50, y=0.2, \"Pr(detect)=0.15\", cex=.8)\n\n\n\n\n\n\n\ntruncate &lt;- 50"
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "href": "announce/2023-01-02-mysterysoln/index.html#aic-among-remaining-five-competitors",
+    "title": "Solution to mystery analysis",
+    "section": "AIC among remaining five competitors",
+    "text": "AIC among remaining five competitors\n\nAIC(unicos, hn, hr, hn.sex, hr.sex)\n\n       df      AIC\nunicos  1 307.7994\nhn      1 307.3470\nhr      2 309.2887\nhn.sex  2 304.1897\nhr.sex  3 305.6042\n\n\nWhat emerges? Half normal and uniform with cosine adjustment have very similar shapes and are quite similar models. The hazard rate key without a covariate seems out of contention. What about the similarity in \\(\\hat{P_a}\\) between competing models?\n\nkable(summarize_ds_models(unicos, hn,hr, hn.sex, hr.sex, output=\"plain\"), digits=3, row.names = FALSE,\n                    caption=\"Five competing models with truncation at 50m\")  %&gt;%\n      kable_styling(full_width = F) %&gt;%\n      column_spec(5, background=\"yellow\", width=\"8em\")\n\n\nFive competing models with truncation at 50m\n\n\nModel\nKey function\nFormula\nC-vM $p$-value\nAverage detectability\nse(Average detectability)\nDelta AIC\n\n\n\n\nhn.sex\nHalf-normal\n~sex\n0.727\n0.567\n0.092\n0.000\n\n\nhr.sex\nHazard-rate\n~sex\n0.863\n0.449\n0.198\n1.415\n\n\nhn\nHalf-normal\n~1\n0.683\n0.638\n0.091\n3.157\n\n\nunicos\nUniform with cosine adjustment term of order 1\nNA\n0.706\n0.624\n0.079\n3.610\n\n\nhr\nHazard-rate\n~1\n0.897\n0.515\n0.177\n5.099\n\n\n\n\n\n\n\nModels without sex as a covariate estimate a larger \\(\\hat{P_a}\\), so even with only 4 female detections, those detections do exert an influence upon the shape of the estimated detection function and consequently upon \\(\\hat{P_a}\\)."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#best-model-half-normal-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Best model, Half normal with sex covariate",
+    "text": "Best model, Half normal with sex covariate\n\nprint(hn.sex$dht$individual$N)\n\n  Label Estimate       se        cv      lcl      ucl      df\n1 Total 164.5661 32.04176 0.1947045 111.3911 243.1253 38.7038\n\n\nIf we wanted to employ the gold standard in precision estimation, we would apply a bootstrap\n\nbootout &lt;- bootdht(hn.sex, flatfile=mydata, summary_fun = bootdht_Nhat_summarize,\n                   nboot=500, cores=10, convert_units = myunits)\n\nPerforming 500 bootstraps\n\n\nProgress bars cannot be shown when using cores&gt;1\n\n\n\nhist(bootout$Nhat, breaks = 20, \n     main=\"Distribution of bootstrap replicates\", xlab=\"Abundance estimate\")\nmybounds &lt;- round(quantile(bootout$Nhat, c(0.025, 0.975),na.rm=TRUE))\nabline(v=mybounds, lwd=2, lty=3)\n\n\n\n\n\n\n\n\nConfidence interval bounds from bootstrap are (125, 400), somewhat wider than the analytical confidence interval bounds specified above."
+  },
+  {
+    "objectID": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "href": "announce/2023-01-02-mysterysoln/index.html#closest-aic-score-competitor-hazard-rate-with-sex-covariate",
+    "title": "Solution to mystery analysis",
+    "section": "Closest AIC score competitor, Hazard rate with sex covariate",
+    "text": "Closest AIC score competitor, Hazard rate with sex covariate\n\nprint(hr.sex$dht$individual$N)\n\n  Label Estimate      se        cv     lcl      ucl       df\n1 Total 207.7639 95.9443 0.4617948 85.8307 502.9186 47.96291\n\n\nNotice the price, in terms of precision, paid for the extra parameter estimated in the hazard rate model compared to the half normal model.\n\n\n\n\n\nPoint and 95% interval estimates based upon truncation distance of 50m."
   }
 ]
