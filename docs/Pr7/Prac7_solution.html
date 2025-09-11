@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-07">
+<meta name="dcterms.date" content="2025-09-11">
 
 <title>Analysis of data from stratified surveys solution 💡 – Distance sampling workshop</title>
 <style>
@@ -66,6 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,6 +104,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YWQ3ZB9MVM"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-YWQ3ZB9MVM', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -281,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 7, 2024</p>
+      <p class="date">September 11, 2025</p>
     </div>
   </div>
   
@@ -352,7 +381,7 @@ Shape coefficient(s):
 
                       Estimate         SE       CV
 Average p            0.4956459  0.0662961 0.133757
-N in covered region 78.6852058 13.8143714 0.175565
+N in covered region 78.6852057 13.8143714 0.175565
 
 Summary statistics:
   Region  Area CoveredArea Effort  n  k         ER      se.ER     cv.ER
@@ -382,24 +411,24 @@ Optimisation:  mrds (nlminb)
 
 Detection function parameters
 Scale coefficient(s):  
-              estimate        se
-(Intercept) -0.0108104 0.2203526
+               estimate        se
+(Intercept) -0.01081049 0.2203527
 
 Shape coefficient(s):  
             estimate        se
-(Intercept) 1.022021 0.6907906
+(Intercept) 1.022021 0.6907908
 
                       Estimate         SE        CV
-Average p            0.7592309 0.09987673 0.1315499
-N in covered region 64.5389972 9.62021387 0.1490605
+Average p            0.7592309 0.09987677 0.1315499
+N in covered region 64.5389996 9.62021709 0.1490605
 
 Summary statistics:
   Region   Area CoveredArea  Effort  n  k         ER      se.ER     cv.ER
 1  North 630582     4075.14 1358.38 49 12 0.03607238 0.01317937 0.3653591
 
 Abundance:
-  Label Estimate       se        cv      lcl      ucl       df
-1 Total 9986.683 3878.031 0.3883203 4469.865 22312.49 13.98197
+  Label Estimate       se        cv      lcl     ucl       df
+1 Total 9986.683 3878.032 0.3883203 4469.865 22312.5 13.98197
 
 Density:
   Label   Estimate          se        cv         lcl        ucl       df
@@ -429,12 +458,12 @@ Scale coefficient(s):
 (Intercept) -0.2967912 0.1765812
 
 Shape coefficient(s):  
-            estimate        se
-(Intercept) 0.964833 0.3605009
+             estimate        se
+(Intercept) 0.9648331 0.3605009
 
                        Estimate         SE        CV
 Average p             0.6224396  0.0668011 0.1073214
-N in covered region 141.3791725 17.7757788 0.1257312
+N in covered region 141.3791718 17.7757784 0.1257312
 
 Summary statistics:
   Region   Area CoveredArea  Effort  n  k         ER      se.ER     cv.ER
@@ -444,13 +473,13 @@ Summary statistics:
 
 Abundance:
   Label  Estimate        se        cv      lcl       ucl       df
-1 North 12181.419 4638.6284 0.3807954 5499.950 26979.692 12.96781
+1 North 12181.419 4638.6283 0.3807954 5499.950 26979.692 12.96781
 2 South  3653.345  910.0975 0.2491135 2181.595  6117.971 17.96263
 3 Total 15834.764 4834.2848 0.3052957 8388.423 29891.167 15.25496
 
 Density:
   Label   Estimate          se        cv         lcl        ucl       df
-1 North 0.01931774 0.007356107 0.3807954 0.008722023 0.04278538 12.96781
+1 North 0.01931774 0.007356106 0.3807954 0.008722023 0.04278538 12.96781
 2 South 0.04311546 0.010740641 0.2491135 0.025746391 0.07220207 17.96263
 3 Total 0.02213674 0.006758251 0.3052957 0.011726878 0.04178736 15.25496</code></pre>
 </div>
@@ -1228,6 +1257,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

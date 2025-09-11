@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
-<meta name="dcterms.date" content="2024-08-07">
+<meta name="dcterms.date" content="2025-09-11">
 
 <title>Covariates in the detection function solution 💡 – Distance sampling workshop</title>
 <style>
@@ -86,6 +86,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,6 +124,33 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YWQ3ZB9MVM"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-YWQ3ZB9MVM', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -332,7 +361,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 7, 2024</p>
+      <p class="date">September 11, 2025</p>
     </div>
   </div>
   
@@ -368,7 +397,7 @@ Solution
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -386,7 +415,7 @@ Solution
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Observer as possible covariate</figcaption>
 </figure>
 </div>
@@ -394,7 +423,7 @@ Solution
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Hour since sunrise as possible covariate</figcaption>
 </figure>
 </div>
@@ -404,7 +433,7 @@ Solution
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Minutes since sunrise as possible covariate</figcaption>
 </figure>
 </div>
@@ -412,7 +441,7 @@ Solution
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Minutes and hours after sunrise plotted together</figcaption>
 </figure>
 </div>
@@ -457,7 +486,7 @@ Solution
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -628,7 +657,7 @@ Cautionary tale
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -645,7 +674,7 @@ Cautionary tale
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Search method as possible covariate</figcaption>
 </figure>
 </div>
@@ -653,7 +682,7 @@ Cautionary tale
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Cue type as possible covariate</figcaption>
 </figure>
 </div>
@@ -663,7 +692,7 @@ Cautionary tale
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Sea state as possible covariate</figcaption>
 </figure>
 </div>
@@ -671,7 +700,7 @@ Cautionary tale
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Survey month as possible covariate</figcaption>
 </figure>
 </div>
@@ -822,7 +851,7 @@ N in covered region 1867.0869397 121.18692980 0.06490696</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -867,7 +896,7 @@ N in covered region 1867.0869397 121.18692980 0.06490696</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -889,7 +918,7 @@ N in covered region 1867.0869397 121.18692980 0.06490696</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>                                df      AIC
 Savannah_sparrow_1980.hn         2 2126.228
-Savannah_sparrow_1980.hr         3 2127.883
+Savannah_sparrow_1980.hr         2 2129.961
 Savannah_sparrow_1980.hn.region  3 2125.033
 Savannah_sparrow_1980.hr.region  4 2130.447</code></pre>
 </div>
@@ -900,7 +929,7 @@ Savannah_sparrow_1980.hr.region  4 2130.447</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Note different PDF shapes caused by the pasture covariate.</figcaption>
 </figure>
 </div>
@@ -1009,7 +1038,7 @@ Savannah_sparrow_1981.hr.region  5 1260.638</code></pre>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="Prac8_solution_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="768"></p>
 <figcaption>Stronger influence of pasture covariate seen here.</figcaption>
 </figure>
 </div>
@@ -1708,6 +1737,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
