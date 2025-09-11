@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Centre for Research into Ecological and Environmental Modelling   University of St Andrews">
+<meta name="dcterms.date" content="2025-09-11">
+
+<title>Analysis with multipliers solution 💡 – Distance sampling workshop</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b663525e4b92bb903b2199e2d401bf36.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fd5e3b3a1784fb96fdc73af194a4e8cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YWQ3ZB9MVM"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-YWQ3ZB9MVM', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+<script type="text/javascript">
+
+    (function(c,l,a,r,i,t,y){
+
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+
+    })(window, document, "clarity", "script", "lk4dxekwqr");
+
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../include/webex.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Distance sampling workshop</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr1/sampling.html"> 
+<span class="menu-text">Sampling</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr2/detnfns.html"> 
+<span class="menu-text">Detection functions</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr3/criticism.html"> 
+<span class="menu-text">Criticism</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr4/precision.html"> 
+<span class="menu-text">Precision</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr5/points.html"> 
+<span class="menu-text">Points</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr6/design.html"> 
+<span class="menu-text">Design</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr7/strata.html"> 
+<span class="menu-text">Strata</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Pr8/covariates.html"> 
+<span class="menu-text">Covariates</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../Pr9/multipliers.html" aria-current="page"> 
+<span class="menu-text">Multipliers</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../extras/extras.html"> 
+<span class="menu-text">Extras</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Pr9/Prac9_solution.html">Analysis with multipliers <strong>solution</strong> 💡</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/multipliers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multipliers practical 9</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/Pr9-instructions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Analyses using multipliers 💻</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/multi-analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multispecies and multisession distance sampling analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/countmodel-lines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Effect of habitat covariate upon estimated density—lines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Pr9/Prac9_solution.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Analysis with multipliers <strong>solution</strong> 💡</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dung-survey-of-deer" id="toc-dung-survey-of-deer" class="nav-link active" data-scroll-target="#dung-survey-of-deer">Dung survey of deer</a></li>
+  <li><a href="#estimating-decay-rate-from-data" id="toc-estimating-decay-rate-from-data" class="nav-link" data-scroll-target="#estimating-decay-rate-from-data">Estimating decay rate from data</a></li>
+  <li><a href="#cue-counting-survey-of-whales" id="toc-cue-counting-survey-of-whales" class="nav-link" data-scroll-target="#cue-counting-survey-of-whales">Cue counting survey of whales</a></li>
+  <li><a href="#cue-counting-survey-of-songbirds-optional" id="toc-cue-counting-survey-of-songbirds-optional" class="nav-link" data-scroll-target="#cue-counting-survey-of-songbirds-optional">Cue counting survey of songbirds (optional)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Analysis with multipliers <strong>solution</strong> 💡</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Centre for Research into Ecological and Environmental Modelling <br> <strong>University of St Andrews</strong> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 11, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analysis with multipliers</p>
+</div>
+</div>
+<section id="dung-survey-of-deer" class="level1">
+<h1>Dung survey of deer</h1>
+<p>Returning to the data described in <span class="citation" data-cites="marques2001">(<a href="#ref-marques2001" role="doc-biblioref">Marques et al., 2001</a>)</span>, the following code loads the relevant packages and data. The perpendicular distances are measured in centimetres, effort along the transects measured in kilometres and areas in square kilometres.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Distance)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(sikadeer)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"centimeter"</span>, <span class="st">"kilometer"</span>, <span class="st">"square kilometer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we did not perform a comprehensive examination of fitting a detection function to the detected pellet groups, however, as a general guideline, we truncated the longest 10% perpendicular distances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>deer.df <span class="ot">&lt;-</span> <span class="fu">ds</span>(sikadeer, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">truncation=</span><span class="st">"10%"</span>, <span class="at">convert_units =</span> conversion.factor)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(deer.df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(deer.df<span class="sc">$</span>dht<span class="sc">$</span>individuals<span class="sc">$</span>summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region Area CoveredArea Effort    n  k        ER      se.ER     cv.ER
+1      A 13.9    0.005950   1.70 1217 13 715.88234 119.918872 0.1675120
+2      B 10.3    0.003850   1.10  396 10 359.99999  86.859289 0.2412758
+3      C  8.6    0.001575   0.45   17  3  37.77778   8.521202 0.2255612
+4      E  8.0    0.002975   0.85   30  5  35.29412  16.568939 0.4694533
+5      F 14.0    0.000700   0.20   29  1 145.00000   0.000000 0.0000000
+6      G 15.2    0.001400   0.40   32  3  80.00000  39.686269 0.4960784
+7      H 11.3    0.000700   0.20    3  1  15.00000   0.000000 0.0000000
+8      J  9.6    0.000350   0.10    7  1  70.00000   0.000000 0.0000000
+9  Total 90.9    0.017500   5.00 1731 37 201.90876   0.000000 0.0000000</code></pre>
+</div>
+</div>
+<p>The summary above shows that in blocks F, H and J there was only one transect and, as a consequence, it is not possible to calculate a variance empirically for the encounter rate in those blocks.</p>
+</section>
+<section id="estimating-decay-rate-from-data" class="level1">
+<h1>Estimating decay rate from data</h1>
+<p>A paper by <span class="citation" data-cites="Laietal03">Laing et al. (<a href="#ref-Laietal03" role="doc-biblioref">2003</a>)</span> describes field protocol for collecting data to estimate the mean persistence time of dung or nests to be used as multipliers. The code segment shown earlier analyses a file of such data via logistic regression to produce an estimate of mean persistence time and its associated uncertainty.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean persistence time                    SE                   %CV 
+           163.396748             14.226998              8.707026 </code></pre>
+</div>
+</div>
+<p>Using the output from calling the <code>MIKE.persistence</code> function, the multipliers can be specified:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create list of multipliers</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">creation =</span> <span class="fu">data.frame</span>(<span class="at">rate=</span><span class="dv">25</span>, <span class="at">SE=</span><span class="dv">0</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">decay    =</span> <span class="fu">data.frame</span>(<span class="at">rate=</span><span class="dv">163</span>, <span class="at">SE=</span><span class="dv">14</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mult)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$creation
+  rate SE
+1   25  0
+
+$decay
+  rate SE
+1  163 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>deer_ests <span class="ot">&lt;-</span> <span class="fu">dht2</span>(deer.df, <span class="at">flatfile=</span>sikadeer, <span class="at">strat_formula=</span><span class="sc">~</span>Region.Label,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">convert_units=</span>conversion.factor, <span class="at">multipliers=</span>mult, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">stratification=</span><span class="st">"effort_sum"</span>, <span class="at">total_area =</span> <span class="dv">100</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(deer_ests, <span class="at">report=</span><span class="st">"abundance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abundance estimates from distance sampling
+Stratification : effort_sum 
+Variance       : R2, n/L 
+Multipliers    : creation, decay 
+Sample fraction : 1 
+
+
+Summary statistics:
+ Region.Label  Area CoveredArea Effort    n  k      ER   se.ER cv.ER
+            A  13.9    0.005950   1.70 1217 13 715.882 119.919 0.168
+            B  10.3    0.003850   1.10  396 10 360.000  86.859 0.241
+            C   8.6    0.001575   0.45   17  3  37.778   8.521 0.226
+            E   8.0    0.002975   0.85   30  5  35.294  16.569 0.469
+            F  14.0    0.000700   0.20   29  1 145.000   0.000 0.000
+            G  15.2    0.001400   0.40   32  3  80.000  39.686 0.496
+            H  11.3    0.000700   0.20    3  1  15.000   0.000 0.000
+            J   9.6    0.000350   0.10    7  1  70.000   0.000 0.000
+        Total 100.0    0.017500   5.00 1731 37 346.200  45.234 0.131
+
+Abundance estimates:
+ Region.Label Estimate      se    cv  LCI  UCI        df
+            A     1027 197.466 0.192  691 1527    20.797
+            B      383  99.167 0.259  220  667    11.955
+            C       34   8.200 0.244   15   75     2.759
+            E       29  13.959 0.479    9   99     4.329
+            F      210  19.752 0.094  174  252 60310.077
+            G      126  63.396 0.505   18  858     2.147
+            H       18   1.649 0.094   15   21 60310.077
+            J       69   6.538 0.094   58   83 60310.077
+        Total     3574 575.837 0.161 2560 4990    20.215
+
+Component percentages of variance:
+ Region.Label Detection    ER Multipliers
+            A      4.07 75.96       19.97
+            B      2.24 86.76       10.99
+            C      2.52 85.14       12.34
+            E      0.66 96.13        3.22
+            F     16.93  0.00       83.07
+            G      0.59 96.52        2.89
+            H     16.93  0.00       83.07
+            J     16.93  0.00       83.07
+        Total      8.09 91.91        0.00</code></pre>
+</div>
+</div>
+<p>There are a few things to notice:</p>
+<ul>
+<li>overall estimate of density
+<ul>
+<li>most effort took place in woodland A where deer density was high. Therefore, the overall estimate is between the estimated density in woodland A and the lower densities in the other woodlands.</li>
+</ul></li>
+<li>components of variance
+<ul>
+<li>we now have uncertainty associated with the encounter rate, detection function and decay rate (note there was no uncertainty associated with the production rate) and so the components of variation for all three components are provided.</li>
+</ul></li>
+</ul>
+<p>In woodland A, there were 13 transects on which over 1,200 pellet groups were detected: uncertainty in the estimated density was 19% and the variance components were apportioned as detection probability 4%, encounter rate 76% and multipliers 20%.</p>
+<p>In woodland E, there were 5 transects and 30 pellet groups resulting in a coefficient of variation (CV) of 48%: the variance components were apportioned as detection probability 0.7%, encounter rate 96% and multipliers 3%.</p>
+<p>In woodland F only a single transect was placed and the CV of density of 9% was apportioned as detection probability 17% and multipliers 83%. Do you trust this assessment of uncertainty in the density of deer in this woodland? We are missing a component of variation because we were negligent in placing only a single transect in this woodland and so are left to ‘assume’ there is no variability in encounter rate in this woodland.</p>
+<p>By the same token, we are left to assume there is no variability in production rates between deer because we have not included a measure of uncertainty in this facet of our analysis.</p>
+</section>
+<section id="cue-counting-survey-of-whales" class="level1">
+<h1>Cue counting survey of whales</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CueCountingExample)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(CueCountingExample, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Region.Label  Area Sample.Label Cue.rate Cue.rate.SE Cue.rate.df object distance
+1            B 85000         2.18       25           5           1     NA       NA
+2            B 85000         2.19       25           5           1     NA       NA
+3            B 85000         2.20       25           5           1     NA       NA
+  Sample.Fraction Sample.Fraction.SE Search.time bss   sp size Study.Area
+1             0.5                  0   0.1333333  NA &lt;NA&gt;   NA     whales
+2             0.5                  0   0.1000000  NA &lt;NA&gt;   NA     whales
+3             0.5                  0   0.4333333  NA &lt;NA&gt;   NA     whales</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CueCountingExample<span class="sc">$</span>Effort <span class="ot">&lt;-</span> CueCountingExample<span class="sc">$</span>Search.time</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cuerates <span class="ot">&lt;-</span> CueCountingExample[ ,<span class="fu">c</span>(<span class="st">"Cue.rate"</span>, <span class="st">"Cue.rate.SE"</span>, <span class="st">"Cue.rate.df"</span>)]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>cuerates <span class="ot">&lt;-</span> <span class="fu">unique</span>(cuerates)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cuerates) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rate"</span>, <span class="st">"SE"</span>, <span class="st">"df"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">creation=</span>cuerates)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mult)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$creation
+  rate SE df
+1   25  5  1</code></pre>
+</div>
+</div>
+<p>The estimated cue rate, <span class="math inline">\(\hat \nu\)</span>, is 25 cues per unit time (per hour in this case). Its standard error is 5, therefore the CV of cue rate is <span class="math inline">\(5/25 = 0.2\)</span> (20%).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tidy up data by removing surplus columns</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>CueCountingExample[ ,<span class="fu">c</span>(<span class="st">"Cue.rate"</span>, <span class="st">"Cue.rate.SE"</span>, <span class="st">"Cue.rate.df"</span>, <span class="st">"Sample.Fraction"</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Sample.Fraction.SE"</span>)] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="cn">NULL</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>trunc <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>whale.df.hn <span class="ot">&lt;-</span> <span class="fu">ds</span>(CueCountingExample, <span class="at">key=</span><span class="st">"hn"</span>, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">truncation=</span>trunc)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>whale.df.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(CueCountingExample, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">truncation=</span>trunc)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summarize_ds_models</span>(whale.df.hn, whale.df.hr), <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Model</th>
+<th style="text-align: left;">Key function</th>
+<th style="text-align: left;">Formula</th>
+<th style="text-align: right;">C-vM p-value</th>
+<th style="text-align: right;"><span class="math inline">\(\hat{P_a}\)</span></th>
+<th style="text-align: right;">se(<span class="math inline">\(\hat{P_a}\)</span>)</th>
+<th style="text-align: right;"><span class="math inline">\(\Delta\)</span>AIC</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Half-normal</td>
+<td style="text-align: left;">~1</td>
+<td style="text-align: right;">0.810</td>
+<td style="text-align: right;">0.239</td>
+<td style="text-align: right;">0.043</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Hazard-rate</td>
+<td style="text-align: left;">~1</td>
+<td style="text-align: right;">0.747</td>
+<td style="text-align: right;">0.281</td>
+<td style="text-align: right;">0.065</td>
+<td style="text-align: right;">3.07</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Half the circle (point transect) was searched and so the sampling fraction <span class="math inline">\(\phi /2\pi = 0.5\)</span>. Therefore, <span class="math inline">\(\phi = \pi\)</span> (<span class="math inline">\(\phi\)</span> must be in radians).</p>
+<p>The following commands obtain density estimates assuming no stratification (<code>strat_formula=~1</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>whale.est.hn <span class="ot">&lt;-</span> <span class="fu">dht2</span>(whale.df.hn, <span class="at">flatfile=</span>CueCountingExample, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">multipliers=</span>mult, <span class="at">sample_fraction=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(whale.est.hn, <span class="at">report=</span><span class="st">"abundance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abundance estimates from distance sampling
+Stratification : geographical 
+Variance       : P2, n/L 
+Multipliers    : creation 
+Sample fraction : 0.5 
+
+
+Summary statistics:
+ .Label   Area CoveredArea Effort  n  k    ER se.ER cv.ER
+  Total 168000     82.4932  36.47 40 92 1.097 0.303 0.276
+
+Abundance estimates:
+ .Label Estimate       se    cv  LCI   UCI     df
+  Total    13654 5263.071 0.385 6112 30500 13.058
+
+Component percentages of variance:
+ .Label Detection    ER Multipliers
+  Total      21.7 51.38       26.92</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>whale.est.hr <span class="ot">&lt;-</span> <span class="fu">dht2</span>(whale.df.hr, <span class="at">flatfile=</span>CueCountingExample, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">multipliers=</span>mult, <span class="at">sample_fraction=</span><span class="fl">0.5</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(whale.est.hr, <span class="at">report=</span><span class="st">"abundance"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Abundance estimates from distance sampling
+Stratification : geographical 
+Variance       : P2, n/L 
+Multipliers    : creation 
+Sample fraction : 0.5 
+
+
+Summary statistics:
+ .Label   Area CoveredArea Effort  n  k    ER se.ER cv.ER
+  Total 168000     82.4932  36.47 40 92 1.097 0.303 0.276
+
+Abundance estimates:
+ .Label Estimate       se    cv  LCI   UCI     df
+  Total    11590 4777.034 0.412 5017 26774 16.593
+
+Component percentages of variance:
+ .Label Detection    ER Multipliers
+  Total     31.52 44.93       23.54</code></pre>
+</div>
+</div>
+<p>A half normal detection function was chosen and whale abundance was estimated to be 13,654 whales with a 95% confidence interval (6,112: 30,500).</p>
+<p>Note the large difference between the half normal estimate and the estimate from the hazard rate model, which is 11,590 whales, with 95% confidence interval (5,017; 26773). Remember that the key parameter in a cue counting analysis is <span class="math inline">\(h(0)\)</span>, the slope of the fitted pdf to the observed data at distance zero. The difference between the estimates for the different key function is the difference between these slopes for the two models (Fig. 2):</p>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(whale.df.hn, <span class="at">pdf=</span><span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Half normal"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(whale.df.hr, <span class="at">pdf=</span><span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Hazard rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Half normal PDF</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Hazard rate PDF</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>Cue counting estimates of detection probability are more volatile than those from line transect surveys, because on a cue counting survey you have few data where you need it most to estimate <span class="math inline">\(h(0)\)</span> - namely at distances close to zero. As a consequence, cue-counting surveys require higher cue sample size for reliable estimation than samples of animals for line transect surveys.</p>
+<p>Don’t worry too much about the apparent lack of fit in the first interval, or two, in Figure 2 - remember the sample size is very small in these intervals. Use the plot above and the goodness-of-fit statistics to guide you about the fit of your model.</p>
+</section>
+<section id="cue-counting-survey-of-songbirds-optional" class="level1">
+<h1>Cue counting survey of songbirds (optional)</h1>
+<p>Analysis of the cue count data of winter wrens described by <span class="citation" data-cites="buckland2006">Buckland (<a href="#ref-buckland2006" role="doc-biblioref">2006</a>)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wren_cuecount)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cuerate <span class="ot">&lt;-</span> <span class="fu">unique</span>(wren_cuecount[ , <span class="fu">c</span>(<span class="st">"Cue.rate"</span>,<span class="st">"Cue.rate.SE"</span>)])</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cuerate) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rate"</span>, <span class="st">"SE"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>mult <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">creation=</span>cuerate)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mult)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$creation
+    rate     SE
+1 1.4558 0.2428</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Search time is the effort - this is 2 * 5min visits</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>wren_cuecount<span class="sc">$</span>Effort <span class="ot">&lt;-</span> wren_cuecount<span class="sc">$</span>Search.time</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>w3.hr <span class="ot">&lt;-</span> <span class="fu">ds</span>(wren_cuecount, <span class="at">transect=</span><span class="st">"point"</span>, <span class="at">key=</span><span class="st">"hr"</span>, <span class="at">adjustment=</span><span class="cn">NULL</span>, <span class="at">truncation=</span><span class="fl">92.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The sampling fraction for these data will be 1 because the full circle around the observer was searched.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>conversion.factor <span class="ot">&lt;-</span> <span class="fu">convert_units</span>(<span class="st">"meter"</span>, <span class="cn">NULL</span>, <span class="st">"hectare"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>w3.est <span class="ot">&lt;-</span> <span class="fu">dht2</span>(w3.hr, <span class="at">flatfile=</span>wren_cuecount, <span class="at">strat_formula=</span><span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">multipliers=</span>mult, <span class="at">convert_units=</span>conversion.factor)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># NB "Effort" here is sum(Search.time) in minutes</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># NB "CoveredArea" here is pi * w^2 * sum(Search.time)</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(w3.est, <span class="at">report=</span><span class="st">"density"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Density estimates from distance sampling
+Stratification : geographical 
+Variance       : P2, n/L 
+Multipliers    : creation 
+Sample fraction : 1 
+
+
+Summary statistics:
+ .Label Area CoveredArea Effort   n  k    ER se.ER cv.ER
+  Total 33.2    860.1681    320 765 32 2.391 0.236 0.099
+
+Density estimates:
+ .Label Estimate    se  cv    LCI    UCI      df
+  Total   1.2092 0.242 0.2 0.8195 1.7843 522.541
+
+Component percentages of variance:
+ .Label Detection    ER Multipliers
+  Total      6.14 24.33       69.54</code></pre>
+</div>
+</div>
+<p>Note the large proportion of the uncertainty in winter wren density stems from variability in cue (song) rate. Analyses of the cue count data are necessarily rather subjective as the data show substantial over-dispersion (a single bird may give many song bursts all from the same location during a five minute count). In this circumstance, goodness-of-fit tests are misleading and care must be taken not to over-fit the data (i.e.&nbsp;fit a complicated detection function).</p>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(w3.hr, <span class="at">pdf=</span><span class="cn">TRUE</span>, <span class="at">main=</span><span class="st">"Cue distances of winter wren."</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gof_ds</span>(w3.hr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Prac9_solution_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output cell-output-stdout quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<pre><code>
+Goodness of fit results for ddf object
+
+Distance sampling Cramer-von Mises test (unweighted)
+Test statistic = 1.70062 p-value = 6.04794e-05</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-buckland2006" class="csl-entry" role="listitem">
+Buckland, S. T. (2006). Point-transect surveys for songbirds: Robust methodologies. <em>The Auk</em>, <em>123</em>(2), 345–357. <a href="https://doi.org/10.1642/0004-8038(2006)123[345:PSFSRM]2.0.CO;2">https://doi.org/10.1642/0004-8038(2006)123[345:PSFSRM]2.0.CO;2</a>
+</div>
+<div id="ref-Laietal03" class="csl-entry" role="listitem">
+Laing, S. E., Buckland, S. T., Burn, R. W., Lambie, D., &amp; Amphlett, A. (2003). Dung and nest surveys: Estimating decay rate. <em>Journal of Applied Ecology</em>, <em>40</em>, 1102–1111. <a href="https://doi.org/10.1111/j.1365-2664.2003.00861.x">https://doi.org/10.1111/j.1365-2664.2003.00861.x</a>
+</div>
+<div id="ref-marques2001" class="csl-entry" role="listitem">
+Marques, F. F. C., Buckland, S. T., Goffin, D., Dixon, C. E., Borchers, D. L., Mayle, B. A., &amp; Peace, A. J. (2001). Estimating deer abundance from line transect surveys of dung: sika deer in southern Scotland. <em>Journal of Applied Ecology</em>, <em>38</em>(2), 349–363. <a href="https://doi.org/10.1046/j.1365-2664.2001.00584.x">https://doi.org/10.1046/j.1365-2664.2001.00584.x</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
