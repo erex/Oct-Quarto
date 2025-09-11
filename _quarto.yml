@@ -3,6 +3,9 @@ project:
   output-dir: docs
 website:
   title: Distance sampling workshop
+  google-analytics: "G-YWQ3ZB9MVM"
+  cookie-consent:
+    type: implied
   navbar:
     background: primary
     search: true
