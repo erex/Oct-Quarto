@@ -6,7 +6,7 @@ title: Stratification practical 7
 
 ::: {.column width='60%'}
 ::: {.callout-tip}
-## Lecture slides for 13 May 2025
+## Lecture slides for 14 October 2025
 
 ### [Analysis of stratified surveys](../lectures/BlockG-22.pdf)
 :::
@@ -29,4 +29,4 @@ Employing an inappropriate detection function will invalidate population inferen
 
 ::::
 
-<div style="position: relative; padding-bottom: 84.49931412894375%; height: 0;"><iframe src="https://www.loom.com/embed/de828c63c13b4f57ab1c003f7f57ce3c?sid=7c38b124-3c49-4057-aa2b-f5295193f2c1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div style="position: relative; padding-bottom: 94.88304093567253%; height: 0;"><iframe src="https://www.loom.com/embed/b66581813f66415f8604977d0f4a881d?sid=7045e589-c1c4-4865-9c73-adb81936ce7b" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>

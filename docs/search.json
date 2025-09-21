@@ -397,5 +397,49 @@
       "Points",
       "Point transects practical 5"
     ]
+  },
+  {
+    "objectID": "Pr6/design.html",
+    "href": "Pr6/design.html",
+    "title": "Survey design practical 6",
+    "section": "",
+    "text": "Lecture slides for 13 October 2025\n\n\n\n\n\n\n\n\nFundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.\n\n\n\n\n\nPhoto by ray rui on Unsplash\nIt is actually difficult for humans to do things that are actually random. Computerised methods make the process reasonably straightforward. Employing a randomised sampling design derived with this R package, means there is one less threat to the validity of your survey.\nYou have the opportunity to use shape files from two locations near St Andrews, one marine and one terrestrial, to design surveys. The marine study will use aircraft so considerations such as fuel load add “incentives” to produce the optimal survey design while allowing the aircraft to return safely to land. The terrestrial study deploys point transects into strata of a natural area.",
+    "crumbs": [
+      "Design",
+      "Survey design practical 6"
+    ]
+  },
+  {
+    "objectID": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
+    "href": "Pr6/design.html#designing-surveys-and-determining-effort-to-achieve-objectives",
+    "title": "Survey design practical 6",
+    "section": "",
+    "text": "Fundamental to safely making inference from transects you surveyed to the entire study area is a sound survey design that includes random allocation of survey effort.",
+    "crumbs": [
+      "Design",
+      "Survey design practical 6"
+    ]
+  },
+  {
+    "objectID": "Pr7/strata.html",
+    "href": "Pr7/strata.html",
+    "title": "Stratification practical 7",
+    "section": "",
+    "text": "Lecture slides for 14 October 2025\n\n\n\n\n\n\n\n\nCarrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.\n\n\n\n\n\nPhoto by Nick Fewings on Unsplash",
+    "crumbs": [
+      "Strata",
+      "Stratification practical 7"
+    ]
+  },
+  {
+    "objectID": "Pr7/strata.html#analysis-of-stratified-surveys-1",
+    "href": "Pr7/strata.html#analysis-of-stratified-surveys-1",
+    "title": "Stratification practical 7",
+    "section": "",
+    "text": "Carrying on from the discussion of survey design where stratification was introduced, this exercise describes multiple analyses of a single data set.\nMultiple analyses arise because it is an open question whether a single detection function is appropriate for different strata that might sharply contrast in their vegetation that might influence detectability.\nEmploying an inappropriate detection function will invalidate population inferences; consequently it is important to have a decision framework that can be employed to determine the role stratification should play in the detection function.",
+    "crumbs": [
+      "Strata",
+      "Stratification practical 7"
+    ]
   }
 ]
