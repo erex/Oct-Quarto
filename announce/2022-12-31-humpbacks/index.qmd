@@ -5,7 +5,7 @@ author:
   - name: Eric Rexstad
 date: 10-09-2025
 image: https://plus.unsplash.com/premium_photo-1661956524374-cf33d885689a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aHVtcGJhY2slMjB3aGFsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60
-draft: true
+draft: false
 ---
 
 # Received yet another email
