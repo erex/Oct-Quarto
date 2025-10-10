@@ -1,0 +1,34 @@
+---
+title: Functions in `Distance` package
+description: There are only a few functions needed to conduct a distance sampling analysis
+author: 
+  - name: Eric Rexstad
+date: 10-10-2025
+image: Distance_function_workflow.png
+draft: false
+---
+
+:::: {.columns}
+
+::: {.column width='50%'}
+
+At this point in the workshop, you have used nearly all of the functions in the `Distance` package to conduct a thorough analysis of a distance sampling survey. Just to recap, here they are, compartmentalised by the stage of analysis in which the functions receive use.
+
+The first compartment, `Input` does not use functions from the `Distance` package, here external data (often in the form of a spreadsheet) is brought into R. The some basic exploratory analysis is performed by creating histograms and other graphs.
+
+`Model fitting` is where much of the work is performed by the `ds()` function.
+
+`Model criticism` takes the form of assessing absolute and relative fit of your candidate models. After some model selection, details of the analysis are scrutinised with text output (`summary()`) and graphical output (`plot()`). If you have used covariates in the detection function model, you may also want to use `add_ds_covar_line()`.
+
+If there are more advanced elements to your analysis (alternative encounter rate variance estimate or multipliers), `dht2()` is used.
+
+Finally, uncertainty of your selected model is estimated using bootstrapping with `bootdht()`.
+
+:::
+
+::: {.column width='50%'}
+![](Distance_function_workflow.png)
+
+:::
+
+::::
