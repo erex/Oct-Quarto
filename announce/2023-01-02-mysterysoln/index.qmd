@@ -3,9 +3,9 @@ title: Solution to mystery analysis
 description: Remember, the most important aspect of this exercise is the workflow that you followed, the decisions you made and the support (evidence) used to support those decisions.
 author: 
   - name: Eric Rexstad
-date: 10-17-2025
+date: 10-16-2025
 image: https://images.unsplash.com/photo-1443521156453-f82c842b6e7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NjB8NDcxMTQ0NHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60
-draft: true
+draft: false
 ---
 
 ```{r}
